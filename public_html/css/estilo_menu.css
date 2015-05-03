@@ -30,6 +30,27 @@ p{
     background: url(../assets/icons/1429073263_menu-alt-32.png);
     z-index: 22;
 }
+//Estilo pagina principal
+
+#principal{
+    display: inline;
+} 
+#principal button{
+   background-color: #141414;
+   width: 100px;
+   height: 100px;
+   position: relative;
+   display: inline;
+   top: 18em;
+   left: 33em;
+   margin-left: 20px; 
+   transition: all 1s;
+   border: solid whitesmoke 1px;
+}
+#principal button:hover{
+    border-radius: 10px;
+    border: solid red 1px;
+}
 /*ESTILOS DEL MENU*/
 #hmenu{
 	position: fixed;
