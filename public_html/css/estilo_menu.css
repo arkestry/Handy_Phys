@@ -22,7 +22,7 @@ p{
 /*boton*/
 #muestrame{
     cursor: pointer;
-    position: static;
+    position: fixed;
     top:0.7em;
     left: 2em;
     width: 32px;
@@ -35,9 +35,18 @@ p{
 	position: fixed;
 	width: 100%;
 	height: 5%;
-	z-index: 19;
+	z-index: 0;
 	background-color: rgb(236,240,241);
 	border: none;
+}
+iframe{
+    position: fixed;
+    top: 3.5em;
+    width: 100%;
+    height: 92.8%;
+    border: none;
+    border-style: none;
+    
 }
 nav{
     top:0;
