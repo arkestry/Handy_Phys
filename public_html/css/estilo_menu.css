@@ -22,7 +22,7 @@ p{
 /*boton*/
 #muestrame{
     cursor: pointer;
-    position: fixed;
+    position: static;
     top:0.7em;
     left: 2em;
     width: 32px;
