@@ -7,18 +7,14 @@ and open the template in the editor.
     Created on : 13/04/2015, 05:23:42 PM
     Author     : YO
 */
+*{
+    font-family: "Roboto Condensed";
+}
 body{
     color:rgb(236,240,241);
     background-color: #34495e; //#16A085;
 }
-h1{
-    text-align: right;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-p{
-    padding-left: 1.4em;
-    font-family: 'Roboto Condensed', sans-serif;
-}
+
 /*boton*/
 #muestrame{
     cursor: pointer;
