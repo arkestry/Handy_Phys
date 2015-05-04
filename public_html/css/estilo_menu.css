@@ -14,7 +14,32 @@ body{
     color:rgb(236,240,241);
     background-color: #34495e; //#16A085;
 }
-
+/*Pagina de Perfil*/
+#cabezaP{
+    margin:2em;
+    margin-bottom: 0;
+    padding: 1em;
+    background-color: #141414;
+    opacity: 0.8;
+    
+}
+#datosP{
+    margin: 2em;
+    margin-top: 0;
+    padding: 1em;
+    background-color: #141414;
+    opacity: 0.8;
+}
+#userPic{
+    display: table-cell;
+    width: 120px;
+    height: 120px;  
+    border: 1px #019875 solid;
+    background: url(../assets/icons/ubi_face.png);
+    background-size: cover;
+    background: no-repeat;
+    
+}
 /*boton*/
 #muestrame{
     cursor: pointer;
@@ -147,9 +172,7 @@ label{
     color: whitesmoke;
       margin: 0.3em;
 }
-
 .menu li:hover{
     box-shadow: 18em 0 #019875 inset;
            
 }
-

@@ -28,7 +28,6 @@ and open the template in the editor.
   display:inline-block;
   padding-right: .5em;
 }
-.social ul li a :hover{
-    
-color:rgb(134, 226, 213);
+.social ul li:hover a{
+  color:rgb(63, 195, 128);
 }

@@ -10,11 +10,19 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="../css/estilo_menu.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+       <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     </head>
-    <body>
-        <h1>Nombre de usuario <small>Mi Perfil</small></h1>
+    <body class="text-center">
+        <section id="cabezaP" >
+            <center><section id="userPic"></section></center>
+            <h1 id="usuario">Nombre de usuario <small>Mi Perfil</small></h1>
+        </section>
+        <section id="datosP">
+            <h3>Nombre: </h3><p id="nombre" >Nombre Real del usuario</p>
+            <h3>Apellido: </h3><p id="apellido">Apellido real del usuario</p>
+            <h3>Grupo: </h3><p id="grupo">Grupo</p>
+        </section>
     </body>
 </html>
