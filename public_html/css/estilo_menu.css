@@ -31,14 +31,12 @@ body{
     opacity: 0.8;
 }
 #userPic{
-    display: table-cell;
+
     width: 120px;
     height: 120px;  
     border: 1px #019875 solid;
-    background: url(../assets/icons/ubi_face.png);
+    background-image: url(../assets/icons/ubi_face.png);
     background-size: cover;
-    background: no-repeat;
-    
 }
 /*boton*/
 #muestrame{
