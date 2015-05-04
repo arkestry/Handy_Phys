@@ -159,10 +159,7 @@ menu a:hover{
     transition: all .8s ease-out;
     cursor: pointer;
     display: table;
-    width: 18em; 
-    alignment-adjust: central;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    width: 18em;
 }
 section ul{
     background-color: #2C3E50;
@@ -170,8 +167,6 @@ section ul{
 section ul li{
     color: whitesmoke;
     font-family: 'Roboto Condensed', sans-serif;
-    margin-bottom: 8px;
-    margin-top: 8px;
 }
 .boton{
     margin-top: .5em;
