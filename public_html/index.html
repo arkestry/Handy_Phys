@@ -32,23 +32,14 @@ and open the template in the editor.
         <nav>
             <ul class="menu">
             <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
-            <li onclick="mostrar(buscarS)" ><a href="#">Buscar</a></li>
-            <section class="buscar" id="buscarS" name="onMenu">
-                <form class=" form-inline">
-                    <section class="form-group col-xs-12">
-                         <section class="col-xs-12">
-                            <input  type="text" id="buscarTFD" placeholder="Buscar" class="form-control"/>
-                        </section>
-                    </section>
-                    <section class="form-group col-xs-12">
-                        <section class="col-xs-12">
-                            <button  class="boton col-xs-12 btn btn-success"><span class="glyphicon glyphicon-search"></span> </button>
-                        </section>
-                    </section>
-                </form>
-            </section>
             <li><a href="#">Mi Perfíl</a></li>
-            <li><a href="#">Mis Preguntas y Respuestas</a></li>
+            <li><a onClick="mostrar(pYrS)" href="#">Mis Preguntas y Respuestas</a></li>
+            <section id="pYrS" name="onMenu">
+                <ul class="list-unstyled text-right text-uppercase list-group-item-text">
+                    <li>Mis Preguntas</li>
+                    <li>Mis Respuestas</li>
+                </ul>
+            </section>
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">

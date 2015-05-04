@@ -124,20 +124,15 @@ menu a:hover{
     display: table;
     width: 18em;
 }
-#contentS ul{
+section ul{
     background-color: #2C3E50;
 }
-#contentS ul li{
-    
+section ul li{
     color: whitesmoke;
     font-family: 'Roboto Condensed', sans-serif;
-   
 }
-
-
 .boton{
     margin-top: .5em;
- 
 }
 section[name="onMenu"]{
     display: none;
