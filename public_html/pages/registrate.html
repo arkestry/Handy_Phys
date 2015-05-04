@@ -15,6 +15,7 @@ and open the template in the editor.
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     </head>
     <body>
+        <h1 class="text-uppercase text-center">Registrar</h1>
         <form class="form-horizontal" role="form">
             <section class="form-group col-xs-12"><!--CORREO-->
                 <label for="email" class="text-left control-label col-xs-4">Correo electronico: </label>
@@ -42,7 +43,7 @@ and open the template in the editor.
             </section>      
             <section class="form-group col-xs-12"><!--Unidad de aprendizaje-->
                 <label for="unidadA" class="text-left control-label col-xs-4">Unidad Academica: </label>
-                <select class="form-control-static col-xs-2" id="unidadA"> 
+                <select class="form-control-static col-xs-3" id="unidadA"> 
                     <option>Seleccione unidad de aprendizaje</option>
                     <option value="fisica">Fisica</option>
                 </select>
@@ -53,7 +54,8 @@ and open the template in the editor.
                     <input type="text" class="form-control" id="grupo"/> 
                 </section>
             </section>
-            <input type="submit" value="Registrarse"/>
+            <center> <input id="registrar" class="btn boton" type="submit" value="Registrarse"/>
+                <input id="cancelar" class="btn boton" type="submit" value="Cancelar"/></center>
         </form>
     </body>
 </html>

@@ -23,8 +23,8 @@ and open the template in the editor.
             	<section class="form-group">
                     <section>
                         <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
-                    <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                </section>
+                    <button class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
+                    </section></section>
             </form>
         </section>
         </div>
@@ -62,7 +62,13 @@ and open the template in the editor.
                 </form>
             </section>
             <li><a href="#">Configuración de Cuenta</a></li>
-            <li><a href="pages/login.html" target="iframe">Iniciar sesión</a></li>
+            <li onclick="mostrar(credencialesS)"><a href="#">Credenciales</a></li>
+             <section id="credencialesS" name="onMenu">
+                <ul class="list-unstyled text-uppercase text-right list-group-item-text">
+                    <li><a href="pages/login.html" target="iframe">Iniciar Sesion</a></li>
+                    <li><a href="pages/registrate.html" target="iframe">Registrarse</a></li>
+                </ul>
+            </section>
         </ul>
         </nav>
         <iframe name="iframe" src="pages/home.html">

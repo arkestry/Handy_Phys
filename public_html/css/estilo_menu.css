@@ -98,14 +98,8 @@ nav{
     transition: all .8s;
     position: fixed;
 }
-input[type="text"]{
+#buscar{
 	margin: 0.5em;
-}
-button{
-	background-color: #141414;
-}
-button span{
-	color: rgb(236,240,241);
 }
 nav.mostrar{
     left:0;
@@ -169,8 +163,19 @@ section ul li{
     font-family: 'Roboto Condensed', sans-serif;
 }
 .boton{
-    margin-top: .5em;
+    background-color: #141414;
+    margin-left: 0.5em;
+    transition: 0.5s all;
 }
+.boton:hover{
+    color:rgb(63, 195, 128);
+}
+.boton span{
+	color: rgb(236,240,241);
+}
+.boton:hover span{
+       color:rgb(63, 195, 128);
+}   
 section[name="onMenu"]{
     display: none;
 }
@@ -191,4 +196,7 @@ label{
 .menu li:hover{
     box-shadow: 18em 0 #019875 inset;     
 }
-<!--una nota-->
+/*Pagina de registro*/
+#unidadA{
+    color: #141414;
+}
