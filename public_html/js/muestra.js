@@ -7,8 +7,8 @@ $(document).ready(function(){
     $('#muestrame').click(function(){
         $('nav').toggleClass('mostrar'); 
     });
-    $('#respuestas_badge').click(function(){
-        $('#respuestas').slideToggle(1000);
+    $('.mostrarLink').click(function(){
+        $('.mostrarSeccion').slideToggle(1000);
     });
 });
 

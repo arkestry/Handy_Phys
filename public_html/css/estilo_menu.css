@@ -183,7 +183,15 @@ a.link:hover{
 label{
     font-weight: bold;
     color: whitesmoke;
-      margin: 0.3em;
+    margin: 0.3em;
+}
+a{
+    cursor: pointer;
+}
+.labelB{
+    font-weight: bold;
+    color: #141414;
+    margin: 0.3em;
 }
 .menu li:hover{
     box-shadow: 18em 0 #019875 inset;     
@@ -212,6 +220,9 @@ div.panel-footer{
 }
 div.panel-body{
     padding: 2px;
+}
+.mostrarSeccion{
+    display: none;
 }
 #quest_panel{
     margin-left: 12%;
