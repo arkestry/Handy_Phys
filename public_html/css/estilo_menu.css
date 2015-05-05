@@ -192,11 +192,15 @@ label{
 #unidadA{
     color: #141414;
 }
-/*cositas mis_preguntas.html*/
+/*cositas mis_preguntas.html/mis_respuestas*/
 #quest{
     color: black;
 }
-h1.panel-title{
+#titulo_res{
+    font-size: 28px;
+    color:#E76C6C; 
+}
+#titulo_pre{
     font-size: 28px;
 }
 #quest_date{
@@ -215,6 +219,12 @@ div.panel-body{
     background-color: #67809F;
     padding: 1em;
 }
+#answ_panel{
+    margin-left: 12%;
+    margin-right:12%;
+    background-color: #E76C6C;
+    padding: 1em;
+}
 section h4{
     color: #141414;
 }
@@ -224,3 +234,7 @@ section h4{
 #respuestas{
     display: none;
 }
+div.page-header{
+    color: black;
+}
+/*termina cositas mis_respuestas/mis_preguntas*/
