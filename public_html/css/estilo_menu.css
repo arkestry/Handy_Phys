@@ -165,7 +165,7 @@ section ul li{
 }
 .boton{
     background-color: #141414;
-    margin-left: 0.5em;
+    
     transition: 0.5s all;
 }
 .boton:hover{
