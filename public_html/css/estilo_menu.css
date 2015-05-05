@@ -1,12 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 13/04/2015, 05:23:42 PM
-    Author     : YO
-*/
+
 *{
     font-family: "Roboto Condensed";
 }
@@ -49,7 +41,7 @@ body{
     background: url(../assets/icons/1429073263_menu-alt-32.png);
     z-index: 22;
 }
-//Estilo pagina principal
+/*Estilo pagina principal*/
 
 #principal{
     display: inline;
@@ -120,7 +112,7 @@ ul.menu{
     text-transform: uppercase;
     width: 100%;
     height: 32px;
-    background: url(../assets/icons/icon_sideMenu.png) no-repeat left top;
+    background: url(../assets/icons/sidebar_prueba.png) no-repeat left top;
     padding-left: 60px;
 }
 menu a:hover{
@@ -144,7 +136,7 @@ menu a:hover{
 .menu li:nth-child(9) a{
     background-position: 0 -160px;
 }
-.menu  li:last-child() a{
+.menu  li:nth-child(10) a{
     background-position: 0 -192px;
 }
 .menu li{
