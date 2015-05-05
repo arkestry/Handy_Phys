@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$('#muestrame').on('click',function(){
-        $('nav').toggleClass('mostrar');
+$(document).ready(function(){
+    $('#muestrame').click(function(){
+        $('nav').toggleClass('mostrar'); 
+    });
 });
+
 function mostrar(menu){
     if(menu.style.display === "none"){
         menu.style.display = "inline";
