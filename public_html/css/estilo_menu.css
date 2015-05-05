@@ -144,7 +144,7 @@ menu a:hover{
 .menu li:nth-child(9) a{
     background-position: 0 -160px;
 }
-.menu li:last-child a{
+.menu  li:last-child() a{
     background-position: 0 -192px;
 }
 .menu li{
@@ -171,10 +171,10 @@ section ul li{
     color:rgb(63, 195, 128);
 }
 .boton span{
-	color: rgb(236,240,241);
+    color: rgb(236,240,241);
 }
 .boton:hover span{
-       color:rgb(63, 195, 128);
+    color:rgb(63, 195, 128);
 }   
 section[name="onMenu"]{
     display: none;
@@ -223,4 +223,12 @@ div.panel-body{
     background-color: #67809F;
     padding: 1em;
 }
-
+section h4{
+    color: #141414;
+}
+#respuestas_badge{
+    cursor: pointer;
+}
+#respuestas{
+    display: none;
+}
