@@ -200,3 +200,27 @@ label{
 #unidadA{
     color: #141414;
 }
+/*cositas mis_preguntas.html*/
+#quest{
+    color: black;
+}
+h1.panel-title{
+    font-size: 28px;
+}
+#quest_date{
+    font-style: italic;
+    color: #67809F;
+}
+div.panel-footer{
+    padding: 0px;
+}
+div.panel-body{
+    padding: 2px;
+}
+#quest_panel{
+    margin-left: 12%;
+    margin-right:12%;
+    background-color: #67809F;
+    padding: 1em;
+}
+
