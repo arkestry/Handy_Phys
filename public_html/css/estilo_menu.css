@@ -258,3 +258,12 @@ div.page-header{
     color: black;
 }
 /*termina cositas mis_respuestas/mis_preguntas*/
+/*Zigma*/
+.zigma{
+    width: 500px;
+    height: 500px;
+    position: fixed;
+    top: 8em;
+    left: 29em;
+    z-index: 30;
+}
