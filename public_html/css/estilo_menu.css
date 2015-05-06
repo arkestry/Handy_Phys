@@ -123,6 +123,7 @@ ul.menu{
     height: 32px;
     background: url(../assets/icons/icon_sideMenu.png) no-repeat left top;
     padding-left: 60px;
+    margin-bottom: 16px;
 }
 menu a:hover{
     margin-left: 1.5em;    
@@ -155,6 +156,7 @@ menu a:hover{
     cursor: pointer;
     display: table;
     width: 18em;
+    height: 32px;
 }
 section ul{
     background-color: #2C3E50;
