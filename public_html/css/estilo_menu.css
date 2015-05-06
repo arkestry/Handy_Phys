@@ -269,3 +269,52 @@ div.page-header{
     left: 29em;
     z-index: 30;
 }
+/*Áreas  de texto*/
+textarea{
+    width: 18em;
+    color: #95A5A6;
+    resize: none;
+}
+/*Cuerpo configuracion*/
+#cabezaC{
+    margin:2em;
+    margin-bottom: 0;
+    padding: 1em;
+    background-color: rgb(245, 171, 53);
+    opacity: 0.9;
+}
+#datosC{
+    margin: 2em;
+    margin-top: 0;
+    padding: 1em;
+    background-color: rgb(245, 171, 53);
+    opacity: 0.9;
+}
+#CancelarC{
+    background-color:#CF000F;
+    border-color: #CF000F;
+}
+#CancelarC:hover{
+    background-color:#96281B;
+    border-color: #96281B;
+}
+#CaImagenC{
+    background-color: #3498DB;
+    border-color: #3498DB;
+}
+#CaImagenC:hover{
+    background-color:#446CB3 ;
+    border-color: #446CB3;
+}
+#NuevaCon{
+    width: 18em;
+    color: #95A5A6;
+    margin: 2em;
+    margin-top: 0;
+}
+#ConfiCon{
+    width: 18em;
+    color: #95A5A6;
+    margin: 2em;
+    margin-top: 0;
+}
