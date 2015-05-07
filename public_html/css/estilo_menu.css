@@ -131,16 +131,17 @@ menu a:hover{
 
 }
 
-.menu li:nth-child(2) a{
+.menu  li:nth-child(2) a{
     background-position: 0 -32px;
 }
-.menu li:nth-child(3) a{
+.menu  li:nth-child(3) a{
     background-position: 0 -64px;
 }
-.menu li:nth-child(5) a{
+
+.menu  li:nth-child(5) a{
     background-position: 0 -96px;
 }
-.menu li:nth-child(7) a{
+.menu #li:nth-child(7) a{
     background-position: 0 -128px;
 }
 .menu li:nth-child(9) a{
@@ -148,6 +149,14 @@ menu a:hover{
 }
 .menu  li:nth-child(10) a{
     background-position: 0 -192px;
+}
+.menu section li{
+    background-image: none;
+}
+.menu2  li a{
+    background-image: none;
+    color: #ECF0F1;
+    height: 1em;
 }
 .menu li{
     box-shadow: 0 0  whitesmoke inset;
@@ -318,6 +327,7 @@ textarea{
     margin: 2em;
     margin-top: 0;
 }
+<<<<<<< HEAD
 /*hacer_pregunta-html*/
 label.subtitle{
     font-size: 18px;
@@ -333,3 +343,6 @@ label.subtitle{
     margin-left: 8%;
     margin-right: 18%;
 }
+=======
+/*finalConfiguracion*/
+>>>>>>> origin/master
