@@ -349,7 +349,8 @@ label.subtitle{
     position: absolute;
     top: .1em;
     right: 4em;
-    width: 18em;
+    width: 13em;
+    max-width: 13em;
 }
 #btn_buscar{
     position: absolute;
