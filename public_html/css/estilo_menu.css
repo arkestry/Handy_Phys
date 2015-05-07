@@ -318,3 +318,18 @@ textarea{
     margin: 2em;
     margin-top: 0;
 }
+/*hacer_pregunta-html*/
+label.subtitle{
+    font-size: 18px;
+}
+#preg_algo_container{
+    background-color: #F4B350;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#p_preg_alg{
+    font-size: 24px;
+    margin-left: 8%;
+    margin-right: 18%;
+}
