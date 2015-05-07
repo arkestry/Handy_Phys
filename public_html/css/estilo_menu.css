@@ -327,7 +327,6 @@ textarea{
     margin: 2em;
     margin-top: 0;
 }
-<<<<<<< HEAD
 /*hacer_pregunta-html*/
 label.subtitle{
     font-size: 18px;
@@ -343,6 +342,17 @@ label.subtitle{
     margin-left: 8%;
     margin-right: 18%;
 }
-=======
+
 /*finalConfiguracion*/
->>>>>>> origin/master
+/*Menu horizontal*/
+#buscar{
+    position: absolute;
+    top: .1em;
+    right: 4em;
+    width: 18em;
+}
+#btn_buscar{
+    position: absolute;
+    top: .55em;
+    right: 0.7em;
+}
