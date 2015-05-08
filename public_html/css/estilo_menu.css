@@ -357,3 +357,10 @@ label.subtitle{
     top: .55em;
     right: 0.7em;
 }
+/* estilos todo-articulos*/
+#todo_art_body{
+    margin: 5%;
+}
+#todo_{
+    color: #ECF0F1;
+}
