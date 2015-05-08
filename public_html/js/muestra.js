@@ -35,9 +35,14 @@ $(document).ready(function(){
          $('#homeRight').animate({opacity: '0.5'}, 300);
     });
     
-        $('.zigma').animate({width: '36px', height: '36px', top: '0.6em', left: '5em'},1500);
+    $('.zigma').animate({width: '36px', height: '36px', top: '0.6em', left: '5em'},1500); //zigma animation
     
-});
-function mostrar(menu){
+    function mostrar(menu){
     $(menu).slideToggle(800);
-}
+    }
+    $('#dropdownMenu1').click(function(){
+       $('#filtroArt').fadeToggle(500); 
+    });
+
+});
+
