@@ -15,6 +15,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" href="css/EsilosSocial.css">
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+         <script src="js/muestra.js"></script>
     </head>
     <body>
         <img class="zigma" src="assets/icons/zigma.png" alt="zigma">
@@ -25,7 +26,8 @@ and open the template in the editor.
                     <section>
                         <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
                         <button id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
-                    </section></section>
+                    </section>
+                </section>
             </form>
         </section>
         </div>
@@ -44,7 +46,7 @@ and open the template in the editor.
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
-                    <li>Teoria</li>
+                    <li><a href="pages/editor_articulos.html" target="iframe">Teoria</a></li>
                     <li>Problemas</li>
                     <li>Aportaciones</li>
                     <li>Examenes</li>
@@ -84,7 +86,7 @@ and open the template in the editor.
         </ul>
         </div>
        
-         <script src="js/muestra.js"></script>
+        
     </body>
     
 </html>

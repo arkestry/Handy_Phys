@@ -327,4 +327,59 @@ textarea{
     margin: 2em;
     margin-top: 0;
 }
+/*hacer_pregunta-html*/
+label.subtitle{
+    font-size: 18px;
+}
+#preg_algo_container{
+    background-color: #F4B350;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#p_preg_alg{
+    font-size: 24px;
+    margin-left: 8%;
+    margin-right: 18%;
+}
+
 /*finalConfiguracion*/
+/*Menu horizontal*/
+#buscar{
+    position: absolute;
+    top: .1em;
+    right: 4em;
+    width: 13em;
+    max-width: 13em;
+}
+#btn_buscar{
+    position: absolute;
+    top: .55em;
+    right: 0.7em;
+}
+/* estilos todo-articulos*/
+#todo_art_body{
+    margin: 5%;
+    
+}
+#todo_{
+    color: #ECF0F1;
+   
+}
+#filtroArt{
+    z-index: 50;
+    display: inline;
+    padding: 5px;
+    width: 18em;
+    
+}
+#filtroArt ul{
+    display: inline;
+    position: absolute;
+    background-color: #141414;
+    list-style: none;
+    width: 18em;
+    border-radius: 3px;
+    z-index: 50;
+    
+}
