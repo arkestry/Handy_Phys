@@ -49,27 +49,38 @@ body{
     height: 100%;
 }
 #homeLeft{
-    display: inline-block;
+    display: table-cell;
     width: 33%;
-    height: 45.3em;
-    background-color: #141414;
+    height: 100%;
+    background-color: #AF622A;
     margin-left: 0.5%;
-    opacity: 0.5;
+    opacity: 0.3;
+    position:relative;
 }
 #homeCenter{
-    display: inline-block;
+    display: table-cell;
     width: 33%;
-    height: 45.3em;
-    background-color: #019875;
-    opacity: 0.5;
+    height: 100%;
+    background-color: #1A6D64;
+    opacity: 0.3;
+    position:relative;
 }
 #homeRight{
-    display: inline-block;
+    display: table-cell;
     width: 33%;
-    height: 45.3em;
-    background-color: #E76C6C;
+    height: 100%;
+    background-color: #AF812A;
     margin-right: 0.5%;
-    opacity: 0.5;
+    opacity: 0.3;
+     position:relative;
+}
+/* Principal categorias*/
+#home h1{
+    font-size: 2em;
+    text-align: center;
+}
+.homeContenido{
+    border: solid 1px rgb(236,240,241);
 }
 /*ESTILOS DEL MENU*/
 #hmenu{
@@ -383,3 +394,4 @@ label.subtitle{
     z-index: 50;
     
 }
+
