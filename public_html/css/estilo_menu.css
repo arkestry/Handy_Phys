@@ -176,7 +176,14 @@ menu a:hover{
     cursor: pointer;
     display: table;
     width: 18em;
-    height: 32px;
+    height: 12px;
+}
+a.sublist{
+    background-image: none;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ECF0F1;
+    height: 3px;
 }
 section ul{
     background-color: #2C3E50;
@@ -230,6 +237,7 @@ a{
 /*Pagina de registro*/
 #unidadA{
     color: #141414;
+    height: 0.1em;
 }
 /*cositas mis_preguntas.html/mis_respuestas*/
 #quest{
@@ -394,4 +402,13 @@ label.subtitle{
     z-index: 50;
     
 }
+/*ESTILO DE TABLAS*/
+.tablaChida{
+    background-color: #C22424;
 
+}
+
+/*ESTILO DE SIMULADOREXAMENES*/
+.textoRadio{
+    margin-left: 2em;
+}
