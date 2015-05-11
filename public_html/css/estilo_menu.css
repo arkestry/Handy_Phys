@@ -430,3 +430,40 @@ label.subtitle{
     transition: all 0.0s;
 }
 
+/*NOTIFICACIONES*/
+#menuNo li a{
+    background:#ECF0F1 ;
+    text-decoration: none;
+    color: #141414;
+    display: block;
+    width: 7em;
+    font-family:'Roboto Condensed', sans-serif ;
+    width: 100%;
+    height: 100%;
+    margin-top: 1.2em;
+}
+#menuNo li{
+    list-style: none;
+}
+#menuNo li ul li a{
+     margin:0;
+}
+#menuNo > li{
+    float:right;
+    margin-right: 18em;
+}
+#menuNo li a:hover{
+    background: #1E824C;
+    color:#ECF0F1;
+}
+#menuNo li ul{
+    display: none;
+    position:absolute;
+    min-width: 20em;
+}
+#menuNo li:hover > ul{
+    display: block;
+}
+/*fin Notificaciones*/
+
+
