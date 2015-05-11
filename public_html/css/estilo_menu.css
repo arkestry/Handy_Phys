@@ -410,5 +410,23 @@ label.subtitle{
 
 /*ESTILO DE SIMULADOREXAMENES*/
 .textoRadio{
-    margin-left: 2em;
+    margin-right: 2em;
 }
+.fisicaTest{
+    margin: 2em;
+    padding: 1em;
+    background-color: #019875;
+    border: 1px rgb(236,240,241) ridge;
+}
+.respuestasFisicaTest{
+    background-color: #006541;
+    padding-top: 5px;
+}
+.respuestasFisicaTest label:hover{
+    border-bottom: #F18B06 5px solid;
+}
+.respuestasFisicaTest label{
+    border-bottom: #006541 5px solid;
+    transition: all 0.0s;
+}
+
