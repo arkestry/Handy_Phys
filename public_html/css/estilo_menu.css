@@ -204,7 +204,7 @@ section ul li{
     color: rgb(236,240,241);
 }
 .boton:hover span{
-    color:rgb(63, 195, 128);
+    color: #AD1A1A;
 }   
 section[name="onMenu"]{
     display: none;
