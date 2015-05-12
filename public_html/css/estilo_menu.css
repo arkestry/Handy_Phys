@@ -377,11 +377,11 @@ label.subtitle{
     right: 0.7em;
 }
 /* estilos todo-articulos*/
-#todo_art_body{
+div.todo{
     margin: 5%;
     
 }
-#todo_{
+h1.todo_tit{
     color: #ECF0F1;
    
 }
@@ -466,4 +466,7 @@ label.subtitle{
 }
 /*fin Notificaciones*/
 
-
+/*todo_preguntas*/
+div.slim_panHead{
+    padding: 1px;
+}
