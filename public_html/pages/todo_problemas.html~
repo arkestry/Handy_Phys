@@ -13,7 +13,7 @@
        <!--encabezado-->
         <div class="page-header">
             <h1 class="text-center todo_tit">
-                Preguntas
+                Problemas
             </h1>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -38,7 +38,7 @@
                <div class="panel panel-default">
                 <div class="panel-heading slim_panHead">
                     <h3>
-                        <a href="#">¿Pregunta?</a>&nbsp;
+                        <a href="#">Problema</a>&nbsp;
                         <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 
                         <span class="label label-info"> Nueva
 
@@ -53,7 +53,7 @@
                 </div>
                 <div class="panel-body" id="quest">
                     <h4>
-                        Descripcion de la pregunta
+                        Cuerpo del problema
                     </h4>
                 </div>
                 <div class="panel-footer">
@@ -66,7 +66,7 @@
                         </span>
                         &nbsp;
 
-                        Publicada: DD/MM/AAAA 00:00
+                        Publicado: DD/MM/AAAA 00:00
                     </h5>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                <div class="panel panel-default">
                 <div class="panel-heading slim_panHead">
                     <h3>
-                        <a href="#">¿Pregunta?</a>&nbsp;
+                        <a href="#">Problema</a>&nbsp;
                         <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 
                         <span class="label label-info"> Nueva
 
@@ -90,7 +90,7 @@
                 </div>
                 <div class="panel-body" id="quest">
                     <h4>
-                        Descripcion de la pregunta
+                        Cuerpo del problema
                     </h4>
                 </div>
                 <div class="panel-footer">
@@ -103,7 +103,7 @@
                         </span>
                         &nbsp;
 
-                        Publicada: DD/MM/AAAA 00:00
+                        Publicado: DD/MM/AAAA 00:00
                     </h5>
                 </div>
             </div>
@@ -111,50 +111,3 @@
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- TODO ESTE CODIGO(TODA LA CAPA DE DISEÑO , CSS JQUERY Y JAVASCRIPT EN LA HOJA DE "MUESTRA.JS") HA SIDO ESCRITO POR:
-	NAVA LOPEZ SEBASTIAN
-	PARRA EMMANUEL J.
-	HERNANDEZ IVAN O.
-JUEVES 14 DE MAYO DEL 2015 A LAS 3:18HR 
--->

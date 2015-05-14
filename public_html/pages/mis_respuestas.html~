@@ -10,25 +10,25 @@
         <script src="../js/muestra.js"></script>
     </head>
     <body id="mis_preguntas">
-        <section id="quest_panel">
+        <section id="answ_panel">
             <div class="page-header">
                 <h1 class="text-center">
-                    Mis Preguntas <a href="hacer_pregunta.html"><button class="btn boton"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
+                    Mis Respuestas
                 </h1>
             </div>
-            <section id="pregunta">
+            <section id="respuesta">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 id="titulo_pre">Pregunta</h1>
+                        <h1>Respuesta</h1>
                         
                     </div>
                     <div class="panel-body">
-                        <h4 id="quest">Descripcion de la pregunta en cuestion</h4>
+                        <h4 id="quest">Descripcion de la respuesta</h4>
                     </div>
                     <div class="panel-body">
-                        <a class="mostrarLink">Respuestas <span class="badge">00</span></a>
+                        <label class="labelB">Hecha en la </label><a class="mostrarLink">Pregunta</a>
                         <section class="mostrarSeccion">
-                            <section><h4>Usuario <br><small>RESPUESTA</small></h4></section>
+                            <section><h4>Usuario <br><small>Pregunta que se contesto</small></h4></section>
                         </section>
                     </div>
                     <div class="panel-footer">
@@ -41,16 +41,16 @@
             <section>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 id="titulo_pre">Otra Pregunta</h1>
+                        <h1>Otra Respuesta</h1>
                         
                     </div>
                     <div class="panel-body">
-                        <h4 id="quest">Otra Descripcion de Otra pregunta en cuestion</h4>
+                        <h4 id="quest">Otra Descripcion de Otra respuesta en cuestion</h4>
                     </div>
                     <div class="panel-body">
-                        <a class="mostrarLink">Respuestas <span class="badge">00</span></a>
+                        <label class="labelB">Hecha en la </label><a class="mostrarLink">Pregunta</a>
                         <section class="mostrarSeccion">
-                            <section><h4>Usuario <br><small>RESPUESTA</small></h4></section>
+                             <section><h4>Usuario <br><small>Pregunta que se contesto</small></h4></section>
                         </section>
                     </div>
                     <div class="panel-footer">
@@ -105,10 +105,8 @@
 
 
 
-
-<!-- TODO ESTE CODIGO(TODA LA CAPA DE DISEÑO , CSS JQUERY Y JAVASCRIPT EN LA HOJA DE "MUESTRA.JS") HA SIDO ESCRITO POR:
+<!-- TODO ESTE CODIGO HA SIDO ESCRITO POR:
 	NAVA LOPEZ SEBASTIAN
 	PARRA EMMANUEL J.
-	HERNANDEZ IVAN O.
-JUEVES 14 DE MAYO DEL 2015 A LAS 3:18HR 
+	HERNANDEZ IVAN
 -->
