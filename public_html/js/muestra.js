@@ -41,7 +41,9 @@ $(document).ready(function(){
     $('#dropdownMenu1').click(function(){
        $('#filtroArt').fadeToggle(500); 
     });
-
+    $('#menuNo').hover(function(){
+       $('#menuNo li > ul').fadeToggle(500);
+    });
 });
   function mostrar(menu){
     $(menu).slideToggle(800);

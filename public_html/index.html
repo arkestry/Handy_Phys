@@ -21,11 +21,32 @@ and open the template in the editor.
         <img class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
              <ul id="menuNo">
-                 <li><a href="#">NOTIFICACIONES</a> 
-                    <ul>
-                        <li><a href="#">Alta Prioridad</a></li>
-                        <li><a href="#">Prioridad Media</a></li>
-                        <li><a href="#">Baja prioridad</a></li>
+                 <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #141414; top: .2em; "></span>
+                     <ul class="cajaNo list-unstyled">
+                         <li><a style="cursor: default; background-color: #1E824C; ">AVISOS</a></li>
+                         <li class="altaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
+                         <li class="mediaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
+                         <li class="bajaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
+                    </ul>
+                     <ul class="cajaNo list-unstyled" style="right: 45em">
+                         <li><a style="cursor: default; background-color: #1E824C; ">CREAR AVISO</a></li>
+                         <li class="bajaPrioridad"> 
+                             <section style="padding: 5px">
+                                 <form>
+                                     Titulo Aviso: <input type="text" size="30" name="tituloNo">
+                                     <section style="margin: 2px;">Aviso: <br>
+                                        <textarea maxlength="100"></textarea>
+                                     </section>
+                                     <section>
+                                     <select>
+                                         <option>Alta</option>
+                                         <option>Media</option>
+                                         <option>Baja</option>
+                                     </select>
+                                     </section><br>
+                                     <input type="submit" value="enviar">
+                                 </form>
+                             </section></li>                       
                     </ul>
                  </li>
                     

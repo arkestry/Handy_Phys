@@ -460,9 +460,28 @@ h1.todo_tit{
     display: none;
     position:absolute;
     min-width: 20em;
+    
 }
-#menuNo li:hover > ul{
-    display: block;
+
+.cajaNo{
+    background-color: #141414;
+    position: relative;
+    display: inline;
+    top: 2.7em;
+    right: 19em;
+    
+}
+.altaPrioridad{
+    background-color: #AD1A1A;
+    color: #141414;
+}
+.mediaPrioridad{
+    background-color: #F18B06;
+    color: #141414;
+}
+.bajaPrioridad{
+    background-color: #ECF0F1;
+    color: #141414;
 }
 /*fin Notificaciones*/
 
