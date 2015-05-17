@@ -489,3 +489,12 @@ h1.todo_tit{
 div.slim_panHead{
     padding: 1px;
 }
+/* ESTILO DE NUEVOEXAMEN.HTML*/
+.areaTexto{
+    width: 24.4em;
+    margin: 3px;
+}
+.formularioNuevoExa{
+    margin:5px;
+    padding: 5px;
+}
