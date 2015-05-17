@@ -13,7 +13,7 @@ body{
     padding: 1em;
     background-color: #141414;
     opacity: 0.8;
-    
+
 }
 #datosP{
     margin: 2em;
@@ -72,7 +72,7 @@ body{
     background-color: #AF812A;
     margin-right: 0.5%;
     opacity: 0.3;
-     position:relative;
+    position:relative;
 }
 /* Principal categorias*/
 #home h1{
@@ -84,12 +84,12 @@ body{
 }
 /*ESTILOS DEL MENU*/
 #hmenu{
-	position: fixed;
-	width: 100%;
-	height: 5%;
-	z-index: 19;
-	background-color: rgb(236,240,241);
-	border: none;
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    z-index: 19;
+    background-color: rgb(236,240,241);
+    border: none;
 }
 iframe{
     position: fixed;
@@ -98,7 +98,7 @@ iframe{
     height: 92.8%;
     border: none;
     border-style: none;
-    
+
 }
 nav{
     top:0;
@@ -111,7 +111,7 @@ nav{
     position: fixed;
 }
 #buscar{
-	margin: 0.5em;
+    margin: 0.5em;
 }
 nav.mostrar{
     left:0;
@@ -194,7 +194,7 @@ section ul li{
 }
 .boton{
     background-color: #141414;
-    
+
     transition: 0.5s all;
 }
 .boton:hover{
@@ -210,7 +210,7 @@ section[name="onMenu"]{
     display: none;
 }
 a.link:visited{
-   color: red;
+    color: red;
 }
 a.link:link{
     color: whitesmoke;
@@ -379,18 +379,18 @@ label.subtitle{
 /* estilos todo-articulos*/
 div.todo{
     margin: 5%;
-    
+
 }
 h1.todo_tit{
     color: #ECF0F1;
-   
+
 }
 #filtroArt{
     z-index: 50;
     display: inline;
     padding: 5px;
     width: 18em;
-    
+
 }
 #filtroArt ul{
     display: inline;
@@ -400,7 +400,7 @@ h1.todo_tit{
     width: 18em;
     border-radius: 3px;
     z-index: 50;
-    
+
 }
 /*ESTILO DE TABLAS*/
 .tablaChida{
@@ -446,7 +446,7 @@ h1.todo_tit{
     list-style: none;
 }
 #menuNo li ul li a{
-     margin:0;
+    margin:0;
 }
 #menuNo > li{
     float:right;
@@ -460,7 +460,7 @@ h1.todo_tit{
     display: none;
     position:absolute;
     min-width: 20em;
-    
+
 }
 
 .cajaNo{
@@ -469,7 +469,7 @@ h1.todo_tit{
     display: inline;
     top: 2.7em;
     right: 19em;
-    
+
 }
 .altaPrioridad{
     background-color: #AD1A1A;
@@ -498,3 +498,4 @@ div.slim_panHead{
     margin:5px;
     padding: 5px;
 }
+>>>>>>> origin/master
