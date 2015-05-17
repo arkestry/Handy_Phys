@@ -48,7 +48,7 @@ $(document).ready(function(){
   function mostrar(menu){
     $(menu).slideToggle(800);
     }
-var entero = 1;
+var entero = 2;
 function cantidad(){
     
     var todo = document.getElementById("todo");
