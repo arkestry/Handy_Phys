@@ -1,10 +1,11 @@
 
 *{
     font-family: "Roboto Condensed";
+    box-sizing: border-box;
 }
 body{
     color:rgb(236,240,241);
-    background-color: #34495e; //#16A085;
+    /*background-color: #34495e; //#16A085;*/
 }
 /*Pagina de Perfil*/
 #cabezaP{
@@ -498,4 +499,35 @@ div.slim_panHead{
     margin:5px;
     padding: 5px;
 }
->>>>>>> origin/master
+.bglay{
+    background-size: cover;
+    display: inline-block;
+    filter: blur(5px);
+    -webkit-filter:blur(5px);
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+    background-position: center top;
+}
+.bghome{
+    
+}
+div.cont{
+    top: 10px;
+    right: 0;
+    left: 0;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 0 4%;
+    z-index: 2;
+    position: fixed;
+    display: block;
+    color: white;
+}
+div.contText{
+    background: rgba(34,34,34,0.75);
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+}
