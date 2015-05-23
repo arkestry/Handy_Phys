@@ -499,6 +499,7 @@ div.slim_panHead{
     margin:5px;
     padding: 5px;
 }
+/*Fin estilos nuevoExamen*/
 .bglay{
     background-size: cover;
     display: inline-block;
@@ -531,3 +532,19 @@ div.contText{
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.25);
 }
+/*Footer*/
+footer{
+    background:#ECF0F1;
+    text-align: center;
+}
+footer a{
+    font-family: 'Roboto Condensed', sans-serif;
+    color:#141414;
+    margin-left: 1em;
+    margin-right: 1em;
+   font-size: 1.5em;
+}
+footer a:hover{
+    color:#3FC380;
+}
+/*Fin footer*/
