@@ -498,4 +498,20 @@ div.slim_panHead{
     margin:5px;
     padding: 5px;
 }
->>>>>>> origin/master
+/*Fin estilos nuevoExamen*/
+/*Footer*/
+footer{
+    background:#ECF0F1;
+    text-align: center;
+}
+footer a{
+    font-family: 'Roboto Condensed', sans-serif;
+    color:#141414;
+    margin-left: 1em;
+    margin-right: 1em;
+   font-size: 1.5em;
+}
+footer a:hover{
+    color:#3FC380;
+}
+/*Fin footer*/
