@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/05/2015, 11:39:12 AM
+    Author     : Chris
+*/
+.social *{
+    margin:0;
+    padding:0;
+    
+}
+.social {
+    position:fixed;
+    right:0;
+    top:200px;
+    z-index:21;
+}
+.social ul{
+    list-style: none;
+}
+.social ul li a{
+  text-decoration: none;
+  color: rgb(236,240,241);
+  
+  display:inline-block;
+  padding-right: .5em;
+}
+.social ul li:hover a{
+  color:rgb(63, 195, 128);
+}
