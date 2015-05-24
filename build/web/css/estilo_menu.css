@@ -5,7 +5,8 @@
 }
 body{
     color:rgb(236,240,241);
-    /*background-color: #34495e; //#16A085;*/
+    background-color: #34495e; //#16A085;
+    
 }
 /*Pagina de Perfil*/
 #cabezaP{
@@ -89,7 +90,7 @@ body{
     width: 100%;
     height: 5%;
     z-index: 19;
-    background-color: rgb(236,240,241);
+    background-color:#141414;
     border: none;
 }
 iframe{
@@ -104,7 +105,7 @@ iframe{
 nav{
     top:0;
     box-sizing: border-box;
-    background: rgb(236,240,241);
+    background:  #141414;
     left:-25em;
     height: 100%;
     z-index: 20;
@@ -126,7 +127,7 @@ ul.menu{
     height: 100%;   
 }
 .menu a{
-    color: rgb(0,0,0);
+    color: #ffffff;
     display: block;
     font-family: 'Roboto Condensed', sans-serif;
     text-decoration: none;
@@ -509,13 +510,28 @@ div.slim_panHead{
     left: 0;
     right: 0;
     position: fixed;
-    z-index: 1;
+    z-index: -1;
     background-position: center top;
 }
 .bghome{
-    
+    background-image: url(../assets/backgr/p17.png);
 }
-div.cont{
+.bgprofile{
+    background-image: url(../assets/backgr/p14.png);
+}
+.bgarticles{
+    background-image: url(../assets/backgr/p4.png);
+}
+.bgproblems{
+    background-image: url(../assets/backgr/p15.png);
+}
+.bganswers{
+    background-image: url(../assets/backgr/p5.png);
+}
+.bgsignin{
+    background-image: url(../assets/backgr/p9-min.png)
+}
+.cont{
     top: 10px;
     right: 0;
     left: 0;
@@ -523,11 +539,11 @@ div.cont{
     margin-right: 25%;
     padding: 0 4%;
     z-index: 2;
-    position: fixed;
-    display: block;
+    position:absolute;
+    display: inline-block;
     color: white;
 }
-div.contText{
+.contText{
     background: rgba(34,34,34,0.75);
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.25);
@@ -538,11 +554,10 @@ footer{
     text-align: center;
 }
 footer a{
-    font-family: 'Roboto Condensed', sans-serif;
     color:#141414;
     margin-left: 1em;
     margin-right: 1em;
-   font-size: 1.5em;
+   font-size: .5empx;
 }
 footer a:hover{
     color:#3FC380;
