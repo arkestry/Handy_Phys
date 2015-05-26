@@ -32,9 +32,9 @@
                  <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #141414; top: .2em; "></span>
                      <ul class="cajaNo list-unstyled">
                          <li><a style="cursor: default; background-color: #1E824C; ">AVISOS</a></li>
-                         <li class="altaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
-                         <li class="mediaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
-                         <li class="bajaPrioridad">Titulo Notificacion: <section>Notificacion</section></li>
+                         <li class="altaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
+                         <li class="mediaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
+                         <li class="bajaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
                     </ul>
                      <ul class="cajaNo list-unstyled" style="right: 45em">
                          <li><a style="cursor: default; background-color: #1E824C; ">CREAR AVISO</a></li>
@@ -47,9 +47,9 @@
                                      </section>
                                      <section>
                                      <select>
-                                         <option>Alta</option>
-                                         <option>Media</option>
-                                         <option>Baja</option>
+                                         <option>Presunción alta</option>
+                                         <option>Presunción media</option>
+                                         <option>Presunción baja</option>
                                      </select>
                                      </section><br>
                                      <input type="submit" value="enviar">
@@ -135,7 +135,11 @@
 ____ ____ ___  ____    ___  ____ ____ _ ____ _  _    ___  _   _  
 |    |  | |  \ |___ __ |  \ |___ [__  | | __ |\ |    |__]  \_/  .
 |___ |__| |__/ |___    |__/ |___ ___] | |__] | \|    |__]   |   .
-                       
+
+_    _   _  _ ____     ____ _   _ _____ _ ______ _   _ _____
+|    |   |  | |___    |___  | \ | |__ / | |   \| |   | |----
+|___ |___|  | ____|   |____ |  \| |  \  | |____\ |___| |____
+                  
 _ _  _ ____ _  _    _  _ ___  ___ 
 | |  | |__| |\ |    |__| |  \   / 
 |  \/  |  | | \|    |  | |__/  /__
