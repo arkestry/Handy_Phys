@@ -501,15 +501,15 @@ div.slim_panHead{
 }
 /*Estilo de formulario de inicio de sesion*/
 .formularioLogin{
-    opacity: 0.5;
+    opacity: 0.7;
     background-color: #141414;
-    
+    position: relative;
+    top: 5em;
+    width: 100%;
+    display: table;
 }
 /*Fin estilos nuevoExamen*/
-.bghome{
-    background-image: url(../assets/backgr/p17.png);
-    background-size: cover;
-    background-repeat: round;
+.bg{
     display: inline-block;
     filter: blur(5px);
     -webkit-filter:blur(5px);
@@ -520,8 +520,27 @@ div.slim_panHead{
     z-index: -1;
     background-position: center top;
 }
-
-div.cont{
+.bghome{
+    background-image: url(../assets/backgr/p17.png);
+    background-size: cover;
+    background-repeat: round;
+}
+.bglogin{
+    background-image: url(../assets/backgr/p9-min.png);
+    background-size: cover;
+    background-repeat: round;
+}
+.bgart{
+    background-image: url(../assets/backgr/p4.png);
+    background-size: cover;
+    background-repeat: round;
+}
+.bgregist{
+    background-image: url(../assets/backgr/p14.png);
+    background-size: cover;
+    background-repeat: round;
+}
+.cont{
     top: 10px;
     right: 0;
     left: 0;
@@ -533,7 +552,7 @@ div.cont{
     display: block;
     color: white;
 }
-div.contText{
+.contText{
     background: rgba(34,34,34,0.75);
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.25);
