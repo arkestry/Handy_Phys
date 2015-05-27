@@ -499,6 +499,12 @@ div.slim_panHead{
     margin:5px;
     padding: 5px;
 }
+/*Estilo de formulario de inicio de sesion*/
+.formularioLogin{
+    opacity: 0.5;
+    background-color: #141414;
+    
+}
 /*Fin estilos nuevoExamen*/
 .bghome{
     background-image: url(../assets/backgr/p17.png);
@@ -536,6 +542,11 @@ div.contText{
 footer{
     background: #141414;
     text-align: center;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%
 }
 footer a{
     font-family: 'Roboto Condensed', sans-serif;
