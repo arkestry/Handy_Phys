@@ -131,26 +131,6 @@
     </body>
 </html>
 
-<--%
-____ ____ ___  ____    ___  ____ ____ _ ____ _  _    ___  _   _  
-|    |  | |  \ |___ __ |  \ |___ [__  | | __ |\ |    |__]  \_/  .
-|___ |__| |__/ |___    |__/ |___ ___] | |__] | \|    |__]   |   .
-
-_    _   _  _ ____     ____ _   _ _____ _ ______ _   _ _____
-|    |   |  | |___    |___  | \ | |__ / | |   \| |   | |----
-|___ |___|  | ____|   |____ |  \| |  \  | |____\ |___| |____
-                  
-_ _  _ ____ _  _    _  _ ___  ___ 
-| |  | |__| |\ |    |__| |  \   / 
-|  \/  |  | | \|    |  | |__/  /__
-                                  
-____ _  _ _  _ ____ _  _ _  _ ____ _       ____ _  _ ____ ___ 
-|___ |\/| |\/| |__| |\ | |  | |___ |       |__/ |\/| |__/   / 
-|___ |  | |  | |  | | \| |__| |___ |___    |  \ |  | |  \  /__
-
-____ ____ ___  ____ ____ ___ _ ____ _  _    _  _ _  _ ____
-[__  |___ |__] |__| [__   |  | |__| |\ |    |\ | |  | |__|
-___] |___ |__] |  | ___]  |  | |  | | \|    | \|  \/  |  |                       
-                                                                                                                                                                                   
-                        
---%>
+<!--
+/rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
+-->
