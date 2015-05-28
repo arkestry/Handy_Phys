@@ -562,7 +562,7 @@ footer{
     background: #141414;
     text-align: center;
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     text-align: center;
     width: 100%
