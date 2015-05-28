@@ -111,8 +111,13 @@
             <li onclick="mostrar(credencialesS)"><a href="#">Credenciales</a></li>
              <section id="credencialesS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text menu2">
+                    <% if(session.getAttribute("tipo").equals("Anonimo")){ %>
                     <li><a href="pages/login.html" target="iframe">Iniciar Sesion</a></li>
                     <li><a href="pages/registrate.html" target="iframe">Registrarse</a></li>
+                    <%}%>
+                    <%if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    <li onclick="<%session.invalidate(); %>"><a href="index.jsp">Cerrar sesion</a></li>
+                    <%}%>
                 </ul>
             </section>
         </ul>

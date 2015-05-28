@@ -2,7 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-        <group name="Practica1"/>
+
+        <group>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/css/estilo_menu.css</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/home.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/index.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/login.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/todo_articulos.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/registrate.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/todo_problemas.html</file>
+        </group>
     </open-files>
 </project-private>
