@@ -20,26 +20,28 @@
          <script src="js/muestra.js"></script>
         
     </head>
-    <body>
-        <% 
-            if(session.isNew()){
+    <%
+        if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
-            }
-        %>
+        }
+    %>
+    <body>
         <img class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
-             <ul id="menuNo">
-                 <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #141414; top: .2em; "></span>
+            
+            <ul id="menuNo">
+                 <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; "></span>
                      <ul class="cajaNo list-unstyled">
                          <li><a style="cursor: default; background-color: #1E824C; ">AVISOS</a></li>
                          <li class="altaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
                          <li class="mediaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
                          <li class="bajaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
-                    </ul>
+                    </ul><label><%=session.getAttribute("tipo") %></label>
                      <ul class="cajaNo list-unstyled" style="right: 45em">
                          <li><a style="cursor: default; background-color: #1E824C; ">CREAR AVISO</a></li>
                          <li class="bajaPrioridad"> 
                              <section style="padding: 5px">
+                                 
                                  <form>
                                      Titulo Aviso: <input type="text" size="30" name="tituloNo">
                                      <section style="margin: 2px;">Aviso: <br>
@@ -74,7 +76,8 @@
         <nav>
             <ul class="menu" id="Principal">
             <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
-            <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+            <% 
+                if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li><a href="pages/profile.html" target="iframe">Mi Perfíl</a></li>
             <li><a onClick="mostrar(pYrS)" href="#">Mis Preguntas y Respuestas</a></li>
             <section id="pYrS" name="onMenu">
@@ -94,7 +97,9 @@
                     <li><a class="sublist" href="pages/simulExamen.html" target="iframe">Simulador Examen</a></li>
                 </ul>
             </section>
-            <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+            <%
+            
+            if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li onclick="mostrar(feedS)"><a href="#">Feedback</a></li>
             <section id="feedS" name="onMenu">
                 <form class="form">
@@ -111,12 +116,13 @@
             <li onclick="mostrar(credencialesS)"><a href="#">Credenciales</a></li>
              <section id="credencialesS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text menu2">
-                    <% if(session.getAttribute("tipo").equals("Anonimo")){ %>
+                    <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
                     <li><a href="pages/login.html" target="iframe">Iniciar Sesion</a></li>
                     <li><a href="pages/registrate.html" target="iframe">Registrarse</a></li>
                     <%}%>
-                    <%if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
-                    <li onclick="<%session.invalidate(); %>"><a href="index.jsp">Cerrar sesion</a></li>
+                    <%
+                    if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    <form action="jsp/login.jsp" method="POST"><button type="submit" style="opacity: 0"><li>Cerrar sesion</li></button></form>
                     <%}%>
                 </ul>
             </section>

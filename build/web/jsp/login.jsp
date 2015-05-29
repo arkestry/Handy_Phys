@@ -1,25 +1,20 @@
 
         <% 
-           
-            String user = (String)request.getParameter("loginUser");
-            String pass = (String)request.getParameter("loginPass");
-            if(pass.equals("Profesor")){
-                session.setAttribute("tipo", "Profesor"); %>
-                <script>
-                    window.top.window.location.reload();
-                </script>
-                <% 
-            }else{
+            session = request.getSession();
+            if(session.getAttribute("tipo").equals("Anonimo")){
+                String pass = (String)request.getParameter("loginPass");
+                if(pass.equals("Profesor")){
+                    session.setAttribute("tipo", "Profesor"); 
+                 }
                 if(pass.equals("Alumno")){
-                    session.setAttribute("tipo", "Alumno"); %>
-                    <script>
-                        window.top.window.location.reload();
-                    </script>
-               <% }else{ %>
-                    <script>
-                        window.top.window.location.reload();
-                    </script>
-               <% }
+                    session.setAttribute("tipo", "Alumno"); 
+                }
+                
+            }else{
+                
+                session.invalidate();
             }
         %>
-        
+<script>
+window.top.window.location.reload();
+</script>
