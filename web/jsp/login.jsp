@@ -10,9 +10,6 @@
                     session.setAttribute("tipo", "Alumno"); 
                 }
                 
-            }else{
-                
-                session.invalidate();
             }
         %>
 <script>

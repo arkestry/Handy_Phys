@@ -21,25 +21,29 @@
         
     </head>
     <%
+        
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
         }
     %>
     <body>
-        <img class="zigma" src="assets/icons/zigma.png" alt="zigma">
+        <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
             
             <ul id="menuNo">
                  <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; "></span>
                      <ul class="cajaNo list-unstyled">
-                         <li><a style="cursor: default; background-color: #1E824C; ">AVISOS</a></li>
-                         <li class="altaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
-                         <li class="mediaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
-                         <li class="bajaPrioridad">Titulo Notificacion: <section>Notificacion:</section></li>
+                         <section style="margin: 1em;">
+                         <li><label>Avisos</label></li>
+                         <li class="altaPrioridad"><label>Titulo Aviso: </label><section>Aviso con alta prioridad</section></li>
+                         <li class="mediaPrioridad"><label>Titulo Aviso: </label><section>Aviso con media prioridad</section></li>
+                         <li class="bajaPrioridad"><label>Titulo Aviso: </label><section>Aviso con baja prioridad</section></li>
+                         </section>
                     </ul><label><%=session.getAttribute("tipo") %></label>
+                    
                      <ul class="cajaNo list-unstyled" style="right: 45em">
-                         <li><a style="cursor: default; background-color: #1E824C; ">CREAR AVISO</a></li>
-                         <li class="bajaPrioridad"> 
+                         <li><label>Crear aviso</label></li>
+                         <li> 
                              <section style="padding: 5px">
                                  
                                  <form>
@@ -48,13 +52,13 @@
                                         <textarea maxlength="100"></textarea>
                                      </section>
                                      <section>
-                                     <select>
-                                         <option>Presunción alta</option>
-                                         <option>Presunción media</option>
-                                         <option>Presunción baja</option>
+                                         <select style="color: black">
+                                         <option>Prioridad alta</option>
+                                         <option>Prioridad media</option>
+                                         <option>Prioridad baja</option>
                                      </select>
                                      </section><br>
-                                     <input type="submit" value="enviar">
+                                     <input class="btn boton btn-block" type="submit" value="ENVIAR">
                                  </form>
                              </section></li>                       
                     </ul>
@@ -72,7 +76,7 @@
             </form>
         </section>
         </div>
-        <div id="muestrame"></div>
+    
         <nav>
             <ul class="menu" id="Principal">
             <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
@@ -122,7 +126,7 @@
                     <%}%>
                     <%
                     if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
-                    <form action="jsp/login.jsp" method="POST"><button type="submit" style="opacity: 0"><li>Cerrar sesion</li></button></form>
+                    <form action="jsp/logout.jsp" method="POST"><li><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
                     <%}%>
                 </ul>
             </section>

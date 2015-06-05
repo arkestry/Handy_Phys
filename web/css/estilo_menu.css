@@ -32,16 +32,16 @@ body{
     background-size: cover;
 }
 /*boton*/
-#muestrame{
+/*#muestrame{
     cursor: pointer;
     position: fixed;
     top:0.7em;
     left: 2em;
     width: 32px;
     height:32px;
-    background: url(../assets/icons/menu.png);
+   // background: url(../assets/icons/menu.png);
     z-index: 22;
-}
+}*/
 /*Estilo pagina principal*/
 
 #home{
@@ -297,6 +297,7 @@ div.page-header{
     top: 8em;
     left: 29em;
     z-index: 30;
+    cursor: pointer;
 }
 /*Áreas  de texto*/
 textarea{
@@ -470,19 +471,24 @@ h1.todo_tit{
     display: inline;
     top: 2.7em;
     right: 19em;
-
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    
 }
 .altaPrioridad{
-    background-color: #AD1A1A;
-    color: #141414;
+    border-right: 3px solid;
+    border-right-color: #AD1A1A;
+    
 }
 .mediaPrioridad{
-    background-color: #F18B06;
-    color: #141414;
+    border-right: 3px solid;
+    border-right-color: #F18B06;
+   
 }
 .bajaPrioridad{
-    background-color: #ECF0F1;
-    color: #141414;
+    border-right: 3px solid;
+    border-right-color:  #ECF0F1;
+    
 }
 /*fin Notificaciones*/
 
