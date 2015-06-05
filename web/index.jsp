@@ -29,42 +29,47 @@
     <body>
         <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
-            
+            <% if(!session.getAttribute("tipo").equals("Anonimo")){             
+            %>
             <ul id="menuNo">
-                 <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; "></span>
-                     <ul class="cajaNo list-unstyled">
-                         <section style="margin: 1em;">
-                         <li><label>Avisos</label></li>
-                         <li class="altaPrioridad"><label>Titulo Aviso: </label><section>Aviso con alta prioridad</section></li>
-                         <li class="mediaPrioridad"><label>Titulo Aviso: </label><section>Aviso con media prioridad</section></li>
-                         <li class="bajaPrioridad"><label>Titulo Aviso: </label><section>Aviso con baja prioridad</section></li>
-                         </section>
-                    </ul><label><%=session.getAttribute("tipo") %></label>
-                    
-                     <ul class="cajaNo list-unstyled" style="right: 45em">
-                         <li><label>Crear aviso</label></li>
-                         <li> 
-                             <section style="padding: 5px">
-                                 
-                                 <form>
-                                     Titulo Aviso: <input type="text" size="30" name="tituloNo">
-                                     <section style="margin: 2px;">Aviso: <br>
-                                        <textarea maxlength="100"></textarea>
-                                     </section>
-                                     <section>
-                                         <select style="color: black">
-                                         <option>Prioridad alta</option>
-                                         <option>Prioridad media</option>
-                                         <option>Prioridad baja</option>
-                                     </select>
-                                     </section><br>
-                                     <input class="btn boton btn-block" type="submit" value="ENVIAR">
-                                 </form>
-                             </section></li>                       
-                    </ul>
-                 </li>
-                    
-             </ul>
+            <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; "></span>
+                 <% if(session.getAttribute("tipo").equals("Alumno")){%>
+                <ul class="cajaNo list-unstyled">
+                    <section style="margin: 1em;">
+                    <li><label>Avisos</label></li>
+                    <li class="altaPrioridad"><label>Titulo Aviso: </label><section>Aviso con alta prioridad</section></li>
+                    <li class="mediaPrioridad"><label>Titulo Aviso: </label><section>Aviso con media prioridad</section></li>
+                    <li class="bajaPrioridad"><label>Titulo Aviso: </label><section>Aviso con baja prioridad</section></li>
+                    </section>
+               </ul>
+                <% }
+                    if(session.getAttribute("tipo").equals("Profesor")){ %>
+               <ul class="cajaNo list-unstyled">
+                    <li><label>Crear aviso</label></li>
+                    <li> 
+                        <section style="padding: 5px">
+
+                            <form>
+                                Titulo Aviso: <input type="text" size="30" name="tituloNo">
+                                <section style="margin: 2px;">Aviso: <br>
+                                   <textarea maxlength="100"></textarea>
+                                </section>
+                                <section>
+                                    <select style="color: black">
+                                    <option>Prioridad alta</option>
+                                    <option>Prioridad media</option>
+                                    <option>Prioridad baja</option>
+                                </select>
+                                </section><br>
+                                <input class="btn boton btn-block" type="submit" value="ENVIAR">
+                            </form>
+                        </section></li>   
+                        
+               </ul> <%}
+                %>     
+                 <label><%=session.getAttribute("tipo") %></label></li>   
+            </ul> <% } %>
+        
         <section class="">
         	<form class="form-inline text-right">
                     <section class="form-group">
