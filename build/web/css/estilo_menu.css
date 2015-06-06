@@ -507,7 +507,7 @@ div.slim_panHead{
 }
 /*Estilo de formulario de inicio de sesion*/
 .formularioLogin{
-    opacity: 0.7;
+    opacity: 1;
     background-color: #141414;
     position: relative;
     top: 5em;

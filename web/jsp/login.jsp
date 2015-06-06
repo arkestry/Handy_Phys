@@ -1,13 +1,19 @@
 
         <% 
-            session = request.getSession();
+            
             if(session.getAttribute("tipo").equals("Anonimo")){
-                String pass = (String)request.getParameter("loginPass");
+                String pass = (String)request.getParameter("pass");
+                String email = (String)request.getParameter("email");
+                out.println();
                 if(pass.equals("Profesor")){
+                    session.setAttribute("email", email);
                     session.setAttribute("tipo", "Profesor"); 
-                 }
-                if(pass.equals("Alumno")){
-                    session.setAttribute("tipo", "Alumno"); 
+                    
+                 }else{
+                    if(pass.equals("Alumno")){
+                        session.setAttribute("tipo", "Alumno"); 
+                        session.setAttribute("email", email);
+                    }
                 }
                 
             }

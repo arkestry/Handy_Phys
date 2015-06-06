@@ -24,6 +24,7 @@
         
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
+            
         }
     %>
     <body>
@@ -50,9 +51,9 @@
                         <section style="padding: 5px">
 
                             <form>
-                                Titulo Aviso: <input type="text" size="30" name="tituloNo">
+                                Titulo Aviso: <input style="color: #141414" type="text" size="30" name="tituloNo">
                                 <section style="margin: 2px;">Aviso: <br>
-                                   <textarea maxlength="100"></textarea>
+                                    <textarea maxlength="100" style="color: #141414"></textarea>
                                 </section>
                                 <section>
                                     <select style="color: black">
@@ -67,7 +68,7 @@
                         
                </ul> <%}
                 %>     
-                 <label><%=session.getAttribute("tipo") %></label></li>   
+                 <label><%=session.getAttribute("email") %></label></li>   
             </ul> <% } %>
         
         <section class="">
