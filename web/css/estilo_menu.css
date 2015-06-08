@@ -24,10 +24,12 @@ body{
     opacity: 0.8;
 }
 #userPic{
-
+   
     width: 120px;
     height: 120px;  
-    border: 1px #019875 solid;
+    text-align: left;
+    left: 2em;
+    display: block;
     background-image: url(../assets/icons/ubi_face.png);
     background-size: cover;
 }
@@ -314,10 +316,11 @@ textarea{
     opacity: 0.9;
 }
 #datosC{
+    text-align: left;
     margin: 2em;
     margin-top: 0;
     padding: 1em;
-    background-color: rgb(245, 171, 53);
+    border-right: rgb(245, 171, 53) solid 10px;
     opacity: 0.9;
 }
 #CancelarC{
@@ -328,10 +331,19 @@ textarea{
     background-color:#96281B;
     border-color: #96281B;
 }
+.formConfirm{
+    float: right;
+    left: 42em;
+    
+}
 #CaImagenC{
+    
     background-color: #3498DB;
     border-color: #3498DB;
+    top: 120px; 
+    position: relative;
 }
+
 #CaImagenC:hover{
     background-color:#446CB3 ;
     border-color: #446CB3;
@@ -571,7 +583,8 @@ footer{
     position: fixed;
     bottom: 0px;
     text-align: center;
-    width: 100%
+    width: 100%;
+    
 }
 footer a{
     font-family: 'Roboto Condensed', sans-serif;

@@ -11,22 +11,19 @@
         <script src="./js/jquery-1.11.3.min.js"></script>
     </head>
        <body class="text-center">
-        <section id="cabezaC">
-            <h1 id="usuario">Configuracion de cuenta</h1>
-            <center><label id="userPic"></label></center>
-            <input type="submit" id="CaImagenC" class="btn btn-success" value="Examinar">
-            <h1 id="usuario">Nombre de usuario <small>Mi Perfil</small></h1>
-            <p><textarea placeholder="Nuevo Nombre de usuario" ></textarea></p>
-        </section>
+           <h1 class="text-right text-uppercase" >Configuracion de cuenta</h1>
         <section id="datosC">
-            <h3>Nombre </h3><p id="nombre"><textarea placeholder="Nuevo nombre" ></textarea></p>
-            <h3>Nickname: </h3><p id="nickname"><textarea placeholder="Nuevo Nickname" ></textarea></p>
-            <h3>Grupo: </h3><p id="grupo"><textarea placeholder="Nuevo Grupo" ></textarea></p>
-            <h3>Unidad academica: </h3><p id="unidadAc"><textarea placeholder="Nuevo Unidad Academica"></textarea></p>
-            <h3>Nueva Contraseña</h3><p><input type="password" id="NuevaCon"></p>
-            <h3>Confirme Contraseña</h3><p><input type="password" id="ConfiCon"></p>
-            <input type="submit" id="GuardaC" class="btn btn-success" value="Guardar cambios">
-            <input type="submit" id="CancelarC" class="btn btn-success" value="Cancelar">
+            
+            <label id="userPic"> <input type="submit" id="CaImagenC" class="btn btn-success btn-block" value="Examinar"></label>
+            <section style=" margin-top: 3em;">
+            <h3>Nombre de usuario: <small><input type="text"  maxlength="15"></small></h3>
+            <h3>Nombre: <small><input type="text" maxlength="50"></small></h3>
+            <h3>Unidad academica: <small><input type="text" maxlength="15"></small></h3>
+            <h3>Nueva contraseña: <small><input type="text" maxlength="15"></small></h3>
+            <h3>Confirmar contraseña: <small><input type="text" maxlength="15"></small></h3>
+            <input type="submit" id="GuardaC" class="btn btn-success btn-block" value="Guardar cambios">
+            <input type="submit" id="CancelarC" class="btn btn-success btn-block" value="Cancelar">
+            </section>
         </section>
             <footer>
                 <hr size="5px" width="90%" align="center" color="black"/>
