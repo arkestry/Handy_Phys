@@ -14,8 +14,10 @@ $(document).ready(function(){
         $('.mostrarSeccion').slideToggle(1000);
     });
 
-    $('.zigma').animate({width: '36px', height: '36px', top: '0.6em', left: '2em'},1000); //zigma animation
-    
+    $('.zigma').animate({width: '36px', height: '36px', top: '0.5em', left: '2em'},1000); //zigma animation
+    $('.log').click(function(){
+       $('.keys').slideToggle('fast'); 
+    });
   
     $('#dropdownMenu1').click(function(){
        $('#filtroArt').fadeToggle(500); 

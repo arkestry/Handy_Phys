@@ -12,8 +12,9 @@
     </head>
     <body>
         <section class="bg bgregist"></section>
-        <h1 class="text-uppercase text-center">Registrar</h1>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal formularioLogin bordeR bBlue" role="form">
+            <h1 class="text-uppercase text-center">Registrar</h1>
+            <br>
             <section class="form-group col-xs-12"><!--CORREO-->
                 <label for="email" class="text-left control-label col-xs-4">Correo electronico: </label>
                 <section class="col-xs-5">
@@ -32,12 +33,12 @@
                     <input type="password" class="form-control" id="passConfirm"/> 
                 </section>
             </section>
-            <section class="form-group col-xs-12"><!--RFC-->
+            <!--section class="form-group col-xs-12"><!--RFC>
                 <label for="rfc" class="text-left control-label col-xs-4">RFC: </label>
                 <section class="col-xs-2">
                     <input type="text" class="form-control" id="rfc"/> 
                 </section>
-            </section>      
+            </section-->
             <section class="form-group col-xs-12"><!--Unidad de aprendizaje-->
                 <label for="unidadA" class="text-left control-label col-xs-4">Unidad Academica: </label>
                 <select class="form-control-static col-xs-3" id="unidadA"> 
@@ -51,8 +52,11 @@
                     <input type="text" class="form-control" id="grupo"/> 
                 </section>
             </section>
-            <center> <input id="registrar" class="btn boton" type="submit" value="Registrarse"/>
-                <input id="cancelar" class="btn boton" type="submit" value="Cancelar"/></center>
+            <center> 
+                <input id="registrar" class="btn btn-success" type="submit" value="Registrarse"/>
+                <input id="cancelar" class="btn btn-danger" type="submit" value="Cancelar"/>
+            </center>
+            <br>
         </form>
          <footer>
              <hr size="5px" width="90%" align="center" color="black"/>

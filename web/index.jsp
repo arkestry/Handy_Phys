@@ -30,6 +30,28 @@
     <body>
         <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
+            <ul class="list-unstyled text-uppercase log list-inline  list-group-item-text">
+                <button class="btn btn-link">
+                    <span  
+                    <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    class="glyphicon glyphicon-log-out"></span>
+                    <%}else{%>
+                        class="glyphicon glyphicon-log-in"></span>
+                    <%}%> 
+                </button>
+                <ul class="keys  list-group-item  list-unstyled">
+                    
+                    <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
+                    <li><a class="sublist" href="pages/login.html" target="iframe">Iniciar Sesion</a></li>
+                    <li><a class="sublist" href="pages/registrate.html" target="iframe">Registrarse</a></li>
+                    <%}%>
+                    <%
+                    if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    <form action="jsp/logout.jsp" method="POST"><li><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
+                    <%}%>
+                    
+                </ul>
+            </ul>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){             
             %>
             <ul id="menuNo">
@@ -123,19 +145,6 @@
                 </form>
             </section>
             <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
-            <li onclick="mostrar(credencialesS)"><a href="#">Credenciales</a></li>
-             <section id="credencialesS" name="onMenu">
-                <ul class="list-unstyled text-uppercase text-right list-group-item-text menu2">
-                    <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a href="pages/login.html" target="iframe">Iniciar Sesion</a></li>
-                    <li><a href="pages/registrate.html" target="iframe">Registrarse</a></li>
-                    <%}%>
-                    <%
-                    if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
-                    <form action="jsp/logout.jsp" method="POST"><li><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
-                    <%}%>
-                </ul>
-            </section>
         </ul>
         </nav>
         <iframe id="iframe" name="iframe" src="pages/home.html">

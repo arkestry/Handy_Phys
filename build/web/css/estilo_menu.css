@@ -46,37 +46,7 @@ body{
 }*/
 /*Estilo pagina principal*/
 
-#home{
-    display: table;
-    width: 100%;
-    height: 100%;
-}
-#homeLeft{
-    display: table-cell;
-    width: 33%;
-    height: 100%;
-    background-color: #AF622A;
-    margin-left: 0.5%;
-    opacity: 0.3;
-    position:relative;
-}
-#homeCenter{
-    display: table-cell;
-    width: 33%;
-    height: 100%;
-    background-color: #1A6D64;
-    opacity: 0.3;
-    position:relative;
-}
-#homeRight{
-    display: table-cell;
-    width: 33%;
-    height: 100%;
-    background-color: #AF812A;
-    margin-right: 0.5%;
-    opacity: 0.3;
-    position:relative;
-}
+
 /* Principal categorias*/
 #home h1{
     font-size: 2em;
@@ -94,6 +64,21 @@ body{
     background-color: #141414;
     border: none;
 }
+.keys{
+    display: none;
+    background-color: #141414;
+    border: none;
+}
+.keys li{
+    margin: 3px;
+}
+.log{
+    
+    position: absolute;
+    left: 5.3em;
+    top: .5em;
+    
+}
 iframe{
     position: fixed;
     top: 3.5em;
@@ -106,7 +91,7 @@ iframe{
 nav{
     top:0;
     box-sizing: border-box;
-    background: #141414;
+    background-color: #141414;
     left:-25em;
     height: 100%;
     z-index: 20;
@@ -171,6 +156,7 @@ menu a:hover{
     background-image: none;
     color: #ECF0F1;
     height: 1em;
+    
 }
 .menu li{
     box-shadow: 0 0  #141414 inset;
@@ -180,6 +166,7 @@ menu a:hover{
     display: table;
     width: 18em;
     height: 12px;
+    
 }
 a.sublist{
     background-image: none;
@@ -189,7 +176,7 @@ a.sublist{
     height: 3px;
 }
 section ul{
-    background-color: #2C3E50;
+    background-color: #1E824C; //#592B68;
 }
 section ul li{
     color: whitesmoke;
@@ -235,7 +222,7 @@ a{
     margin: 0.3em;
 }
 .menu li:hover{
-    box-shadow: 18em 0 #16A085 inset;     
+    box-shadow: 18em 0 #34495E inset;     
 }
 /*Pagina de registro*/
 #unidadA{
@@ -525,6 +512,18 @@ div.slim_panHead{
     top: 5em;
     width: 100%;
     display: table;
+}
+.bordeR{
+    border-right: 10px solid;
+}
+.bRed{
+    border-right-color: #AD1A1A;
+}
+.bGreen{
+    border-right-color: #1E824C;
+}
+.bBlue{
+    border-right-color: #22A7F0;
 }
 /*Fin estilos nuevoExamen*/
 .bg{
