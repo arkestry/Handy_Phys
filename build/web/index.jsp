@@ -21,7 +21,7 @@
         
     </head>
     <%
-        
+       
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
         }
@@ -136,6 +136,8 @@
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li><a href="pages/profile.html" target="iframe">Mi Perfíl</a></li>
+            <% 
+                if(session.getAttribute("tipo").equals("Alumno")){ %>
             <li><a onClick="mostrar(pYrS)" href="#">Mis Preguntas y Respuestas</a></li>
             <section id="pYrS" name="onMenu">
                 <ul class="list-unstyled text-right text-uppercase list-group-item-text menu2">
@@ -143,7 +145,8 @@
                     <li><a class="sublist" href="pages/mis_respuestas.html" target="iframe">Mis Respuestas</a></li>
                 </ul>
             </section>
-            <%}%>
+            <%}
+                }%>
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
@@ -170,6 +173,14 @@
                 </form>
             </section>
             <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
+            <%if(session.getAttribute("tipo").equals("Admin")){ %>
+            <li><a href="jsp/admin_SPS.jsp" target="iframe">Registro de Actividad</a></li>
+            <li><a href="#" target="iframe">Feedback</a></li>
+            <li><a href="#" target="iframe">Reporte de usuarios</a></li>
+            <li><a href="#" target="iframe">Registrar profesor</a></li>
+            <li><a href="#" target="iframe">BlackList</a></li>
+            
+            <%}%>
         </ul>
         </nav>
         <iframe id="iframe" name="iframe" src="pages/home.html">

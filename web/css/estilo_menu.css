@@ -596,3 +596,51 @@ footer a:hover{
     color:#3FC380;
 }
 /*Fin footer*/
+/*Admin_SPS*/
+.tablaAdmin{
+    width: 100%;
+    height: 1em;
+    margin-left: 2.5em;
+    float: left;
+}  
+.tablaAdmin tr th:first-child{
+    border-left:  5px  darkgreen solid;
+}
+.tablaAdmin tr th{
+    border-bottom:  3px  darkgreen solid;
+}
+.tablaAdmin tr td{
+    padding: 5px;
+    opacity: .7;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.tablaAdmin tr:hover td{
+    opacity: 1;
+}
+.comentario{
+    color: #F4B350;
+    border-left: #F4B350 solid 5px;
+}
+.problema{
+    color: #AD1A1A;
+    border-left: #AD1A1A solid 5px;
+}
+.aporte{
+    color:  #e4ee35;
+    border-left: #e4ee35 solid 5px;
+}
+.teoria{
+    color: #1E824C;
+    border-left: #1E824C solid 5px;
+}
+.pregunta{
+    color: #098ddf;
+    border-left: #098ddf solid 5px;
+}
+.respuesta{
+    color: thistle;
+    border-left: thistle solid 5px;
+}
+/*FIn de AdminSPS*/
