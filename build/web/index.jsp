@@ -24,7 +24,32 @@
         
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
-            
+        }
+        if(session.getAttribute("tipo").equals("Admin")){
+            %>
+            <style>
+                nav{
+                    background-color: #ECF0F1;
+                    color: #141414;
+                }
+                #hmenu{
+                    background-color: #ECF0F1;
+                    color: #141414;
+                }
+                label{
+                    color: #141414;
+                }
+                .menu a{
+                    color: #141414;
+                }
+                section ul{
+                    background-color: #3A539B;
+                }
+                .menu li:hover{
+                    box-shadow: 0 0  #AD1A1A inset;  
+                }
+            </style>
+    <%
         }
     %>
     <body>
@@ -46,8 +71,8 @@
                     <li><a class="sublist" href="pages/registrate.html" target="iframe">Registrarse</a></li>
                     <%}%>
                     <%
-                    if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
-                    <form action="jsp/logout.jsp" method="POST"><li><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
+                    if(session.getAttribute("tipo").equals("Admin") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    <form action="jsp/logout.jsp" method="POST"><li style="color: #ECF0F1"><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
                     <%}%>
                     
                 </ul>
@@ -105,8 +130,8 @@
         </section>
         </div>
     
-        <nav>
-            <ul class="menu" id="Principal">
+            <nav>
+                <ul class="menu" id="Principal">
             <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>

@@ -13,6 +13,11 @@
                     if(pass.equals("Alumno")){
                         session.setAttribute("tipo", "Alumno"); 
                         session.setAttribute("email", email);
+                    }else{
+                        if(pass.equals("Admin")){
+                            session.setAttribute("tipo", "Admin");
+                            session.setAttribute("email", email);
+                        }
                     }
                 }
                 

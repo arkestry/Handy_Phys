@@ -222,7 +222,7 @@ a{
     margin: 0.3em;
 }
 .menu li:hover{
-    box-shadow: 18em 0 #34495E inset;     
+    box-shadow: 0 0 #34495E inset;     
 }
 /*Pagina de registro*/
 #unidadA{
