@@ -175,10 +175,10 @@
             <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Admin")){ %>
             <li><a href="jsp/admin_SPS.jsp" target="iframe">Registro de Actividad</a></li>
-            <li><a href="#" target="iframe">Feedback</a></li>
-            <li><a href="#" target="iframe">Reporte de usuarios</a></li>
-            <li><a href="#" target="iframe">Registrar profesor</a></li>
-            <li><a href="#" target="iframe">BlackList</a></li>
+            <li><a href="pages/admin_feedback.html" target="iframe">Feedback</a></li>
+            <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>
+            <li><a href="pages/registrate.html" target="iframe">Registrar profesor</a></li>
+            <li><a href="pages/admin_blacklist.html" target="iframe">BlackList</a></li>
             
             <%}%>
         </ul>
