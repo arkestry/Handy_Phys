@@ -378,11 +378,11 @@ label.subtitle{
     right: 0.7em;
 }
 /* estilos todo-articulos*/
-div.todo{
+.todo{
     margin: 5%;
 
 }
-h1.todo_tit{
+.todo_tit{
     color: #ECF0F1;
 
 }
@@ -644,3 +644,16 @@ footer a:hover{
     border-left: thistle solid 5px;
 }
 /*FIn de AdminSPS*/
+/*blacklist(estilos rapidos)*/
+.table_titles{
+    font-size: 1.3em;
+}
+.table_text{
+    font-size: 1.2em;
+}
+.body_blacklist{
+    background-color: #2E353E;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #67768A;
+}
