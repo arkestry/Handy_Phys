@@ -645,7 +645,6 @@ footer a:hover{
     border-left: thistle solid 5px;
 }
 /*FIn de AdminSPS*/
-<<<<<<< HEAD
 /*blacklist(estilos rapidos)*/
 .table_titles{
     font-size: 1.3em;
@@ -659,7 +658,6 @@ footer a:hover{
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #67768A;
 }
-=======
 /*Reporte*/
 .reporte{
     margin: 2em;
@@ -687,4 +685,3 @@ footer a:hover{
     font-size: 20px;
 }
 /*fin feedback admin*/
->>>>>>> origin/master
