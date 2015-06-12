@@ -614,6 +614,7 @@ footer a:hover{
     opacity: .7;
     cursor: pointer;
     font-size: 18px;
+    transition: all .8s;
 }
 
 .tablaAdmin tr:hover td{
@@ -644,3 +645,30 @@ footer a:hover{
     border-left: thistle solid 5px;
 }
 /*FIn de AdminSPS*/
+/*Reporte*/
+.reporte{
+    margin: 2em;
+    border-right: 10px solid #F18B06;
+}
+/*Fin reporte*/
+
+/*Feedback admin*/
+
+.cajitaFeed{
+    background-color:  #ECF0F1;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    opacity: .7;
+    transition: all .8s;
+}
+.cajitaFeed:hover{
+    opacity: 1;
+}
+.cajitaFeed label{
+    color: #141414;
+}
+.feedLetra{
+    font-size: 20px;
+}
+/*fin feedback admin*/

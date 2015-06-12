@@ -12,20 +12,18 @@
          <link rel="stylesheet" href="../css/estilo_menu.css">
     </head>
     <body>
-        <h1 class="text-uppercase text-center">REPORTE DE USUARIOS<a href="nuevoreporte.html"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a></h1>
+        <h1 class="text-uppercase text-center">REPORTE DE USUARIOS</h1>
         <br><br>
-        <section>
-            <center>
-            <label class="gravedadRadio"><input type="radio" name="gravedad"> Gravedad Baja</label>
-            <label class="gravedadRadio"><input type="radio" name="gravedad"> Gravedad Media</label>
-            <label class="gravedadRadio"><input type="radio" name="gravedad"> Gravedad Alta</label>
-            </center>
-            
-        </section>
-       
-        <section>
-            <table class="table reporte table-hover table-responsive">
-                <tr style="background-color: #003399">
+        <label for="filtro">Filtrar por: </label>
+        <select id="filtro" style="color: #141414">
+            <option> Gravedad Baja</option>
+            <option> Gravedad Media</option>
+            <option> Gravedad Alta</option>
+        </select>
+    <br><br>
+    <section>
+            <table class="tablaAdmin" style="border-left: 7px solid #22A7F0">
+                <tr>
                     <th>Usuario</th>
                     <th>Titulo</th>
                     <th>Razón</th>
@@ -36,7 +34,7 @@
                 <tr>
                     <td>Nombre del usuario</td>
                     <td>Titulo del reporte</td>
-                    <th>Razón del porqué del reporte</th>
+                    <td>Razón del porqué del reporte</td>
                     <td>Breve descripción</td>
                     <td>Fecha del reporte</td>
                 </tr>
