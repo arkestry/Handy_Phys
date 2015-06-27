@@ -14,7 +14,7 @@ $(document).ready(function(){
        fontNames:['Arial','Courier', 'Times', 'Roboto Condensed', 'Verdana', 'Serif'],
        toolbar:[
            ['Style', [ 'bold', 'italic', 'underline', 'fontsize', 'clear' ]],
-           ['Font', ['fontname' ,'superscript', 'subscript']],
+           ['Font', ['fontname' ,'superscript', 'color', 'subscript']],
            ['Parrafo', ['ul', 'ol', 'paragraph']],
            ['Insertar', ['picture', 'link', 'table', 'hr']],
            ['Otros', ['undo', 'redo', 'help']]

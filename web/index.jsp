@@ -18,10 +18,8 @@
         <link rel="stylesheet" href="css/EsilosSocial.css">
         <script src="./js/jquery-1.11.3.min.js"></script>
          <script src="js/muestra.js"></script>
-        
-    </head>
-    <%
-       
+          <%
+       try{
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
         }
@@ -51,7 +49,12 @@
             </style>
     <%
         }
+       }catch(Exception e){
+           session.invalidate();
+       }
     %>
+    </head>
+  
     <body>
         <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
     	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
