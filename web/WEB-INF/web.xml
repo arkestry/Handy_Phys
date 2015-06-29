@@ -4,9 +4,17 @@
         <servlet-name>generarHTML</servlet-name>
         <servlet-class>servlets.generarHTML</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>articulo</servlet-name>
+        <servlet-class>servlets.articulo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>articulo</servlet-name>
+        <url-pattern>/servlets/articulo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

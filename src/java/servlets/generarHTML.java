@@ -5,10 +5,14 @@
  */
 package servlets;
 
+import classes.sql;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletConfig;
@@ -33,9 +37,14 @@ public class generarHTML extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected Connection con;
+    protected String sqlST = "INSERT INTO articulos values (?,?,?,?,?,?,?)";
+    protected Date tiempo = new Date();
+    protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm-a");
     @Override
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
+        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,17 +53,34 @@ public class generarHTML extends HttpServlet {
         String title = request.getParameter("title");
         String code = request.getParameter("code");
         String section = request.getParameter("section");
+        String url ="";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             String path = crearHTML(email, title, code, section);
-            out.println(path);
+            PreparedStatement ps = con.prepareStatement(sqlST);
+            
+            ps.setInt(2,1);
+            ps.setInt(3,1);
+            ps.setInt(4,5);
+            ps.setString(5, title);
+            ps.setString(6, ft.format(tiempo.getTime()));
+            ps.setString(7, path);
+            ps.executeUpdate();
+            out.println("<h1 style=color: white> Archivo Guardado </h1>");
+            PreparedStatement ps1 = con.prepareStatement("Select url from articulos where idUsuario=1");
+            ResultSet rs = ps1.executeQuery();
+            while(rs.next()){
+               url = (String)rs.getObject("url");
+            }
+            out.println("<iframe src='"+url+"'></iframe>");
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
     protected String crearHTML(String email, String title, String code,String section) throws IOException{
         String finalDir = "";
-        Date tiempo = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("-MM-dd-yyyy-hh:mm:ss-a");
+        
         File dir;
         String artDir = "articulos/";
         String pregDir = "preguntas/";
