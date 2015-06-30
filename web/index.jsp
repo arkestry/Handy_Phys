@@ -153,7 +153,7 @@
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
-                    <li><a class="sublist" href="pages/todo_articulos.html" target="iframe">Teoria</a></li>
+                    <li><a class="sublist" href="jsp/todo_articulos.jsp" target="iframe">Teoria</a></li>
                     <li><a class="sublist" href="pages/todo_problemas.html" target="iframe">Problemas</a></li>
                     <li><a class="sublist" href="pages/todo_preguntas.html" target="iframe">Preguntas</a></li>
                     <li>Examenes</li>

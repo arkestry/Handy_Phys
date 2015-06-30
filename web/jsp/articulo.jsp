@@ -15,11 +15,19 @@
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
         <script src="./js/jquery-1.11.3.min.js"></script>
         <script src="../js/muestra.js"></script>
+        <%
+            int idArticulo = Integer.parseInt(request.getParameter("idArticulo").toString());
+            String fecha = request.getParameter("fecha");
+            String titulo = request.getParameter("titulo");
+            String url = classes.getHTML.obtenerURL(idArticulo);
+            
+        %>
     </head>
     <body>
-        <section style="margin: 3em;">
-            <h1 id="title">Titulo</h1>
-            <section id="content" style="width: 100%"></section>
+        
+        <section>
+        <h1 class="tituloArt" id="title"><%=titulo %></h1>    
+        <iframe class="iframeA" src="<%=url%>"></iframe>
         </section>
     </body>
 </html>

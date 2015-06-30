@@ -685,3 +685,28 @@ footer a:hover{
     font-size: 20px;
 }
 /*fin feedback admin*/
+/* Articulos.jsp-inicio*/
+.iframeA{
+    color: white;
+    margin: 3em;
+    margin-left: 2em;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: #ECF0F1;
+    width: 96%;
+    height: auto;
+   
+}
+.tituloArt{
+    
+ 
+    position: relative;
+    left: .9em;
+    top: .9em;
+    border-radius: 5px;
+    
+    width: 96%;
+    height: auto;
+}
+
+/*Fin articulos.jsp*/

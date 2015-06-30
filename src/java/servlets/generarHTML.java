@@ -37,15 +37,17 @@ public class generarHTML extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected Connection con;
-    protected String sqlST = "INSERT INTO articulos values (?,?,?,?,?,?,?)";
+    protected ServletConfig config;
+    protected Connection con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+    protected String sqlST = "INSERT INTO articulos(idUsuario, idTipoCont, Valoracion, Titulo, fecha, url) values (?,?,?,?,?,?)";
     protected Date tiempo = new Date();
-    protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm-a");
-    @Override
+    protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm:ss-a");
+  
     public void init(ServletConfig config) throws ServletException{
-        super.init(config);
-        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+        this.config = config;
+        super.init(this.config);
     }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -53,27 +55,28 @@ public class generarHTML extends HttpServlet {
         String title = request.getParameter("title");
         String code = request.getParameter("code");
         String section = request.getParameter("section");
-        String url ="";
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             String path = crearHTML(email, title, code, section);
             PreparedStatement ps = con.prepareStatement(sqlST);
-            
-            ps.setInt(2,1);
-            ps.setInt(3,1);
-            ps.setInt(4,5);
-            ps.setString(5, title);
-            ps.setString(6, ft.format(tiempo.getTime()));
-            ps.setString(7, path);
-            ps.executeUpdate();
-            out.println("<h1 style=color: white> Archivo Guardado </h1>");
-            PreparedStatement ps1 = con.prepareStatement("Select url from articulos where idUsuario=1");
-            ResultSet rs = ps1.executeQuery();
-            while(rs.next()){
-               url = (String)rs.getObject("url");
+          
+            ps.setInt(1,1);
+            if(section.equalsIgnoreCase("articulos")){
+                ps.setInt(2,1);
+            }else{
+                if(section.equalsIgnoreCase("preguntas"))
+                ps.setInt(2,2);
             }
-            out.println("<iframe src='"+url+"'></iframe>");
+            ps.setInt(3,5);
+            ps.setString(4, title);
+            ps.setString(5, ft.format(tiempo.getTime()));
+            ps.setString(6, path);
+            ps.executeUpdate();
+            out.print("<h1 style='color:darkgreen'>APORTE REALIZADO CORRECTAMENTE</h1>");
+            
+           
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -82,11 +85,13 @@ public class generarHTML extends HttpServlet {
         String finalDir = "";
         
         File dir;
-        String artDir = "articulos/";
-        String pregDir = "preguntas/";
+        String artDir = config.getServletContext().getRealPath("/articulos/");
+        artDir = artDir+"/";
+        String pregDir = config.getServletContext().getRealPath("/preguntas/");
+        pregDir = pregDir+"/";
         File file = null;
         FileWriter fw;
-        String fileName;
+        String fileName = "";
         if(section.equalsIgnoreCase("articulos")){
             dir = new File(artDir);
             dir.mkdirs();
@@ -105,7 +110,7 @@ public class generarHTML extends HttpServlet {
         fw = new FileWriter(file, true);
         fw.write(code);
         fw.close();
-        return finalDir = file.getAbsolutePath();
+        return finalDir = fileName;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
