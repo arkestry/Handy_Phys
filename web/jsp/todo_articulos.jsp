@@ -24,6 +24,7 @@
             Connection con = sql.conectar();
             PreparedStatement ps = con.prepareStatement("select * from mostrarArticulos where idTipoCont=1");
             ResultSet rs = ps.executeQuery();
+           
         %>
         
     </head>
@@ -62,10 +63,12 @@
                     <div class="thumbnail">
                         <div class="caption">
                             <h3><%=(String)rs.getObject("Titulo") %></h3>
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
                             <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
                             <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
-                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>"
-                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario") %>"
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            
                                    
                             <p>
                                 <% switch(Integer.parseInt(rs.getObject("valoracion").toString())){

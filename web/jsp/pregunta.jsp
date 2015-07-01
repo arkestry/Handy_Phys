@@ -1,6 +1,6 @@
 <%-- 
-    Document   : articulo
-    Created on : 27/06/2015, 10:50:26 PM
+    Document   : pregunta
+    Created on : 30/06/2015, 09:56:40 PM
     Author     : ivan
 --%>
 
