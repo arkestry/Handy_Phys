@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/LEGH/Handy_Phys/web/index.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/pregunta.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/articulo.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/classes/getHTML.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_preguntas.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/classes/sql.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/generarHTML.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/css/estilo_menu.css</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_articulos.jsp</file>
         </group>
     </open-files>
 </project-private>

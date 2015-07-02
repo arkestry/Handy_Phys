@@ -118,7 +118,7 @@
                         
                </ul> <%}
                 %>     
-                 <label><%=session.getAttribute("email") %></label></li>   
+                 <label><%=session.getAttribute("nickname") %></label></li>   
             </ul> <% } %>
         
         <section class="">
