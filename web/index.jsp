@@ -23,7 +23,7 @@
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
         }
-        if(session.getAttribute("tipo").equals("Admin")){
+        if(session.getAttribute("tipo").equals("Administrador")){
             %>
             <style>
                 nav{
@@ -51,6 +51,7 @@
         }
        }catch(Exception e){
            session.invalidate();
+           out.println("<script>window.location.reload()</script>");
        }
     %>
     </head>
@@ -74,7 +75,7 @@
                     <li><a class="sublist" href="pages/registrate.html" target="iframe">Registrarse</a></li>
                     <%}%>
                     <%
-                    if(session.getAttribute("tipo").equals("Admin") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
+                    if(session.getAttribute("tipo").equals("Administrador") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
                     <form action="jsp/logout.jsp" method="POST"><li style="color: #ECF0F1"><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
                     <%}%>
                     
@@ -176,7 +177,7 @@
                 </form>
             </section>
             <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
-            <%if(session.getAttribute("tipo").equals("Admin")){ %>
+            <%if(session.getAttribute("tipo").equals("Administrador")){ %>
             <li><a href="jsp/admin_SPS.jsp" target="iframe">Registro de Actividad</a></li>
             <li><a href="pages/admin_feedback.html" target="iframe">Feedback</a></li>
             <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>

@@ -12,25 +12,39 @@
     </head>
     <body>
         <section class="bg bgregist"></section>
-        <form class="form-horizontal formularioLogin bordeR bBlue" role="form">
+        <form action="../servlets/regist" class="form-horizontal formularioLogin bordeR bBlue" role="form">
+            <input type="hidden" name="institucion" value="1">
+            <input type="hidden" name="tipoUsuario" value="3">
             <h1 class="text-uppercase text-center">Registrar</h1>
             <br>
+            <section class="form-group col-xs-12"><!--nombre-->
+                <label for="nombre" class="text-left control-label col-xs-4">Nombre completo: </label>
+                <section class="col-xs-5">
+                    <input name="nombre" type="text" class="form-control" id="nombre"/>
+                </section>
+            </section>
+            <section class="form-group col-xs-12"><!--nombre de usuario-->
+                <label for="nickname" class="text-left control-label col-xs-4">Nombre de usuario </label>
+                <section class="col-xs-5">
+                    <input name="nickname" type="text" class="form-control" id="nickname"/>
+                </section>
+            </section>
             <section class="form-group col-xs-12"><!--CORREO-->
                 <label for="email" class="text-left control-label col-xs-4">Correo electronico: </label>
                 <section class="col-xs-5">
-                    <input type="email" class="form-control" id="email"/>
+                    <input name="email" type="email" class="form-control" id="email"/>
                 </section>
             </section>
             <section class="form-group col-xs-12"><!--Contraseña-->
                 <label for="pass" class="text-left control-label col-xs-4">Contraseña: </label>
                 <section class="col-xs-5">
-                    <input type="password" class="form-control" id="pass"/> 
+                    <input name="pass" type="password" class="form-control" id="pass"/> 
                 </section>
             </section>
             <section class="form-group col-xs-12"><!-- Confirmar Contraseña-->
                 <label for="passConfirm" class="text-left control-label col-xs-4">Vuelva a escribir su contraseña: </label>
                 <section class="col-xs-5">
-                    <input type="password" class="form-control" id="passConfirm"/> 
+                    <input name="passC" type="password" class="form-control" id="passConfirm"/> 
                 </section>
             </section>
             <!--section class="form-group col-xs-12"><!--RFC>
@@ -41,20 +55,20 @@
             </section-->
             <section class="form-group col-xs-12"><!--Unidad de aprendizaje-->
                 <label for="unidadA" class="text-left control-label col-xs-4">Unidad Academica: </label>
-                <select class="form-control-static col-xs-3" id="unidadA"> 
+                <select name="unidadA" class="form-control-static col-xs-3" id="unidadA"> 
                     <option>Seleccione unidad de aprendizaje</option>
-                    <option value="fisica">Fisica</option>
+                    <option value="1">Fisica</option>
                 </select>
             </section>
             <section class="form-group col-xs-12"><!--Grupo-->
                 <label for="grupo" class="text-left control-label col-xs-4">Grupo: </label>
                 <section class="col-xs-1">
-                    <input type="text" class="form-control" id="grupo"/> 
+                    <input name="grupo" pattern="[A-Za-z0-9]+" maxlength="10" title="Solo caracteres alfanumericos, maximo 10" type="text" class="form-control" id="grupo"/> 
                 </section>
             </section>
             <center> 
                 <input id="registrar" class="btn btn-success" type="submit" value="Registrarse"/>
-                <input id="cancelar" class="btn btn-danger" type="submit" value="Cancelar"/>
+                <input id="cancelar" class="btn btn-danger" type="reset" value="Cancelar"/>
             </center>
             <br>
         </form>

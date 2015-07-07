@@ -49,17 +49,20 @@ public class login extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             userBean usuario = new userBean();
             usuario.setEmail(request.getParameter("email"));
-            System.out.println(usuario.getEmail());
+           
             usuario.setPassword(request.getParameter("pass"));
-            System.out.println(usuario.getPassword());
+
             usuario.setAutenticated(validate(usuario));
-            System.out.println(usuario.isAutenticated());
+            System.out.println(usuario.isAutenticated()+" autenticado");
             if(usuario.isAutenticated()){
+              
                 usuario = getUserData(usuario);
+                System.out.println(usuario.getGrupo()+" grupo");
                 session.setAttribute("tipo", usuario.getUserType());
                 session.setAttribute("nickname", usuario.getUserName());
+               
                 session.setAttribute("userData", usuario);
-                out.println("<script>alert('Sesion iniciada con éxito'); window.top.window.location.reload();</script>");
+                out.println("<script> window.top.window.location.reload();alert('Sesion iniciada con éxito');</script>");
             }else{
                 if(!usuario.isAutenticated()){
                     
@@ -74,6 +77,7 @@ public class login extends HttpServlet {
     }
     protected userBean getUserData(userBean usuario){
         try{
+            
             PreparedStatement ps = con.prepareStatement("call getDatosUser(?)");
             ps.setString(1, usuario.getEmail());
             ResultSet rs = ps.executeQuery();
@@ -81,11 +85,21 @@ public class login extends HttpServlet {
                 usuario.setEmail(rs.getString(1));
                 usuario.setUserName(rs.getString(2));
                 usuario.setUserType(rs.getString(3));
-                usuario.setGrupo(rs.getString(4));
-                usuario.setInstitucion(rs.getString(5));
+                usuario.setInstitucion(rs.getString(4));
+            }
+            
+            if(usuario.getUserType().equals("Alumno")){
+               PreparedStatement ps1 = con.prepareStatement("call getGrupo(?)");
+               ps1.setString(1, usuario.getEmail());
+               ResultSet rs1 = ps1.executeQuery();
+               while(rs1.next()){
+                   usuario.setGrupo(rs1.getString(1));
+               }
+                
             }
         }catch(Exception e){
             e.printStackTrace();
+           
         }
         return usuario;
     }
