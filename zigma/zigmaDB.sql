@@ -179,6 +179,32 @@ INSERT INTO `catunidadesacademicas` VALUES (1,'Fisica');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `coms`
+--
+
+DROP TABLE IF EXISTS `coms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `coms` (
+  `idCom` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idArticulo` int(11) NOT NULL,
+  `horaFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cuerpo` text,
+  PRIMARY KEY (`idCom`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `coms`
+--
+
+LOCK TABLES `coms` WRITE;
+/*!40000 ALTER TABLE `coms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `coms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `datos`
 --
 
@@ -471,6 +497,28 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'zigma'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `addComment` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addComment`(in idUser int, in idArticle int, in comm text)
+begin 
+	declare idComment int;
+    set idComment =(select (count(*)+1) from coms);
+    
+    insert into coms (idCom,idUsuario,idArticulo,horaFecha,cuerpo) values (idComment,idUser,idArticle,current_timestamp,comm);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `crearUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -740,4 +788,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-07  0:27:56
+-- Dump completed on 2015-07-07  2:22:56

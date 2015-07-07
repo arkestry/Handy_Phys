@@ -688,14 +688,13 @@ footer a:hover{
 /* Articulos.jsp-inicio*/
 .iframeA{
     color: white;
-    margin: 3em;
     margin-left: 2em;
     padding: 1em;
     border-radius: 5px;
     background-color: #ECF0F1;
     width: 96%;
     height: auto;
-   
+    position: relative;
 }
 .tituloArt{
     
