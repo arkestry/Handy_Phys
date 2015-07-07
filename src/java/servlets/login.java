@@ -60,7 +60,7 @@ public class login extends HttpServlet {
                 System.out.println(usuario.getGrupo()+" grupo");
                 session.setAttribute("tipo", usuario.getUserType());
                 session.setAttribute("nickname", usuario.getUserName());
-               
+                session.setAttribute("email", usuario.getEmail());
                 session.setAttribute("userData", usuario);
                 out.println("<script> window.top.window.location.reload();alert('Sesion iniciada con éxito');</script>");
             }else{

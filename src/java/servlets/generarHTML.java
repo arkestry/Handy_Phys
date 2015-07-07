@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import beans.userBean;
 import classes.sql;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,7 +40,7 @@ public class generarHTML extends HttpServlet {
      */
     protected ServletConfig config;
     protected Connection con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
-    protected String sqlST = "INSERT INTO articulos(idUsuario, idTipoCont, Valoracion, Titulo, fecha, url) values (?,?,?,?,?,?)";
+    protected String sqlST = "call insertarArticulo(?,?,?,?,?,?)";
     protected Date tiempo = new Date();
     protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm:ss-a");
   
@@ -51,7 +52,8 @@ public class generarHTML extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String email = (String)session.getAttribute("email");
+        userBean usuario = (userBean)session.getAttribute("userData");
+        String email = usuario.getEmail();
         String title = request.getParameter("title");
         String code = request.getParameter("code");
         String section = request.getParameter("section");
@@ -62,19 +64,19 @@ public class generarHTML extends HttpServlet {
             String path = crearHTML(email, title, code, section);
             PreparedStatement ps = con.prepareStatement(sqlST);
           
-            ps.setInt(1,1);
-            if(section.equalsIgnoreCase("articulos")){
-                ps.setInt(2,1);
+            ps.setString(1,email); //correo
+            if(section.equalsIgnoreCase("articulos")){ //tipo de contenido
+                ps.setInt(2,1); 
             }else{
                 if(section.equalsIgnoreCase("preguntas"))
                 ps.setInt(2,2);
             }
-            ps.setInt(3,5);
-            ps.setString(4, title);
-            ps.setString(5, ft.format(tiempo.getTime()));
-            ps.setString(6, path);
+            ps.setInt(3,5); //valoracion
+            ps.setString(4, title); //titulo
+            ps.setString(5, ft.format(tiempo.getTime())); //fecha
+            ps.setString(6, path); //url
             ps.executeUpdate();
-            out.print("<h1 style='color:darkgreen'>APORTE REALIZADO CORRECTAMENTE</h1>");
+            out.print("<h1 style='color:white'>APORTE REALIZADO CORRECTAMENTE</h1>");
             
            
         }catch(Exception e){

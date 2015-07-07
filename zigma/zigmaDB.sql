@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `articulos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `articulos` (
-  `idArticulo` int(11) NOT NULL AUTO_INCREMENT,
+  `idArticulo` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idTipoCont` int(11) NOT NULL,
   `valoracion` int(11) DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `catgrupos` (
   `nombreGrupo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idGrupo`),
   UNIQUE KEY `nombreGrupo_UNIQUE` (`nombreGrupo`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +102,7 @@ CREATE TABLE `catgrupos` (
 
 LOCK TABLES `catgrupos` WRITE;
 /*!40000 ALTER TABLE `catgrupos` DISABLE KEYS */;
+INSERT INTO `catgrupos` VALUES (17,'4IM7');
 /*!40000 ALTER TABLE `catgrupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,6 +207,7 @@ CREATE TABLE `datos` (
 
 LOCK TABLES `datos` WRITE;
 /*!40000 ALTER TABLE `datos` DISABLE KEYS */;
+INSERT INTO `datos` VALUES ('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123');
 /*!40000 ALTER TABLE `datos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,7 +455,7 @@ CREATE TABLE `usuarios` (
   KEY `idDatos` (`idDatos`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `cattipousuarios` (`idTipo`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`idDatos`) REFERENCES `datos` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -462,6 +464,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,6 +528,29 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getGrupo`(in email varchar(100))
 begin
 	select catgrupos.nombreGrupo from catgrupos inner join usuarios on usuarios.idGrupo = catgrupos.idGrupo where usuarios.idDatos = email;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertarArticulo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarArticulo`(in correo varchar(100), in tipoContenido int, in valoracion int, in titulo varchar(50), in fecha varchar(100) ,in url varchar(500))
+begin
+	declare idUsuario int;
+	declare idArticulos int;
+	set idArticulos = (select count(*)+1 from articulos);
+	set idUsuario = (select usuarios.idUsuario from usuarios inner join datos on datos.correo = usuarios.idDatos where datos.correo = correo);
+	insert into articulos values (idArticulos, idUsuario, tipoContenido, valoracion, titulo, fecha, url);
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -714,4 +740,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-06 21:39:59
+-- Dump completed on 2015-07-07  0:27:56
