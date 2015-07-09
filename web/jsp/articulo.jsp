@@ -37,7 +37,7 @@
         </section>
         <iframe id="frameComentario" name="frameComentario"></iframe>
         <section style="position: relative; top: 5em; left: 2em; width: 100%">
-            <form  class="form-group " style="display: inline; width: 40%; float: left "  action="coms_demo_addCom.jsp" method="post">
+            <form  class="form-group " style="display: inline; width: 40%; float: left "  action="../servlets/addComment" method="post">
             <label for="com">
                 Escriba su comentario amable lector de esta bonita pÃ¡gina que sin usted no podrÃ­a existir ;)
             </label>

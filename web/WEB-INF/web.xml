@@ -16,6 +16,10 @@
         <servlet-name>regist</servlet-name>
         <servlet-class>servlets.regist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addComment</servlet-name>
+        <servlet-class>servlets.addComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>regist</servlet-name>
         <url-pattern>/servlets/regist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addComment</servlet-name>
+        <url-pattern>/servlets/addComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

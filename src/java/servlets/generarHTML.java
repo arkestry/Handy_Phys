@@ -39,7 +39,7 @@ public class generarHTML extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected ServletConfig config;
-    protected Connection con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+    protected Connection con = sql.conectar();
     protected String sqlST = "call insertarArticulo(?,?,?,?,?,?)";
     protected Date tiempo = new Date();
     protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm:ss-a");

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class getHTML {
    protected static Connection con;
     getHTML(){
-        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+        con = sql.conectar();
     }
     public static String obtenerURL(String correoQueLoPublico, String titulo, String fecha) throws SQLException{
         con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
