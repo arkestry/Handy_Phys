@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `zigma` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `zigma`;
--- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: localhost    Database: zigma
 -- ------------------------------------------------------
--- Server version	5.5.41-0ubuntu0.14.04.1
+-- Server version	5.6.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -93,7 +93,7 @@ CREATE TABLE `catgrupos` (
   `nombreGrupo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idGrupo`),
   UNIQUE KEY `nombreGrupo_UNIQUE` (`nombreGrupo`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `catgrupos` (
 
 LOCK TABLES `catgrupos` WRITE;
 /*!40000 ALTER TABLE `catgrupos` DISABLE KEYS */;
-INSERT INTO `catgrupos` VALUES (17,'4IM7');
+INSERT INTO `catgrupos` VALUES (18,'123'),(17,'4IM7'),(19,'a');
 /*!40000 ALTER TABLE `catgrupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +233,7 @@ CREATE TABLE `datos` (
 
 LOCK TABLES `datos` WRITE;
 /*!40000 ALTER TABLE `datos` DISABLE KEYS */;
-INSERT INTO `datos` VALUES ('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123');
+INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a'),('admin@hotmail.com','admin',1,1,'admin','nemesis007'),('emma@admin.com','Emmanuel',1,1,'emma','123'),('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin');
 /*!40000 ALTER TABLE `datos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,6 +275,7 @@ CREATE TABLE `feedback` (
   `idFeedback` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `contenidoFB` text,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`idFeedback`),
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
@@ -287,18 +288,19 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
+INSERT INTO `feedback` VALUES (1,28,'asd','2015-07-08 19:44:11'),(2,28,'asd','2015-07-08 19:44:11'),(3,28,'esprero que sirva','2015-07-08 19:44:11'),(4,28,'esprero que sirva','2015-07-08 19:44:11'),(5,28,'','2015-07-08 19:44:11'),(6,28,'fgh','2015-07-08 19:44:11'),(7,29,'ffffff','2015-07-08 19:44:11'),(8,28,'esta dificil','2015-07-08 19:53:36');
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `mostrarArticulos`
+-- Temporary table structure for view `mostrararticulos`
 --
 
-DROP TABLE IF EXISTS `mostrarArticulos`;
-/*!50001 DROP VIEW IF EXISTS `mostrarArticulos`*/;
+DROP TABLE IF EXISTS `mostrararticulos`;
+/*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `mostrarArticulos` (
+/*!50001 CREATE TABLE `mostrararticulos` (
   `idArticulo` tinyint NOT NULL,
   `idUsuario` tinyint NOT NULL,
   `Titulo` tinyint NOT NULL,
@@ -481,7 +483,7 @@ CREATE TABLE `usuarios` (
   KEY `idDatos` (`idDatos`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `cattipousuarios` (`idTipo`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`idDatos`) REFERENCES `datos` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,7 +492,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17);
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -664,6 +666,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `newFeed` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `newFeed`(in contenido text,in correo varchar(100))
+begin
+	declare idUser int;
+	declare idFeed int;
+	set idFeed = (select ifnull(max(idFeedback),0) + 1 from feedback);
+	set idUser= (select idUsuario from usuarios inner join datos on datos.correo=usuarios.idDatos where datos.correo = correo);
+	insert into feedback values(idFeed,idUser,contenido,current_timestamp);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `obtenDatosArt` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -742,11 +767,11 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Final view structure for view `mostrarArticulos`
+-- Final view structure for view `mostrararticulos`
 --
 
-/*!50001 DROP TABLE IF EXISTS `mostrarArticulos`*/;
-/*!50001 DROP VIEW IF EXISTS `mostrarArticulos`*/;
+/*!50001 DROP TABLE IF EXISTS `mostrararticulos`*/;
+/*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -755,7 +780,7 @@ DELIMITER ;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `mostrarArticulos` AS select `articulos`.`idArticulo` AS `idArticulo`,`articulos`.`idUsuario` AS `idUsuario`,`articulos`.`Titulo` AS `Titulo`,`articulos`.`fecha` AS `fecha`,`articulos`.`valoracion` AS `valoracion`,`articulos`.`idTipoCont` AS `idTipoCont`,`datos`.`nickname` AS `nickname` from ((`articulos` join `usuarios` on((`usuarios`.`idUsuario` = `articulos`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) where (`articulos`.`idUsuario` = `usuarios`.`idUsuario`) */;
+/*!50001 VIEW `mostrararticulos` AS select `articulos`.`idArticulo` AS `idArticulo`,`articulos`.`idUsuario` AS `idUsuario`,`articulos`.`Titulo` AS `Titulo`,`articulos`.`fecha` AS `fecha`,`articulos`.`valoracion` AS `valoracion`,`articulos`.`idTipoCont` AS `idTipoCont`,`datos`.`nickname` AS `nickname` from ((`articulos` join `usuarios` on((`usuarios`.`idUsuario` = `articulos`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) where (`articulos`.`idUsuario` = `usuarios`.`idUsuario`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -788,4 +813,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-08 20:15:09
+-- Dump completed on 2015-07-08 15:12:54

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 23/05/2015, 09:17:59 PM
-    Author     : ivan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -163,27 +157,27 @@
             </section>
             <%
             
-            if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+             if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li onclick="mostrar(feedS)"><a href="#">Feedback</a></li>
             <section id="feedS" name="onMenu">
-                <form class="form">
+                <form action="jsp/enviarFeed.jsp" class="form" target="iframe"  method="post">
                     <section class="text-center col-xs-12 form-group">
-                        <textarea class="form-control " rows="3" placeholder="Escribe una sugerencia"></textarea>
+                        <textarea class="form-control " rows="3" name="feed" placeholder="Escribe una sugerencia"></textarea>
                     </section>
                     <br>
                     <section class="form-group col-xs-12">
-                            <button class="col-xs-12 btn boton"><span class="glyphicon glyphicon-check"></span> </button>
+                        <button type="submit" class="col-xs-12 btn boton"><span class="glyphicon glyphicon-check"></span> </button>
                     </section>
                 </form>
             </section>
-            <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
+              <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
             <li><a href="jsp/admin_SPS.jsp" target="iframe">Registro de Actividad</a></li>
-            <li><a href="pages/admin_feedback.html" target="iframe">Feedback</a></li>
+            <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>
             <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>
             <li><a href="pages/registrate.html" target="iframe">Registrar profesor</a></li>
             <li><a href="pages/admin_blacklist.html" target="iframe">BlackList</a></li>
-            
+          
             <%}%>
         </ul>
         </nav>
