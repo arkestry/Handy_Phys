@@ -33,7 +33,7 @@
         <article>
             <div class="page-header">
                 <h1 class="text-center todo_tit">
-                    Articulos: <a href="../pages/editor_articulos.html"><span class="glyphicon glyphicon-upload"></span></a>
+                    Articulos: <a href="../pages/nuevo_articulos.html"><span class="glyphicon glyphicon-upload"></span></a>
                 </h1>
             </div>
             <div class="panel panel-default">
@@ -68,7 +68,8 @@
                             <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
                             <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
                             <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
-                            
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="tipoCont" value="1">
                                    
                             <p>
                                 <% switch(Integer.parseInt(rs.getObject("valoracion").toString())){
@@ -111,6 +112,7 @@
                                 }%>
                                 
                             </p>
+                            <small><%=(String)rs.getObject("fecha")%></small>
                             <p><input type="submit"  class="btn btn-primary" style="position: relative; float: right" role="button" value="Leer más"></p>
                         </div>
                     </div>

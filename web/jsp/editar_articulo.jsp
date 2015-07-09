@@ -1,3 +1,36 @@
+<%-- 
+    Document   : editar_articulo
+    Created on : 8/07/2015, 09:02:24 PM
+    Author     : ivan
+--%>
+
+<%@page import="java.io.File"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.FileReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.IOException"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+         BufferedReader br = null;
+        String titulo, nombreArchivo,url, code;
+        code = "";
+        titulo = request.getParameter("titulo");
+        nombreArchivo = request.getParameter("nombreArchivo");
+        url = config.getServletContext().getRealPath("/articulos/")+"/"+nombreArchivo;
+        try{
+            br = new BufferedReader(new FileReader(url));
+            while(br.readLine() != null){
+                code = code+br.readLine();
+            }
+            
+        }catch(IOException e){
+           e.printStackTrace();
+        }finally{
+            br.reset();
+        }
+        System.out.println(url);
+        System.out.println(code);
+    %>
 <!doctype html>
 <html>
 <head>
@@ -21,12 +54,17 @@
                 code.value = $('#summernote').code();
                 f.submit();
             }
+            function recive(){
+                var code = "<%= code %>";
+                $('#summernote').code(code);
+            }
         </script>
     </head>
+    
     <body>
         <article>
-            <h1 class="text-center page-header">
-                Articulos
+             <h1 class="text-center page-header">
+                Editar articulo: <small><%= titulo %></small>
             </h1>
             <p id="p_preg_alg" class="text-center">
                 Escriba un articulo, con el proposito de contribuir en este entorno virtual
@@ -53,59 +91,10 @@
                 </p>
                 <p>
                    <br>
-                    <button type="submit" class="btn btn-default">
-                        Agregar archivos...
-                    </button>
+                    
                    <input type="submit" value="Publicar" class="btn btn-primary btn-lg" role="button" style="float:right">
                      
                     
                 </p>
             </form>
         </div>
-         <footer>
-             <hr size="5px" width="90%" align="center" color="black"/>
-             <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
-    </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
--->

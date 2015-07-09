@@ -42,7 +42,7 @@ public class generarHTML extends HttpServlet {
     protected Connection con = sql.conectar();
     protected String sqlST = "call insertarArticulo(?,?,?,?,?,?)";
     protected Date tiempo = new Date();
-    protected SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy-hh:mm:ss-a");
+    protected SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy'-'hh'-'mm'-'ss-a");
   
     public void init(ServletConfig config) throws ServletException{
         this.config = config;
@@ -97,24 +97,39 @@ public class generarHTML extends HttpServlet {
         if(section.equalsIgnoreCase("articulos")){
             dir = new File(artDir);
             dir.mkdirs();
-            fileName = (email+"-"+title+(ft.format(tiempo))+".html");
-            file = new File(artDir+fileName);
+            fileName = (email+"-"+title+"-"+(ft.format(tiempo))+".html");
+            file = new File(artDir,fileName);
+            System.out.println(file.getAbsolutePath());
             file.createNewFile();
         }else{
             if(section.equalsIgnoreCase("preguntas")){
                 dir = new File(pregDir);
                 dir.mkdirs();
-                fileName = (email+"-"+title+(ft.format(tiempo))+".html");
-                file = new File(pregDir+fileName);
+                fileName = (email+"-"+title+"-"+(ft.format(tiempo))+".html");
+                file = new File(pregDir,fileName);
                 file.createNewFile();
             }
         }
-        fw = new FileWriter(file, true);
+        fw = new FileWriter(file, false);
         fw.write(code);
         fw.close();
         return finalDir = fileName;
     }
-
+    protected String actualizarHTML(String url, String code) throws IOException{
+         String finalDir = "";
+        
+        File dir;
+        String serverRoot = config.getServletContext().getRealPath("/articulos/");
+       
+        File file = null;
+        FileWriter fw;
+        String fileName = "";
+        
+        fw = new FileWriter(file, false);
+        fw.write(code);
+        fw.close();
+        return finalDir = fileName;
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

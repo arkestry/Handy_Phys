@@ -20,7 +20,7 @@ public class getHTML {
         con = sql.conectar();
     }
     public static String obtenerURL(String correoQueLoPublico, String titulo, String fecha) throws SQLException{
-        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+        con = sql.conectar();
         String url ="";
         String finalUrl ="";
         int idUsuario = getIdUsuario(con, correoQueLoPublico);
@@ -44,7 +44,7 @@ public class getHTML {
         return finalUrl;
     }
     public static String obtenerURL(int idUsuarioQueLoPublico, String titulo, String fecha) throws SQLException{
-        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+        con = sql.conectar();
         String url ="";
         String finalUrl ="";
         int idUsuario = idUsuarioQueLoPublico;
@@ -68,7 +68,7 @@ public class getHTML {
         return finalUrl;
     }
     public static String obtenerURL(int idArticulo) throws SQLException{
-        con = sql.conectar("jdbc:mysql://localhost/zigma", "root", "2014090332");
+        con = sql.conectar();
         String url ="";
         String finalUrl ="";
         

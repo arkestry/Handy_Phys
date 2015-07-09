@@ -24,18 +24,28 @@
             int idArticulo = Integer.parseInt(request.getParameter("idArticulo").toString());
             String fecha = request.getParameter("fecha");
             String titulo = request.getParameter("titulo");
-            
+            String nombreArchivo = request.getParameter("nombreArchivo");
             String url = classes.getHTML.obtenerURL(idArticulo);
+            System.out.println(nombreArchivo);
         %>
         
     </head>
     <body>
-        
+        <form class="form-group" style="position: absolute" action="editar_articulo.jsp" method="POST">
+                <button style="position: relative; top: 4.75em; left: 89.7em" class="btn btn-block btn-warning" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
+                <input type="hidden" value="<%=nombreArchivo%>" name="nombreArchivo">
+                <input type="hidden" value="<%=titulo%>" name="titulo">
+                <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
+        </form>        
         <section>
-            <h1 class="tituloArt" id="title"><%=titulo %><small><%= userName%></small></h1> 
-        <iframe class="iframeA" src="<%=url%>"></iframe>
+            <h1 class="tituloArt" id="title">
+                <%=titulo %> <small> <%= userName%></small>
+            </h1> 
+            
+            
+            <iframe class="iframeA" src="<%=url%>"><small class="text-right">Fecha<small><%=fecha%></small></small></iframe>
         </section>
-        <iframe id="frameComentario" name="frameComentario"></iframe>
+        
         <section style="position: relative; top: 5em; left: 2em; width: 100%">
             <form  class="form-group " style="display: inline; width: 40%; float: left "  action="../servlets/addComment" method="post">
             <label for="com">
