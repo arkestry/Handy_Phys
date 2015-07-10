@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `zigma` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `zigma`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.23, for Win32 (x86)
 --
 -- Host: localhost    Database: zigma
 -- ------------------------------------------------------
--- Server version	5.6.19
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -46,9 +46,29 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,28,1,5,'PRUEBA2','09-de-07-del-2015-09-11-41-AM','honter1997@gmail.com-PRUEBA2-09-de-07-del-2015-09-11-41-AM.html'),(2,28,1,5,'PRUEBA3','09-de-07-del-2015-09-11-41-AM','honter1997@gmail.com-PRUEBA3-09-de-07-del-2015-09-11-41-AM.html');
+INSERT INTO `articulos` VALUES (1,34,1,5,'OddFuture','09-de-07-del-2015-11-33-00-PM','snl@gg.com-OddFuture-09-de-07-del-2015-11-33-00-PM.html'),(2,36,1,5,'Oasis','10-de-07-del-2015-12-21-03-AM','pat@g.com-Oasis-10-de-07-del-2015-12-21-03-AM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger updateArticulos after insert on articulos
+for each row 
+begin
+	insert into weblog values 
+    (0,4,concat_ws(' ','nuevo articulo',new.titulo),null);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `avisos`
@@ -94,7 +114,7 @@ CREATE TABLE `catgrupos` (
   `nombreGrupo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idGrupo`),
   UNIQUE KEY `nombreGrupo_UNIQUE` (`nombreGrupo`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +123,7 @@ CREATE TABLE `catgrupos` (
 
 LOCK TABLES `catgrupos` WRITE;
 /*!40000 ALTER TABLE `catgrupos` DISABLE KEYS */;
-INSERT INTO `catgrupos` VALUES (18,'123'),(17,'4IM7'),(19,'a');
+INSERT INTO `catgrupos` VALUES (18,'123'),(20,'1IM7'),(21,'1IM8'),(22,'4IM6'),(17,'4IM7'),(19,'a');
 /*!40000 ALTER TABLE `catgrupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,13 +207,13 @@ DROP TABLE IF EXISTS `coms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `coms` (
-  `idCom` int(11) NOT NULL,
+  `idCom` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` int(11) NOT NULL,
   `idArticulo` int(11) NOT NULL,
   `horaFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cuerpo` text,
   PRIMARY KEY (`idCom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,9 +222,32 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
-INSERT INTO `coms` VALUES (1,0,0,'2015-07-09 14:51:25','que pedo no se actualiza que mierda de pagina\r\n');
+INSERT INTO `coms` VALUES (1,34,1,'2015-07-10 04:33:13','no eran taan buenos'),(2,30,1,'2015-07-10 04:34:49','soy emma'),(3,29,1,'2015-07-10 04:49:42','we luv tyler'),(9,33,4,'2015-07-10 05:26:36','bien'),(10,36,2,'2015-07-10 05:26:53','Me gusta esa banda');
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger updateComentarios after insert on coms
+for each row
+begin
+	insert into weblog values 
+    (0,1,
+    concat_ws(' ',(select datos.nickname from coms inner join usuarios on coms.idUsuario=usuarios.idUsuario inner join datos on usuarios.idDatos=datos.correo where new.idUsuario=usuarios.idUsuario),
+    'en artiulo',new.idArticulo),null);
+    
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `datos`
@@ -223,9 +266,9 @@ CREATE TABLE `datos` (
   PRIMARY KEY (`correo`),
   KEY `IdUnidadAcademica_idx` (`IdUnidadAcademica`),
   KEY `idInstitucion` (`idInstitucion`),
+  CONSTRAINT `IdUnidadAcademica` FOREIGN KEY (`IdUnidadAcademica`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `datos_ibfk_1` FOREIGN KEY (`idInstitucion`) REFERENCES `catinstitucion` (`IdInstitucion`),
-  CONSTRAINT `datos_ibfk_2` FOREIGN KEY (`idInstitucion`) REFERENCES `catinstitucion` (`IdInstitucion`),
-  CONSTRAINT `IdUnidadAcademica` FOREIGN KEY (`IdUnidadAcademica`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `datos_ibfk_2` FOREIGN KEY (`idInstitucion`) REFERENCES `catinstitucion` (`IdInstitucion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='¿?';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,7 +278,7 @@ CREATE TABLE `datos` (
 
 LOCK TABLES `datos` WRITE;
 /*!40000 ALTER TABLE `datos` DISABLE KEYS */;
-INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a'),('admin@hotmail.com','admin',1,1,'admin','nemesis007'),('emma@admin.com','Emmanuel',1,1,'emma','123'),('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin');
+INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a'),('admin@hotmail.com','admin',1,1,'admin','nemesis007'),('ben@msdn.com','ben',1,1,'ben1','123'),('emma@admin.com','Emmanuel',1,1,'emma','123'),('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123'),('honter1997@hotmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','2014090332'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin'),('matt@gy.io','matt',1,1,'matt1','123'),('pat@g.com','patricioEstrella',1,1,'pat','123'),('snl@gg.com','Sebastian',1,1,'snl','gg');
 /*!40000 ALTER TABLE `datos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,23 +338,36 @@ INSERT INTO `feedback` VALUES (1,28,'asd','2015-07-08 19:44:11'),(2,28,'asd','20
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `mostrararticulos`
+-- Temporary view structure for view `getweblog`
+--
+
+DROP TABLE IF EXISTS `getweblog`;
+/*!50001 DROP VIEW IF EXISTS `getweblog`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `getweblog` AS SELECT 
+ 1 AS `ta`,
+ 1 AS `desc`,
+ 1 AS `ht`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `mostrararticulos`
 --
 
 DROP TABLE IF EXISTS `mostrararticulos`;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `mostrararticulos` (
-  `idArticulo` tinyint NOT NULL,
-  `idUsuario` tinyint NOT NULL,
-  `Titulo` tinyint NOT NULL,
-  `fecha` tinyint NOT NULL,
-  `valoracion` tinyint NOT NULL,
-  `idTipoCont` tinyint NOT NULL,
-  `url` tinyint NOT NULL,
-  `nickname` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `mostrararticulos` AS SELECT 
+ 1 AS `idArticulo`,
+ 1 AS `idUsuario`,
+ 1 AS `Titulo`,
+ 1 AS `fecha`,
+ 1 AS `valoracion`,
+ 1 AS `idTipoCont`,
+ 1 AS `url`,
+ 1 AS `nickname`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -368,20 +424,19 @@ LOCK TABLES `prioridad` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `prueba`
+-- Temporary view structure for view `prueba`
 --
 
 DROP TABLE IF EXISTS `prueba`;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `prueba` (
-  `idAvisoint` tinyint NOT NULL,
-  `idUsuario` tinyint NOT NULL,
-  `idPrioridad` tinyint NOT NULL,
-  `idGrupo` tinyint NOT NULL,
-  `contenidoAviso` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `prueba` AS SELECT 
+ 1 AS `idAvisoint`,
+ 1 AS `idUsuario`,
+ 1 AS `idPrioridad`,
+ 1 AS `idGrupo`,
+ 1 AS `contenidoAviso`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -446,6 +501,30 @@ LOCK TABLES `resultados` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tipoaccion`
+--
+
+DROP TABLE IF EXISTS `tipoaccion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipoaccion` (
+  `idTA` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoAccion` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idTA`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipoaccion`
+--
+
+LOCK TABLES `tipoaccion` WRITE;
+/*!40000 ALTER TABLE `tipoaccion` DISABLE KEYS */;
+INSERT INTO `tipoaccion` VALUES (1,'Comentario'),(2,'Pregunta'),(3,'Feedback'),(4,'Articulo'),(5,'Respuesta'),(6,'Aviso'),(7,'NuevoUsuario');
+/*!40000 ALTER TABLE `tipoaccion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tipocontenido`
 --
 
@@ -486,7 +565,7 @@ CREATE TABLE `usuarios` (
   KEY `idDatos` (`idDatos`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `cattipousuarios` (`idTipo`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`idDatos`) REFERENCES `datos` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -495,9 +574,62 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19);
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger updateUsuarios after insert on usuarios
+for each row
+begin
+	insert into weblog values 
+    (0,7,concat_ws(' ',new.idDatos,'nuevo registro'),null);
+    
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `weblog`
+--
+
+DROP TABLE IF EXISTS `weblog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `weblog` (
+  `idLog` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoAccion` int(11) NOT NULL,
+  `descripcion` text,
+  `horatiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idLog`),
+  KEY `tipoAccion` (`tipoAccion`),
+  CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `weblog`
+--
+
+LOCK TABLES `weblog` WRITE;
+/*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
+INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41');
+/*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'zigma'
+--
 
 --
 -- Dumping routines for database 'zigma'
@@ -510,14 +642,32 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `addComment`(in idUser int, in idArticle int, in comm text)
 begin 
-	declare idComment int;
-    set idComment =(select (count(*)+1) from coms);
+
     
-    insert into coms (idCom,idUsuario,idArticulo,horaFecha,cuerpo) values (idComment,idUser,idArticle,current_timestamp,comm);
+    insert into coms values(0,idUser,idArticle,null,comm);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `borrarArticulo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `borrarArticulo`(in idArticulo int)
+begin
+	delete from articulos where articulos.idArticulo = idArticulo;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -543,6 +693,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getComs` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getComs`(in idArticulo int)
+begin
+	select datos.nickname as 'usr',coms.cuerpo,coms.horaFecha from coms inner join usuarios on coms.idUsuario=usuarios.idUsuario inner join datos on usuarios.idDatos=datos.correo where coms.idArticulo=idArticulo;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getDatosUser` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -555,7 +724,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getDatosUser`(in email varchar(100))
 begin
-	select usuarios.idDatos, datos.nickname, cattipousuarios.descripcionTipo, catinstitucion.descripcionInsti
+	select usuarios.idDatos, datos.nickname, cattipousuarios.descripcionTipo, catinstitucion.descripcionInsti, usuarios.idUsuario
 	from usuarios
 	inner join datos on usuarios.idDatos = datos.correo
 	inner join cattipousuarios on usuarios.idTipo = cattipousuarios.idTipo
@@ -770,10 +939,27 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Final view structure for view `getweblog`
+--
+
+/*!50001 DROP VIEW IF EXISTS `getweblog`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `getweblog` AS select `tipoaccion`.`tipoAccion` AS `ta`,`weblog`.`descripcion` AS `desc`,date_format(`weblog`.`horatiempo`,'%W %d %b %T') AS `ht` from (`weblog` join `tipoaccion` on((`weblog`.`tipoAccion` = `tipoaccion`.`idTA`))) order by `weblog`.`horatiempo` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `mostrararticulos`
 --
 
-/*!50001 DROP TABLE IF EXISTS `mostrararticulos`*/;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -792,7 +978,6 @@ DELIMITER ;
 -- Final view structure for view `prueba`
 --
 
-/*!50001 DROP TABLE IF EXISTS `prueba`*/;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -816,4 +1001,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-09 12:02:54
+-- Dump completed on 2015-07-10  0:37:17

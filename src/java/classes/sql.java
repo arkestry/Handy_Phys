@@ -31,7 +31,7 @@ public static Connection conectar(){
     Connection con = null;
     String url = "jdbc:mysql://localhost/zigma";
     String user = "root";
-    String Pass = "2014090332";
+    String Pass = "batiziana";
     try{
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(url, user, Pass);
