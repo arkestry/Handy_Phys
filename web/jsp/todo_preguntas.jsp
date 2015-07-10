@@ -23,7 +23,7 @@
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
          <%
             Connection con = sql.conectar();
-            PreparedStatement ps = con.prepareStatement("select * from mostrarArticulos where idTipoCont=2");
+            PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2");
             ResultSet rs = ps.executeQuery();
            
         %>
@@ -34,11 +34,14 @@
         <div class="page-header">
             <h1 class="text-center todo_tit">
                 Preguntas
+                <% if(!session.getAttribute("tipo").equals("Anonimo")) {%>
+                    <a href="../pages/hacer_pregunta.html"><span class="glyphicon glyphicon-upload"></span></a>
+                <% } %>
             </h1>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                             Filtrar Por...
                             <span class="caret"></span>
                         </button>
@@ -65,7 +68,9 @@
                         <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
                         <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
                         <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
-                        <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">                
+                        <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                        <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                        <input type="hidden" name="tipoCont" value="2">               
 
                         <a></a>&nbsp;
                         <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 

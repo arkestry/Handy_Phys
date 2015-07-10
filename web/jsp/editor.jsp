@@ -13,12 +13,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
          BufferedReader br = null;
-        String titulo, nombreArchivo,url, code;
+        String titulo, nombreArchivo,url, code, tipoCont;
+        url = "";
         code = "";
         String line = "";
+        tipoCont = request.getParameter("tipoCont");
         titulo = request.getParameter("titulo");
+        System.out.println(titulo);
         nombreArchivo = request.getParameter("nombreArchivo");
-        url = config.getServletContext().getRealPath("/articulos/")+"/"+nombreArchivo;
+        System.out.println(nombreArchivo);
+        if(tipoCont.equals("1")){
+            url = config.getServletContext().getRealPath("/articulos/")+"/"+nombreArchivo;
+        }else{
+            if(tipoCont.equals("2")){
+                url = config.getServletContext().getRealPath("/preguntas/")+"/"+nombreArchivo;
+            }
+        }
         try{
             FileInputStream inputFile = new FileInputStream(url);
             br = new BufferedReader(new InputStreamReader(inputFile));
@@ -72,15 +82,14 @@
     <body >
         <article>
              <h1 class="text-center page-header">
-                Editar articulo: <small><%= titulo %></small>
+                Editar: <small><%= titulo %></small>
             </h1>
-            <p id="p_preg_alg" class="text-center">
-                Escriba un articulo, con el proposito de contribuir en este entorno virtual
-            </p>
+            
         </article>
         <div class="container">
             <form method="POST" action="../servlets/actualizarHTML" class="form-group" onsubmit="enviar(this)">
                 <input type="hidden" name="url" value="<%=url%>">
+                <input type="hidden" name="tipoCont" value="<%= tipoCont%>">
                 <label class="subtitle">
                     Cuerpo del Articulo:
                 </label>  

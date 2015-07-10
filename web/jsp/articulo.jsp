@@ -27,8 +27,11 @@
             String titulo = request.getParameter("titulo");
             String nombreArchivo = request.getParameter("nombreArchivo");
             String url = classes.getHTML.obtenerURL(idArticulo);
+            String cont = String.valueOf(request.getParameter("tipoCont"));
+            System.out.print(cont);
             userBean user = (userBean)session.getAttribute("userData");
-            
+            System.out.println(user);
+            System.out.println(url);
         %>
         <script>
             function carga(){
@@ -36,27 +39,36 @@
              
                 frame.contentWindow.location.reload();
             }
+            function really(formulario){
+                if(confirm("En verdad quiere borrar el articulo <%= titulo %>") === true){
+                     formulario.submit();
+                }else{
+                    return false;
+                    
+                }
+            }
         </script>
     </head>
     <body onload="carga()">
         <br><br>
         <section  style="padding-left: 3em; height: 2em; padding-top: 1em; display: block;">
-            
+            <center>
             <h1 style="display: block; ">
                 <%=titulo %> <small> <%= userName%></small>
             </h1> 
-        
+            </center>
         <%
             if(request.getParameter("idUsuario").equals(String.valueOf(user.getIdUsuario()))){
         %>
-        <section style="display: inline; float: left; position: relative; top: -8em; left: -2em">
-        <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editar_articulo.jsp" method="POST">
+        <section style="display: inline; float: left; position: absolute; top: .5em; left: 1em">
+        <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editor.jsp" method="POST">
                 <button  class="btn btn-sm btn-warning form-inline" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
                 <input type="hidden" value="<%=nombreArchivo%>" name="nombreArchivo">
                 <input type="hidden" value="<%=titulo%>" name="titulo">
                 <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
+                <input type="hidden" value="<%= cont %>" name="tipoCont">
         </form>
-        <form class="form-group" style="float: left; display: table; padding-top: 2em" action="../servlets/borrarHTML" method="POST">
+        <form onsubmit="return really(this)" class="form-group" style="float: left; display: table; padding-top: 2em" action="../servlets/borrarHTML" method="POST">
             <button   class="btn btn-sm btn-danger form-inline" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
             <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
             <input type="hidden" value="<%=titulo%>" name="titulo">
@@ -66,15 +78,15 @@
         </section>
         <br>
    
-        <section class="container" style="position: relative; top: 5em; left: 1em; width: 100%">
-        <section style="display: block; width: 100%; height: 100%" class=" container-fluid">
+        <section class="container" style="position: relative; top: 5em; left: 0.1em; width: 95%">
+        <section style="display: block; width: 100%; height: 100%; padding: 1px" class=" container-fluid">
             <jsp:include flush="true" page="<%=url%>"></jsp:include>
         </section>
             <p><small class="text-center">Fecha<small><%=fecha%></small></small></p>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){ %>
             <form  class="form-group " style="display: inline; width: 40%; float: left "  action="../servlets/addComment" method="post">
             <label for="com">
-                Escriba su comentario amable lector de esta bonita pÃ¡gina que sin usted no podrÃ­a existir ;)
+                Escriba su comentario amable lector de esta bonita página¡gina que sin usted no podrÃ­a existir ;)
             </label>
             <textarea class="form-control" id="com" name="com"></textarea>
             <input  type="submit" class="btn btn-info" value="Ingresar">

@@ -36,11 +36,17 @@ public class borrarHTML extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            try{
-               Connection con = sql.conectar();
-               PreparedStatement ps = con.prepareStatement("call borrarArticulo(?)");
-               ps.setInt(1, Integer.parseInt(request.getParameter("idArticulo")));
-               ps.executeUpdate();
-               response.sendRedirect("../jsp/todo_articulos.jsp");
+                Connection con = sql.conectar();
+                PreparedStatement ps = con.prepareStatement("call borrarArticulo(?)");
+                ps.setInt(1, Integer.parseInt(request.getParameter("idArticulo")));
+                ps.executeUpdate();
+                if(request.getParameter("tipoCont").equals("1")){
+                     response.sendRedirect("../jsp/todo_articulos.jsp");
+                }else{
+                    if(request.getParameter("tipoCont").equals("2")){
+                        response.sendRedirect("../jsp/todo_preguntas.jsp");
+                    }
+                }
            }catch(Exception e){
                e.printStackTrace();
            }

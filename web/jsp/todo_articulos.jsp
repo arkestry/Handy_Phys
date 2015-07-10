@@ -22,7 +22,7 @@
         <script src="../js/muestra.js"></script>
         <%
             Connection con = sql.conectar();
-            PreparedStatement ps = con.prepareStatement("select * from mostrarArticulos where idTipoCont=1");
+            PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=1");
             ResultSet rs = ps.executeQuery();
            
         %>
@@ -33,7 +33,10 @@
         <article>
             <div class="page-header">
                 <h1 class="text-center todo_tit">
-                    Articulos: <a href="../pages/nuevo_articulos.html"><span class="glyphicon glyphicon-upload"></span></a>
+                    Articulos
+                    <% if(!session.getAttribute("tipo").equals("Anonimo")) {%>
+                    <a href="../pages/nuevo_articulos.html"><span class="glyphicon glyphicon-upload"></span></a>
+                    <% } %>
                 </h1>
             </div>
             <div class="panel panel-default">

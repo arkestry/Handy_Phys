@@ -62,7 +62,7 @@ public class login extends HttpServlet {
                 session.setAttribute("nickname", usuario.getUserName());
                 session.setAttribute("email", usuario.getEmail());
                 session.setAttribute("userData", usuario);
-                out.println("<script> window.top.window.location.reload();alert('Sesion iniciada con éxito');</script>");
+                out.println("<script> window.top.window.location.reload();</script>");
             }else{
                 if(!usuario.isAutenticated()){
                     

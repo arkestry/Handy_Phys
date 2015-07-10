@@ -47,7 +47,14 @@ public class actualizarHTML extends HttpServlet {
              url = request.getParameter("url");
              code = request.getParameter("code");
              actualizarHTML(url, code);
-             response.sendRedirect("../jsp/todo_articulos.jsp");
+             if(request.getParameter("tipoCont").equals("1")){
+                 response.sendRedirect("../jsp/todo_articulos.jsp");
+             }else{
+                 if(request.getParameter("tipoCont").equals("2")){
+                     response.sendRedirect("../jsp/todo_preguntas.jsp");
+                 }
+             }
+             
         }
     }
 protected String actualizarHTML(String url, String code) throws IOException{

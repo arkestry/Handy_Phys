@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/src/java/servlets/login.java</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/src/java/beans/userBean.java</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/web/jsp/editar_articulo.jsp</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/web/index.jsp</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/web/css/estilo_menu.css</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/web/jsp/todo_articulos.jsp</file>
-            <file>file:/C:/Users/Alumno/Documents/Handy_Phys-master/web/jsp/articulo.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/pregunta.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/hacer_pregunta.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/articulo.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/borrarHTML.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/actualizarHTML.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_preguntas.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/editor.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_articulos.jsp</file>
         </group>
     </open-files>
 </project-private>
