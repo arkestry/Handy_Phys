@@ -20,8 +20,9 @@
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
          <script src="../js/jquery-1.11.3.min.js"></script>
         <script src="../js/muestra.js"></script>
-        <%!int idArticulo;%>
+       
         <%
+            int idArticulo;
             String userName = request.getParameter("nickname");
             idArticulo = Integer.parseInt(request.getParameter("idArticulo").toString());
             String fecha = request.getParameter("fecha");
@@ -41,7 +42,7 @@
                 frame.contentWindow.location.reload();
             }
             function really(formulario){
-                if(confirm("En verdad quiere borrar el articulo <%= titulo %>") === true){
+                if(confirm("En verdad quiere borrar el articulo: <%= titulo %>") === true){
                      formulario.submit();
                 }else{
                     return false;
@@ -67,13 +68,14 @@
                 <button  class="btn btn-sm btn-warning form-inline" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
                 <input type="hidden" value="<%=nombreArchivo%>" name="nombreArchivo">
                 <input type="hidden" value="<%=titulo%>" name="titulo">
-                <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
+                <input type="hidden" value="<%= idArticulo %>" name="idArticulo">
                 <input type="hidden" value="<%= cont %>" name="tipoCont">
         </form>
         <form onsubmit="return really(this)" class="form-group" style="float: left; display: table; padding-top: 2em" action="../servlets/borrarHTML" method="POST">
             <button   class="btn btn-sm btn-danger form-inline" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
             <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
             <input type="hidden" value="<%=titulo%>" name="titulo">
+            <input type="hidden" value="<%= cont %>" name="tipoCont">
         </form>
         </section>
         <% } %>

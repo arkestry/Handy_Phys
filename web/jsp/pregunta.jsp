@@ -62,6 +62,7 @@
             <button   class="btn btn-sm btn-danger form-inline" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
             <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
             <input type="hidden" value="<%=titulo%>" name="titulo">
+            <input type="hidden" value="<%= cont %>" name="tipoCont">
         </form>
         </section>
         <% } %>

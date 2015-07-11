@@ -57,7 +57,7 @@ public class generarHTML extends HttpServlet {
         String title = request.getParameter("title");
         String code = request.getParameter("code");
         String section = request.getParameter("section");
-        
+        //title = title.replaceAll(" ", "-");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
@@ -85,7 +85,7 @@ public class generarHTML extends HttpServlet {
     }
     protected String crearHTML(String email, String title, String code,String section) throws IOException{
         String finalDir = "";
-        
+        title = title.replaceAll(" ", "_");
         File dir;
         String artDir = config.getServletContext().getRealPath("/articulos/");
         artDir = artDir+"/";
