@@ -46,7 +46,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,34,1,5,'OddFuture','09-de-07-del-2015-11-33-00-PM','snl@gg.com-OddFuture-09-de-07-del-2015-11-33-00-PM.html'),(2,36,1,5,'Oasis','10-de-07-del-2015-12-21-03-AM','pat@g.com-Oasis-10-de-07-del-2015-12-21-03-AM.html');
+INSERT INTO `articulos` VALUES (1,34,1,5,'OddFuture','09-de-07-del-2015-11-33-00-PM','snl@gg.com-OddFuture-09-de-07-del-2015-11-33-00-PM.html'),(2,36,1,5,'Oasis','10-de-07-del-2015-12-21-03-AM','pat@g.com-Oasis-10-de-07-del-2015-12-21-03-AM.html'),(3,34,1,5,'DJ-Kicks','10-de-07-del-2015-08-20-49-PM','snl@gg.com-DJ-Kicks-10-de-07-del-2015-08-20-49-PM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -62,7 +62,7 @@ DELIMITER ;;
 for each row 
 begin
 	insert into weblog values 
-    (0,4,concat_ws(' ','nuevo articulo',new.titulo),null);
+    (0,4,concat_ws(' ',(select datos.nickname from usuarios inner join datos on usuarios.idDatos=datos.correo where new.idUsuario=usuarios.idUsuario),' publico nuevo articulo',new.titulo),null);
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -213,7 +213,7 @@ CREATE TABLE `coms` (
   `horaFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cuerpo` text,
   PRIMARY KEY (`idCom`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
-INSERT INTO `coms` VALUES (1,34,1,'2015-07-10 04:33:13','no eran taan buenos'),(2,30,1,'2015-07-10 04:34:49','soy emma'),(3,29,1,'2015-07-10 04:49:42','we luv tyler'),(9,33,4,'2015-07-10 05:26:36','bien'),(10,36,2,'2015-07-10 05:26:53','Me gusta esa banda');
+INSERT INTO `coms` VALUES (1,34,1,'2015-07-10 04:33:13','no eran taan buenos'),(2,30,1,'2015-07-10 04:34:49','soy emma'),(3,29,1,'2015-07-10 04:49:42','we luv tyler'),(9,33,4,'2015-07-10 05:26:36','bien'),(10,36,2,'2015-07-10 05:26:53','Me gusta esa banda'),(11,34,1,'2015-07-11 01:21:11','hit this niggas'),(12,34,1,'2015-07-11 01:21:22','more hits'),(13,34,2,'2015-07-11 01:22:49','hey now'),(14,34,3,'2015-07-11 01:23:27','se lo robo de pitchfork :v \r\nhttp://pitchfork.com/reviews/albums/20677-dj-kicks/');
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -239,8 +239,8 @@ for each row
 begin
 	insert into weblog values 
     (0,1,
-    concat_ws(' ',(select datos.nickname from coms inner join usuarios on coms.idUsuario=usuarios.idUsuario inner join datos on usuarios.idDatos=datos.correo where new.idUsuario=usuarios.idUsuario),
-    'en artiulo',new.idArticulo),null);
+    concat_ws(' ',(select datos.nickname from usuarios inner join datos on usuarios.idDatos=datos.correo where new.idUsuario=usuarios.idUsuario),
+    'en articulo',(select articulos.titulo from articulos where idArticulo=new.idArticulo)),null);
     
 end */;;
 DELIMITER ;
@@ -590,7 +590,7 @@ DELIMITER ;;
 for each row
 begin
 	insert into weblog values 
-    (0,7,concat_ws(' ',new.idDatos,'nuevo registro'),null);
+    (0,7,concat_ws(' ',(select datos.nickname from usuarios inner join datos on usuarios.idDatos=datos.correo where new.idUsuario=usuarios.idUsuario),'nuevo registro'),null);
     
 end */;;
 DELIMITER ;
@@ -614,7 +614,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,7 +623,7 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
-INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41');
+INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41'),(7,4,'snl  publico nuevo articulo DJ-Kicks','2015-07-11 01:20:49'),(8,1,'snl en artiulo 1','2015-07-11 01:21:11'),(9,1,'snl en artiulo 1','2015-07-11 01:21:22'),(10,1,'snl en artiulo Oasis','2015-07-11 01:22:49'),(11,1,'snl en articulo DJ-Kicks','2015-07-11 01:23:27');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1001,4 +1001,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-10  0:37:17
+-- Dump completed on 2015-07-10 20:26:49
