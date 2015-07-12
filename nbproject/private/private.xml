@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/pregunta.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/hacer_pregunta.html</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/articulo.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/borrarHTML.java</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/actualizarHTML.java</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_preguntas.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/editor.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/todo_articulos.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

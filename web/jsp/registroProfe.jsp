@@ -1,7 +1,7 @@
 <%-- 
     Document   : registroProfe
-    Created on : 9/07/2015, 02:05:16 PM
-    Author     : Alumno
+    Created on : 10/07/2015, 02:05:16 PM
+    Author     : Luis Enrique
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,50 +23,45 @@
             <input type="hidden" name="tipoUsuario" value="2">
             <h1 class="text-uppercase text-center">Registrar Profesor</h1>
             <br>
-            <section class="form-group col-xs-12"><!--nombre-->
+            <section class="form-group col-xs-12">
                 <label for="nombre" class="text-left control-label col-xs-4">Nombre completo: </label>
                 <section class="col-xs-5">
                     <input name="nombre" type="text" class="form-control" id="nombre"/>
                 </section>
             </section>
-            <section class="form-group col-xs-12"><!--nombre de usuario-->
+            <section class="form-group col-xs-12">
                 <label for="nickname" class="text-left control-label col-xs-4">Nombre de usuario </label>
                 <section class="col-xs-5">
                     <input name="nickname" type="text" class="form-control" id="nickname"/>
                 </section>
             </section>
-            <section class="form-group col-xs-12"><!--CORREO-->
+            <section class="form-group col-xs-12">
                 <label for="email" class="text-left control-label col-xs-4">Correo electronico: </label>
                 <section class="col-xs-5">
                     <input name="email" type="email" class="form-control" id="email"/>
                 </section>
             </section>
-            <section class="form-group col-xs-12"><!--Contraseña-->
+            <section class="form-group col-xs-12">
                 <label for="pass" class="text-left control-label col-xs-4">Contraseña: </label>
                 <section class="col-xs-5">
                     <input name="pass" type="password" class="form-control" id="pass"/> 
                 </section>
             </section>
-            <section class="form-group col-xs-12"><!-- Confirmar Contraseña-->
+            <section class="form-group col-xs-12">
                 <label for="passConfirm" class="text-left control-label col-xs-4">Vuelva a escribir su contraseña: </label>
                 <section class="col-xs-5">
                     <input name="passC" type="password" class="form-control" id="passConfirm"/> 
                 </section>
             </section>
-            <!--section class="form-group col-xs-12"><!--RFC>
-                <label for="rfc" class="text-left control-label col-xs-4">RFC: </label>
-                <section class="col-xs-2">
-                    <input type="text" class="form-control" id="rfc"/> 
-                </section>
-            </section-->
-            <section class="form-group col-xs-12"><!--Unidad de aprendizaje-->
+          
+            <section class="form-group col-xs-12">
                 <label for="unidadA" class="text-left control-label col-xs-4">Unidad Academica: </label>
                 <select name="unidadA" class="form-control-static col-xs-3" id="unidadA"> 
                     <option>Seleccione unidad de aprendizaje</option>
                     <option value="1">Fisica</option>
                 </select>
             </section>
-            <section class="form-group col-xs-12"><!--Grupo-->
+            <section class="form-group col-xs-12">
                 <label for="grupo" class="text-left control-label col-xs-4">Grupo al que se le da clase: </label>
                 <section class="col-xs-1">
                     <input name="grupo" pattern="[A-Za-z0-9]+" maxlength="10" title="Solo caracteres alfanumericos, maximo 10" type="text" class="form-control" id="grupo"/> 
