@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `zigma` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `zigma`;
--- MySQL dump 10.13  Distrib 5.6.23, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: zigma
 -- ------------------------------------------------------
--- Server version	5.6.24-log
+-- Server version	5.5.41-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `articulos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `articulos` (
-  `idArticulo` int(11) NOT NULL,
+  `idArticulo` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` int(11) NOT NULL,
   `idTipoCont` int(11) NOT NULL,
   `valoracion` int(11) DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,34,1,5,'OddFuture','09-de-07-del-2015-11-33-00-PM','snl@gg.com-OddFuture-09-de-07-del-2015-11-33-00-PM.html'),(2,36,1,5,'Oasis','10-de-07-del-2015-12-21-03-AM','pat@g.com-Oasis-10-de-07-del-2015-12-21-03-AM.html'),(3,34,1,5,'DJ-Kicks','10-de-07-del-2015-08-20-49-PM','snl@gg.com-DJ-Kicks-10-de-07-del-2015-08-20-49-PM.html');
+INSERT INTO `articulos` VALUES (9,28,1,0,'Art','13-de-07-del-2015-02-13-32-PM','honter1997@gmail.com-Art-13-de-07-del-2015-02-13-32-PM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -213,7 +213,7 @@ CREATE TABLE `coms` (
   `horaFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cuerpo` text,
   PRIMARY KEY (`idCom`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
-INSERT INTO `coms` VALUES (1,34,1,'2015-07-10 04:33:13','no eran taan buenos'),(2,30,1,'2015-07-10 04:34:49','soy emma'),(3,29,1,'2015-07-10 04:49:42','we luv tyler'),(9,33,4,'2015-07-10 05:26:36','bien'),(10,36,2,'2015-07-10 05:26:53','Me gusta esa banda'),(11,34,1,'2015-07-11 01:21:11','hit this niggas'),(12,34,1,'2015-07-11 01:21:22','more hits'),(13,34,2,'2015-07-11 01:22:49','hey now'),(14,34,3,'2015-07-11 01:23:27','se lo robo de pitchfork :v \r\nhttp://pitchfork.com/reviews/albums/20677-dj-kicks/');
+INSERT INTO `coms` VALUES (19,28,9,'2015-07-13 19:35:24','Coment');
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -333,41 +333,43 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,28,'asd','2015-07-08 19:44:11'),(2,28,'asd','2015-07-08 19:44:11'),(3,28,'esprero que sirva','2015-07-08 19:44:11'),(4,28,'esprero que sirva','2015-07-08 19:44:11'),(5,28,'','2015-07-08 19:44:11'),(6,28,'fgh','2015-07-08 19:44:11'),(7,29,'ffffff','2015-07-08 19:44:11'),(8,28,'esta dificil','2015-07-08 19:53:36');
+INSERT INTO `feedback` VALUES (1,28,'asd','2015-07-08 19:44:11'),(2,28,'asd','2015-07-08 19:44:11'),(3,28,'esprero que sirva','2015-07-08 19:44:11'),(4,28,'esprero que sirva','2015-07-08 19:44:11'),(5,28,'','2015-07-08 19:44:11'),(6,28,'fgh','2015-07-08 19:44:11'),(7,29,'ffffff','2015-07-08 19:44:11'),(8,28,'esta dificil','2015-07-08 19:53:36'),(9,28,'Prueba de feedback','2015-07-13 20:24:25'),(10,28,'Prueba del feedd','2015-07-13 20:25:14'),(11,28,'Prueba del feedd','2015-07-13 20:25:16');
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `getweblog`
+-- Temporary table structure for view `getweblog`
 --
 
 DROP TABLE IF EXISTS `getweblog`;
 /*!50001 DROP VIEW IF EXISTS `getweblog`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `getweblog` AS SELECT 
- 1 AS `ta`,
- 1 AS `desc`,
- 1 AS `ht`*/;
+/*!50001 CREATE TABLE `getweblog` (
+  `ta` tinyint NOT NULL,
+  `desc` tinyint NOT NULL,
+  `ht` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary view structure for view `mostrararticulos`
+-- Temporary table structure for view `mostrararticulos`
 --
 
 DROP TABLE IF EXISTS `mostrararticulos`;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `mostrararticulos` AS SELECT 
- 1 AS `idArticulo`,
- 1 AS `idUsuario`,
- 1 AS `Titulo`,
- 1 AS `fecha`,
- 1 AS `valoracion`,
- 1 AS `idTipoCont`,
- 1 AS `url`,
- 1 AS `nickname`*/;
+/*!50001 CREATE TABLE `mostrararticulos` (
+  `idArticulo` tinyint NOT NULL,
+  `idUsuario` tinyint NOT NULL,
+  `Titulo` tinyint NOT NULL,
+  `fecha` tinyint NOT NULL,
+  `valoracion` tinyint NOT NULL,
+  `idTipoCont` tinyint NOT NULL,
+  `url` tinyint NOT NULL,
+  `nickname` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -424,19 +426,20 @@ LOCK TABLES `prioridad` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `prueba`
+-- Temporary table structure for view `prueba`
 --
 
 DROP TABLE IF EXISTS `prueba`;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `prueba` AS SELECT 
- 1 AS `idAvisoint`,
- 1 AS `idUsuario`,
- 1 AS `idPrioridad`,
- 1 AS `idGrupo`,
- 1 AS `contenidoAviso`*/;
+/*!50001 CREATE TABLE `prueba` (
+  `idAvisoint` tinyint NOT NULL,
+  `idUsuario` tinyint NOT NULL,
+  `idPrioridad` tinyint NOT NULL,
+  `idGrupo` tinyint NOT NULL,
+  `contenidoAviso` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -614,7 +617,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,13 +626,9 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
-INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41'),(7,4,'snl  publico nuevo articulo DJ-Kicks','2015-07-11 01:20:49'),(8,1,'snl en artiulo 1','2015-07-11 01:21:11'),(9,1,'snl en artiulo 1','2015-07-11 01:21:22'),(10,1,'snl en artiulo Oasis','2015-07-11 01:22:49'),(11,1,'snl en articulo DJ-Kicks','2015-07-11 01:23:27');
+INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41'),(7,4,'snl  publico nuevo articulo DJ-Kicks','2015-07-11 01:20:49'),(8,1,'snl en artiulo 1','2015-07-11 01:21:11'),(9,1,'snl en artiulo 1','2015-07-11 01:21:22'),(10,1,'snl en artiulo Oasis','2015-07-11 01:22:49'),(11,1,'snl en articulo DJ-Kicks','2015-07-11 01:23:27'),(12,4,'ivan  publico nuevo articulo Pregunta una','2015-07-13 19:01:34'),(13,4,'ivan  publico nuevo articulo Pregunta una','2015-07-13 19:01:35'),(14,4,'ivan  publico nuevo articulo Preguntame','2015-07-13 19:02:18'),(15,4,'ivan  publico nuevo articulo Preguntame','2015-07-13 19:02:18'),(16,4,'ivan  publico nuevo articulo Una Pregunta','2015-07-13 19:05:19'),(17,4,'ivan  publico nuevo articulo Una Pregunta','2015-07-13 19:05:20'),(18,4,'ivan  publico nuevo articulo Prueba 1','2015-07-13 19:13:32'),(19,1,'ivan en articulo Prueba 1','2015-07-13 19:13:48'),(20,1,'ivan en articulo Prueba 1','2015-07-13 19:14:08'),(21,4,'ivan  publico nuevo articulo Esto es otra prueba','2015-07-13 19:21:31'),(22,4,'ivan  publico nuevo articulo Una Prueba mas','2015-07-13 19:21:45'),(23,4,'ivan  publico nuevo articulo Otra','2015-07-13 19:23:15'),(24,4,'ivan  publico nuevo articulo Otra','2015-07-13 19:23:15'),(25,4,'ivan  publico nuevo articulo PRueba','2015-07-13 19:23:27'),(26,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-13 19:26:46'),(27,1,'ivan en articulo Esto es una prueba','2015-07-13 19:27:09'),(28,4,'ivan  publico nuevo articulo Otro articulo','2015-07-13 19:27:33'),(29,4,'ivan  publico nuevo articulo Pregunta','2015-07-13 19:28:09'),(30,1,'ivan en articulo Pregunta','2015-07-13 19:34:53'),(31,4,'ivan  publico nuevo articulo Art','2015-07-13 19:35:18'),(32,1,'ivan en articulo Art','2015-07-13 19:35:24'),(33,1,'ivan en articulo Pregunta','2015-07-13 19:40:03');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'zigma'
---
 
 --
 -- Dumping routines for database 'zigma'
@@ -668,6 +667,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `borrarArticulo`(in idArticulo int)
 begin
 	delete from articulos where articulos.idArticulo = idArticulo;
+	delete from coms where coms.idArticulo = idArticulo;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -687,6 +687,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `crearUsuario`(in correo varchar(100), in idTipoIN int, in idGrupoIN int)
 begin
 	insert into usuarios (idDatos, idTipo, idGrupo) values (correo, idTipoIN, idGrupoIN);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `delComment` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delComment`(in idCom int)
+begin
+	delete from coms where coms.idCom = idCom;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -720,11 +739,11 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getComs`(in idArticulo int)
 begin
-	select datos.nickname as 'usr',coms.cuerpo,coms.horaFecha from coms inner join usuarios on coms.idUsuario=usuarios.idUsuario inner join datos on usuarios.idDatos=datos.correo where coms.idArticulo=idArticulo;
+	select usuarios.idUsuario as 'id' , coms.idCom as 'idCom', datos.nickname as 'usr',coms.cuerpo,coms.horaFecha from coms inner join usuarios on coms.idUsuario=usuarios.idUsuario inner join datos on usuarios.idDatos=datos.correo where coms.idArticulo=idArticulo;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -827,9 +846,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarArticulo`(in correo varchar
 begin
 	declare idUsuario int;
 	declare idArticulos int;
-	set idArticulos = (select count(*)+1 from articulos);
 	set idUsuario = (select usuarios.idUsuario from usuarios inner join datos on datos.correo = usuarios.idDatos where datos.correo = correo);
-	insert into articulos values (idArticulos, idUsuario, tipoContenido, valoracion, titulo, fecha, url);
+	insert into articulos values (null ,idUsuario, tipoContenido, valoracion, titulo, fecha, url);
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -999,6 +1017,7 @@ DELIMITER ;
 -- Final view structure for view `getweblog`
 --
 
+/*!50001 DROP TABLE IF EXISTS `getweblog`*/;
 /*!50001 DROP VIEW IF EXISTS `getweblog`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1017,6 +1036,7 @@ DELIMITER ;
 -- Final view structure for view `mostrararticulos`
 --
 
+/*!50001 DROP TABLE IF EXISTS `mostrararticulos`*/;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1035,6 +1055,7 @@ DELIMITER ;
 -- Final view structure for view `prueba`
 --
 
+/*!50001 DROP TABLE IF EXISTS `prueba`*/;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1058,4 +1079,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-12 12:14:36
+-- Dump completed on 2015-07-13 15:38:52
