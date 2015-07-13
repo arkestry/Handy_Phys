@@ -49,6 +49,14 @@
                     
                 }
             }
+            function validarComm(formu){
+                if(confirm("Esta seguro de que desea eliminar este comentario?") === true){
+                    formu.submit();
+                    return true;
+                }else{
+                    return false;
+                }
+            }
         </script>
     </head>
     <body onload="carga()">
@@ -93,8 +101,9 @@
                 Escriba su comentario amable lector de esta bonita página¡gina que sin usted no podrÃ­a existir ;)
             </label>
             <textarea class="form-control" id="com" name="com"></textarea>
-            <input type="hidden" name="idArt" value=<%out.println(idArticulo); %> />
-            <input type="hidden" name="idUsuario" value=<%out.println(user.getIdUsuario()); %> />
+            <input type="hidden" name="idArt" value= "<%out.println(idArticulo); %>" />
+            <input type="hidden" name="idUsuario" value= "<%out.println(user.getIdUsuario()); %>" />
+            <input type="hidden" name="tipo" value="1">
             <input  type="submit" class="btn btn-info" value="Ingresar">
             </form> 
             <%}%>
@@ -105,13 +114,27 @@
             PreparedStatement ps = con.prepareStatement("call getComs(?)");
             ps.setInt(1, idArticulo);
             ResultSet rs= ps.executeQuery();
+            String eliminar = "";
             
-            while(rs.next()){
+            while(rs.next()){ %>
+            <form action="../servlets/delComment" method="POST" onsubmit="return validarComm(this)">
+                <input type="hidden" value="<%= rs.getString("idCom") %>" name="idComm">
+                <input type="hidden" name="tipo" value="1">
+            <%
+            if(rs.getString("id").equals(String.valueOf(user.getIdUsuario()))){
+                eliminar = "<button style='float: right; position: relative; bottom: 5px' type='submit' class='btn btn-sm btn-danger'><span class='glyphicon glyphicon-trash'></span></button>";
+            }else{
+                 eliminar = "";
+            }
             out.println("<div class='panel panel-default'> <div class='panel-heading'><span class='glyphicon glyphicon-user' aria-hidden='true'></span>"
-                    + rs.getString("usr")+"</div><div class='panel-body'><h4 class='text-primary'>"+rs.getString("cuerpo")+"</h4></div><div class='panel-footer'>"
+                    + rs.getString("usr")+eliminar+"</div><div class='panel-body'><h4 class='text-primary'>"+rs.getString("cuerpo")+"</h4></div><div class='panel-footer'>"
                     + "<h6 class='text-muted'>"+rs.getString("horaFecha")+"</h6></div></div>" );
+            %>
+            </form>
+                <%
             }
         %>
+        
             </section>
         </section>
         </div>

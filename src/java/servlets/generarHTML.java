@@ -57,6 +57,7 @@ public class generarHTML extends HttpServlet {
         String title = request.getParameter("title");
         String code = request.getParameter("code");
         String section = request.getParameter("section");
+        String redirect = "";
         //title = title.replaceAll(" ", "-");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -67,18 +68,19 @@ public class generarHTML extends HttpServlet {
             ps.setString(1,email); //correo
             if(section.equalsIgnoreCase("articulos")){ //tipo de contenido
                 ps.setInt(2,1); 
+                redirect = "../jsp/todo_articulos.jsp";
             }else{
                 if(section.equalsIgnoreCase("preguntas"))
                 ps.setInt(2,2);
+                redirect = "../jsp/todo_preguntas.jsp";
             }
-            ps.setInt(3,5); //valoracion
+            ps.setInt(3,0); //valoracion
             ps.setString(4, title); //titulo
             ps.setString(5, ft.format(tiempo.getTime())); //fecha
             ps.setString(6, path); //url
             ps.executeUpdate();
-            out.print("<h1 style='color:white'>APORTE REALIZADO CORRECTAMENTE</h1>");
+            response.sendRedirect(redirect);
             
-           
         }catch(Exception e){
             e.printStackTrace();
         }

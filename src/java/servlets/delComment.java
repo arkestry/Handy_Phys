@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ivan
  */
-public class addComment extends HttpServlet {
+public class delComment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +34,11 @@ public class addComment extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int idArt=Integer.parseInt(request.getParameter("idArt"));
-            int idUsr=Integer.parseInt(request.getParameter("idUsuario"));
-            try{
-                String comment=request.getParameter("com");
-                Connection con = sql.conectar();
-                PreparedStatement ps = con.prepareStatement("CALL addComment(?,?,?)");
-                ps.setInt(1,idUsr);
-                ps.setInt(2,idArt);
-                ps.setString(3,comment);
-                ps.executeQuery();
+           try{
+               Connection con = sql.conectar();
+               PreparedStatement ps = con.prepareStatement("call delComment(?)");
+               ps.setInt(1, Integer.parseInt(request.getParameter("idComm")));
+               ps.executeUpdate();
                 if(request.getParameter("tipo").equals("1")){
                     response.sendRedirect("../jsp/todo_articulos.jsp");
                 }else{
@@ -53,9 +46,9 @@ public class addComment extends HttpServlet {
                        response.sendRedirect("../jsp/todo_preguntas.jsp"); 
                     }
                 }
-            }catch(Exception e){
-                
-            }
+           }catch(Exception e){
+               e.printStackTrace();
+           }
         }
     }
 

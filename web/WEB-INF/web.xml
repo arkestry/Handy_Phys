@@ -28,6 +28,10 @@
         <servlet-name>borrarHTML</servlet-name>
         <servlet-class>servlets.borrarHTML</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>delComment</servlet-name>
+        <servlet-class>servlets.delComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>borrarHTML</servlet-name>
         <url-pattern>/servlets/borrarHTML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>delComment</servlet-name>
+        <url-pattern>/servlets/delComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
