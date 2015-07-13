@@ -53,8 +53,8 @@
                     <li class="cajitaFeed">
                         <label name="username"> <%=userName%></label>     
                             <label name="fecha"><%=fecha%></label>       
-                            <input name="idFeed" value="<%=idFeed%>" hidden>
-                            <button class="btn-success" >Leer Feedback</button>
+                            <input name="idFeed" value="<%=idFeed%>" type ="hidden">
+                            <button class="btn btn-success" >Leer Feedback</button>
                         </li>
                   </ul>
         </form>

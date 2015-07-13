@@ -16,9 +16,11 @@
 <title>Feedback detalle</title>
 <meta charset="utf-8" />
 <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../css/estilo_menu.css">
-<script src="./js/jquery-1.11.3.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/estilo_menu.css">
+        <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+         <script src="../js/jquery-1.11.3.min.js"></script>
+        <script src="../js/muestra.js"></script>
 </head>
 <body>
     <div>  
@@ -36,22 +38,23 @@
              PreparedStatement ps=con.prepareStatement("call getFeedContenido(?)");
              ps.setInt(1, idFeed);
              rs=ps.executeQuery();
-             if(rs.next()){
+             while(rs.next()){
                 idUser=Integer.parseInt(rs.getString("idUsuario"));
                 contenido=rs.getString("contenidoFB");
                 PreparedStatement ps2=con.prepareStatement("call getUsername(?);");
                 ps2.setInt(1,idUser);
                 rs2=ps2.executeQuery();
-                if(rs2.next()){
+                while(rs2.next()){
                 userName=rs2.getString("nickname");
         %>
         <h2><label><%=userName%></label></h2>
         <p class="feedLetra"><%=contenido%></p>
     </div>
-    <button onclick="window.location.href = 'admin_feedback.jsp'" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Volver</button>
+    
     <%  }
              }
              %>
+             <button onclick="window.location.href = 'admin_feedback.jsp'" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Volver</button>
    
 </body>
 </html>
