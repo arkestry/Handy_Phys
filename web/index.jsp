@@ -175,7 +175,7 @@
             </section>
               <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
-            <li><a href="jsp/admin_SPS.jsp" target="iframe">Registro de Actividad</a></li>
+            <li><a href="pages/admin_SPS.html" target="iframe">Registro de Actividad</a></li>
             <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>
             <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>
             <li><a href="pages/registrate.html" target="iframe">Registrar profesor</a></li>

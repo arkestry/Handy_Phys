@@ -28,19 +28,13 @@ SPS = Second Per Second
     </head>
     <body>
         <%!  Connection con=null; %>
-        <% response.setIntHeader("Refresh", 5);
+        <% 
     sql c = new sql();
    Connection con = c.conectar();
    PreparedStatement ps=con.prepareStatement("select * from getweblog");
    ResultSet rs=ps.executeQuery();
     %>
-        <h1>REGISTRO DE ACTIVIDAD<small> Segundo a Segundo</small></h1>
-        <section>
-            <section style="width: 3%; float: left; display: table-cell; padding: 1em">
-                <button class="btn btn-success"><span class="glyphicon glyphicon-play"></span></button><br><br>
-            <button class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
-            </section>
-            <section style="width: 94%; float: left; display: table-cell">
+        
             <table class="tablaAdmin">
                 <tr>
                     <th>Acción</th>
@@ -60,7 +54,6 @@ SPS = Second Per Second
    }
    %>
             </table>
-        </section>
-        </section>
+       
     </body>
 </html>

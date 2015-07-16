@@ -37,7 +37,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,6 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (9,28,1,0,'Art','13-de-07-del-2015-02-13-32-PM','honter1997@gmail.com-Art-13-de-07-del-2015-02-13-32-PM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -222,7 +221,6 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
-INSERT INTO `coms` VALUES (19,28,9,'2015-07-13 19:35:24','Coment');
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -617,7 +615,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -626,7 +624,6 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
-INSERT INTO `weblog` VALUES (2,4,'nuevo articulo Oasis','2015-07-10 05:21:03'),(3,1,'Ivan-hdz en artiulo 4','2015-07-10 05:26:36'),(4,1,'pat en artiulo 2','2015-07-10 05:26:53'),(5,7,'nuevo registro','2015-07-10 05:31:55'),(6,7,'ben@msdn.com nuevo registro','2015-07-10 05:33:41'),(7,4,'snl  publico nuevo articulo DJ-Kicks','2015-07-11 01:20:49'),(8,1,'snl en artiulo 1','2015-07-11 01:21:11'),(9,1,'snl en artiulo 1','2015-07-11 01:21:22'),(10,1,'snl en artiulo Oasis','2015-07-11 01:22:49'),(11,1,'snl en articulo DJ-Kicks','2015-07-11 01:23:27'),(12,4,'ivan  publico nuevo articulo Pregunta una','2015-07-13 19:01:34'),(13,4,'ivan  publico nuevo articulo Pregunta una','2015-07-13 19:01:35'),(14,4,'ivan  publico nuevo articulo Preguntame','2015-07-13 19:02:18'),(15,4,'ivan  publico nuevo articulo Preguntame','2015-07-13 19:02:18'),(16,4,'ivan  publico nuevo articulo Una Pregunta','2015-07-13 19:05:19'),(17,4,'ivan  publico nuevo articulo Una Pregunta','2015-07-13 19:05:20'),(18,4,'ivan  publico nuevo articulo Prueba 1','2015-07-13 19:13:32'),(19,1,'ivan en articulo Prueba 1','2015-07-13 19:13:48'),(20,1,'ivan en articulo Prueba 1','2015-07-13 19:14:08'),(21,4,'ivan  publico nuevo articulo Esto es otra prueba','2015-07-13 19:21:31'),(22,4,'ivan  publico nuevo articulo Una Prueba mas','2015-07-13 19:21:45'),(23,4,'ivan  publico nuevo articulo Otra','2015-07-13 19:23:15'),(24,4,'ivan  publico nuevo articulo Otra','2015-07-13 19:23:15'),(25,4,'ivan  publico nuevo articulo PRueba','2015-07-13 19:23:27'),(26,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-13 19:26:46'),(27,1,'ivan en articulo Esto es una prueba','2015-07-13 19:27:09'),(28,4,'ivan  publico nuevo articulo Otro articulo','2015-07-13 19:27:33'),(29,4,'ivan  publico nuevo articulo Pregunta','2015-07-13 19:28:09'),(30,1,'ivan en articulo Pregunta','2015-07-13 19:34:53'),(31,4,'ivan  publico nuevo articulo Art','2015-07-13 19:35:18'),(32,1,'ivan en articulo Art','2015-07-13 19:35:24'),(33,1,'ivan en articulo Pregunta','2015-07-13 19:40:03');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1079,4 +1076,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-13 15:38:52
+-- Dump completed on 2015-07-15 23:04:14

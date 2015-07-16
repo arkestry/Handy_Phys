@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="../css/estilo_menu.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+        <script src="../js/jquery-1.11.3.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                var timer = null;
+                function iniciar(){
+                    timer = setInterval(update, 1000); //tiempo por defecto
+                }
+                function detener(){
+                    clearInterval(timer);
+                }
+                function update(){ //el metodo que ejecuta el ajax
+                    var variable = $.ajax({ //le damos todas las propiedades de ajax a una variable
+                        url: "../jsp/admin_SPS.jsp", //la pagina del servidor que hara la consulta
+                        method: "POST" //el metodo
+                    });
+                    //el metodo 'done' es como un 'ejecutar pagina'
+                    variable.done(function(html2){ //el parametro html2 es el contenido de la pagina HTML que llama el ajax
+                        $('#seccion').html(html2); //imprime el contenido en la seccion
+                    }); 
+                }
+                iniciar();
+                $('#iniciar').on('click', iniciar);
+                $('#parar').on('click', detener);
+            });
+        </script>
+    </head>
+    
+    <body>
+        <h1>REGISTRO DE ACTIVIDAD<small> Segundo a Segundo</small></h1>
+        <section>
+            <section style="width: 3%; float: left; display: table-cell; padding: 1em">
+             <button id="iniciar" class="btn btn-success"><span class="glyphicon glyphicon-play"></span></button><br><br>
+             <button id="parar" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
+            </section>
+            <section style="width: 94%; float: left; display: table-cell" id="seccion">
+            </section>
+        </section>
+    </body>
+</html>
