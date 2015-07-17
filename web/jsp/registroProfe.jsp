@@ -4,12 +4,12 @@
     Author     : Luis Enrique
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Registro Profesor</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -42,13 +42,13 @@
                 </section>
             </section>
             <section class="form-group col-xs-12">
-                <label for="pass" class="text-left control-label col-xs-4">ContraseÃ±a: </label>
+                <label for="pass" class="text-left control-label col-xs-4">Contraseña: </label>
                 <section class="col-xs-5">
                     <input name="pass" type="password" class="form-control" id="pass"/> 
                 </section>
             </section>
             <section class="form-group col-xs-12">
-                <label for="passConfirm" class="text-left control-label col-xs-4">Vuelva a escribir su contraseÃ±a: </label>
+                <label for="passConfirm" class="text-left control-label col-xs-4">Vuelva a escribir su contraseña: </label>
                 <section class="col-xs-5">
                     <input name="passC" type="password" class="form-control" id="passConfirm"/> 
                 </section>
@@ -76,7 +76,7 @@
          <footer>
              <hr size="5px" width="90%" align="center" color="black"/>
              <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015Â© &nbsp;&nbsp; IbexÂ® de MÃ©xico   --  Desarrollado por IBEX </a>
+            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
     </body>

@@ -8,11 +8,11 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="classes.sql"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Untitled Document</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -116,7 +116,7 @@
                                 
                             </p>
                             <small><%=(String)rs.getObject("fecha")%></small>
-                            <p><input type="submit"  class="btn btn-primary" style="position: relative; float: right" role="button" value="Leer mÃ¡s"></p>
+                            <p><input type="submit"  class="btn btn-primary" style="position: relative; float: right" role="button" value="Leer más"></p>
                         </div>
                     </div>
                 </div></form>
@@ -126,7 +126,7 @@
          <footer>
              <hr size="5px" width="90%" align="center" color="black"/>
              <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015Â© &nbsp;&nbsp; IbexÂ® de MÃ©xico   --  Desarrollado por IBEX </a>
+            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
     </body>

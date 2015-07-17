@@ -9,10 +9,9 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.sql"%>
 <%@page import="java.sql.Connection"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
   <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Pregunta</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -93,10 +92,10 @@
             <% if(!session.getAttribute("tipo").equals("Anonimo")){ %>
             <form  class="form-group " style="display: inline; width: 40%; float: left "  action="../servlets/addComment" method="post">
             <label for="com">
-                Escriba su comentario amable lector de esta bonita página¡gina que sin usted no podrÃ­a existir ;)
+                Escriba su comentario amable lector de esta bonita p�gina�gina que sin usted no podría existir ;)
             </label>
             <textarea class="form-control" id="com" name="com"></textarea>
-            <input type="hidden" name="idArt" value="<%= idArticulo%>" />
+            <input type="hidden" name="idArt" value="<%=idArticulo%>" />
             <input type="hidden" name="idUsuario" value="<%= user.getIdUsuario() %>" />
             <input type="hidden" name="tipo" value="2">
             <input  type="submit" class="btn btn-info" value="Ingresar">

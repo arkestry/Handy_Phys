@@ -5,9 +5,10 @@
         <group>
             <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/pregunta.jsp</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/admin_feedback.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/delComment.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/admin_SPS.html</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/articulo.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/verFeedAd.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/index.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/admin_SPS.jsp</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/classes/sql.java</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/addComment.java</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/generarHTML.java</file>

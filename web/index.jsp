@@ -1,10 +1,10 @@
 <%@page import="beans.userBean"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Menu Principal</title>
-        <meta charset="UTF-8">
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/estilo_menu.css">
@@ -133,10 +133,10 @@
     
             <nav>
                 <ul class="menu" id="Principal">
-            <li><a href="pages/home.html" target="iframe">PÃ¡gina Principal</a></li>
+            <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="pages/profile.html" target="iframe">Mi PerfÃ­l</a></li>
+            <li><a href="pages/profile.html" target="iframe">Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
             <li><a onClick="mostrar(pYrS)" href="#">Mis Preguntas y Respuestas</a></li>
@@ -173,7 +173,7 @@
                     </section>
                 </form>
             </section>
-              <li><a href="pages/ConfigurarCuenta.html" target="iframe">ConfiguraciÃ³n de Cuenta</a></li><%} %>
+              <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
             <li><a href="pages/admin_SPS.html" target="iframe">Registro de Actividad</a></li>
             <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>

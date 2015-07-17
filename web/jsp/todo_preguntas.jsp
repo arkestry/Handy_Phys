@@ -9,12 +9,11 @@
 <%@page import="classes.sql"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>TODO Preguntas</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -73,7 +72,7 @@
                         <input type="hidden" name="tipoCont" value="2">               
 
                         <a></a>&nbsp;
-                        <!--los labels cambiaran segÃºn sea el caso, estan todos solo de forma representativa--> 
+                        <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 
                         <span class="label label-info"> Pregunta reciente
 
                         </span>&nbsp;
@@ -107,7 +106,7 @@
         <footer>
             <hr size="5px" width="90%" align="center" color="black"/>
             <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015Â© &nbsp;&nbsp; IbexÂ® de MÃ©xico   --  Desarrollado por IBEX </a>
+            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
     </body>

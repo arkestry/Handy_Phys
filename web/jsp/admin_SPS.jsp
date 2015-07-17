@@ -10,7 +10,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="classes.sql"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!--
 SPS = Second Per Second
@@ -18,7 +18,7 @@ SPS = Second Per Second
 <html>
     <head>
         <title>TODO supply a title</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="../css/estilo_menu.css">
@@ -37,8 +37,8 @@ SPS = Second Per Second
         
             <table class="tablaAdmin">
                 <tr>
-                    <th>AcciÃ³n</th>
-                    <th>DescripciÃ³n</th>
+                    <th>Acción</th>
+                    <th>Descripción</th>
                     <th>Fecha-Hora</th>
                 </tr>
                 <%

@@ -36,7 +36,7 @@ public class addComment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int idArt=Integer.parseInt(request.getParameter("idArt"));
+            int idArt=Integer.parseInt(request.getParameter("idArt").replaceAll(" ", ""));
             int idUsr=Integer.parseInt(request.getParameter("idUsuario"));
             try{
                 String comment=request.getParameter("com");
