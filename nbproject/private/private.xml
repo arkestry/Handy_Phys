@@ -4,13 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/pregunta.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/admin_feedback.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/admin_SPS.html</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/.htaccess</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/hacer_pregunta.html</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/articulo.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/index.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/admin_SPS.jsp</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/classes/sql.java</file>
-            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/addComment.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/actualizarHTML.java</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/jsp/editor.jsp</file>
+            <file>file:/home/ivan/Proyecto/Handy_Phys/web/pages/nuevo_articulos.html</file>
             <file>file:/home/ivan/Proyecto/Handy_Phys/src/java/servlets/generarHTML.java</file>
         </group>
     </open-files>
