@@ -19,9 +19,9 @@
         String line = "";
         tipoCont = request.getParameter("tipoCont");
         titulo = request.getParameter("titulo");
-        System.out.println(titulo);
+     
         nombreArchivo = request.getParameter("nombreArchivo");
-        System.out.println(nombreArchivo);
+     
         if(tipoCont.equals("1")){
             url = config.getServletContext().getRealPath("/articulos/")+"/"+nombreArchivo;
         }else{
@@ -52,14 +52,15 @@
 <!doctype html>
 <html>
 <head>
-        <<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Untitled Document</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="UTF-8">
         <!-- Dependencias de summernote -->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet"> 
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
        <!--Summernote-->
+       <script src="../js/summernote-es-ES.js" type="text/javascript"></script>
        <script src="../js/dist-editor/summernote.min.js" type="text/javascript"></script>
        <link href="../js/dist-editor/summernote.css" rel="stylesheet" type="text/css"/>
        <!--Estilos propios-->
@@ -70,10 +71,11 @@
             function enviar(f){
                 var code = document.getElementById("code");
                 code.value = $('#summernote').code();
+                alert(code.value);
                 f.submit();
             }
             $(document).ready(function(){
-               $('#summernote').code('<%=code%>')
+               $('#summernote').code('<%=code%>');
             });
       </script>
      
@@ -87,9 +89,10 @@
             
         </article>
         <div class="container">
-            <form method="POST" action="../servlets/actualizarHTML" class="form-group" onsubmit="enviar(this)">
+            <form method="POST"  action="../servlets/actualizarHTML" class="form-group" onsubmit="enviar(this)">
                 <input type="hidden" name="url" value="<%=url%>">
                 <input type="hidden" name="tipoCont" value="<%= tipoCont%>">
+               
                 <label class="subtitle">
                     Cuerpo del Articulo:
                 </label>  

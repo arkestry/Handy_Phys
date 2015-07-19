@@ -18,7 +18,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-         <script src="../js/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
         <script src="../js/muestra.js"></script>
        
         <%
@@ -30,10 +30,9 @@
             String nombreArchivo = request.getParameter("nombreArchivo");
             String url = classes.getHTML.obtenerURL(idArticulo);
             String cont = String.valueOf(request.getParameter("tipoCont"));
-            System.out.print(cont);
+          
             userBean user = (userBean)session.getAttribute("userData");
-            System.out.println(user);
-            System.out.println(url);
+           
         %>
         <script>
             function carga(){

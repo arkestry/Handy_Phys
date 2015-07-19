@@ -8,14 +8,16 @@ $(document).ready(function(){
   
 
    $('#summernote').summernote({
+       lang: 'es-ES',
        minHeight: null,
        minWidth: null,
-       focus: true,
+       focus: false,
        fontNames:['Arial','Courier', 'Times', 'Roboto Condensed', 'Verdana', 'Serif'],
        toolbar:[
-           ['Style', [ 'bold', 'italic', 'underline', 'fontsize', 'clear' ]],
-           ['Font', ['fontname' ,'superscript', 'color', 'subscript']],
-           ['Parrafo', ['ul', 'ol', 'paragraph']],
+           ['Style', [ 'bold', 'italic', 'underline', 'fontsize', 'strikethrough', 'clear' ]],
+           ['Color', [ 'color']],
+           ['Font', ['fontname' ,'superscript', 'subscript']],
+           ['Parrafo', ['ul', 'ol', 'paragraph', 'height']],
            ['Insertar', ['picture', 'link', 'table', 'hr']],
            ['Otros', ['undo', 'redo', 'help']]
        ]

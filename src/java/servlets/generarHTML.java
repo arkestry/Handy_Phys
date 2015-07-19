@@ -51,6 +51,10 @@ public class generarHTML extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
+        request.setCharacterEncoding("UTF-8"); //Con esto se arregla el problema de los acentos
+        response.setContentType("text/html; charset=utf-8"); // "" ""
+        
         HttpSession session = request.getSession();
         userBean usuario = (userBean)session.getAttribute("userData");
         String email = usuario.getEmail();
@@ -58,11 +62,10 @@ public class generarHTML extends HttpServlet {
         String code = request.getParameter("code");
         String section = request.getParameter("section");
         String redirect = "";
-        //title = title.replaceAll(" ", "-");
-        response.setContentType("text/html;charset=UTF-8");
+        String path = crearHTML(email, title, code, section);
+        
         try (PrintWriter out = response.getWriter()) {
             
-            String path = crearHTML(email, title, code, section);
             PreparedStatement ps = con.prepareStatement(sqlST);
           
             ps.setString(1,email); //correo
@@ -70,9 +73,10 @@ public class generarHTML extends HttpServlet {
                 ps.setInt(2,1); 
                 redirect = "../jsp/todo_articulos.jsp";
             }else{
-                if(section.equalsIgnoreCase("preguntas"))
-                ps.setInt(2,2);
-                redirect = "../jsp/todo_preguntas.jsp";
+                if(section.equalsIgnoreCase("preguntas")){
+                    ps.setInt(2,2);
+                    redirect = "../jsp/todo_preguntas.jsp";
+                }
             }
             ps.setInt(3,0); //valoracion
             ps.setString(4, title); //titulo
@@ -101,7 +105,6 @@ public class generarHTML extends HttpServlet {
             dir.mkdirs();
             fileName = (email+"-"+title+"-"+(ft.format(tiempo))+".html");
             file = new File(artDir,fileName);
-            System.out.println(file.getAbsolutePath());
             file.createNewFile();
         }else{
             if(section.equalsIgnoreCase("preguntas")){
