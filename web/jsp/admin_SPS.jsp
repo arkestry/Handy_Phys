@@ -17,7 +17,7 @@ SPS = Second Per Second
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Segundo a Segundo</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>

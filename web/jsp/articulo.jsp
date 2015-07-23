@@ -18,7 +18,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
+        <script src="../js/code.jquery.com_jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="../js/muestra.js"></script>
        
         <%

@@ -14,13 +14,13 @@
  
 <head>
 <title>Feedback detalle</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../css/estilo_menu.css">
-        <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-         <script src="../js/jquery-1.11.3.min.js"></script>
-        <script src="../js/muestra.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/estilo_menu.css">
+    <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/muestra.js"></script>
 </head>
 <body>
     <div>  

@@ -10,7 +10,7 @@
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>   
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-        <script src="./js/jquery-1.11.3.min.js"></script>
+        <script src="../js/jquery-1.11.3.min.js"></script>
          <script src="../js/muestra.js"></script>  
          <link rel="stylesheet" href="../css/estilo_menu.css">
         <title>JSP Page</title>
