@@ -1,0 +1,20 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   epun5rcs.mss.txt
+#	modified:   nbproject/private/private.xml
+#	new file:   src/java/servlets/accionesBlacklist.java
+#	modified:   web/WEB-INF/web.xml
+#	modified:   web/js/editor.js
+#	modified:   web/js/muestra.js
+#	deleted:    web/js/summernote-es-ES.js
+#	new file:   web/jsp/admin_blacklist.jsp
+#	modified:   web/pages/hacer_pregunta.html
+#	modified:   web/pages/nuevo_articulos.html
+#	modified:   zigma/zigma.sql
+#
+

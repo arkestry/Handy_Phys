@@ -32,6 +32,10 @@
         <servlet-name>delComment</servlet-name>
         <servlet-class>servlets.delComment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>accionesBlacklist</servlet-name>
+        <servlet-class>servlets.accionesBlacklist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>delComment</servlet-name>
         <url-pattern>/servlets/delComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accionesBlacklist</servlet-name>
+        <url-pattern>/servlets/accionesBlacklist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

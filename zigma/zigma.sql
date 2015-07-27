@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `zigma` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `zigma`;
--- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: localhost    Database: zigma
 -- ------------------------------------------------------
--- Server version	5.5.41-0ubuntu0.14.04.1
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +35,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +97,30 @@ CREATE TABLE `avisos` (
 LOCK TABLES `avisos` WRITE;
 /*!40000 ALTER TABLE `avisos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `avisos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `blacklist`
+--
+
+DROP TABLE IF EXISTS `blacklist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blacklist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `palabra` varchar(50) NOT NULL,
+  `estado` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blacklist`
+--
+
+LOCK TABLES `blacklist` WRITE;
+/*!40000 ALTER TABLE `blacklist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `blacklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -212,7 +234,7 @@ CREATE TABLE `coms` (
   `horaFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cuerpo` text,
   PRIMARY KEY (`idCom`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,38 +358,36 @@ INSERT INTO `feedback` VALUES (1,28,'asd','2015-07-08 19:44:11'),(2,28,'asd','20
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `getweblog`
+-- Temporary view structure for view `getweblog`
 --
 
 DROP TABLE IF EXISTS `getweblog`;
 /*!50001 DROP VIEW IF EXISTS `getweblog`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `getweblog` (
-  `ta` tinyint NOT NULL,
-  `desc` tinyint NOT NULL,
-  `ht` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `getweblog` AS SELECT 
+ 1 AS `ta`,
+ 1 AS `desc`,
+ 1 AS `ht`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `mostrararticulos`
+-- Temporary view structure for view `mostrararticulos`
 --
 
 DROP TABLE IF EXISTS `mostrararticulos`;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `mostrararticulos` (
-  `idArticulo` tinyint NOT NULL,
-  `idUsuario` tinyint NOT NULL,
-  `Titulo` tinyint NOT NULL,
-  `fecha` tinyint NOT NULL,
-  `valoracion` tinyint NOT NULL,
-  `idTipoCont` tinyint NOT NULL,
-  `url` tinyint NOT NULL,
-  `nickname` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `mostrararticulos` AS SELECT 
+ 1 AS `idArticulo`,
+ 1 AS `idUsuario`,
+ 1 AS `Titulo`,
+ 1 AS `fecha`,
+ 1 AS `valoracion`,
+ 1 AS `idTipoCont`,
+ 1 AS `url`,
+ 1 AS `nickname`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -424,20 +444,19 @@ LOCK TABLES `prioridad` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `prueba`
+-- Temporary view structure for view `prueba`
 --
 
 DROP TABLE IF EXISTS `prueba`;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `prueba` (
-  `idAvisoint` tinyint NOT NULL,
-  `idUsuario` tinyint NOT NULL,
-  `idPrioridad` tinyint NOT NULL,
-  `idGrupo` tinyint NOT NULL,
-  `contenidoAviso` tinyint NOT NULL
-) ENGINE=MyISAM */;
+/*!50001 CREATE VIEW `prueba` AS SELECT 
+ 1 AS `idAvisoint`,
+ 1 AS `idUsuario`,
+ 1 AS `idPrioridad`,
+ 1 AS `idGrupo`,
+ 1 AS `contenidoAviso`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -601,6 +620,20 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Temporary view structure for view `verblacklist`
+--
+
+DROP TABLE IF EXISTS `verblacklist`;
+/*!50001 DROP VIEW IF EXISTS `verblacklist`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `verblacklist` AS SELECT 
+ 1 AS `id`,
+ 1 AS `palabra`,
+ 1 AS `estado`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `weblog`
 --
 
@@ -615,7 +648,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -624,6 +657,7 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
+INSERT INTO `weblog` VALUES (1,4,'ivan  publico nuevo articulo asasdas','2015-07-27 17:25:24'),(2,4,'ivan  publico nuevo articulo Articulos','2015-07-27 17:26:04');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -671,6 +705,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `cambiar_blacklist` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiar_blacklist`(in ID int, in ESTADO boolean)
+begin
+	update blacklist set blacklist.estado = ESTADO where blacklist.id = ID;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `crearUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -703,6 +756,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delComment`(in idCom int)
 begin
 	delete from coms where coms.idCom = idCom;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `eliminar_blacklist` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_blacklist`(in ID int)
+begin
+	delete from blacklist where blacklist.id = ID ;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -882,6 +954,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertar_blacklist` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_blacklist`( in PALABRA varchar(50))
+begin
+	insert into blacklist (palabra) values (PALABRA);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `loginCheck` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1014,7 +1105,6 @@ DELIMITER ;
 -- Final view structure for view `getweblog`
 --
 
-/*!50001 DROP TABLE IF EXISTS `getweblog`*/;
 /*!50001 DROP VIEW IF EXISTS `getweblog`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1033,7 +1123,6 @@ DELIMITER ;
 -- Final view structure for view `mostrararticulos`
 --
 
-/*!50001 DROP TABLE IF EXISTS `mostrararticulos`*/;
 /*!50001 DROP VIEW IF EXISTS `mostrararticulos`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1052,7 +1141,6 @@ DELIMITER ;
 -- Final view structure for view `prueba`
 --
 
-/*!50001 DROP TABLE IF EXISTS `prueba`*/;
 /*!50001 DROP VIEW IF EXISTS `prueba`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -1066,6 +1154,24 @@ DELIMITER ;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `verblacklist`
+--
+
+/*!50001 DROP VIEW IF EXISTS `verblacklist`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `verblacklist` AS select `blacklist`.`id` AS `id`,`blacklist`.`palabra` AS `palabra`,`blacklist`.`estado` AS `estado` from `blacklist` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1076,4 +1182,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-15 23:04:14
+-- Dump completed on 2015-07-27 12:32:08

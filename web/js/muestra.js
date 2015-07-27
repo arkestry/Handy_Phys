@@ -13,7 +13,9 @@ $(document).ready(function(){
     $('.mostrarLink').click(function(){
         $('.mostrarSeccion').slideToggle(1000);
     });
-
+    $('#btnAdd').click(function(){ //Blacklist
+       $('#formuAdd').fadeToggle(300); 
+    }); //finblacklist
     $('.zigma').animate({width: '36px', height: '36px', top: '0.5em', left: '2em'},1000); //zigma animation
     $('.log').click(function(){
        $('.keys').slideToggle('fast'); 
