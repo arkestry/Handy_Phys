@@ -38,23 +38,84 @@ public class accionesBlacklist extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            switch(request.getParameter("cual")){
+                case "nuevo":
+                {
+                    agregar(request.getParameter("palabra"));
+                    response.sendRedirect("../jsp/admin_blacklist.jsp");
+                    break;
+                }
+                case "existe":
+                {
+                    if(request.getParameter("accion").equals("true"))
+                    {
+                        estado(Integer.parseInt(request.getParameter("id")), true);
+                        response.sendRedirect("../jsp/admin_blacklist.jsp");
+                    }
+                    else
+                    {
+                        if(request.getParameter("accion").equals("false"))
+                        {
+                            estado(Integer.parseInt(request.getParameter("id")), false);
+                            response.sendRedirect("../jsp/admin_blacklist.jsp");
+                        }
+                        else
+                        {
+                            if(request.getParameter("accion").equals("del")){
+                                eliminar(Integer.parseInt(request.getParameter("id")));
+                                response.sendRedirect("../jsp/admin_blacklist.jsp");
+                            }
+                        }
+                    }
+                    break;
+                }
+                case "borrar":
+                {
+                    eliminarTodo();
+                    response.sendRedirect("../jsp/admin_blacklist.jsp");
+                    break;
+                }
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
-    private void estado(int ID, boolean isActive) throws SQLException{
+    private void estado(int ID, boolean isActive){
+        try{
         PreparedStatement ps = con.prepareStatement("call cambiar_blacklist(?, ?);");
         ps.setInt(1, ID);
         ps.setBoolean(2, isActive);
         ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-    private void eliminar(int ID) throws SQLException{
+    private void eliminar(int ID){
+        try{
         PreparedStatement ps = con.prepareStatement("call eliminar_blacklist(?);");
         ps.setInt(1, ID);
         ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-    private void agregar(String palabra) throws SQLException{
+    private void agregar(String palabra){
+        try{
         PreparedStatement ps = con.prepareStatement("call insertar_blacklist(?);");
         ps.setString(1, palabra);
         ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    private void eliminarTodo(){
+        try{
+            PreparedStatement ps = con.prepareStatement("call eliminarTodo_blacklist();");
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

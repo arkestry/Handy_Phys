@@ -179,7 +179,7 @@
             <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>
             <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>
             <li><a href="pages/registrate.html" target="iframe">Registrar profesor</a></li>
-            <li><a href="pages/admin_blacklist.html" target="iframe">BlackList</a></li>
+            <li><a href="jsp/admin_blacklist.jsp" target="iframe">BlackList</a></li>
           
             <%}%>
         </ul>

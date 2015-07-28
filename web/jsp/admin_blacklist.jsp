@@ -24,6 +24,32 @@
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../js/jquery-1.11.3.min.js"></script>
         <script src="../js/muestra.js"></script>
+        <script>
+            function reallyAll(formulario){
+                if(confirm("En verdad quiere eliminar todas las palabras?")===true){
+                    formulario.submit();
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            function reallyCombo(formulario){
+                var combo = document.getElementById("combo1");
+                for(var i = 0; i < combo.options.length; i++){
+                    if(combo.options[i].selected){
+                        if(combo.options[i].value === "del"){
+                            if(confirm("Seguro que desea eliminar esa palabra?") === true){
+                                formulario.submit();
+                                return true;
+                            }else{
+                                return false;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        </script>
     </head>
     <body class="body_blacklist">
         <div class="page-header">   
@@ -41,15 +67,24 @@
                     <th>Accion</th>
                 </tr>
                 <% while(rs.next()){ %>
-                <form method="POST" action="accionesBlacklist">
+                <form method="POST" action="../servlets/accionesBlacklist" onsubmit="return reallyCombo(this)">
                     <input type="hidden" name="cual" value="existe">
                     <input name="id" type="hidden" value="<%= rs.getString(1) %>">
                     <tr class="table_text">
                         <td><%= rs.getString(1) %></td>
                         <td><%= rs.getString(2) %></td>
-                        <td><%= rs.getString(3) %></td>
+                        <%if(rs.getBoolean(3) == true){ %>
+                        <td><%= "Activada" %></td>
+                        <% }
+                        else
+                        {
+                        if(rs.getBoolean(3) == false){ %>
+                        <td> <%= "Desactivado" %></td>  
+                        <% }
+                        }%>
                         <td>
-                            <select name="accion" class="form-control">
+                            <select onchange="this.form.submit();"  id="combo1" name="accion" class="form-control">
+                                <option>Seleccione una opción</option>
                                 <option value="true">Activar</option>
                                 <option value="false">Desactivar</option>
                                 <option value="del">Eliminar</option>
@@ -57,18 +92,19 @@
                         </td>
                     </tr>
                 </form>
+                <% } %>
             </table> 
-            <button style="float: left" type="button" value="Ejecutar" class="btn btn-default" >Ejecutar</button>
             
             <button id="btnAdd" style="float: left; margin-left: 10px" type="button" value="Agregar" class="btn btn-primary">Agregar</button>
-            <form id="formuAdd" method="POST" action="addWord" style="float: left; padding: 2px; display: none">
+            <form id="formuAdd" method="POST" action="../servlets/accionesBlacklist" style="float: left; padding: 2px; display: none">
                 <input name="cual" value="nuevo" type="hidden">
-                <input type="text" style="border-radius: 5px; border: 1px #1E824C dotted" maxlength="50" size="50">
-                <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus-sign"></span>
+                <input name="palabra" type="text" style="color: #141414 ;border-radius: 5px; border: 1px #1E824C dotted" maxlength="50" size="50">
+                <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus-sign"></span></button>
             </form>
-            <form action="delWord" method="POST">
-                <input type="hidden" value="borrar" type="hidden"
-                <button type="button" value="Eliminar todo" style="float: right" class="btn btn-danger" >Eliminar TODO</button>
+            <br><br>
+            <form action="../servlets/accionesBlacklist" method="POST" onsubmit="return reallyAll(this)">
+                <input type="hidden" value="borrar" name="cual" type="hidden">
+                <button type="submit"  style="float: right" class="btn btn-danger" > Eliminar Todo </button>
             </form>
         </section>
             

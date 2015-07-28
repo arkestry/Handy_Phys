@@ -8,6 +8,7 @@ $(document).ready(function(){
   
 
    $('#summernote').summernote({
+      
        minHeight: null,
        minWidth: null,
        focus: false,
