@@ -6,10 +6,18 @@
 
 package servlets;
 
+import classes.sql;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,21 +47,40 @@ public class actualizarHTML extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        String url, code ;
+        url = request.getParameter("url");
+        code = request.getParameter("code");
+        ArrayList<String> palabrotas = new ArrayList();
+        Connection con = sql.conectar();
+        boolean malasPalabras = false;
+        String redirect = "";
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             String url, code ;
-             url = request.getParameter("url");
-             code = request.getParameter("code");
-             actualizarHTML(url, code);
-             if(request.getParameter("tipoCont").equals("1")){
-                 response.sendRedirect("../jsp/todo_articulos.jsp");
-             }else{
-                 if(request.getParameter("tipoCont").equals("2")){
-                     response.sendRedirect("../jsp/todo_preguntas.jsp");
-                 }
-             }
+            PreparedStatement ps0 = con.prepareStatement("select * from verBlacklist"); //validar codigo con blacklist
+            ResultSet rs = ps0.executeQuery();
+            while(rs.next()){
+                if(code.contains(rs.getString(2)) && (rs.getBoolean(3) == true)){
+                    malasPalabras = true;
+                }
+            }
+            if(malasPalabras == false){
+                
+                actualizarHTML(url, code);
+                if(request.getParameter("tipoCont").equals("1")){
+                    response.sendRedirect("../jsp/todo_articulos.jsp");
+                }else{
+                    if(request.getParameter("tipoCont").equals("2")){
+                        response.sendRedirect("../jsp/todo_preguntas.jsp");
+                    }
+                }
+            }else{
+                if(malasPalabras == true){
+                    out.println("<script> alert('Has introducido una palabra que esta bloqueada, favor de cambiarla'); </script>");
+                    
+                }
+            }
+            
              
         }
     }
@@ -78,7 +105,11 @@ protected String actualizarHTML(String url, String code) throws IOException{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(actualizarHTML.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -92,7 +123,11 @@ protected String actualizarHTML(String url, String code) throws IOException{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(actualizarHTML.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

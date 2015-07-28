@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -62,29 +63,43 @@ public class generarHTML extends HttpServlet {
         String code = request.getParameter("code");
         String section = request.getParameter("section");
         String redirect = "";
-        String path = crearHTML(email, title, code, section);
         
+        ArrayList<String> palabrotas = new ArrayList();
+        boolean malasPalabras = false;
         try (PrintWriter out = response.getWriter()) {
-            
-            PreparedStatement ps = con.prepareStatement(sqlST);
-          
-            ps.setString(1,email); //correo
-            if(section.equalsIgnoreCase("articulos")){ //tipo de contenido
-                ps.setInt(2,1); 
-                redirect = "../jsp/todo_articulos.jsp";
-            }else{
-                if(section.equalsIgnoreCase("preguntas")){
-                    ps.setInt(2,2);
-                    redirect = "../jsp/todo_preguntas.jsp";
+            PreparedStatement ps0 = con.prepareStatement("select * from verBlacklist"); //validar codigo con blacklist
+            ResultSet rs = ps0.executeQuery();
+            while(rs.next()){
+                if(code.contains(rs.getString(2)) && (rs.getBoolean(3) == true)){
+                    malasPalabras = true;
                 }
             }
-            ps.setInt(3,0); //valoracion
-            ps.setString(4, title); //titulo
-            ps.setString(5, ft.format(tiempo.getTime())); //fecha
-            ps.setString(6, path); //url
-            ps.executeUpdate();
-            response.sendRedirect(redirect);
             
+            if(malasPalabras == false){
+                String path = crearHTML(email, title, code, section);
+                PreparedStatement ps = con.prepareStatement(sqlST);
+                ps.setString(1,email); //correo
+                if(section.equalsIgnoreCase("articulos")){ //tipo de contenido
+                    ps.setInt(2,1); 
+                    redirect = "../jsp/todo_articulos.jsp";
+                }else{
+                    if(section.equalsIgnoreCase("preguntas")){
+                        ps.setInt(2,2);
+                        redirect = "../jsp/todo_preguntas.jsp";
+                    }
+                }
+                ps.setInt(3,0); //valoracion
+                ps.setString(4, title); //titulo
+                ps.setString(5, ft.format(tiempo.getTime())); //fecha
+                ps.setString(6, path); //url
+                ps.executeUpdate();
+                response.sendRedirect(redirect);
+            }else{
+                if(malasPalabras == true){
+                    out.println("<script> alert('Has introducido una palabra que esta bloqueada, favor de cambiarla'); </script>");
+                    
+                }
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
