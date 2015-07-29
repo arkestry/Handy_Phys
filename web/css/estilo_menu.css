@@ -709,3 +709,25 @@ footer a:hover{
 }
 
 /*Fin articulos.jsp*/
+/*Estilo examenes*/
+.examenesContent{
+    background-color: #ECF0F1;
+    color: #141414;
+    width: 90%;
+    height: 100%;
+    font-size: 18px;
+    min-height: 5em;
+    padding: 1em;
+}
+.examenesContent ul li{
+    color: #141414;
+    background: #ECF0F1;
+}
+.subirExamen{
+    background-color: #F4B350;
+    min-height: 28px;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    font-size: 24px;
+}

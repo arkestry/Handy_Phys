@@ -61,12 +61,7 @@
                     <option value="1">Fisica</option>
                 </select>
             </section>
-            <section class="form-group col-xs-12">
-                <label for="grupo" class="text-left control-label col-xs-4">Grupo al que se le da clase: </label>
-                <section class="col-xs-1">
-                    <input name="grupo" pattern="[A-Za-z0-9]+" maxlength="10" title="Solo caracteres alfanumericos, maximo 10" type="text" class="form-control" id="grupo"/> 
-                </section>
-            </section>
+            <input name="grupo" value="null" type="hidden" class="form-control" id="grupo"/> 
             <center> 
                 <input id="registrar" class="btn btn-success" type="submit" value="Registrarse"/>
                 <input id="cancelar" class="btn btn-danger" type="reset" value="Cancelar"/>

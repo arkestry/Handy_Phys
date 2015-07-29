@@ -20,7 +20,9 @@ $(document).ready(function(){
     $('.log').click(function(){
        $('.keys').slideToggle('fast'); 
     });
-  
+    $('#btnPaSubir').click(function(){
+        $('#subirExamen').slideToggle(500);
+    })
     $('#dropdownMenu1').click(function(){
        $('#filtroArt').fadeToggle(500); 
     });

@@ -17,12 +17,18 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -59,14 +65,18 @@ public class generarHTML extends HttpServlet {
         HttpSession session = request.getSession();
         userBean usuario = (userBean)session.getAttribute("userData");
         String email = usuario.getEmail();
-        String title = request.getParameter("title");
-        String code = request.getParameter("code");
-        String section = request.getParameter("section");
-        String redirect = "";
+        String title = "";
+        String[] datos;
+        String code = "";
+        try{
+            title = request.getParameter("title");
+            code = request.getParameter("code");
+        }catch(Exception e){}
         
-        ArrayList<String> palabrotas = new ArrayList();
+        String redirect = "";
         boolean malasPalabras = false;
         try (PrintWriter out = response.getWriter()) {
+            
             PreparedStatement ps0 = con.prepareStatement("select * from verBlacklist"); //validar codigo con blacklist
             ResultSet rs = ps0.executeQuery();
             while(rs.next()){
@@ -74,9 +84,23 @@ public class generarHTML extends HttpServlet {
                     malasPalabras = true;
                 }
             }
-            
             if(malasPalabras == false){
-                String path = crearHTML(email, title, code, section);
+                String path = "";
+                String section = request.getParameter("section");
+                if(section == null){
+                    section = "examenes";
+                }
+                System.out.println(section);
+                if(section.equalsIgnoreCase("articulos") || section.equalsIgnoreCase("preguntas")){
+                    path = crearHTML(email, title, code, section);
+                    
+                }else{
+                    if(section.equalsIgnoreCase("examenes")){
+                        datos = subirExamen(request);
+                        title = datos[0];
+                        path = datos[1];
+                    }
+                }
                 PreparedStatement ps = con.prepareStatement(sqlST);
                 ps.setString(1,email); //correo
                 if(section.equalsIgnoreCase("articulos")){ //tipo de contenido
@@ -86,6 +110,11 @@ public class generarHTML extends HttpServlet {
                     if(section.equalsIgnoreCase("preguntas")){
                         ps.setInt(2,2);
                         redirect = "../jsp/todo_preguntas.jsp";
+                    }else{
+                        if(section.equalsIgnoreCase("examenes")){
+                            ps.setInt(2,3);
+                            redirect = "../jsp/examenes.jsp";
+                        }
                     }
                 }
                 ps.setInt(3,0); //valoracion
@@ -136,6 +165,36 @@ public class generarHTML extends HttpServlet {
         return finalDir = fileName;
     }
     
+    protected String[] subirExamen(HttpServletRequest request) throws FileUploadException, Exception{
+        String datos[] = new String[2];
+        String examDir = config.getServletContext().getRealPath("/examenes/")+"/";
+        File dir = new File(examDir);
+        dir.mkdirs();
+        
+        DiskFileItemFactory fabrica = new DiskFileItemFactory();
+        fabrica.setSizeThreshold(1024);
+        fabrica.setRepository(dir);
+        
+        ServletFileUpload upload = new ServletFileUpload(fabrica);
+        List<FileItem> partes = upload.parseRequest(request);
+        
+        
+        for(FileItem item : partes)
+        {
+            if(item.isFormField()){
+                datos[0] = item.getString();
+                System.out.println(item.getString());
+            }else{
+                System.out.println("Subiendo");
+                File archivo = new File(examDir, item.getName());
+                item.write(archivo);
+                datos[1] = item.getName();
+               
+            }
+        }
+        return datos;
+    }
+            
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

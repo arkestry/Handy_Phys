@@ -154,7 +154,7 @@
                     <li><a class="sublist" href="jsp/todo_articulos.jsp" target="iframe">Teoria</a></li>
                     <li><a class="sublist" href="pages/todo_problemas.html" target="iframe">Problemas</a></li>
                     <li><a class="sublist" href="jsp/todo_preguntas.jsp" target="iframe">Preguntas</a></li>
-                    <!--li>Examenes</li-->
+                    <li><a class="sublist" href="jsp/examenes.jsp" target="iframe">Examenes</a></li>
                     <li><a class="sublist" href="pages/simulExamen.html" target="iframe">Simulador Examen</a></li>
                 </ul>
             </section>
@@ -178,7 +178,7 @@
             <li><a href="pages/admin_SPS.html" target="iframe">Registro de Actividad</a></li>
             <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>
             <li><a href="pages/admin_reporte.html" target="iframe">Reportes</a></li>
-            <li><a href="pages/registrate.html" target="iframe">Registrar profesor</a></li>
+            <li><a href="jsp/registroProfe.jsp" target="iframe">Registrar profesor</a></li>
             <li><a href="jsp/admin_blacklist.jsp" target="iframe">BlackList</a></li>
           
             <%}%>

@@ -36,6 +36,10 @@
         <servlet-name>accionesBlacklist</servlet-name>
         <servlet-class>servlets.accionesBlacklist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>subirExam</servlet-name>
+        <servlet-class>servlets.subirExam</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>accionesBlacklist</servlet-name>
         <url-pattern>/servlets/accionesBlacklist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>subirExam</servlet-name>
+        <url-pattern>/servlets/subirExam</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
