@@ -45,6 +45,10 @@ public class borrarHTML extends HttpServlet {
                 }else{
                     if(request.getParameter("tipoCont").equals("2")){
                         response.sendRedirect("../jsp/todo_preguntas.jsp");
+                    }else{
+                        if(request.getParameter("tipoCont").equals("3")){
+                            response.sendRedirect("../jsp/examenes.jsp");
+                        }
                     }
                 }
            }catch(Exception e){

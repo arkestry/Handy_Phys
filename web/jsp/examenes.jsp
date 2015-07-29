@@ -4,12 +4,14 @@
     Author     : ivan-hdz
 --%>
 
+<%@page import="beans.userBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.sql"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    userBean usuario = (userBean)session.getAttribute("userData");
     Connection con = sql.conectar();
     PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont = 3;");
     ResultSet rs = ps.executeQuery();
@@ -25,6 +27,16 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <script src="../js/jquery-1.11.3.min.js"></script>
         <script src="../js/muestra.js"></script>
+        <script>
+            function really(formu){
+                if(confirm('En verdad desea eliminar este examen?') === true){
+                    formu.submit();
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        </script>
     </head>
     <body>
         <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
@@ -55,7 +67,16 @@
                     <td><%= rs.getString(8) %></td>
                     <td><%= rs.getString(4) %></td>
                     <td><%= rs.getString(5) %></td>
-                    <td><a href="../examenes/<%=rs.getString(7)%>"><button class="btn btn-info" type="button">Descargar</button></a></td>
+                    <td>
+                        <a href="../examenes/<%=rs.getString(7)%>"><button style="position: relative; top: 0.5em" class="btn btn-info" type="button">Descargar</button></a>
+                        <% if(usuario.getIdUsuario() == rs.getInt(2)){ %>
+                        <form onsubmit="return really(this)" action="../servlets/borrarHTML">
+                            <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
+                            <input type="hidden" value="3" name="tipoCont">
+                            <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative; top: -1.85em" value="Eliminar Examen">
+                        </form>
+                        <% }%>
+                    </td>
                 </tr>
                 <%
                     }
