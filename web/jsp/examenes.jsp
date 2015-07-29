@@ -55,7 +55,7 @@
                     <td><%= rs.getString(8) %></td>
                     <td><%= rs.getString(4) %></td>
                     <td><%= rs.getString(5) %></td>
-                    <td><a href="<%=rs.getString(7)%>"><button class="btn btn-info" type="button">Descargar</button></a></td>
+                    <td><a href="../examenes/<%=rs.getString(7)%>"><button class="btn btn-info" type="button">Descargar</button></a></td>
                 </tr>
                 <%
                     }
