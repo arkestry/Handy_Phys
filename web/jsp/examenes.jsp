@@ -28,6 +28,7 @@
         <script src="../js/jquery-1.11.3.min.js"></script>
         <script src="../js/muestra.js"></script>
         <script>
+            
             function really(formu){
                 if(confirm('En verdad desea eliminar este examen?') === true){
                     formu.submit();
@@ -38,7 +39,7 @@
             }
         </script>
     </head>
-    <body>
+    <body onload="alert('Fue lo mejor que pude hacer...')">
         <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
         <section id="subirExamen" style="display: none">
             <form class="subirExamen" method="POST" action="../servlets/generarHTML" enctype="multipart/form-data">
@@ -57,7 +58,7 @@
                     <th>Autor</th>
                     <th>Fecha de publicacion</th>
                     <th>Valoracion</th>
-                    <th>Descargar</th>
+                    <th>Acciones</th>
                 </tr>
                 <%
                     while(rs.next()){
@@ -74,6 +75,19 @@
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="3" name="tipoCont">
                             <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative; top: -1.85em" value="Eliminar Examen">
+                        </form>
+                        <form action="../servlets/valorar" method="POST">
+                            <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
+                            <input type="hidden" value="3" name="tipoCont">
+                            <input id="valor" type="hidden" name="valor">
+                            <section style="position: relative; display: inline; top: 1em" id="stars">
+                                <label class="text-uppercase text-warning" for="stars">Valorar
+                                    <span name="s1" id="s1" class="glyphicon glyphicon-star-empty"></span>
+                                    <span name="s2" id="s2" class="glyphicon glyphicon-star-empty"></span>
+                                    <span name="s3" id="s3" class="glyphicon glyphicon-star-empty"></span>
+                                    <span name="s4" id="s4" class="glyphicon glyphicon-star-empty"></span>
+                                    <span name="s5" id="s5" class="glyphicon glyphicon-star-empty"></span></label>
+                            </section>
                         </form>
                         <% }%>
                     </td>

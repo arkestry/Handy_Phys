@@ -22,16 +22,52 @@ $(document).ready(function(){
     });
     $('#btnPaSubir').click(function(){
         $('#subirExamen').slideToggle(500);
-    })
+    });
     $('#dropdownMenu1').click(function(){
        $('#filtroArt').fadeToggle(500); 
     });
     $('#menuNo').hover(function(){
        $('.cajaNo').fadeToggle(500);
     });
+    //valoraciones
+    $('span[name = s1]').hover(function(){
+        $(this).closest('#s1').toggleClass("glyphicon-star-empty glyphicon-star");
+        $(this).closest('#s1').click(function(){
+            $('input[name = valor]').attr('value', '1');
+            $(this).closest('form').submit();
+       });
+    });
+    $('span[name = s2]').hover(function(){
+       $(this).closest('#s2').toggleClass("glyphicon-star-empty glyphicon-star");
+        $(this).closest('#s2').click(function(){
+            $('input[name = valor]').attr('value', '2');
+            $(this).closest('form').submit();
+       });
+    });
+    $('span[name = s3]').hover(function(){
+       $(this).closest('#s3').toggleClass("glyphicon-star-empty glyphicon-star");
+        $(this).closest('#s3').click(function(){
+            $('input[name = valor]').attr('value', '3');
+            $(this).closest('form').submit();
+       });
+    });
+    $('span[name = s4]').hover(function(){
+       $(this).closest('#s4').toggleClass("glyphicon-star-empty glyphicon-star");
+        $(this).closest('#s4').click(function(){
+            $('input[name = valor]').attr('value', '4');
+            $(this).closest('form').submit();
+       });
+    });
+    $('span[name = s5]').hover(function(){
+       $(this).closest('#s5').toggleClass("glyphicon-star-empty glyphicon-star");
+        $(this).closest('#s5').click(function(){
+            $('input[name = valor]').attr('value', '5');
+            $(this).closest('form').submit();
+       });
+    });
+  
     
-    
-             
+           
 });
 
 

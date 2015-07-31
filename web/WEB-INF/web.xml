@@ -40,6 +40,10 @@
         <servlet-name>subirExam</servlet-name>
         <servlet-class>servlets.subirExam</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>valorar</servlet-name>
+        <servlet-class>servlets.valorar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>subirExam</servlet-name>
         <url-pattern>/servlets/subirExam</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>valorar</servlet-name>
+        <url-pattern>/servlets/valorar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

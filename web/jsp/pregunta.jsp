@@ -92,6 +92,19 @@
         </section>
             <p><small class="text-center">Fecha<small><%=fecha%></small></small></p>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){ %>
+            <form action="../servlets/valorar" method="POST">
+                <input type="hidden" value="<%= idArticulo %>" name="idArticulo">
+                <input type="hidden" value="3" name="tipoCont">
+                <input id="valor" type="hidden" name="valor">
+                <section style="position: relative; display: inline; top: -1em" id="stars">
+                    <label class="text-uppercase text-warning" for="stars">Valorar
+                        <span name="s1" id="s1" class="glyphicon glyphicon-star-empty"></span>
+                        <span name="s2" id="s2" class="glyphicon glyphicon-star-empty"></span>
+                        <span name="s3" id="s3" class="glyphicon glyphicon-star-empty"></span>
+                        <span name="s4" id="s4" class="glyphicon glyphicon-star-empty"></span>
+                        <span name="s5" id="s5" class="glyphicon glyphicon-star-empty"></span></label>
+                </section>
+            </form>
             <form  class="form-group " style="display: inline; width: 40%; float: left "  action="../servlets/addComment" method="post">
             <label for="com">
                 Escriba su comentario amable lector de esta bonita página¡gina que sin usted no podrÃ­a existir ;)
