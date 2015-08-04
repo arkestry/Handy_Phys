@@ -34,7 +34,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  *
  * @author ivan
  */
-public class generarHTML extends HttpServlet {
+public class generar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -79,18 +79,17 @@ public class generarHTML extends HttpServlet {
             
             PreparedStatement ps0 = con.prepareStatement("select * from verBlacklist"); //validar codigo con blacklist
             ResultSet rs = ps0.executeQuery();
-            while(rs.next()){
+            while(rs.next()){ //Recorriendo palabras de la blacklist
                 if(code.contains(rs.getString(2)) && (rs.getBoolean(3) == true)){
                     malasPalabras = true;
                 }
             }
-            if(malasPalabras == false){
+            if(malasPalabras == false){ //en caso de que no se encuetre una mala palabra
                 String path = "";
                 String section = request.getParameter("section");
                 if(section == null){
                     section = "examenes";
                 }
-                System.out.println(section);
                 if(section.equalsIgnoreCase("articulos") || section.equalsIgnoreCase("preguntas")){
                     path = crearHTML(email, title, code, section);
                     
@@ -167,8 +166,8 @@ public class generarHTML extends HttpServlet {
     
     protected String[] subirExamen(HttpServletRequest request) throws FileUploadException, Exception{
         String datos[] = new String[2];
-        String examDir = config.getServletContext().getRealPath("/examenes/")+"/";
-        File dir = new File(examDir);
+        String imgDir = config.getServletContext().getRealPath("/images/")+"/";
+        File dir = new File(imgDir);
         dir.mkdirs();
         
         DiskFileItemFactory fabrica = new DiskFileItemFactory();
@@ -186,7 +185,7 @@ public class generarHTML extends HttpServlet {
                 System.out.println(item.getString());
             }else{
                 System.out.println("Subiendo");
-                File archivo = new File(examDir, item.getName());
+                File archivo = new File(imgDir, item.getName());
                 item.write(archivo);
                 datos[1] = item.getName();
                

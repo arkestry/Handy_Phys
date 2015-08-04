@@ -65,7 +65,7 @@ $(document).ready(function(){
             $(this).closest('form').submit();
        });
     });
-  
+  //fin valoraciones
     
            
 });
@@ -75,10 +75,11 @@ $(document).ready(function(){
     $(menu).slideToggle(800);
     }
 var entero = 2  ;
-function cantidad(){
+function cantidad(){ //Crear simulador de examen
     
     var todo = document.getElementById("todo");
-    var modelo = "<section> <br><hr><section><label>Titulo del reactivo: </label><input type='text' size='35' name='titPregunta"+entero+"'> </section><section><label>Cuerpo:</label><br><textarea name='cuerPregunta"+entero+"' class='areaTexto' rows='5' placeholder='Escriba aquí'></textarea></section><section><label>Respuestas: </label><br><input type='radio' name='respPregunta"+entero+"'> a) <input type='text' size='20'><input type='radio' name='respPregunta"+entero+"'> b) <input type='text' size='20'><br><br><input type='radio' name='respPregunta"+entero+"'> c) <input type='text' size='20'><input type='radio' name='respPregunta"+entero+"'> d) <input type='text' size='20'><br><br></section><section><label>La respuesta correcta: </label><select name='correcta' style='color: #141414'><option>a</option><option>b</option><option>c</option><option>d</option></select></section><br><hr></section>";
+    var modelo = " <section class='col-md-12'><hr>  <h2>Pregunta "+entero+"</h2><section class='col-md-4'><label><h3>Pregunta:</h3><textarea name='pregunta"+entero+"' class='areaTexto' rows='5' placeholder='Escriba aquí'></textarea></label></section><section class='col-md-4'> <h3><label>Respuestas: </label></h3><label>A) <input name='respuesta"+entero+".a' type='text' size='20'></label><label>B) <input name='respuesta"+entero+".b' type='text' size='20'></label><br><br><label>C) <input name='respuesta"+entero+".c' type='text' size='20'></label> <label>D) <input name='respuesta"+entero+".d' type='text' size='20'></label><br><br></section><section class='col-md-4'><h3><label>La respuesta correcta es: </label></h3><select class='form-control-static' name='correcta"+entero+"' style='color: #141414; position: relative; top: -3.2em; left: 20em'><option>A)</option><option>B)</option><option>C)</option><option>D)</option></select></section><br><hr></section>";
     todo.innerHTML += modelo;
     entero++;
 }
+//fin simulador

@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>generarHTML</servlet-name>
-        <servlet-class>servlets.generarHTML</servlet-class>
+        <servlet-class>servlets.generar</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>articulo</servlet-name>
@@ -37,12 +37,16 @@
         <servlet-class>servlets.accionesBlacklist</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>subirExam</servlet-name>
-        <servlet-class>servlets.subirExam</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>valorar</servlet-name>
         <servlet-class>servlets.valorar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>summernote</servlet-name>
+        <servlet-class>servlets.summernote</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>subirExam</servlet-name>
+        <servlet-class>servlets.subirExam</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
@@ -81,12 +85,16 @@
         <url-pattern>/servlets/accionesBlacklist</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>subirExam</servlet-name>
-        <url-pattern>/servlets/subirExam</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>valorar</servlet-name>
         <url-pattern>/servlets/valorar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>summernote</servlet-name>
+        <url-pattern>/servlets/summernote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>subirExam</servlet-name>
+        <url-pattern>/servlets/subirExam</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
