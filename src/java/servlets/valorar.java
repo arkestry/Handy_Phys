@@ -40,14 +40,20 @@ public class valorar extends HttpServlet {
         int idUsuario = usuario.getIdUsuario();
         int valor = Integer.parseInt(request.getParameter("valor"));
         int idArticulo = Integer.parseInt(request.getParameter("idArticulo"));
+        int idTipoCont = Integer.parseInt(request.getParameter("tipoCont"));
         try (PrintWriter out = response.getWriter()) {
-            PreparedStatement ps = con.prepareStatement("call valorar(?,?,?)");
+            PreparedStatement ps = con.prepareStatement("call valorar(?,?,?,?)");
             ps.setInt(1, valor);
             ps.setInt(2, idArticulo);
             ps.setInt(3, idUsuario);
+            ps.setInt(4, idTipoCont);
             ps.executeUpdate();
-            if(Integer.parseInt(request.getParameter("tipoCont")) == 3){
+            if(idTipoCont == 3){
                 response.sendRedirect("../jsp/examenes.jsp");
+            }else{
+                if(idTipoCont == 4){
+                    response.sendRedirect("../jsp/todo_simulExam.jsp");
+                }
             }
         }catch(Exception e){
             e.printStackTrace();

@@ -155,7 +155,7 @@
                     <li><a class="sublist" href="pages/todo_problemas.html" target="iframe">Problemas</a></li>
                     <li><a class="sublist" href="jsp/todo_preguntas.jsp" target="iframe">Preguntas</a></li>
                     <li><a class="sublist" href="jsp/examenes.jsp" target="iframe">Examenes</a></li>
-                    <li><a class="sublist" href="pages/simulExamen.html" target="iframe">Simulador Examen</a></li>
+                    <li><a class="sublist" href="jsp/todo_simulExam.jsp" target="iframe">Simulador Examen</a></li>
                 </ul>
             </section>
             <%

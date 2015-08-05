@@ -34,20 +34,26 @@ public class borrarHTML extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int tipoCont = Integer.parseInt(request.getParameter("tipoCont"));
         try (PrintWriter out = response.getWriter()) {
            try{
                 Connection con = sql.conectar();
-                PreparedStatement ps = con.prepareStatement("call borrarArticulo(?)");
+                PreparedStatement ps = con.prepareStatement("call borrarArticulo(?, ?)");
                 ps.setInt(1, Integer.parseInt(request.getParameter("idArticulo")));
+                ps.setInt(2, tipoCont);
                 ps.executeUpdate();
-                if(request.getParameter("tipoCont").equals("1")){
+                if(tipoCont == 1){
                      response.sendRedirect("../jsp/todo_articulos.jsp");
                 }else{
-                    if(request.getParameter("tipoCont").equals("2")){
+                    if(tipoCont == 2){
                         response.sendRedirect("../jsp/todo_preguntas.jsp");
                     }else{
-                        if(request.getParameter("tipoCont").equals("3")){
+                        if(tipoCont == 3){
                             response.sendRedirect("../jsp/examenes.jsp");
+                        }else{
+                            if(tipoCont == 4){
+                                response.sendRedirect("../jsp/todo_simulExam.jsp");
+                            }
                         }
                     }
                 }

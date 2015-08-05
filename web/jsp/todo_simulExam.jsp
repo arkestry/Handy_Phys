@@ -1,8 +1,14 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : todo_simulExam
+    Created on : 4/08/2015, 07:44:00 PM
+    Author     : ivan-hdz
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Simulador de Examen</title>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>   
@@ -13,21 +19,30 @@
     </head>
     <body>
         <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN <a href="nuevoExamen.html"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a></h1>
-        <section>
-            <label class="textoRadio"><input type="radio" name="unidadA"> Fisica 1</label>
-            <label class="textoRadio"><input type="radio" name="unidadA"> Fisica 2</label>
-            <label class="textoRadio"><input type="radio" name="unidadA"> Fisica 3</label>
-            <label class="textoRadio"><input type="radio" name="unidadA"> Fisica 4</label>
-            
+        <section class="col-md-12">
+            <section style="position: relative; top: -1em" class="col-md-1">
+                <label class="h3">Filtro: </label>
+            </section>
+            <section class="col-md-2">
+                <select style="color: #141414;" class="form-control">
+                     <option>Todos</option>
+                     <option value="fisica1">Fisica 1</option>
+                     <option value="fisica2">Fisica 2</option>
+                     <option value="fisica3">Fisica 3</option>
+                     <option value="fisica4">Fisica 4</option>
+                 </select>
+            </section>
         </section>
         
-        <section>
-            <table class="table tablaChida table-hover table-responsive">
-                <tr style="background-color: #9E0F0F">
+        <section style="width: 93%; height: 100%; margin: 3em">
+            <table class="table table-striped table-responsive">
+                <tr style="background-color: #F18B06">
                     <th>Titulo</th>
                     <th>Descripcion</th>
                     <th>Parcial</th>
                     <th>Unidad Academica</th>
+                    <th>Fecha</th>
+                    <th>Autor</th>
                     <th>Valoracion</th>
                 </tr>
                 <tr>
@@ -47,50 +62,3 @@
         </footer>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
--->

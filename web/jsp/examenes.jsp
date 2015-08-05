@@ -76,6 +76,7 @@
                             <input type="hidden" value="3" name="tipoCont">
                             <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative; top: -1.85em" value="Eliminar Examen">
                         </form>
+                        <% }%>
                         <form action="../servlets/valorar" method="POST">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="3" name="tipoCont">
@@ -89,7 +90,6 @@
                                     <span name="s5" id="s5" class="glyphicon glyphicon-star-empty"></span></label>
                             </section>
                         </form>
-                        <% }%>
                     </td>
                 </tr>
                 <%
