@@ -216,7 +216,7 @@ CREATE TABLE `catunidadesacademicas` (
 
 LOCK TABLES `catunidadesacademicas` WRITE;
 /*!40000 ALTER TABLE `catunidadesacademicas` DISABLE KEYS */;
-INSERT INTO `catunidadesacademicas` VALUES (1,'Fisica');
+INSERT INTO `catunidadesacademicas` VALUES (1,'Fisica 2');
 /*!40000 ALTER TABLE `catunidadesacademicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,10 +552,10 @@ DROP TABLE IF EXISTS `simuladores`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `simuladores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(300) DEFAULT NULL,
+  `descripcion` varchar(300) CHARACTER SET latin1 DEFAULT NULL,
   `parcial` int(1) DEFAULT NULL,
   `idUnidadA` int(11) DEFAULT NULL,
-  `titulo` varchar(45) NOT NULL,
+  `titulo` varchar(45) CHARACTER SET latin1 NOT NULL,
   `fecha` date DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `valoracion` int(1) DEFAULT NULL,
@@ -564,7 +564,7 @@ CREATE TABLE `simuladores` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `simuladores_ibfk_2` FOREIGN KEY (`idUnidadA`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`),
   CONSTRAINT `simuladores_ibfk_3` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -728,6 +728,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `ver_simulador`
+--
+
+DROP TABLE IF EXISTS `ver_simulador`;
+/*!50001 DROP VIEW IF EXISTS `ver_simulador`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `ver_simulador` AS SELECT 
+ 1 AS `idSimulador`,
+ 1 AS `titulo`,
+ 1 AS `descripcion`,
+ 1 AS `parcial`,
+ 1 AS `DescripcionUA`,
+ 1 AS `fecha`,
+ 1 AS `nickname`,
+ 1 AS `valoracion`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `verblacklist`
@@ -1347,6 +1366,24 @@ DELIMITER ;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `ver_simulador`
+--
+
+/*!50001 DROP VIEW IF EXISTS `ver_simulador`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `ver_simulador` AS select `simuladores`.`id` AS `idSimulador`,`simuladores`.`titulo` AS `titulo`,`simuladores`.`descripcion` AS `descripcion`,`simuladores`.`parcial` AS `parcial`,`catunidadesacademicas`.`DescripcionUA` AS `DescripcionUA`,`simuladores`.`fecha` AS `fecha`,`datos`.`nickname` AS `nickname`,`simuladores`.`valoracion` AS `valoracion` from (((`simuladores` join `catunidadesacademicas` on((`simuladores`.`idUnidadA` = `catunidadesacademicas`.`IdUnidadAcademica`))) join `usuarios` on((`usuarios`.`idUsuario` = `simuladores`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `verblacklist`
 --
 
@@ -1373,4 +1410,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-04 22:21:18
+-- Dump completed on 2015-08-05 23:32:41
