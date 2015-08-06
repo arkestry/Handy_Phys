@@ -17,11 +17,12 @@
     </head>
     <body>
     <h1>CREAR EXAMEN DE PRACTICA</h1>
-    <form class="formularioNuevoExa" style="border-right: 10px solid #098ddf; border-top: 5px solid #098ddf">
+    <form action="../servlets/subirExam" method="POST" onsubmit="document.getElementById('cuantos').value = entero;" class="formularioNuevoExa" style="border-right: 10px solid #098ddf; border-top: 5px solid #098ddf">
+        <input id="cuantos" type="hidden" value="" name="cuantos">
         <section>
             <h3><label for="tituloExam">Titulo del examen: </label></h3>
             <section class="col-md-5">
-                <input onkeyup="titulo(this)" type="text" size="35" class="form-control" name="tituloExam" id="tituloExam">
+                <input required onkeyup="titulo(this)" type="text" size="35" class="form-control" name="tituloExam" id="tituloExam">
             </section>
         </section><br>
         <section>
@@ -33,18 +34,18 @@
         <section>
             <section class="col-md-3" style="position: relative; top: -9em">
                 <h3><label>Parcial al que va destinado</label></h3>
-                <select name="parcial" class="form-control" style="color: #141414">
+                <select required  name="parcial" class="form-control" style="color: #141414">
                     <option>Seleccione el parcial</option>
-                    <option>Parcial 1</option>
-                    <option>Parcial 2</option>
-                    <option>Parcial 3</option>
+                    <option value="1">Parcial 1</option>
+                    <option value="2">Parcial 2</option>
+                    <option value="3">Parcial 3</option>
                 </select>    
             </section>
             <section class="col-md-3" style="position: relative; top: -9em">
                 <h3><label>Unidad de aprendizaje</label></h3>
-                <select name="unidad" class="form-control"  style="color:#141414">
+                <select required name="unidad" class="form-control"  style="color:#141414">
                     <option>Seleccione una unidad de aprendizaje</option>
-                    <option>Fisica 2</option>
+                    <option value="1">Fisica 2</option>
                 </select>
             </section>
             
@@ -57,23 +58,23 @@
                 <section class="col-md-4">
                     <label>
                         <h3>Pregunta:</h3>
-                        <textarea name="pregunta1" class="areaTexto" rows="5" placeholder="Escriba aquí"></textarea>
+                        <textarea required name="pregunta1" class="areaTexto" rows="5" placeholder="Escriba aquí"></textarea>
                     </label>
                 </section>
                 <section class="col-md-4">
                     <h3><label>Respuestas: </label></h3>
-                    <label>A) <input name="respuesta1.a" type="text" size="20"></label>
-                    <label>B) <input name="respuesta1.b" type="text" size="20"></label><br><br>
-                    <label>C) <input name="respuesta1.c" type="text" size="20"></label>
-                    <label>D) <input name="respuesta1.d" type="text" size="20"></label><br><br>
+                    <label>A) <input required style="color: #141414" name="respuesta1.a" type="text" size="20"></label>
+                    <label>B) <input required style="color: #141414" name="respuesta1.b" type="text" size="20"></label><br><br>
+                    <label>C) <input required style="color: #141414" name="respuesta1.c" type="text" size="20"></label>
+                    <label>D) <input required style="color: #141414" name="respuesta1.d" type="text" size="20"></label><br><br>
                 </section>
                 <section class="col-md-4">
                     <h3><label>La respuesta correcta es: </label></h3>
-                    <select class="form-control-static" name="correcta1" style="color: #141414; position: relative; top: -3.2em; left: 20em">
-                        <option>A)</option>
-                        <option>B)</option>
-                        <option>C)</option>
-                        <option>D)</option>
+                    <select required  class="form-control-static" name="correcta1" style="color: #141414; position: relative; top: -3.2em; left: 20em">
+                        <option value="a">A)</option>
+                        <option value="b">B)</option>
+                        <option value="c">C)</option>
+                        <option value="d">D)</option>
                     </select>
                 </section>
                 <br><hr>

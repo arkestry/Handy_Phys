@@ -155,7 +155,10 @@
                     <li><a class="sublist" href="pages/todo_problemas.html" target="iframe">Problemas</a></li>
                     <li><a class="sublist" href="jsp/todo_preguntas.jsp" target="iframe">Preguntas</a></li>
                     <li><a class="sublist" href="jsp/examenes.jsp" target="iframe">Examenes</a></li>
+                    <%
+                        if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
                     <li><a class="sublist" href="jsp/todo_simulExam.jsp" target="iframe">Simulador Examen</a></li>
+                    <% }%>
                 </ul>
             </section>
             <%

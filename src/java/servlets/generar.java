@@ -51,6 +51,7 @@ public class generar extends HttpServlet {
     protected Date tiempo = new Date();
     protected SimpleDateFormat ft = new SimpleDateFormat("dd'-de-'MM'-del-'yyyy'-'hh'-'mm'-'ss-a");
   
+    @Override
     public void init(ServletConfig config) throws ServletException{
         this.config = config;
         super.init(this.config);
