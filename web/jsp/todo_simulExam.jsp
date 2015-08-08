@@ -69,24 +69,28 @@
                 </tr>
                 <% while(rs.next()){ %>
                 <tr>
-                    <td>
-                        <form>
-                            <button type="submit" class="btn btn-info"><%= rs.getString(2) %></button>
-                        </form>
-                    </td>
+                    <td><%= rs.getString(2) %></td>
                     <td><%= rs.getString(3) %></td>
                     <td><%= rs.getString(4) %></td>
                     <td><%= rs.getString(5) %></td>
                     <td><%= rs.getString(6) %></td>
                     <td><%= rs.getString(7) %></td>
-                    <td><%= rs.getString(8)%></td>
+                    <td><%= rs.getString(8) %></td>
                     <td>
                         <% if(((userBean)session.getAttribute("userData")).getUserName().equals(rs.getString(7))){%>
                         <form onsubmit="return really(this)" action="../servlets/borrarHTML" method="POST">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="4" name="tipoCont">
-                            <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative;" value="Eliminar">
+                            <input type="submit" class="btn btn-danger btn-sm" style="display: inline; float: right; position: relative;" value="Eliminar">
                         </form>
+                        <form action="verSimulador.jsp" method="POST">
+                            <input name="archivo" type="hidden" value="<%= rs.getString(9)%>">
+                            <input name="idSimulador" type="hidden" value="<%= rs.getString(1)%>">
+                            <input type="submit" value="Realizar" class="btn btn-success btn-sm">
+                            <input name="num" value="0" type="hidden" >
+                            <input name="titulo" type="hidden" value="<%= rs.getString(2) %>">
+                        </form>
+                        
                         <%}%>
                     </td>
                 </tr>

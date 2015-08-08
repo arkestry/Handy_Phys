@@ -46,8 +46,7 @@
         }finally{
             br.close();
         }
-        System.out.println(url);
-        System.out.println(line);
+        
     %>
 <!doctype html>
 <html>
@@ -71,7 +70,6 @@
             function enviar(f){
                 var code = document.getElementById("code");
                 code.value = $('#summernote').code();
-                alert(code.value);
                 f.submit();
             }
             $(document).ready(function(){

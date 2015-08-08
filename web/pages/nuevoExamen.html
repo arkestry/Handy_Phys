@@ -28,7 +28,7 @@
         <section>
             <h3><label>Descripcion del examen:</label></h3>
             <section class="col-md-5">
-                <textarea name="descripcionExam" class="areaTexto form-control"  placeholder="Una breve descripcion"></textarea>
+                <textarea onkeyup="this.value = this.value;" name="descripcionExam" class="areaTexto form-control"  placeholder="Una breve descripcion"></textarea>
             </section>
         </section>
         <section>
@@ -48,13 +48,12 @@
                     <option value="1">Fisica 2</option>
                 </select>
             </section>
-            
         </section><br>
+        <!--Preguntas -->
         <section class="col-md-12" id="todo">
-            <section class="col-md-12">
+            <section class="col-md-12 container">
                 <br> <hr>
                 <h2>Pregunta 1</h2>
-               
                 <section class="col-md-4">
                     <label>
                         <h3>Pregunta:</h3>
@@ -79,10 +78,15 @@
                 </section>
                 <br><hr>
             </section>
+            <section id="sig"></section>
         </section>
-            <button onclick="cantidad()" type="button"  class="btn btn-lg btn-info">Agregar pregunta</button>
-            <input type="submit" value="Enviar" style="float: right" class="btn btn-lg btn-success">
-    </form>
+        <br><br>
+        <section class="container">
+            <button class="btn btn-danger" onclick="window.location.href = '../jsp/todo_simulExam.jsp'" type="button">Cancelar</button>
+            <button onclick="cantidad()" type="button"  class="btn  btn-info">Agregar pregunta</button>
+            <input type="submit" value="Enviar" style="float: right" class="btn btn-success">
+        </section>
+        </form>
       
     </body>
 </html>

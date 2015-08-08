@@ -16,6 +16,8 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -29,9 +31,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author ivan-hdz
  */
-public class subirExam extends HttpServlet implements Serializable{
+public class SubirSimulador extends HttpServlet implements Serializable{
 
     private ServletConfig config;
+    private Date tiempo = new Date();
+    private SimpleDateFormat ft = new SimpleDateFormat("dd'-de-'MM'-del-'yyyy'-'hh'-'mm'-'ss-a");
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +48,7 @@ public class subirExam extends HttpServlet implements Serializable{
      * @throws IOException if an I/O error occurs
      */
     @Override
-       public void init(ServletConfig config) throws ServletException{
+    public void init(ServletConfig config) throws ServletException{
         this.config = config;
         super.init(this.config);
     }
@@ -57,6 +61,7 @@ public class subirExam extends HttpServlet implements Serializable{
             HttpSession session = request.getSession();
             Connection con = sql.conectar();
             String titulo = request.getParameter("tituloExam");
+            String url = titulo.replaceAll(" ", "_")+ft.format(tiempo)+".sml";
             String descripcion = request.getParameter("descripcionExam");
             String parcial = request.getParameter("parcial");
             String unidad = request.getParameter("unidad");
@@ -78,15 +83,16 @@ public class subirExam extends HttpServlet implements Serializable{
             sim.setRespuestas(respuestas);
             sim.setCorrectas(correctas);
             //Hasta aqui guardamos objetos
-            FileOutputStream archivo = new FileOutputStream(config.getServletContext().getRealPath("/simuladores/")+"/"+titulo.replaceAll(" ", "_")+".sml");
+            FileOutputStream archivo = new FileOutputStream(config.getServletContext().getRealPath("/simuladores/")+"/"+url);
             serializar.saveObject(archivo, sim);
             //Hasta aqui la serializada
-            PreparedStatement ps = con.prepareStatement("call insert_simulador(?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("call insert_simulador(?,?,?,?,?,?)");
             ps.setString(1, titulo);
             ps.setString(2, descripcion);
             ps.setInt(3, Integer.parseInt(parcial));
             ps.setInt(4, Integer.parseInt(unidad));
             ps.setInt(5, ((userBean)session.getAttribute("userData")).getIdUsuario());
+            ps.setString(6, url);
             ps.executeUpdate();
             response.sendRedirect("../jsp/todo_simulExam.jsp");
         }
@@ -107,7 +113,7 @@ public class subirExam extends HttpServlet implements Serializable{
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(subirExam.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SubirSimulador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -125,7 +131,7 @@ public class subirExam extends HttpServlet implements Serializable{
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(subirExam.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SubirSimulador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

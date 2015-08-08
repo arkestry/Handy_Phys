@@ -55,7 +55,7 @@
   
     <body>
         <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
-    	<div id="hmenu" class="navbar navbar-inverse col-xs-12">
+        <div id="hmenu" style=" border-bottom: 2px #ECF0F1 groove" class="navbar navbar-inverse col-xs-12">
             <ul class="list-unstyled text-uppercase log list-inline  list-group-item-text">
                 <button class="btn btn-link">
                     <span  
@@ -139,13 +139,7 @@
             <li><a href="pages/profile.html" target="iframe">Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a onClick="mostrar(pYrS)" href="#">Mis Preguntas y Respuestas</a></li>
-            <section id="pYrS" name="onMenu">
-                <ul class="list-unstyled text-right text-uppercase list-group-item-text menu2">
-                    <li><a class="sublist" href="pages/mis_preguntas.html" target="iframe">Mis Preguntas</a></li>
-                    <li><a class="sublist" href="pages/mis_respuestas.html" target="iframe">Mis Respuestas</a></li>
-                </ul>
-            </section>
+             <li><a href="jsp/mis_preguntas.jsp" target="iframe">Mis Preguntas</a></li>
             <%}
                 }%>
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>

@@ -38,18 +38,20 @@ public class addComment extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             int idArt=Integer.parseInt(request.getParameter("idArt").replaceAll(" ", ""));
             int idUsr=Integer.parseInt(request.getParameter("idUsuario"));
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
             try{
                 String comment=request.getParameter("com");
                 Connection con = sql.conectar();
-                PreparedStatement ps = con.prepareStatement("CALL addComment(?,?,?)");
+                PreparedStatement ps = con.prepareStatement("CALL addComment(?,?,?,?)");
                 ps.setInt(1,idUsr);
                 ps.setInt(2,idArt);
                 ps.setString(3,comment);
+                ps.setInt(4, tipo);
                 ps.executeQuery();
-                if(request.getParameter("tipo").equals("1")){
+                if(tipo == 1){
                     response.sendRedirect("../jsp/todo_articulos.jsp");
                 }else{
-                    if(request.getParameter("tipo").equals("2")){
+                    if(tipo == 2){
                        response.sendRedirect("../jsp/todo_preguntas.jsp"); 
                     }
                 }

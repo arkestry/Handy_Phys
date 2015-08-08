@@ -82,36 +82,40 @@
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <%}
+                                    <% break;
+                                    }
                                     case 2:{%>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <%}
+                                    <% break;
+                                    }
                                     case 3:{%>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <%}
+                                    <% break;
+                                    }
                                     case 4:{%>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <%}
+                                    <% break;
+                                    }
                                     case 5:{%>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>  
-                                    <%}
-                                    
+                                    <% break;
+                                    }
                                 }%>
                                 
                             </p>

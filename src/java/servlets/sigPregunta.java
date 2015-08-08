@@ -5,24 +5,26 @@
  */
 package servlets;
 
-import beans.userBean;
-import classes.sql;
+import beans.Simulador;
+import classes.serializar;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ivan-hdz
  */
-public class valorar extends HttpServlet {
-    private Connection con = sql.conectar();
+public class sigPregunta extends HttpServlet {
+
+    private ServletConfig config;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,39 +34,29 @@ public class valorar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public void init(ServletConfig config) throws ServletException{
+        this.config = config;
+        super.init(this.config);
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        userBean usuario = (userBean)session.getAttribute("userData");
-        int idUsuario = usuario.getIdUsuario();
-        int valor = Integer.parseInt(request.getParameter("valor"));
-        int idArticulo = Integer.parseInt(request.getParameter("idArticulo"));
-        int idTipoCont = Integer.parseInt(request.getParameter("tipoCont"));
         try (PrintWriter out = response.getWriter()) {
-            PreparedStatement ps = con.prepareStatement("call valorar(?,?,?,?)");
-            ps.setInt(1, valor);
-            ps.setInt(2, idArticulo);
-            ps.setInt(3, idUsuario);
-            ps.setInt(4, idTipoCont);
-            ps.executeUpdate();
-            if(idTipoCont == 3){
-                response.sendRedirect("../jsp/examenes.jsp");
+            Simulador sim = (Simulador) serializar.getObject(new FileInputStream(config.getServletContext().getRealPath("/simuladores/")+"/"+request.getParameter("url")));
+            int num = Integer.parseInt(request.getParameter("cual"));
+            if(request.getParameter("tipo").equals("preg")){
+                String[] preguntas = sim.getPreguntas();
+                out.println(preguntas[num]);
             }else{
-                if(idTipoCont == 4){
-                    response.sendRedirect("../jsp/todo_simulExam.jsp");
-                }else{
-                    if(idTipoCont == 2){
-                        response.sendRedirect("../jsp/todo_preguntas.jsp");
-                    }else{
-                        if(idTipoCont == 1){
-                            response.sendRedirect("../jsp/todo_articulos.jsp");
-                        }
+                if(request.getParameter("tipo").equals("resp")){
+                    String[][] resTodas = sim.getRespuestas();
+                    String[] resP = new String[4];
+                    for(int i = 0; i < 4; i++){
+                        resP[i] = resTodas[num][i];
                     }
+                    out.println("<label><label id='respA'></label><input type='radio' class='radio radio-inline' name='resp' value='a'>"+resP[0]+"</label><label><label id='respB'></label><input type='radio' class='radio radio-inline' name='resp' value='b'>"+resP[1]+"</label><label><label id='respC'></label><input type='radio' class='radio radio-inline' name='resp' value='c'>"+resP[2]+"</label><label><label id='respD'></label><input type='radio' class='radio radio-inline' name='resp' value='d'>"+resP[3]+"</label>");
                 }
             }
-        }catch(Exception e){
-            e.printStackTrace();
         }
     }
 
@@ -80,7 +72,11 @@ public class valorar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(sigPregunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -94,7 +90,11 @@ public class valorar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(sigPregunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

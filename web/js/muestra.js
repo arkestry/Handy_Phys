@@ -77,9 +77,9 @@ $(document).ready(function(){
 var entero = 1  ;
 function cantidad(){ //Crear simulador de examen
     entero++;
-    var todo = document.getElementById("todo");
-    var modelo = " <section class='col-md-12'><hr>  <h2>Pregunta "+entero+"</h2><section class='col-md-4'><label><h3>Pregunta:</h3><textarea name='pregunta"+entero+"' class='areaTexto' rows='5' placeholder='Escriba aquí'></textarea></label></section><section class='col-md-4'> <h3><label>Respuestas: </label></h3><label>A) <input name='respuesta"+entero+".a' type='text' size='20'></label><label>B) <input name='respuesta"+entero+".b' type='text' size='20'></label><br><br><label>C) <input name='respuesta"+entero+".c' type='text' size='20'></label> <label>D) <input name='respuesta"+entero+".d' type='text' size='20'></label><br><br></section><section class='col-md-4'><h3><label>La respuesta correcta es: </label></h3><select class='form-control-static' name='correcta"+entero+"' style='color: #141414; position: relative; top: -3.2em; left: 20em'><option>A)</option><option>B)</option><option>C)</option><option>D)</option></select></section><br><hr></section>";
-    todo.innerHTML += modelo;
+    var modelo = " <section class='col-md-12 container'><hr>  <h2>Pregunta "+entero+"</h2><section class='col-md-4'><label><h3>Pregunta:</h3><textarea style='color: #141414' name='pregunta"+entero+"' class='areaTexto' rows='5' placeholder='Escriba aquí'></textarea></label></section><section class='col-md-4'> <h3><label>Respuestas: </label></h3><label>A) <input style='color: #141414' name='respuesta"+entero+".a' type='text' size='20'></label><label>B) <input style='color: #141414' name='respuesta"+entero+".b' type='text' size='20'></label><br><br><label>C) <input style='color: #141414' name='respuesta"+entero+".c' type='text' size='20'></label> <label>D) <input style='color: #141414' name='respuesta"+entero+".d' type='text' size='20'></label><br><br></section><section class='col-md-4'><h3><label>La respuesta correcta es: </label></h3><select class='form-control-static' name='correcta"+entero+"' style='color: #141414; position: relative; top: -3.2em; left: 20em'><option>A)</option><option>B)</option><option>C)</option><option>D)</option></select></section><br><hr></section> <section id='sig'></section>";
+   $('#sig').html(modelo);
+   $('#sig').attr('id', 'p'+entero);
     
 }
 //fin simulador

@@ -39,11 +39,10 @@
             }
         </script>
     </head>
-    <body onload="alert('Fue lo mejor que pude hacer...')">
+    <body>
        
         <%
             if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-         %>
         <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
         <section id="subirExamen" style="display: none">
             <form class="subirExamen form-inline" method="POST" action="../servlets/generarHTML" enctype="multipart/form-data">
@@ -85,7 +84,6 @@
                             <input type="hidden" value="3" name="tipoCont">
                             <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative; top: -1.85em" value="Eliminar Examen">
                         </form>
-                        <% }%>
                         <form action="../servlets/valorar" method="POST">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="3" name="tipoCont">
@@ -99,6 +97,8 @@
                                     <span name="s5" id="s5" class="glyphicon glyphicon-star-empty"></span></label>
                             </section>
                         </form>
+                        <% }%>
+                        
                     </td>
                 </tr>
                 <%

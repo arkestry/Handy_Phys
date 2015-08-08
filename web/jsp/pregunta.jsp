@@ -87,14 +87,14 @@
         <br>
    
         <section class="container" style="position: relative; top: 5em; left: 0.1em; width: 95%">
-        <section style="display: block; width: 100%; height: 100%; padding: 1px" class=" container-fluid">
+        <section style="display: block; width: 100%; height: 100%; padding: 1px" class="container container-fluid">
             <jsp:include flush="true" page="<%=url%>"></jsp:include>
         </section>
             <p><small class="text-center">Fecha<small><%=fecha%></small></small></p>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){ %>
             <form action="../servlets/valorar" method="POST">
                 <input type="hidden" value="<%= idArticulo %>" name="idArticulo">
-                <input type="hidden" value="3" name="tipoCont">
+                <input type="hidden" value="2" name="tipoCont">
                 <input id="valor" type="hidden" name="valor">
                 <section style="position: relative; display: inline; top: -1em" id="stars">
                     <label class="text-uppercase text-warning" for="stars">Valorar
