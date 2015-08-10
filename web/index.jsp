@@ -146,7 +146,6 @@
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
                     <li><a class="sublist" href="jsp/todo_articulos.jsp" target="iframe">Teoria</a></li>
-                    <li><a class="sublist" href="pages/todo_problemas.html" target="iframe">Problemas</a></li>
                     <li><a class="sublist" href="jsp/todo_preguntas.jsp" target="iframe">Preguntas</a></li>
                     <li><a class="sublist" href="jsp/examenes.jsp" target="iframe">Examenes</a></li>
                     <%

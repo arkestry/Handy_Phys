@@ -24,7 +24,7 @@
             Connection con = sql.conectar();
             PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2");
             ResultSet rs = ps.executeQuery();
-           
+            PreparedStatement ps1 = con.prepareStatement("call misComentarios(?)");
         %>
         
     </head>
@@ -57,93 +57,97 @@
         
            <div class="todo">
             <!--pregunta1-->
-            <%while(rs.next()){ %>
-            <form action="pregunta.jsp" method="POST">
+            <%while(rs.next()){ 
+                ps1.setInt(1, rs.getInt(1));
+                ResultSet rs1 = ps1.executeQuery();
+            %>
+            
                <div class="panel panel-default">
                 <div class="panel-heading slim_panHead">
                     <h3>
-                        <button type="submit" style="background: none; border: none"><%=(String)rs.getObject("Titulo") %></button>
-                        <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
-                        <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
-                        <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
-                        <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
-                        <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
-                        <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                        <input type="hidden" name="tipoCont" value="2">               
-
-                        <a></a>&nbsp;
+                        <form action="pregunta.jsp" method="POST" style="display: inline">
+                            <button type="submit" style="background: none; border: none"><%=(String)rs.getObject("Titulo") %></button>
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="tipoCont" value="2">               
+                        </form>
+                      
                         <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 
-                        <span class="label label-info"> Pregunta reciente
-
-                        </span>&nbsp;
+                        <span class="label label-info"> Pregunta reciente </span>&nbsp;
                         <!--span class="label label-success"> Pregunta ya contestada
 
                         </span-->&nbsp;
                         <span class="label label-warning"> Pregunta en espera de ser contestada
-
                         </span>
                     </h3>
-                </div>
-                <p>
-                                <% switch(Integer.parseInt(rs.getObject("valoracion").toString())){
-                                    case 1:{%>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <% break;
-                                    }
-                                    case 2:{%>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <% break;
-                                    }
-                                    case 3:{%>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <% break;
-                                    }
-                                    case 4:{%>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>  
-                                    <% break;
-                                    }
-                                    case 5:{%>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>  
-                                    <% break;
-                                    }
-                                }%>
-                                
-                            </p>
-                <div class="panel-footer">
-                    <h5 id="quest_date">
-                        <a class="mostrarlink">
-                            Respuestas
-                        </a>
-                        <span class="badge">
-                            43
-                        </span>
+                        <h5 id="quest_date">
+                        <div class="panel-body">
+                        <% switch(Integer.parseInt(rs.getObject("valoracion").toString())){
+                                case 1:{%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>  
+                                <% break;
+                                }
+                                case 2:{%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>  
+                                <% break;
+                                }
+                                case 3:{%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>  
+                                <% break;
+                                }
+                                case 4:{%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>  
+                                <% break;
+                                }
+                                case 5:{%>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>  
+                                <% break;
+                                }
+                            }%>
+
+                        <%while(rs1.next()){%>
+                        <form action="pregunta.jsp" method="POST">
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="tipoCont" value="2">   
+                            <button type="submit" style="background: none; border: none; color: #141414">Respuestas</button><span class="badge"><%=rs1.getString(7) %></span>
+                        </form>
+                        <%}%>
+                    </div>
                         &nbsp;
 
                         <b><%=(String)rs.getObject("fecha")%></b>
                     </h5>
                 </div>
-            </div>
-            </form>
+             </div>
             <%}%>
              
         </div>

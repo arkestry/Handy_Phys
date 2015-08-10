@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/pages/mis_preguntas.html</file>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/todo_preguntas.jsp</file>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/addComment.java</file>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/mis_preguntas.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/SubirSimulador.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/sigPregunta.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/pages/nuevoExamen.html</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/js/muestra.js</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/verSimulador.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/todo_simulExam.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -35,7 +35,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
+INSERT INTO `articulos` VALUES (11,28,2,5,'Esto es una pregunta','08-de-08-del-2015-06-55-14-PM','honter1997@gmail.com-Esto_es_una_pregunta-08-de-08-del-2015-06-55-14-PM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -237,7 +238,7 @@ CREATE TABLE `coms` (
   PRIMARY KEY (`idCom`),
   KEY `idTipoContenido` (`idTipoContenido`),
   CONSTRAINT `coms_ibfk_1` FOREIGN KEY (`idTipoContenido`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,6 +247,7 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
+INSERT INTO `coms` VALUES (6,28,11,'2015-08-09 00:02:37','kh',2);
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -384,7 +386,7 @@ CREATE TABLE `images` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `url` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -393,7 +395,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (15,'2015-08-04 04:32:46','IMG_13245059321625.jpeg'),(16,'2015-08-04 04:34:21','2013-12-26 18.53.23.jpg'),(17,'2015-08-08 03:02:30','2013-12-26 18.41.48.jpg'),(18,'2015-08-08 03:54:10','2014-10-05 22.40.12.jpg'),(19,'2015-08-08 04:00:38','2013-12-26 18.41.48.jpg'),(20,'2015-08-08 04:06:40','2013-12-26 18.41.48.jpg'),(21,'2015-08-08 04:15:06','2013-12-26 18.41.48.jpg'),(22,'2015-08-08 04:16:08','3.jpg');
+INSERT INTO `images` VALUES (15,'2015-08-04 04:32:46','IMG_13245059321625.jpeg'),(16,'2015-08-04 04:34:21','2013-12-26 18.53.23.jpg'),(17,'2015-08-08 03:02:30','2013-12-26 18.41.48.jpg'),(18,'2015-08-08 03:54:10','2014-10-05 22.40.12.jpg'),(19,'2015-08-08 04:00:38','2013-12-26 18.41.48.jpg'),(20,'2015-08-08 04:06:40','2013-12-26 18.41.48.jpg'),(21,'2015-08-08 04:15:06','2013-12-26 18.41.48.jpg'),(22,'2015-08-08 04:16:08','3.jpg'),(23,'2015-08-08 23:54:39','20140220_125026.jpg');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,7 +570,7 @@ CREATE TABLE `simuladores` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `simuladores_ibfk_2` FOREIGN KEY (`idUnidadA`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`),
   CONSTRAINT `simuladores_ibfk_3` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -698,7 +700,7 @@ CREATE TABLE `valoraciones` (
   KEY `valoraciones_ibfk_3_idx` (`idTipoContenido`),
   CONSTRAINT `valoraciones_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `valoraciones_ibfk_3` FOREIGN KEY (`idTipoContenido`) REFERENCES `tipocontenido` (`idContenido`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -707,6 +709,7 @@ CREATE TABLE `valoraciones` (
 
 LOCK TABLES `valoraciones` WRITE;
 /*!40000 ALTER TABLE `valoraciones` DISABLE KEYS */;
+INSERT INTO `valoraciones` VALUES (45,5,11,28,2);
 /*!40000 ALTER TABLE `valoraciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -781,7 +784,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -790,7 +793,7 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
-INSERT INTO `weblog` VALUES (1,4,'ivan  publico nuevo articulo asasdas','2015-07-27 17:25:24'),(2,4,'ivan  publico nuevo articulo Articulos','2015-07-27 17:26:04'),(3,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-28 17:22:54'),(4,4,'ivan  publico nuevo articulo sasaas','2015-07-28 17:23:35'),(5,4,'ivan  publico nuevo articulo sdds','2015-07-28 17:24:15'),(6,4,'ivan  publico nuevo articulo sadasdas','2015-07-28 17:46:52'),(7,4,'ivan  publico nuevo articulo Prueba','2015-07-28 17:50:36'),(8,4,'ivan  publico nuevo articulo prueba en preguntas','2015-07-28 17:53:20'),(9,4,'ivan  publico nuevo articulo prueba','2015-07-29 00:25:44'),(10,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-29 01:07:32'),(11,4,'ivan  publico nuevo articulo subirExamen','2015-07-29 01:13:34'),(12,4,'ivan  publico nuevo articulo Espero que salga','2015-07-29 01:15:24'),(13,4,'ivan  publico nuevo articulo PorDondePasa','2015-07-29 01:17:03'),(14,4,'ivan  publico nuevo articulo ','2015-07-29 01:30:24'),(15,4,'ivan  publico nuevo articulo ','2015-07-29 01:32:46'),(16,4,'ivan  publico nuevo articulo Titulo','2015-07-29 01:36:46'),(17,4,'ivan  publico nuevo articulo SubirOtroArchivo','2015-07-29 01:38:21'),(18,4,'ivan  publico nuevo articulo ','2015-07-29 01:39:27'),(19,4,'ivan  publico nuevo articulo titulo','2015-07-29 01:43:57'),(20,4,'ivan  publico nuevo articulo NuevoExamen','2015-07-29 02:59:16'),(21,4,'ivan  publico nuevo articulo Este si','2015-07-29 03:01:28'),(22,4,'ivan  publico nuevo articulo PDF','2015-07-29 03:16:04'),(23,4,'ivan  publico nuevo articulo Una Prueba','2015-07-30 17:50:10'),(24,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 18:13:45'),(25,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:30:12'),(26,4,'ivan  publico nuevo articulo yjh','2015-07-30 22:34:11'),(27,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:13'),(28,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:20'),(29,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 22:37:46'),(30,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:37:56'),(31,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 23:20:46'),(32,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-31 00:43:52'),(33,4,'ivan  publico nuevo articulo Prueba','2015-08-04 02:54:00'),(34,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-08-04 04:25:46'),(35,4,'ivan  publico nuevo articulo Te amooo','2015-08-04 04:34:49'),(36,4,'ivan  publico nuevo articulo Nuevo Examen','2015-08-05 02:48:16'),(37,4,'ivan  publico nuevo articulo Articulo con imagenes','2015-08-08 03:02:36'),(38,4,'ivan  publico nuevo articulo Un nuevo articulo','2015-08-08 03:25:27'),(39,4,'ivan  publico nuevo articulo Nuevo articulo','2015-08-08 03:41:19'),(40,4,'ivan  publico nuevo articulo aksj','2015-08-08 03:54:17'),(41,4,'ivan  publico nuevo articulo Pregunta que me inquiera','2015-08-08 04:05:14'),(42,4,'ivan  publico nuevo articulo ','2015-08-08 04:16:21'),(43,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 04:57:18'),(44,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:00:18'),(45,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 05:00:59'),(46,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:01:05'),(47,4,'ivan  publico nuevo articulo gfk','2015-08-08 05:27:59'),(48,1,'ivan en articulo','2015-08-08 05:30:32'),(49,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:31:03'),(50,1,'ivan en articulo gfk','2015-08-08 05:31:35');
+INSERT INTO `weblog` VALUES (1,4,'ivan  publico nuevo articulo asasdas','2015-07-27 17:25:24'),(2,4,'ivan  publico nuevo articulo Articulos','2015-07-27 17:26:04'),(3,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-28 17:22:54'),(4,4,'ivan  publico nuevo articulo sasaas','2015-07-28 17:23:35'),(5,4,'ivan  publico nuevo articulo sdds','2015-07-28 17:24:15'),(6,4,'ivan  publico nuevo articulo sadasdas','2015-07-28 17:46:52'),(7,4,'ivan  publico nuevo articulo Prueba','2015-07-28 17:50:36'),(8,4,'ivan  publico nuevo articulo prueba en preguntas','2015-07-28 17:53:20'),(9,4,'ivan  publico nuevo articulo prueba','2015-07-29 00:25:44'),(10,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-29 01:07:32'),(11,4,'ivan  publico nuevo articulo subirExamen','2015-07-29 01:13:34'),(12,4,'ivan  publico nuevo articulo Espero que salga','2015-07-29 01:15:24'),(13,4,'ivan  publico nuevo articulo PorDondePasa','2015-07-29 01:17:03'),(14,4,'ivan  publico nuevo articulo ','2015-07-29 01:30:24'),(15,4,'ivan  publico nuevo articulo ','2015-07-29 01:32:46'),(16,4,'ivan  publico nuevo articulo Titulo','2015-07-29 01:36:46'),(17,4,'ivan  publico nuevo articulo SubirOtroArchivo','2015-07-29 01:38:21'),(18,4,'ivan  publico nuevo articulo ','2015-07-29 01:39:27'),(19,4,'ivan  publico nuevo articulo titulo','2015-07-29 01:43:57'),(20,4,'ivan  publico nuevo articulo NuevoExamen','2015-07-29 02:59:16'),(21,4,'ivan  publico nuevo articulo Este si','2015-07-29 03:01:28'),(22,4,'ivan  publico nuevo articulo PDF','2015-07-29 03:16:04'),(23,4,'ivan  publico nuevo articulo Una Prueba','2015-07-30 17:50:10'),(24,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 18:13:45'),(25,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:30:12'),(26,4,'ivan  publico nuevo articulo yjh','2015-07-30 22:34:11'),(27,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:13'),(28,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:20'),(29,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 22:37:46'),(30,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:37:56'),(31,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 23:20:46'),(32,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-31 00:43:52'),(33,4,'ivan  publico nuevo articulo Prueba','2015-08-04 02:54:00'),(34,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-08-04 04:25:46'),(35,4,'ivan  publico nuevo articulo Te amooo','2015-08-04 04:34:49'),(36,4,'ivan  publico nuevo articulo Nuevo Examen','2015-08-05 02:48:16'),(37,4,'ivan  publico nuevo articulo Articulo con imagenes','2015-08-08 03:02:36'),(38,4,'ivan  publico nuevo articulo Un nuevo articulo','2015-08-08 03:25:27'),(39,4,'ivan  publico nuevo articulo Nuevo articulo','2015-08-08 03:41:19'),(40,4,'ivan  publico nuevo articulo aksj','2015-08-08 03:54:17'),(41,4,'ivan  publico nuevo articulo Pregunta que me inquiera','2015-08-08 04:05:14'),(42,4,'ivan  publico nuevo articulo ','2015-08-08 04:16:21'),(43,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 04:57:18'),(44,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:00:18'),(45,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 05:00:59'),(46,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:01:05'),(47,4,'ivan  publico nuevo articulo gfk','2015-08-08 05:27:59'),(48,1,'ivan en articulo','2015-08-08 05:30:32'),(49,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:31:03'),(50,1,'ivan en articulo gfk','2015-08-08 05:31:35'),(51,4,'ivan  publico nuevo articulo Pregunta1','2015-08-08 23:55:14'),(52,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-09 00:02:22'),(53,1,'ivan en articulo Esto es una pregunta','2015-08-09 00:02:37');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1431,4 +1434,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-08  0:55:19
+-- Dump completed on 2015-08-10  1:25:22
