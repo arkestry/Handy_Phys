@@ -136,7 +136,7 @@
             <li><a href="pages/home.html" target="iframe">Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="pages/profile.html" target="iframe">Mi Perfíl</a></li>
+            <li><a href="jsp/profile.jsp" target="iframe">Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
              <li><a href="jsp/mis_preguntas.jsp" target="iframe">Mis Preguntas</a></li>
@@ -169,7 +169,7 @@
                     </section>
                 </form>
             </section>
-              <li><a href="pages/ConfigurarCuenta.html" target="iframe">Configuración de Cuenta</a></li><%} %>
+              <li><a href="jsp/ConfigurarCuenta.jsp" target="iframe">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
             <li><a href="pages/admin_SPS.html" target="iframe">Registro de Actividad</a></li>
             <li><a href="jsp/admin_feedback.jsp" target="iframe">Feedback</a></li>

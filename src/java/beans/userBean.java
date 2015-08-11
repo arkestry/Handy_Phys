@@ -11,6 +11,7 @@ package beans;
  */
 public class userBean {
     private String userName;
+    private String fullName;
     private String email;
     private String password;
     private boolean autenticated;
@@ -18,6 +19,8 @@ public class userBean {
     private String grupo;
     private String institucion;
     private int idUsuario;
+    private String unidadAcademica;
+    private String profilePict; 
     /**
      * @return the userName
      */
@@ -128,5 +131,47 @@ public class userBean {
      */
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    /**
+     * @return the fullName
+     */
+    public String getFullName() {
+        return fullName;
+    }
+
+    /**
+     * @param fullName the fullName to set
+     */
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    /**
+     * @return the unidadAcademica
+     */
+    public String getUnidadAcademica() {
+        return unidadAcademica;
+    }
+
+    /**
+     * @param unidadAcademica the unidadAcademica to set
+     */
+    public void setUnidadAcademica(String unidadAcademica) {
+        this.unidadAcademica = unidadAcademica;
+    }
+
+    /**
+     * @return the profilePict
+     */
+    public String getProfilePict() {
+        return profilePict;
+    }
+
+    /**
+     * @param profilePict the profilePict to set
+     */
+    public void setProfilePict(String profilePict) {
+        this.profilePict = profilePict;
     }
 }

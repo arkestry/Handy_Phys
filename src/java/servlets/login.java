@@ -53,11 +53,8 @@ public class login extends HttpServlet {
             usuario.setPassword(request.getParameter("pass"));
 
             usuario.setAutenticated(validate(usuario));
-            System.out.println(usuario.isAutenticated()+" autenticado");
             if(usuario.isAutenticated()){
-              
                 usuario = getUserData(usuario);
-                System.out.println(usuario.getGrupo()+" grupo");
                 session.setAttribute("tipo", usuario.getUserType());
                 session.setAttribute("nickname", usuario.getUserName());
                 session.setAttribute("email", usuario.getEmail());
@@ -87,6 +84,9 @@ public class login extends HttpServlet {
                 usuario.setUserType(rs.getString(3));
                 usuario.setInstitucion(rs.getString(4));
                 usuario.setIdUsuario(rs.getInt(5));
+                usuario.setFullName(rs.getString(6));
+                usuario.setUnidadAcademica(rs.getString(7));
+                usuario.setProfilePict(rs.getString(8));
             }
             
             if(usuario.getUserType().equals("Alumno")){

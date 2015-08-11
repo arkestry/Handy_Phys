@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/SubirSimulador.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/beans/userBean.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/profile.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/ConfigurarCuenta.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/cambiarDatos.java</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/sigPregunta.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/index.jsp</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/pages/nuevoExamen.html</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/js/muestra.js</file>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/verSimulador.jsp</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/todo_simulExam.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/login.java</file>
         </group>
     </open-files>
 </project-private>

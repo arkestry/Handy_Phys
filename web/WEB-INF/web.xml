@@ -52,6 +52,10 @@
         <servlet-name>sigPregunta</servlet-name>
         <servlet-class>servlets.sigPregunta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cambiarDatos</servlet-name>
+        <servlet-class>servlets.cambiarDatos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>sigPregunta</servlet-name>
         <url-pattern>/servlets/sigPregunta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cambiarDatos</servlet-name>
+        <url-pattern>/servlets/cambiarDatos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

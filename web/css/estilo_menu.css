@@ -30,7 +30,7 @@ body{
     text-align: left;
     left: 2em;
     display: block;
-    background-image: url(../assets/icons/ubi_face.png);
+    
     background-size: cover;
 }
 /*boton*/
@@ -731,3 +731,13 @@ footer a:hover{
     padding: 1em;
     font-size: 24px;
 }
+//fin subir examen
+// boton subir foto
+.subirFoto{
+    opacity: 0;
+    z-index: 25;
+    text-decoration: none;  
+    background: none;
+    font-size: 0px;
+}
+//fin subir foto
