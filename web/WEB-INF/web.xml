@@ -56,6 +56,10 @@
         <servlet-name>cambiarDatos</servlet-name>
         <servlet-class>servlets.cambiarDatos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updatePhoto</servlet-name>
+        <servlet-class>servlets.updatePhoto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>cambiarDatos</servlet-name>
         <url-pattern>/servlets/cambiarDatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatePhoto</servlet-name>
+        <url-pattern>/servlets/updatePhoto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

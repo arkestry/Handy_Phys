@@ -40,13 +40,47 @@
                     return false;
                 }
             }
+$(document).ready(function (e) {
+    $('#form').on('submit',(function(e) {
+        e.preventDefault();
+        var data = new FormData();
+        $.each($('#file')[0].files, function(i, file) {
+                data.append('file-'+i, file);
+        });
+        console.log(data);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data: data,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                $('#ProfileImage').attr('src', data);
+                console.log("success");
+                console.log(data);
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+    }));
+
+    $("#file").on("change", function() {
+        $("#form").submit();
+    });
+});
         </script>
     </head>
        <body class="text-center">
            <h1 class="text-right text-uppercase" >Configuracion de cuenta</h1>
         <section id="datosC">
+            
+            <form id="form" action="../servlets/updatePhoto" >
+                <label id="userPic"><img id="ProfileImage" style=" width: 120px; height: 120px" src="<%=urlImage %>" alt="<%= usuario.getProfilePict() %>" width="120px" height="120px"><button type="button" class="btn btn-info" style=" cursor: pointer; background: none; width: 120px; border-top: none">Subir foto <span class=" glyphicon glyphicon-upload"></span></button><input id="file"  style="opacity: .0; width: 120px; position: relative; top: -1.7em; cursor: pointer" type="file"  class="subirFoto"></label>
+            </form>
             <form method="POST" onsubmit="validame(this)" action="../servlets/cambiarDatos">
-                <label id="userPic"><img style=" width: 120px; height: 120px" src="<%=urlImage %>" alt="<%= usuario.getProfilePict() %>" width="120px" height="120px"><button type="button" class="btn btn-info" style=" cursor: pointer; background: none; width: 120px; border-top: none">Subir foto <span class=" glyphicon glyphicon-upload"></span></button><input style="opacity: .0; width: 120px; position: relative; top: -1.7em; cursor: pointer" type="file" id="newImage" class="subirFoto"></label>
                 <section style=" margin-top: 3em;">
                     <h3>Nombre de usuario: <small><input name="nick" type="text" class="form-control" placeholder="<%= usuario.getUserName() %>" value="<%= usuario.getUserName() %>"></small></h3>
                     <h3>Nombre real: <small><input name="name" type="text" class=" form-control" value="<%= usuario.getFullName() %>" placeholder="<%= usuario.getFullName() %>"></small></h3>
