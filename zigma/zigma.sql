@@ -44,7 +44,6 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (11,28,2,5,'Esto es una pregunta','08-de-08-del-2015-06-55-14-PM','honter1997@gmail.com-Esto_es_una_pregunta-08-de-08-del-2015-06-55-14-PM.html');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -76,19 +75,21 @@ DROP TABLE IF EXISTS `avisos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `avisos` (
-  `idAvisoint` int(11) NOT NULL,
-  `idUsuario` int(11) DEFAULT NULL,
-  `idPrioridad` int(11) DEFAULT NULL,
+  `idAviso` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `idIndicador` int(11) DEFAULT NULL,
   `idGrupo` int(11) DEFAULT NULL,
-  `contenidoAviso` varchar(240) DEFAULT NULL,
-  PRIMARY KEY (`idAvisoint`),
+  `contenidoAviso` varchar(240) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `titulo` varchar(45) NOT NULL,
+  PRIMARY KEY (`idAviso`),
   KEY `idUsuario` (`idUsuario`),
   KEY `idGrupo` (`idGrupo`),
-  KEY `idPrioridad` (`idPrioridad`),
+  KEY `avisos_ibfk_3_idx` (`idIndicador`),
   CONSTRAINT `avisos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `catgrupos` (`idGrupo`),
-  CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`idPrioridad`) REFERENCES `prioridad` (`idPrioridad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`idIndicador`) REFERENCES `cat_indicadores` (`idIndicador`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +126,31 @@ LOCK TABLES `blacklist` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cat_indicadores`
+--
+
+DROP TABLE IF EXISTS `cat_indicadores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cat_indicadores` (
+  `idIndicador` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcionIndicador` varchar(100) NOT NULL,
+  `colorHEX` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`idIndicador`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cat_indicadores`
+--
+
+LOCK TABLES `cat_indicadores` WRITE;
+/*!40000 ALTER TABLE `cat_indicadores` DISABLE KEYS */;
+INSERT INTO `cat_indicadores` VALUES (1,'Prioridad Alta','#AD1A1A'),(2,'Prioridad Media','#F18B06'),(3,'Prioridad Baja','#ECF0F1');
+/*!40000 ALTER TABLE `cat_indicadores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `catgrupos`
 --
 
@@ -136,7 +162,7 @@ CREATE TABLE `catgrupos` (
   `nombreGrupo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idGrupo`),
   UNIQUE KEY `nombreGrupo_UNIQUE` (`nombreGrupo`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +171,7 @@ CREATE TABLE `catgrupos` (
 
 LOCK TABLES `catgrupos` WRITE;
 /*!40000 ALTER TABLE `catgrupos` DISABLE KEYS */;
-INSERT INTO `catgrupos` VALUES (18,'123'),(20,'1IM7'),(21,'1IM8'),(22,'4IM6'),(17,'4IM7'),(19,'a');
+INSERT INTO `catgrupos` VALUES (18,'123'),(20,'1IM7'),(21,'1IM8'),(22,'4IM6'),(17,'4IM7'),(23,'5IM7'),(19,'a'),(24,'prueba');
 /*!40000 ALTER TABLE `catgrupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +243,7 @@ CREATE TABLE `catunidadesacademicas` (
 
 LOCK TABLES `catunidadesacademicas` WRITE;
 /*!40000 ALTER TABLE `catunidadesacademicas` DISABLE KEYS */;
-INSERT INTO `catunidadesacademicas` VALUES (1,'Fisica 2');
+INSERT INTO `catunidadesacademicas` VALUES (1,'Fisica');
 /*!40000 ALTER TABLE `catunidadesacademicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +273,6 @@ CREATE TABLE `coms` (
 
 LOCK TABLES `coms` WRITE;
 /*!40000 ALTER TABLE `coms` DISABLE KEYS */;
-INSERT INTO `coms` VALUES (6,28,11,'2015-08-09 00:02:37','kh',2);
 /*!40000 ALTER TABLE `coms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -283,11 +308,12 @@ DROP TABLE IF EXISTS `datos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `datos` (
   `correo` varchar(100) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `idInstitucion` int(11) DEFAULT NULL,
   `IdUnidadAcademica` int(11) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
   `contrasenia` varchar(45) NOT NULL,
+  `urlImage` varchar(300) DEFAULT 'default.jpg',
   PRIMARY KEY (`correo`),
   KEY `IdUnidadAcademica_idx` (`IdUnidadAcademica`),
   KEY `idInstitucion` (`idInstitucion`),
@@ -303,7 +329,7 @@ CREATE TABLE `datos` (
 
 LOCK TABLES `datos` WRITE;
 /*!40000 ALTER TABLE `datos` DISABLE KEYS */;
-INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a'),('admin@hotmail.com','admin',1,1,'admin','nemesis007'),('ben@msdn.com','ben',1,1,'ben1','123'),('emma@admin.com','Emmanuel',1,1,'emma','123'),('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'ivan','123'),('honter1997@hotmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','2014090332'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin'),('matt@gy.io','matt',1,1,'matt1','123'),('pat@g.com','patricioEstrella',1,1,'pat','123'),('snl@gg.com','Sebastian',1,1,'snl','gg');
+INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a','default.jpg'),('admin@hotmail.com','admin',1,1,'admin','nemesis007','default.jpg'),('ben@msdn.com','ben',1,1,'ben1','123','default.jpg'),('emma@admin.com','Emmanuel',1,1,'emma','123','default.jpg'),('honter1997@gmail.com','ivan-hdz',1,1,'Octavio Ivan Hernandez Salinas','123','default.jpg'),('honter1997@hotmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','2014090332','default.jpg'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin','default.jpg'),('matt@gy.io','matt',1,1,'matt1','123','default.jpg'),('pat@g.com','patricioEstrella',1,1,'pat','123','default.jpg'),('snl@gg.com','Sebastian',1,1,'snl','gg','default.jpg');
 /*!40000 ALTER TABLE `datos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,7 +412,7 @@ CREATE TABLE `images` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `url` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +421,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (15,'2015-08-04 04:32:46','IMG_13245059321625.jpeg'),(16,'2015-08-04 04:34:21','2013-12-26 18.53.23.jpg'),(17,'2015-08-08 03:02:30','2013-12-26 18.41.48.jpg'),(18,'2015-08-08 03:54:10','2014-10-05 22.40.12.jpg'),(19,'2015-08-08 04:00:38','2013-12-26 18.41.48.jpg'),(20,'2015-08-08 04:06:40','2013-12-26 18.41.48.jpg'),(21,'2015-08-08 04:15:06','2013-12-26 18.41.48.jpg'),(22,'2015-08-08 04:16:08','3.jpg'),(23,'2015-08-08 23:54:39','20140220_125026.jpg');
+INSERT INTO `images` VALUES (15,'2015-08-04 04:32:46','IMG_13245059321625.jpeg'),(16,'2015-08-04 04:34:21','2013-12-26 18.53.23.jpg'),(17,'2015-08-08 03:02:30','2013-12-26 18.41.48.jpg'),(18,'2015-08-08 03:54:10','2014-10-05 22.40.12.jpg'),(19,'2015-08-08 04:00:38','2013-12-26 18.41.48.jpg'),(20,'2015-08-08 04:06:40','2013-12-26 18.41.48.jpg'),(21,'2015-08-08 04:15:06','2013-12-26 18.41.48.jpg'),(22,'2015-08-08 04:16:08','3.jpg'),(23,'2015-08-08 23:54:39','20140220_125026.jpg'),(24,'2015-08-12 02:36:47','2013-12-26 18.41.48.jpg');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,45 +473,6 @@ LOCK TABLES `preguntas` WRITE;
 /*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `prioridad`
---
-
-DROP TABLE IF EXISTS `prioridad`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `prioridad` (
-  `idPrioridad` int(11) NOT NULL,
-  `descripcionPrioridad` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idPrioridad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `prioridad`
---
-
-LOCK TABLES `prioridad` WRITE;
-/*!40000 ALTER TABLE `prioridad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `prioridad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Temporary view structure for view `prueba`
---
-
-DROP TABLE IF EXISTS `prueba`;
-/*!50001 DROP VIEW IF EXISTS `prueba`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `prueba` AS SELECT 
- 1 AS `idAvisoint`,
- 1 AS `idUsuario`,
- 1 AS `idPrioridad`,
- 1 AS `idGrupo`,
- 1 AS `contenidoAviso`*/;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `respuestas`
@@ -570,7 +557,7 @@ CREATE TABLE `simuladores` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `simuladores_ibfk_2` FOREIGN KEY (`idUnidadA`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`),
   CONSTRAINT `simuladores_ibfk_3` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -656,7 +643,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',2,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -709,7 +696,6 @@ CREATE TABLE `valoraciones` (
 
 LOCK TABLES `valoraciones` WRITE;
 /*!40000 ALTER TABLE `valoraciones` DISABLE KEYS */;
-INSERT INTO `valoraciones` VALUES (45,5,11,28,2);
 /*!40000 ALTER TABLE `valoraciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -844,6 +830,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `cambiarDatos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarDatos`(in EMAIL varchar(200),in NOMBRE varchar(100), in NICK varchar(45), in PASS varchar(45))
+begin 
+	update datos set datos.nombre = NOMBRE, datos.nickname = NICK, datos.contrasenia = PASS where datos.correo = EMAIL;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `cambiar_blacklist` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -939,6 +944,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `existe_grupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `existe_grupo`(in nombreDelGrupo varchar(10))
+begin
+	if (select nombreGrupo from catgrupos where nombregrupo = nombreDelGrupo) = nombreDelGrupo then
+		select true as 'existe';
+	else
+		select false as 'existe';
+	end if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getAllFeed` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -985,15 +1013,15 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getDatosUser`(in email varchar(100))
 begin
-	select usuarios.idDatos, datos.nickname, cattipousuarios.descripcionTipo, catinstitucion.descripcionInsti, usuarios.idUsuario
+	select usuarios.idDatos, datos.nickname, cattipousuarios.descripcionTipo, catinstitucion.descripcionInsti, usuarios.idUsuario, datos.nombre, catunidadesacademicas.DescripcionUA, datos.urlImage
 	from usuarios
 	inner join datos on usuarios.idDatos = datos.correo
 	inner join cattipousuarios on usuarios.idTipo = cattipousuarios.idTipo
-	
+	inner join catunidadesacademicas on datos.idUnidadAcademica = catunidadesacademicas.idUnidadAcademica
 	inner join catinstitucion on datos.idInstitucion = catinstitucion.idInstitucion
 	where usuarios.idDatos = email;
 end ;;
@@ -1059,6 +1087,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `get_IDGrupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_IDGrupo`(in nombreDelGrupo varchar(10))
+begin
+	if (select nombreGrupo from catgrupos where nombregrupo = nombreDelGrupo) = nombreDelGrupo then
+		select idGrupo  from catgrupos where catgrupos.nombreGrupo = nombreDelGrupo;
+	else
+		select 'error' as 'isError';
+	end if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `insertarArticulo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1112,6 +1163,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertar_aviso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_aviso`(in IDUSER int, in IDINDICADOR int, in IDGRUPO int,in TITULO varchar(45), in CONTENIDO varchar(240))
+begin
+	insert into avisos values (null, IDUSER, IDINDICADOR, IDGRUPO, CONTENIDO, current_date(), TITULO);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `insertar_blacklist` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1125,6 +1195,44 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_blacklist`( in PALABRA varchar(50))
 begin
 	insert into blacklist (palabra) values (PALABRA);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertar_grupo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_grupo`(in nombreGRUPO varchar(10))
+begin
+	insert into catgrupos (nombreGrupo) values (nombreGRUPO);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertar_indicador` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_indicador`(in DESCRP varchar(100), in COLORHEX varchar(8))
+begin
+	insert into cat_indicadores values (null, DESCRP, COLORHEX);
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1277,6 +1385,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `updatePhoto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updatePhoto`(in EMAIL varchar(300), in URL varchar(200))
+begin
+	update datos set urlImage = URL where correo = EMAIL;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `uploadImage` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1334,6 +1461,30 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ver_avisos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ver_avisos`(in IDGRUPO int)
+begin
+	select datos.nickname, avisos.contenidoAviso, avisos.fecha, catgrupos.nombreGrupo from avisos
+    inner join usuarios on usuarios.idUsuario = avisos.idUsuario
+    inner join datos on datos.correo = usuarios.idDatos
+    inner join catgrupos on catgrupos.idGrupo = avisos.idGrupo
+    where avisos.idGrupo = IDGRUPO order by avisos.fecha limit 5;
+    
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Final view structure for view `getweblog`
@@ -1367,24 +1518,6 @@ DELIMITER ;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `mostrararticulos` AS select `articulos`.`idArticulo` AS `idArticulo`,`articulos`.`idUsuario` AS `idUsuario`,`articulos`.`Titulo` AS `Titulo`,`articulos`.`fecha` AS `fecha`,`articulos`.`valoracion` AS `valoracion`,`articulos`.`idTipoCont` AS `idTipoCont`,`articulos`.`url` AS `url`,`datos`.`nickname` AS `nickname` from ((`articulos` join `usuarios` on((`usuarios`.`idUsuario` = `articulos`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) where (`articulos`.`idUsuario` = `usuarios`.`idUsuario`) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `prueba`
---
-
-/*!50001 DROP VIEW IF EXISTS `prueba`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `prueba` AS select `avisos`.`idAvisoint` AS `idAvisoint`,`avisos`.`idUsuario` AS `idUsuario`,`avisos`.`idPrioridad` AS `idPrioridad`,`avisos`.`idGrupo` AS `idGrupo`,`avisos`.`contenidoAviso` AS `contenidoAviso` from `avisos` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1434,4 +1567,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-10  1:25:22
+-- Dump completed on 2015-08-12 22:55:48

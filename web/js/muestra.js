@@ -26,8 +26,11 @@ $(document).ready(function(){
     $('#dropdownMenu1').click(function(){
        $('#filtroArt').fadeToggle(500); 
     });
-    $('#menuNo').hover(function(){
-       $('.cajaNo').fadeToggle(500);
+    $('#menuNo').click(function(){
+       $('.cajaNo').fadeIn(500);
+    });
+    $('#menuNo').mouseleave(function(){
+       $('.cajaNo').fadeOut(500);
     });
     //valoraciones
     $('span[name = s1]').hover(function(){

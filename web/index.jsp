@@ -12,7 +12,43 @@
         <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" href="css/EsilosSocial.css">
         <script src="js/jquery-1.11.3.min.js"></script>
-         <script src="js/muestra.js"></script>
+        <script src="js/muestra.js"></script>
+        <script>
+           
+               function send(){
+                   var prioridad = $('#prioridadAv option:selected').val();
+                   var cuerpo = $('#enviarAviso').html();
+                 
+                   
+                   $.ajax({
+                       url: "servlets/Avisos",
+                       type: 'POST',
+                       data: {plantilla: cuerpo,tituloAv: $('#tituloAv').val(), cuerpoAv: $('#cuerpoAv').val(), prioridadAv: prioridad, grupoAv: $('#grupoAv').val()},
+                       async: true,
+                       beforeSend: function(){$('#enviarAviso').html('<h1>Enviando aviso...</h1>');},
+                       success: function(html){
+                           
+                           $('#enviarAviso').html(html);
+                        },
+                       error: function(err){
+                           alert("Ha habido un error al intentar mandar su petición"+err.toString());
+                       }
+                       
+                   });
+               };
+        function verificaGrupo(texto){
+            console.log(texto.value);
+            $.ajax({
+                url: "servlets/Grupos",
+                type: "POST",
+                data: {grupo: texto.value, tipo: "revisar"},
+                success: function(html){
+                    $('#grupoAv').css('border', html);
+                }
+            });
+        }
+            
+        </script> 
           <%
        try{
         if(session.isNew()){
@@ -93,25 +129,29 @@
                </ul>
                 <% }
                     if(session.getAttribute("tipo").equals("Profesor")){ %>
-               <ul class="cajaNo list-unstyled">
+                    <ul class="cajaNo list-unstyled" id="enviarAviso">
                     <li><label>Crear aviso</label></li>
                     <li> 
                         <section style="padding: 5px">
 
-                            <form>
-                                Titulo Aviso: <input style="color: #141414" type="text" size="30" name="tituloNo">
+                            <section>
+                                Titulo Aviso: <input style="color: #141414" type="text" size="30" id="tituloAv" name="tituloAv">
                                 <section style="margin: 2px;">Aviso: <br>
-                                    <textarea maxlength="100" style="color: #141414"></textarea>
+                                    <textarea maxlength="100" style="color: #141414" id="cuerpoAv" name="cuerpoAv"></textarea>
                                 </section>
                                 <section>
-                                    <select style="color: black">
-                                    <option>Prioridad alta</option>
-                                    <option>Prioridad media</option>
-                                    <option>Prioridad baja</option>
-                                </select>
-                                </section><br>
-                                <input class="btn boton btn-block" type="submit" value="ENVIAR">
-                            </form>
+                                    <select style="color: black" id="prioridadAv" name="prioridadAv">
+                                        <option value="1">Prioridad alta</option>
+                                        <option value="2">Prioridad media</option>
+                                        <option value="3">Prioridad baja</option>
+                                    </select>
+                                </section>
+                                <section>
+                                    <lable for="grupoAv">Grupo al que va dirigido el aviso:<input style="color: #141414" onkeyup="verificaGrupo(this)" type="text" maxlength="10" id="grupoAv"></lable>
+                                </section>
+                                <br>
+                                <input  class="btn boton btn-block" onclick="send()" type="button" value="ENVIAR">
+                            </section>
                         </section></li>   
                         
                </ul> <%}
