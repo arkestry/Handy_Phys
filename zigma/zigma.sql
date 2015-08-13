@@ -80,7 +80,7 @@ CREATE TABLE `avisos` (
   `idIndicador` int(11) DEFAULT NULL,
   `idGrupo` int(11) DEFAULT NULL,
   `contenidoAviso` varchar(240) NOT NULL,
-  `fecha` date DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
   `titulo` varchar(45) NOT NULL,
   PRIMARY KEY (`idAviso`),
   KEY `idUsuario` (`idUsuario`),
@@ -89,7 +89,7 @@ CREATE TABLE `avisos` (
   CONSTRAINT `avisos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `catgrupos` (`idGrupo`),
   CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`idIndicador`) REFERENCES `cat_indicadores` (`idIndicador`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +98,7 @@ CREATE TABLE `avisos` (
 
 LOCK TABLES `avisos` WRITE;
 /*!40000 ALTER TABLE `avisos` DISABLE KEYS */;
+INSERT INTO `avisos` VALUES (5,32,1,17,'Cuerpo del aviso de prueba con prioridad alta','2015-08-13 00:00:00','Aviso Alta'),(6,32,1,17,'Cuerpo del aviso de prueba con prioridad media','2015-08-13 00:00:00','AvisoMedia'),(7,32,1,17,'Cuerpo del aviso de prueba con prioridad baja','2015-08-13 00:00:00','Aviso Baja'),(8,32,2,17,'fdfddffddfdfd','2015-08-13 00:00:00','dfdf'),(9,32,3,17,'Prioridad baja','2015-08-13 13:48:42','Aviso con prioridad baja'),(10,32,2,17,'Prioridad baja','2015-08-13 13:50:46','Prioridad media');
 /*!40000 ALTER TABLE `avisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -643,7 +644,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',2,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',2,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1175,7 +1176,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_aviso`(in IDUSER int, in IDINDICADOR int, in IDGRUPO int,in TITULO varchar(45), in CONTENIDO varchar(240))
 begin
-	insert into avisos values (null, IDUSER, IDINDICADOR, IDGRUPO, CONTENIDO, current_date(), TITULO);
+	insert into avisos values (null, IDUSER, IDINDICADOR, IDGRUPO, CONTENIDO, now(), TITULO);
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1473,11 +1474,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ver_avisos`(in IDGRUPO int)
 begin
-	select datos.nickname, avisos.contenidoAviso, avisos.fecha, catgrupos.nombreGrupo from avisos
+	select datos.nickname, cat_indicadores.colorHEX, avisos.titulo, avisos.contenidoAviso, avisos.fecha, catgrupos.nombreGrupo from avisos
     inner join usuarios on usuarios.idUsuario = avisos.idUsuario
     inner join datos on datos.correo = usuarios.idDatos
     inner join catgrupos on catgrupos.idGrupo = avisos.idGrupo
-    where avisos.idGrupo = IDGRUPO order by avisos.fecha limit 5;
+    inner join cat_indicadores on avisos.idIndicador = cat_indicadores.idIndicador
+    where avisos.idGrupo = IDGRUPO order by avisos.fecha desc limit 5;
     
 end ;;
 DELIMITER ;
@@ -1567,4 +1569,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-12 22:55:48
+-- Dump completed on 2015-08-13 14:11:20

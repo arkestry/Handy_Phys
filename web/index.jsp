@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="classes.sql"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="beans.userBean"%>
 
 <!DOCTYPE html>
@@ -27,8 +31,8 @@
                        async: true,
                        beforeSend: function(){$('#enviarAviso').html('<h1>Enviando aviso...</h1>');},
                        success: function(html){
-                           
                            $('#enviarAviso').html(html);
+                           alert("Aviso enviado correctamente");
                         },
                        error: function(err){
                            alert("Ha habido un error al intentar mandar su petición"+err.toString());
@@ -50,11 +54,14 @@
             
         </script> 
           <%
-       try{
+    userBean usuario = null;    
+    try{
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
-            userBean user = new userBean();
-            session.setAttribute("userData", user);
+            usuario = new userBean();
+            session.setAttribute("userData", usuario);
+        }else{
+            usuario = (userBean)session.getAttribute("userData");
         }
         if(session.getAttribute("tipo").equals("Administrador")){
             %>
@@ -117,16 +124,29 @@
             <% if(!session.getAttribute("tipo").equals("Anonimo")){             
             %>
             <ul id="menuNo">
-            <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; "></span>
-                 <% if(session.getAttribute("tipo").equals("Alumno")){%>
+            <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; cursor: pointer"></span>
+                 <% 
+                if(session.getAttribute("tipo").equals("Alumno")){
+                %>
                 <ul class="cajaNo list-unstyled">
-                    <section style="margin: 1em;">
-                    <li><label>Avisos</label></li>
-                    <li class="altaPrioridad"><label>Titulo Aviso: </label><section>Aviso con alta prioridad</section></li>
-                    <li class="mediaPrioridad"><label>Titulo Aviso: </label><section>Aviso con media prioridad</section></li>
-                    <li class="bajaPrioridad"><label>Titulo Aviso: </label><section>Aviso con baja prioridad</section></li>
+                    <section id="avisos" style="margin: 1em;">
+                    
                     </section>
-               </ul>
+                </ul>
+                <script>
+                    setInterval(getAvisos, 59000);
+                    getAvisos();
+                    function getAvisos(){
+                        $.ajax({
+                            url: "servlets/getAvisos",
+                            type: "POST",
+                            success: function(html){
+                                $('#avisos').html(html);
+                                console.log("success");
+                            }
+                        });
+                    }
+                </script>
                 <% }
                     if(session.getAttribute("tipo").equals("Profesor")){ %>
                     <ul class="cajaNo list-unstyled" id="enviarAviso">

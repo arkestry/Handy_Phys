@@ -68,6 +68,10 @@
         <servlet-name>Grupos</servlet-name>
         <servlet-class>servlets.Grupos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getAvisos</servlet-name>
+        <servlet-class>servlets.getAvisos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>Grupos</servlet-name>
         <url-pattern>/servlets/Grupos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getAvisos</servlet-name>
+        <url-pattern>/servlets/getAvisos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
