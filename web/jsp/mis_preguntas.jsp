@@ -31,57 +31,61 @@
         PreparedStatement ps1 = con.prepareStatement("call misComentarios(?)");
     %>
     <body id="mis_preguntas">
-        <section id="quest_panel">
-            <div class="container-fluid">
-                <h2 class="text-center">
-                    Mis Preguntas <a href="../pages/hacer_pregunta.html"><button class="btn boton"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
-                </h2>
-            </div>
-            <section id="pregunta">
-                <% while(rs.next()){ 
-                    ps1.setInt(1, rs.getInt(1));
-                    ResultSet rs1 = ps1.executeQuery();
-                    
-                %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <form action="pregunta.jsp" method="POST">
-                        <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
-                        <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
-                        <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
-                        <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
-                        <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
-                        <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                        <input type="hidden" name="tipoCont" value="2">   
-                        <button type="submit" class=" h3" style="background: none; border: none; color: #141414"><%=rs.getString(3) %></button>
-                        
-                         </form>
-                    </div>
-                    <div class="panel-body">
-                        <%while(rs1.next()){%>
-                        <form action="pregunta.jsp" method="POST">
-                        <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
-                        <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
-                        <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
-                        <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
-                        <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
-                        <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                        <input type="hidden" name="tipoCont" value="2">   
-                        <button type="submit" style="background: none; border: none; color: #141414">Respuestas</button><span class="badge"><%=rs1.getString(7) %></span>
-                        </form>
-                        <%}%>
-                    </div>
-                    <div class="panel-footer">
-                        <h5 id="quest_date">
-                            <%= rs.getString(4) %>
-                        </h5>
-                    </div>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
+            <section id="quest_panel">
+                <div class="container-fluid">
+                    <h2 class="text-center">
+                        Mis Preguntas <a href="../pages/hacer_pregunta.html"><button class="btn boton"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
+                    </h2>
                 </div>
-                <% 
-                }%>
+                <section id="pregunta">
+                    <% while(rs.next()){ 
+                        ps1.setInt(1, rs.getInt(1));
+                        ResultSet rs1 = ps1.executeQuery();
+
+                    %>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <form action="pregunta.jsp" method="GET">
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="tipoCont" value="2">   
+                            <button type="submit" class=" h3" style="background: none; border: none; color: #141414"><%=rs.getString(3) %></button>
+
+                             </form>
+                        </div>
+                        <div class="panel-body">
+                            <%while(rs1.next()){%>
+                            <form action="pregunta.jsp" method="GET">
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="tipoCont" value="2">   
+                            <button type="submit" style="background: none; border: none; color: #141414">Respuestas</button><span class="badge"><%=rs1.getString(7) %></span>
+                            </form>
+                            <%}%>
+                        </div>
+                        <div class="panel-footer">
+                            <h5 id="quest_date">
+                                <%= rs.getString(4) %>
+                            </h5>
+                        </div>
+                    </div>
+                    <% 
+                    }%>
+                </section>
             </section>
         </section>
-         
     </body>
 </html>
 

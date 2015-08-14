@@ -1,26 +1,10 @@
-<%-- 
-    Document   : index
-    Created on : 13/08/2015, 09:12:25 PM
-    Author     : ivan-hdz
---%>
-
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="classes.sql"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="beans.userBean"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Bienvenido</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="css/estilo_menu.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/muestra.js"></script>
-</head>
-<body>
-    <section class="integrarMenu">
-        <!DOCTYPE html>
 <html>
     <head>
         <title>Menu Principal</title>
@@ -45,7 +29,7 @@
                            alert("Aviso enviado correctamente");
                         },
                        error: function(err){
-                           alert("Ha habido un error al intentar mandar su peticiÃ³n"+err.toString());
+                           alert("Ha habido un error al intentar mandar su petición"+err.toString());
                        }
                        
                    });
@@ -107,8 +91,8 @@
     </head>
   
     <body>
-        <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
-        <div id="hmenu"  class="navbar navbar-inverse col-xs-12">
+        <img id="muestrame" class="zigma" src="../assets/icons/zigma.png" alt="zigma">
+        <div id="hmenu" class="navbar navbar-inverse col-xs-12">
             <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em">
                     <span  
                     <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
@@ -122,26 +106,26 @@
                 <ul class="keys mostrarSeccion list-group-item  list-unstyled" >
                     
                     <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a class="sublist" href="jsp/login.jsp" >Iniciar Sesion</a></li>
-                    <li><a class="sublist" href="jsp/registrate.jsp" >Registrarse</a></li>
+                    <li><a class="sublist" href="../jsp/login.jsp" target="_top">Iniciar Sesion</a></li>
+                    <li><a class="sublist" href="../jsp/registrate.jsp" target="_top">Registrarse</a></li>
                     <%}%>
                     <%
                     if(session.getAttribute("tipo").equals("Administrador") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
-                    <form action="jsp/logout.jsp" method="POST"><li style="color: #ECF0F1"><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
+                    <form action="../jsp/logout.jsp" method="POST"><li style="color: #ECF0F1"><input type="submit" style="position: absolute; opacity: 0; left: 0.1em; height: 1.3em; width: 100%">Cerrar sesion</li></form>
                     <%}%>
                     
                 </ul>
             </ul>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){             
             %>
-            <ul id="menuNo" s>
+            <ul id="menuNo" >
             <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; cursor: pointer"></span>
                  <% 
                 if(session.getAttribute("tipo").equals("Alumno")){
                 %>
                 <ul class="cajaNo list-unstyled">
                     <section id="avisos" style="margin: 1em;">
-                        <!--Esto esta al proposito -->
+                    
                     </section>
                 </ul>
                 <script>
@@ -149,7 +133,7 @@
                     getAvisos();
                     function getAvisos(){
                         $.ajax({
-                            url: "servlets/getAvisos",
+                            url: "../servlets/getAvisos",
                             type: "POST",
                             success: function(html){
                                 $('#avisos').html(html);
@@ -204,24 +188,24 @@
     
             <nav>
                 <ul class="menu" id="Principal">
-            <li><a href="index.jsp" >PÃ¡gina Principal</a></li>
+            <li><a href="../index.jsp" target="_top">Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="jsp/profile.jsp" >Mi PerfÃ­l</a></li>
+            <li><a href="../jsp/profile.jsp" target="_top">Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
-             <li><a href="jsp/mis_preguntas.jsp" >Mis Preguntas</a></li>
+             <li><a href="../jsp/mis_preguntas.jsp" target="_top">Mis Preguntas</a></li>
             <%}
                 }%>
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
-                    <li><a class="sublist" href="jsp/todo_articulos.jsp" >Teoria</a></li>
-                    <li><a class="sublist" href="jsp/todo_preguntas.jsp" >Preguntas</a></li>
-                    <li><a class="sublist" href="jsp/examenes.jsp" >Examenes</a></li>
+                    <li><a class="sublist" href="../jsp/todo_articulos.jsp" target="_top">Teoria</a></li>
+                    <li><a class="sublist" href="../jsp/todo_preguntas.jsp" target="_top">Preguntas</a></li>
+                    <li><a class="sublist" href="../jsp/examenes.jsp" target="_top">Examenes</a></li>
                     <%
                         if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-                    <li><a class="sublist" href="jsp/todo_simulExam.jsp" >Simulador Examen</a></li>
+                    <li><a class="sublist" href="../jsp/todo_simulExam.jsp" target="_top">Simulador Examen</a></li>
                     <% }%>
                 </ul>
             </section>
@@ -230,7 +214,7 @@
              if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li onclick="mostrar(feedS)"><a href="#">Feedback</a></li>
             <section id="feedS" name="onMenu">
-                <form action="jsp/enviarFeed.jsp" class="form"   method="post">
+                <form action="../jsp/enviarFeed.jsp" class="form" target="_top"  method="post">
                     <section class="text-center col-xs-12 form-group">
                         <textarea class="form-control " rows="3" name="feed" placeholder="Escribe una sugerencia"></textarea>
                     </section>
@@ -240,13 +224,13 @@
                     </section>
                 </form>
             </section>
-              <li><a href="jsp/ConfigurarCuenta.jsp" >ConfiguraciÃ³n de Cuenta</a></li><%} %>
+              <li><a href="../jsp/ConfigurarCuenta.jsp" target="_top">Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
-            <li><a href="jsp/admin_indexSPS.jsp" >Registro de Actividad</a></li>
-            <li><a href="jsp/admin_feedback.jsp" >Feedback</a></li>
-            <li><a href="jsp/admin_reporte.jsp" >Reportes</a></li>
-            <li><a href="jsp/registroProfe.jsp" >Registrar profesor</a></li>
-            <li><a href="jsp/admin_blacklist.jsp" >BlackList</a></li>
+            <li><a href="../jsp/admin_indexSPS.jsp" target="_top">Registro de Actividad</a></li>
+            <li><a href="../jsp/admin_feedback.jsp" target="_top">Feedback</a></li>
+            <li><a href="../jsp/admin_reporte.jsp" target="_top">Reportes</a></li>
+            <li><a href="../jsp/registroProfe.jsp" target="_top">Registrar profesor</a></li>
+            <li><a href="../jsp/admin_blacklist.jsp" target="_top">BlackList</a></li>
           
             <%}%>
         </ul>
@@ -258,15 +242,3 @@
 <!--MD5
 /rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
 -->
-    </section>
-    <section class="integrarCont">
-    <section class="bg bghome"></section>
-    <footer>
-        <hr size="5px" width="90%" align="center" color="black"/>
-        <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015Â© &nbsp;&nbsp; IbexÂ® de MÃ©xico   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
-    </section>
-</body>
-</html>

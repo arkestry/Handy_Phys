@@ -14,12 +14,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>TODO Preguntas</title>
+        <title>Preguntas</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
-        <script src="./js/jquery-1.11.3.min.js"></script>
+        <script src="../js/jquery-1.11.3.min.js"></script>
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
          <%
             Connection con = sql.conectar();
             PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2");
@@ -29,12 +30,16 @@
         
     </head>
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
        <!--encabezado-->
         <div class="page-header">
             <h1 class="text-center todo_tit">
                 Preguntas
                 <% if(!session.getAttribute("tipo").equals("Anonimo")) {%>
-                    <a href="../pages/hacer_pregunta.html"><span class="glyphicon glyphicon-upload"></span></a>
+                    <a href="hacer_pregunta.jsp"><span class="glyphicon glyphicon-upload"></span></a>
                 <% } %>
             </h1>
             <div class="panel panel-default">
@@ -65,7 +70,7 @@
                <div class="panel panel-default">
                 <div class="panel-heading slim_panHead">
                     <h3>
-                        <form action="pregunta.jsp" method="POST" style="display: inline">
+                        <form action="pregunta.jsp" method="GET" style="display: inline">
                             <button type="submit" style="background: none; border: none"><%=(String)rs.getObject("Titulo") %></button>
                             <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
                             <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
@@ -157,6 +162,7 @@
             <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
+        </section>
     </body>
 </html>
 

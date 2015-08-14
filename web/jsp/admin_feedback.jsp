@@ -21,11 +21,13 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../css/estilo_menu.css">
 <script src="./js/jquery-1.11.3.min.js"></script>
-
+<script src="../js/muestra.js" type="text/javascript"></script>
 </head>
 <body>
-    
-    
+    <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+    </section>
+    <section class="integrarCont">
     <h1><center>Reportes de Feedback</center></h1>
     <hr>
       <%
@@ -48,7 +50,7 @@
                 while(rs2.next()){
                 userName=rs2.getString("nickname");
         %>
-        <form action="verFeedAd.jsp" method="post">
+        <form action="verFeedAd.jsp" method="GET">
                 <ul class=" list-unstyled">
                     <li class="cajitaFeed">
                         <label name="username"> <%=userName%></label>     
@@ -59,6 +61,7 @@
                   </ul>
         </form>
             <%}
-                }%>
+        }%>
+    </section>
 </body>
 </html>

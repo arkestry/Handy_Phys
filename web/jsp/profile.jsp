@@ -17,14 +17,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
-       <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../js/jquery-1.11.3.min.js"></script>
+       <link rel="stylesheet" href="../css/estilo_menu.css">
+       <script src="../js/muestra.js" type="text/javascript"></script>
+        
     </head>
-    <body class="text-center">
-        <section id="cabezaP" >
+    <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont text-center">
+            <center><section id="cabezaP" >
             <center><label id="userPic"><img style="width: 120px; height: 120px" src="<%= urlImage %>" alt="<%= usuario.getProfilePict() %>"></label></center>
             <h1 id="usuario"><%=usuario.getUserName() %> <small>Mi Perfil</small></h1>
-        </section>
+            </section></center>
         <section id="datosP">
             <h3>Nombre completo: </h3><p id="nombre"><%=usuario.getFullName() %></p>
             <h3>Grupo: </h3><p id="grupo"><%=usuario.getGrupo() %></p>
@@ -38,12 +44,8 @@
         
         <br>
         <br>
-        <footer>
-            <hr size="5px" width="90%" align="center" color="black"/>
-            <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
+        
+        </section>
     </body>
 </html>
 

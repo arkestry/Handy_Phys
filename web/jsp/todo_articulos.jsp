@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Untitled Document</title>
+        <title>Articulos</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
@@ -29,13 +29,17 @@
         
     </head>
     <body>
-        <section class="bg bgart"></section>
+        <section style="position: absolute" class="bg bgart"></section>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
         <article>
             <div class="page-header">
                 <h1 class="text-center todo_tit">
                     Articulos
                     <% if(!session.getAttribute("tipo").equals("Anonimo")) {%>
-                    <a href="../pages/nuevo_articulos.html"><span class="glyphicon glyphicon-upload"></span></a>
+                    <a href="nuevo_articulo.jsp"><span class="glyphicon glyphicon-upload"></span></a>
                     <% } %>
                 </h1>
             </div>
@@ -61,7 +65,7 @@
         <div class="todo">
             <div class="row">
                 <%while(rs.next()){ %>
-                <form action="articulo.jsp" method="POST">
+                <form action="articulo.jsp" method="GET">
                 <div class="col-sm-6 col-md-4" >
                     <div class="thumbnail">
                         <div class="caption">
@@ -133,6 +137,7 @@
             <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
+        </section>
     </body>
 </html>
 

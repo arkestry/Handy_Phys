@@ -1,3 +1,10 @@
+<%-- 
+    Document   : nuevo_reporte
+    Created on : 13/08/2015, 08:57:11 PM
+    Author     : ivan-hdz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -12,6 +19,10 @@
         <script src="../js/muestra.js"></script>
     </head>
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
    <h1 class="text-right">AREA DE REPORTES</h1>
     <form class="formularioNuevoRepor">
         <section class="reporte">
@@ -56,5 +67,6 @@
             <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
+        </section>
     </body>
 </html> 

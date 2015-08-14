@@ -92,15 +92,20 @@ function start(){
         </script>
     </head>
     <body onload="start()" id="cuerpo">
-        <h1 class="text-center text-danger"><%=titulo %> </h1>
-        <section class="container">
-            <p id="preg" class="h3"></p>
-            <label>Respuestas: </label>
-            <p onchange="checar()" id="resp" class="h4"></p> <!--PARA MODIFICAR LOS ESTILOS DE LAS RESPUESTAS VER LA CALSE JAVA DE SIGPREGUNTA -->
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
-        <section class="container">
+        <section class="integrarCont">
+            <h1 class="text-center text-danger"><%=titulo %> </h1>
+            <section class="container">
+                <p id="preg" class="h3"></p>
+                <label>Respuestas: </label>
+                <p onchange="checar()" id="resp" class="h4"></p> <!--PARA MODIFICAR LOS ESTILOS DE LAS RESPUESTAS VER LA CALSE JAVA DE SIGPREGUNTA -->
+            </section>
+            <section class="container">
             <button class="btn btn-danger" onclick="window.location.href = 'todo_simulExam.jsp'" type="button">Cancelar</button>
             <button id="n" onclick="sig()" style="float: right" class="btn btn-success">Siguiente Pregunta</button>
+        </section>
         </section>
     </body>
 </html>

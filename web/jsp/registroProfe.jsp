@@ -17,6 +17,10 @@
         <script src="./js/jquery-1.11.3.min.js"></script>
     </head>
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
         <section class="bg bgregist"></section>
         <form action="../servlets/regist" class="form-horizontal formularioLogin bordeR bBlue" role="form">
             <input type="hidden" name="institucion" value="1">
@@ -74,5 +78,6 @@
             <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
+        </section>
     </body>
 </html>

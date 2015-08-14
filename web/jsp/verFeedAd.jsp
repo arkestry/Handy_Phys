@@ -23,38 +23,42 @@
     <script src="../js/muestra.js"></script>
 </head>
 <body>
-    <div>  
-        <h1><center>Reporte de feedback detallado</center></h1>
-        <hr>
-          <%
-             Connection con = sql.conectar();
-             ResultSet rs; 
-             ResultSet rs2;
-             String userName=request.getParameter("username");
-             int idFeed;
-             int idUser;
-             String contenido;
-             idFeed=Integer.parseInt(request.getParameter("idFeed"));
-             PreparedStatement ps=con.prepareStatement("call getFeedContenido(?)");
-             ps.setInt(1, idFeed);
-             rs=ps.executeQuery();
-             while(rs.next()){
-                idUser=Integer.parseInt(rs.getString("idUsuario"));
-                contenido=rs.getString("contenidoFB");
-                PreparedStatement ps2=con.prepareStatement("call getUsername(?);");
-                ps2.setInt(1,idUser);
-                rs2=ps2.executeQuery();
-                while(rs2.next()){
-                userName=rs2.getString("nickname");
-        %>
-        <h2><label><%=userName%></label></h2>
-        <p class="feedLetra"><%=contenido%></p>
-    </div>
-    
-    <%  }
-             }
-             %>
-             <button onclick="window.location.href = 'admin_feedback.jsp'" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Volver</button>
-   
+    <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+    </section>
+    <section class="integrarCont">
+        <div>  
+            <h1><center>Reporte de feedback detallado</center></h1>
+            <hr>
+              <%
+                 Connection con = sql.conectar();
+                 ResultSet rs; 
+                 ResultSet rs2;
+                 String userName=request.getParameter("username");
+                 int idFeed;
+                 int idUser;
+                 String contenido;
+                 idFeed=Integer.parseInt(request.getParameter("idFeed"));
+                 PreparedStatement ps=con.prepareStatement("call getFeedContenido(?)");
+                 ps.setInt(1, idFeed);
+                 rs=ps.executeQuery();
+                 while(rs.next()){
+                    idUser=Integer.parseInt(rs.getString("idUsuario"));
+                    contenido=rs.getString("contenidoFB");
+                    PreparedStatement ps2=con.prepareStatement("call getUsername(?);");
+                    ps2.setInt(1,idUser);
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                    userName=rs2.getString("nickname");
+            %>
+            <h2><label><%=userName%></label></h2>
+            <p class="feedLetra"><%=contenido%></p>
+        </div>
+
+        <%  }
+                 }
+                 %>
+                 <button onclick="window.location.href = 'admin_feedback.jsp'" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Volver</button>
+    </section>
 </body>
 </html>

@@ -40,26 +40,29 @@
         </script>
     </head>
     <body>
-       
-        <%
-            if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-        <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
-        <section id="subirExamen" style="display: none">
-            <form class="subirExamen form-inline" method="POST" action="../servlets/generarHTML" enctype="multipart/form-data">
-                <section class="col-md-12">
-                    <label class="col-md-1"  for="titulo">TITULO: </label>
-                    <section class="col-md-10">
-                        <input class="form-control" type="text" size="180" name="title" style="border-radius: 5px; color: #141414">
-                    </section>
-                </section>
-                <input style="display: inline; margin-left: 5em; margin-right: 5em" type="file" name="file">
-                
-                <input  type="submit" class="btn btn-lg btn-success" value="Subir">
-            </form>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
-        <%}%>
-        <h1 class="text-center">Examenes</h1>
-        <section class="examenesContent container">
+        <section class="integrarCont">
+            <%
+                if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+            <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
+            <section id="subirExamen" style="display: none">
+                <form class="subirExamen form-inline" method="POST" action="../servlets/generarHTML" enctype="multipart/form-data">
+                    <section class="col-md-12">
+                        <label class="col-md-1"  for="titulo">TITULO: </label>
+                        <section class="col-md-10">
+                            <input class="form-control" type="text" size="180" name="title" style="border-radius: 5px; color: #141414">
+                        </section>
+                    </section>
+                    <input style="display: inline; margin-left: 5em; margin-right: 5em" type="file" name="file">
+
+                    <input  type="submit" class="btn btn-lg btn-success" value="Subir">
+                </form>
+            </section>
+            <%}%>
+            <h1 class="text-center">Examenes</h1>
+            <section class="examenesContent container">
             <table class="table table-striped table-responsive">
                 <tr>
                     <th>Titulo del examen</th>
@@ -105,6 +108,7 @@
                     }
                 %>
             </table>
+        </section>
         </section>
     </body>
 </html>

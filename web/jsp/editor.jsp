@@ -66,6 +66,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../js/editor.js" type="text/javascript"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
         <script>
             function enviar(f){
                 var code = document.getElementById("code");
@@ -80,13 +81,17 @@
     </head>
     
     <body >
-        <article>
-             <h1 class="text-center page-header">
-                Editar: <small><%= titulo %></small>
-            </h1>
-            
-        </article>
-        <div class="container">
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
+            <article>
+                 <h1 class="text-center page-header">
+                    Editar: <small><%= titulo %></small>
+                </h1>
+
+            </article>
+            <div class="container">
             <form method="POST"  action="../servlets/actualizarHTML" class="form-group" onsubmit="enviar(this)">
                 <input type="hidden" name="url" value="<%=url%>">
                 <input type="hidden" name="tipoCont" value="<%= tipoCont%>">
@@ -112,6 +117,6 @@
                 </p>
             </form>
         </div>
-            
+        </section>
     </body>
 </html>

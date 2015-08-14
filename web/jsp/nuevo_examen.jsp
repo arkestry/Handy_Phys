@@ -1,7 +1,14 @@
+<%-- 
+    Document   : nuevo_examen
+    Created on : 13/08/2015, 08:55:22 PM
+    Author     : ivan-hdz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title id="title"></title>
+        <title id="title">Creaundo un examen...</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -16,6 +23,10 @@
         </script>
     </head>
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
     <h1>CREAR EXAMEN DE PRACTICA</h1>
     <form action="../servlets/subirExam" method="POST" onsubmit="document.getElementById('cuantos').value = entero;" class="formularioNuevoExa" style="border-right: 10px solid #098ddf; border-top: 5px solid #098ddf">
         <input id="cuantos" type="hidden" value="" name="cuantos">
@@ -87,7 +98,7 @@
             <input type="submit" value="Enviar" style="float: right" class="btn btn-success">
         </section>
         </form>
-      
+        </section>
     </body>
 </html>
 <!--

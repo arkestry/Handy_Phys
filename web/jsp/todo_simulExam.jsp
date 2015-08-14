@@ -39,7 +39,11 @@
         ResultSet rs = ps.executeQuery();
     %>
     <body>
-        <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN <a href="../pages/nuevoExamen.html"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a></h1>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
+        <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN <a href="nuevo_examen.jsp"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a></h1>
         <section class="col-md-12">
             <section style="position: relative; top: -1em" class="col-md-1">
                 <label class="h3">Filtro: </label>
@@ -83,7 +87,8 @@
                             <input type="hidden" value="4" name="tipoCont">
                             <input type="submit" class="btn btn-danger btn-sm" style="display: inline; float: right; position: relative;" value="Eliminar">
                         </form>
-                        <form action="verSimulador.jsp" method="POST">
+                       <%}%>
+                        <form action="verSimulador.jsp" method="GET">
                             <input name="archivo" type="hidden" value="<%= rs.getString(9)%>">
                             <input name="idSimulador" type="hidden" value="<%= rs.getString(1)%>">
                             <input type="submit" value="Realizar" class="btn btn-success btn-sm">
@@ -91,7 +96,6 @@
                             <input name="titulo" type="hidden" value="<%= rs.getString(2) %>">
                         </form>
                         
-                        <%}%>
                     </td>
                 </tr>
                 <% } %>
@@ -103,5 +107,6 @@
             <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
+        </section>
     </body>
 </html>

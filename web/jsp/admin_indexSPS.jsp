@@ -1,3 +1,10 @@
+<%-- 
+    Document   : admin_indexSPS
+    Created on : 13/08/2015, 08:48:08 PM
+    Author     : ivan-hdz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,7 +13,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Registro de Actividad</title>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -41,6 +48,10 @@ and open the template in the editor.
     </head>
     
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
         <h1>REGISTRO DE ACTIVIDAD<small> Segundo a Segundo</small></h1>
         <section>
             <section style="width: 3%; float: left; display: table-cell; padding: 1em">
@@ -50,5 +61,7 @@ and open the template in the editor.
             <section style="width: 94%; float: left; display: table-cell" id="seccion">
             </section>
         </section>
+        </section>
     </body>
+    
 </html>

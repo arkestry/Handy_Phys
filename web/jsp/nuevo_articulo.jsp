@@ -1,8 +1,15 @@
+<%-- 
+    Document   : nuevo_articulo
+    Created on : 13/08/2015, 08:57:47 PM
+    Author     : ivan-hdz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        
+<head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+       <meta charset="UTF-8">
         <!-- Dependencias de summernote -->
         <script src="../js/code.jquery.com_jquery-1.9.1.min.js" type="text/javascript"></script>
         <link href="../js/netdna.bootstrapcdn.com_bootstrap_3.0.1_css_bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -19,86 +26,54 @@
             function enviar(f){
                 var code = document.getElementById("code");
                 code.value = $('#summernote').code();
-                
+              
                 f.submit();
             }
         </script>
     </head>
     <body>
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
         <article>
             <h1 class="text-center page-header">
-                Pregunta sobre algo que te inquiete...
+                Articulos
             </h1>
-            <p id="p_preg_alg">
-                Pregunte a la comunidad...
+            <p id="p_preg_alg" class="text-center">
+                Escriba un articulo, con el proposito de contribuir en este entorno virtual
             </p>
         </article>
-        <div class="container" id="preg_algo_container">
-            <form class="form-group" action="../servlets/generarHTML" method="POST" onsubmit="enviar(this)">
-                <input type="hidden" name="section" value="preguntas">
+        <div class="container">
+            <form method="POST" action="../servlets/generarHTML" class="form-group" onsubmit="enviar(this)">
+                <input type="hidden" name="section" value="articulos">
                 <label class="subtitle">
-                    Titulo de la pregunta:
+                    Titulo Articulo:
                 </label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control">
                 <label class="subtitle">
-                    Descripcion de la pregunta:
+                    Cuerpo del Articulo:
                 </label>  
-                <div id="summernote">               
-                </div><input type="hidden" name="code" id="code">
-                <br>
+                <div id="summernote"></div>
+                <input name="code" id="code" type="hidden">
                 <p>
-                    <!--input type="file"  class="btn btn-default" -->
-                    <input type="submit" value="Enviar pregunta" class="btn btn-primary btn-lg" role="button" style="float:right">
+                    <label class="subtitle">
+                        Tags
+                    </label>
+                    Separados por Comas
+                    <input type="text" class="form-control">
+                </p>
+                <p>
+                   <br>
+                    
+                   <input type="submit" value="Publicar" class="btn btn-primary btn-lg" role="button" style="float:right">
+                     
+                    
                 </p>
             </form>
         </div>
-         
+        </section>
     </body>
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
--->

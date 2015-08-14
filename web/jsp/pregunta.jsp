@@ -57,6 +57,10 @@
         </script>
     </head>
     <body onload="carga()">
+        <section class="integrarMenu">
+            <jsp:include page="../menu.jsp" flush="true"></jsp:include>
+        </section>
+        <section class="integrarCont">
         <br><br>
         <section  style="padding-left: 3em; height: 2em; padding-top: 1em; display: block;">
             <center>
@@ -68,7 +72,7 @@
             if(request.getParameter("idUsuario").equals(String.valueOf(user.getIdUsuario()))){
         %>
         <section style="display: inline; float: left; position: absolute; top: .5em; left: 1em">
-        <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editor.jsp" method="POST">
+        <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editor.jsp" method="GET">
                 <button  class="btn btn-sm btn-warning form-inline" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
                 <input type="hidden" value="<%=nombreArchivo%>" name="nombreArchivo">
                 <input type="hidden" value="<%=titulo%>" name="titulo">
@@ -146,6 +150,7 @@
         
             </section>
             
+        </section>
         </section>
     </body>
 </html>
