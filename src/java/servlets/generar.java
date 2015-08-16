@@ -47,7 +47,7 @@ public class generar extends HttpServlet {
      */
     protected ServletConfig config;
     protected Connection con = sql.conectar();
-    protected String sqlST = "call insertarArticulo(?,?,?,?,?,?)";
+    protected String sqlST = "call insertarArticulo(?,?,?,?,?,?,?)";
     protected Date tiempo = new Date();
     protected SimpleDateFormat ft = new SimpleDateFormat("dd'-de-'MM'-del-'yyyy'-'hh'-'mm'-'ss-a");
   
@@ -69,9 +69,11 @@ public class generar extends HttpServlet {
         String title = "";
         String[] datos;
         String code = "";
+        String tags = "";
         try{
             title = request.getParameter("title");
             code = request.getParameter("code");
+            tags = request.getParameter("tags");
         }catch(Exception e){}
         
         String redirect = "";
@@ -121,6 +123,7 @@ public class generar extends HttpServlet {
                 ps.setString(4, title); //titulo
                 ps.setString(5, ft.format(tiempo.getTime())); //fecha
                 ps.setString(6, path); //url
+                ps.setString(7, tags); //tags
                 ps.executeUpdate();
                 response.sendRedirect(redirect);
             }else{
