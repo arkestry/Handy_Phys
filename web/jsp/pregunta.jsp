@@ -29,15 +29,13 @@
             String nombreArchivo = request.getParameter("nombreArchivo");
             String url = classes.getHTML.obtenerURL(idArticulo);
             String cont = request.getParameter("tipoCont");
+           String tags = request.getParameter("tags");
+           String correo = request.getParameter("correo");
             userBean user = (userBean)session.getAttribute("userData");
             
         %>
         <script>
-            function carga(){
-                var frame =  document.getElementById("iframe");
-             
-                frame.contentWindow.location.reload();
-            }
+            
             function really(formulario){
                 if(confirm("En verdad quiere borrar el articulo: <%= titulo %>") === true){
                      formulario.submit();
@@ -56,27 +54,28 @@
             }
         </script>
     </head>
-    <body onload="carga()">
+    <body>
         <section class="integrarMenu">
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
+        <div class="container">
         <br><br>
         <section  style="padding-left: 3em; height: 2em; padding-top: 1em; display: block;">
             <center>
             <h1 style="display: block; ">
-                <%=titulo %> <small> <%= userName%></small>
+            <%=titulo %> <a href="profile.jsp?correo=<%=correo %>"><small> <%= userName%></small></a>
             </h1> 
             </center>
         <%
             if(request.getParameter("idUsuario").equals(String.valueOf(user.getIdUsuario()))){
         %>
-        <section style="display: inline; float: left; position: absolute; top: .5em; left: 1em">
+        <section style="display: inline; float: left; position: absolute; top: 5em; left: 1em">
         <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editor.jsp" method="GET">
                 <button  class="btn btn-sm btn-warning form-inline" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
                 <input type="hidden" value="<%=nombreArchivo%>" name="nombreArchivo">
                 <input type="hidden" value="<%=titulo%>" name="titulo">
-                <input type="hidden" value="<%=idArticulo%>" name="idArticulo">
+                <input type="hidden" value="<%= idArticulo %>" name="idArticulo">
                 <input type="hidden" value="<%= cont %>" name="tipoCont">
         </form>
         <form onsubmit="return really(this)" class="form-group" style="float: left; display: table; padding-top: 2em" action="../servlets/borrarHTML" method="POST">
@@ -90,10 +89,11 @@
         </section>
         <br>
    
-        <section class="container" style="position: relative; top: 5em; left: 0.1em; width: 95%">
-        <section style="display: block; width: 100%; height: 100%; padding: 1px" class="container container-fluid">
-            <jsp:include flush="true" page="<%=url%>"></jsp:include>
-        </section>
+        <section style="position: relative; top: 5em; left: 0.1em; width: 95%">
+            <section class="container" style="display: block; width: 100%; height: 100%; padding: 1px">
+                <jsp:include flush="true" page="<%=url%>"></jsp:include>
+            </section>
+                    <p><label>TAGS: <%= tags %></label></p>  
             <p><small class="text-center">Fecha<small><%=fecha%></small></small></p>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){ %>
             <form action="../servlets/valorar" method="POST">
@@ -121,7 +121,7 @@
             </form> 
             <%}%>
             <br>
-            <section style="width: 97%; float: left; margin-left: .1em; ">
+            <section class="container" style="width: 97%; float: left; margin-left: .1em; ">
             <% 
              Connection con = sql.conectar();
             PreparedStatement ps = con.prepareStatement("call getComs(?)");
@@ -149,9 +149,8 @@
         %>
         
             </section>
-            
         </section>
+        </div>
         </section>
     </body>
 </html>
-

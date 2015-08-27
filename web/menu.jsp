@@ -93,7 +93,7 @@
     <body>
         <img id="muestrame" class="zigma" src="../assets/icons/zigma.png" alt="zigma">
         <div id="hmenu" class="navbar navbar-inverse col-xs-12">
-            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em">
+            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative;border-radius: 10px; top: .8em; right: -5em">
                     <span  
                     <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
                     class="glyphicon glyphicon-log-out"></span>
@@ -171,14 +171,14 @@
                         
                </ul> <%}
                 %>     
-                 <label><%=session.getAttribute("nickname") %></label></li>   
+                 <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
             </ul> <% } %>
         
         <section class="">
-        	<form class="form-inline text-right">
+            <form class="form-inline text-right" action="../jsp/busca.jsp">
                     <section class="form-group">
                     <section>
-                        <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
+                        <input name="palabraClave" id="buscar" type="text" class="form-control"  placeholder="Buscar">
                         <button id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
                     </section>
                 </section>
@@ -191,7 +191,7 @@
             <li><a href="../index.jsp" target="_top">Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="../jsp/profile.jsp" target="_top">Mi Perfíl</a></li>
+            <li><a href="../jsp/profile.jsp?correo=<%=usuario.getEmail() %>" target="_top">Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
              <li><a href="../jsp/mis_preguntas.jsp" target="_top">Mis Preguntas</a></li>

@@ -38,7 +38,7 @@
             <section id="quest_panel">
                 <div class="container-fluid">
                     <h2 class="text-center">
-                        Mis Preguntas <a href="../pages/hacer_pregunta.html"><button class="btn boton"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
+                        Mis Preguntas <a href="hacer_pregunta.jsp"><button class="btn boton"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
                     </h2>
                 </div>
                 <section id="pregunta">

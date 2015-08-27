@@ -5,12 +5,12 @@
  */
 package servlets;
 
-import beans.userBean;
 import classes.sql;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,13 +18,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ivan-hdz
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class cambiarDatos extends HttpServlet {
+public class reportes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,38 +37,25 @@ public class cambiarDatos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        HttpSession session = request.getSession();
-        userBean usuario = (userBean)session.getAttribute("userData");
-        String oldPass = request.getParameter("pass");
-        String newPass = request.getParameter("newPass");
-        String nick = request.getParameter("nick");
-        String name = request.getParameter("name");
         try (PrintWriter out = response.getWriter()) {
-            if(oldPass.equals(usuario.getPassword())){
-                Connection con = sql.conectar();
-                PreparedStatement ps = con.prepareStatement("call cambiarDatos(?,?,?,?)");
-                if(newPass == null || newPass.equals("")){
-                    ps.setString(1, usuario.getEmail());
-                    ps.setString(2, name);
-                    ps.setString(3, nick);
-                    ps.setString(4, usuario.getPassword());
-                    ps.executeUpdate();
-                    usuario.setFullName(name);
-                    usuario.setUserName(nick);
-                    session.setAttribute("userData", usuario);
-                    response.sendRedirect("../jsp/ConfigurarCuenta.jsp");
-                }else{
-                    ps.setString(1, usuario.getEmail());
-                    ps.setString(2, request.getParameter("name"));
-                    ps.setString(3, request.getParameter("nick"));
-                    ps.setString(4, newPass);
-                    ps.executeUpdate();
-                    response.sendRedirect("../jsp/ConfigurarCuenta.jsp");
-                }
-            }else{
-                out.println("<script>window.location.href = '../jsp/ConfigurarCuenta.jsp'; alert('Antigua contraseña incorrecta');</script>");
-            }
+           String correo = request.getParameter("correo");
+           String titulo = request.getParameter("titulo_rep");
+           int idUsuarioReportado = 0;
+           int gravedad = Integer.parseInt(request.getParameter("gravedad"));
+           String cuerpo = request.getParameter("cuerpo");
+           Connection con = sql.conectar();
+           PreparedStatement ps = con.prepareStatement("call obtenIdUsuario(?)");
+           ps.setString(1, correo);
+           ResultSet rs = ps.executeQuery();
+           while(rs.next()){
+               idUsuarioReportado = rs.getInt(1);
+           }
+           PreparedStatement ps2 = con.prepareStatement("call insertar_reporte(?,?,?,?)");
+           ps2.setString(1, titulo);
+           ps2.setString(2, cuerpo);
+           ps2.setInt(3, idUsuarioReportado);
+           ps2.setInt(4, gravedad);
+           ps2.executeUpdate();
         }
     }
 
@@ -88,7 +74,7 @@ public class cambiarDatos extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(cambiarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -106,7 +92,7 @@ public class cambiarDatos extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(cambiarDatos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

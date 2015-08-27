@@ -11,7 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         
         <!-- Dependencias de summernote -->
-        <script src="../js/code.jquery.com_jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="../js/netdna.bootstrapcdn.com_bootstrap_3.0.1_css_bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="../js/netdna.bootstrapcdn.com_bootstrap_3.0.1_js_bootstrap.min.js" type="text/javascript"></script>
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
@@ -22,6 +23,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../js/editor.js" type="text/javascript"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
         <script>
             function enviar(f){
                 var code = document.getElementById("code");
@@ -57,6 +59,13 @@
                 <div id="summernote">               
                 </div><input type="hidden" name="code" id="code">
                 <br>
+                <p>
+                    <label class="subtitle">
+                        Tags
+                    </label>
+                    Separados por Comas
+                    <input type="text" name="tags" name="tags" class="form-control">
+                </p>
                 <p>
                     <!--input type="file"  class="btn btn-default" -->
                     <input type="submit" value="Enviar pregunta" class="btn btn-primary btn-lg" role="button" style="float:right">

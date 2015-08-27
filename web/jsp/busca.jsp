@@ -1,29 +1,26 @@
-<%-- 
-    Document   : todo_preguntas
-    Created on : 30/06/2015, 09:10:57 PM
-    Author     : ivan
---%>
+
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.sql"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Preguntas</title>
+        <title>Buscando...</title>
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
-        <script src="../js/jquery-1.11.3.min.js"></script>
+        <script src="../js/code.jquery.com_jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="../css/bootstrap/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-        <script src="../js/muestra.js" type="text/javascript"></script>
+        <script src="../js/muestra.js"></script>
          <%
             Connection con = sql.conectar();
-            PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2");
+            PreparedStatement ps = con.prepareStatement("call buscar_articulo(?)");
+            ps.setString(1, request.getParameter("palabraClave"));
             ResultSet rs = ps.executeQuery();
             PreparedStatement ps1 = con.prepareStatement("call misComentarios(?)");
         %>
@@ -37,12 +34,10 @@
        <!--encabezado-->
         <div class="page-header">
             <h1 class="text-center todo_tit">
-                Preguntas
-            <% if(!(session.getAttribute("tipo").equals("Anonimo") || session.getAttribute("tipo").equals("Profesor"))) {%>
-                    <a href="hacer_pregunta.jsp"><span class="glyphicon glyphicon-upload"></span></a>
-                <% } %>
-            </h1>
+                Resultados para <small><%=request.getParameter("palabraClave") %></small>
            
+            </h1>
+            
         </div>
         
            <div class="todo">
@@ -63,12 +58,12 @@
                             <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
                             <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
                             <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                            <input type="hidden" name="correo" value="<%= rs.getString("correo")%>">
                             <input type="hidden" name="tipoCont" value="2">  
+                            <input type="hidden" name="correo" value="<%= rs.getString("correo") %>">  
                             <input type="hidden" name="tags" value="<%= rs.getString("tags") %>">
                         </form>
                       
-                        <!--los labels cambiaran según sea el caso, estan todos solo de forma representativa--> 
+                        <!--los labels cambiaran segÃºn sea el caso, estan todos solo de forma representativa--> 
                         <span class="label label-info"> Pregunta reciente </span>&nbsp;
                         <!--span class="label label-success"> Pregunta ya contestada
 
@@ -146,53 +141,9 @@
         <footer>
             <hr size="5px" width="90%" align="center" color="black"/>
             <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
+            <a href="#">Contenido del sitio 2015Â© &nbsp;&nbsp; IbexÂ® de MÃ©xico   --  Desarrollado por IBEX </a>
            <a href="#">Politicas de uso</a>
         </footer>
         </section>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/rdY/rS0VqFyWK56rFDf/rSiDRd6Dq61WTdfDTycr161eaDfDTTyWK5WAq61WTd56TTyWK5TDq61WTD/6F6yDYaf/rSi/r/Y/rSiAldr/rSiqyaRDR/8/rSiuq61WTM5RLarAl//6aAyWK5ar261WT05/rSiqTGUAq61WTDa/rSi/rS1rRRa6lDqAqoU6161W261eq61WTx5/rSi6FyTr161WTRrAl//RT=yWK5ArlSyWFTyWTTyWK7yWK7yWK7yWK7yWK7yWK7yWK7yWK5eAR85/rSirTGADROyWK5rD6/56lD/A6jyWTTyWYyAAR/qAq61WTRdr6aeR6RW/rSiq2jyWTTyWYySDR/eA6oTDROyWK5/RLae/rSir1jyWTaUR6RuDRWyWK70dX61WTDa/rSir6a8r161WTDarX61WYSiWr6yWK55/rSirTar/rSiW16ZArTjqaSyWK7yWTT9Vq6ZDA44
--->

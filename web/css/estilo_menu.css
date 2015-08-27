@@ -476,8 +476,9 @@ label.subtitle{
     background-color: #141414;
     position: relative;
     display: inline;
-    top: 2.7em;
-    right: 19em;
+    margin-top: 0.7em;
+    height: auto;
+    padding-top: 1em;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
     

@@ -170,7 +170,7 @@ public class generar extends HttpServlet {
     
     protected String[] subirExamen(HttpServletRequest request) throws FileUploadException, Exception{
         String datos[] = new String[2];
-        String imgDir = config.getServletContext().getRealPath("/images/")+"/";
+        String imgDir = config.getServletContext().getRealPath("/examenes/")+"/";
         File dir = new File(imgDir);
         dir.mkdirs();
         

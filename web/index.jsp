@@ -69,6 +69,9 @@
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
             usuario = new userBean();
+            usuario.setUserName("Anonimo");
+            usuario.setFullName("Anonimo");
+            usuario.setEmail("Anonimo");
             session.setAttribute("userData", usuario);
         }else{
             usuario = (userBean)session.getAttribute("userData");
@@ -109,7 +112,7 @@
     <body>
         <img id="muestrame" class="zigma" src="assets/icons/zigma.png" alt="zigma">
         <div id="hmenu"  class="navbar navbar-inverse col-xs-12">
-            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em">
+            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em; border-radius: 10px">
                     <span  
                     <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
                     class="glyphicon glyphicon-log-out"></span>
@@ -187,15 +190,17 @@
                         
                </ul> <%}
                 %>     
-                 <label><%=session.getAttribute("nickname") %></label></li>   
+                <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
             </ul> <% } %>
         
         <section class="">
-        	<form class="form-inline text-right">
+            <form class="form-inline text-right" action="jsp/busca.jsp" method="GET">
                     <section class="form-group">
                     <section>
-                        <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
-                        <button id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
+                        
+                        <input id="buscar" type="text" class="form-control" name="palabraClave"  placeholder="Buscar">
+                        <button type="submit" id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
+                       
                     </section>
                 </section>
             </form>
@@ -207,7 +212,7 @@
             <li><a href="index.jsp" >Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="jsp/profile.jsp" >Mi Perfíl</a></li>
+            <li><a href="jsp/profile.jsp?correo=<%=usuario.getEmail() %>" >Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
              <li><a href="jsp/mis_preguntas.jsp" >Mis Preguntas</a></li>

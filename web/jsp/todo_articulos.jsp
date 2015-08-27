@@ -77,7 +77,8 @@
                             <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
                             <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
                             <input type="hidden" name="tipoCont" value="1">
-                                   
+                            <input type="hidden" name="correo" value="<%= rs.getString("correo")%>">
+                            <input type="hidden" name="tags" value="<%= rs.getString("tags") %>">
                             <p>
                                 <% switch(Integer.parseInt(rs.getObject("valoracion").toString())){
                                     case 1:{%>

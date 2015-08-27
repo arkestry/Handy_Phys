@@ -4,9 +4,17 @@
     Author     : ivan-hdz
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="classes.sql"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%
+    Connection con = sql.conectar();
+    PreparedStatement ps = con.prepareStatement("select * from ver_reportes");
+    ResultSet rs = ps.executeQuery();
+%>
 <html>
     <head>
         <title>Reporte Usuarios</title>
@@ -24,39 +32,39 @@
         </section>
         <section class="integrarCont">
             <h1 class="text-uppercase text-center">REPORTE DE USUARIOS</h1>
+            <h5 style="background-color: darkred">ALTA GRAVEDAD: 3</h5>
+            <h5 style="background-color: darkorange">MEDIA GRAVEDAD: 2</h5>
+            <h5 style="background-color: darkgreen">BAJA GRAVEDAD: 1</h5>
             <br><br>
-            <label for="filtro">Filtrar por: </label>
-            <select id="filtro" style="color: #141414">
-                    <option> Gravedad Baja</option>
-                    <option> Gravedad Media</option>
-                    <option> Gravedad Alta</option>
-            </select>
-            <br><br>
+            
             <section>
                 <table class="tablaAdmin" style="border-left: 7px solid #22A7F0">
                     <tr>
-                        <th>Usuario</th>
-                        <th>Titulo</th>
-                        <th>Razón</th>
-                        <th>Descripcion</th>
+                        <th>Titulo del reporte</th>
+                        <th>Gravedad</th>
+                        <th>Usuario Reportado</th>
                         <th>Fecha</th>
-
+                        <th>Acciones</th>
                     </tr>
+                <%while(rs.next()){ %>
                     <tr>
-                        <td>Nombre del usuario</td>
-                        <td>Titulo del reporte</td>
-                        <td>Razón del porqué del reporte</td>
-                        <td>Breve descripción</td>
-                        <td>Fecha del reporte</td>
+                    
+                        <td><%=rs.getString(2) %></td>
+                        <td><%=rs.getString(5) %></td>
+                        <td><%=rs.getString(4) %></td>
+                        <td><%=rs.getString(6) %></td>
+                        <td>
+                            <form method="GET" action="reporte.jsp">
+                                <input type="hidden" name="id" value="<%= rs.getInt(1) %>">
+                                <input value="VER" type="submit" class="btn btn-success">
+                            </form>
+                            
+                        </td>
                     </tr>
+                <% }%>
                 </table>
             </section>
-             <footer>
-             <hr size="5px" width="90%" align="center" color="black"/>
-             <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
+             
         </section>
     </body>
 </html>

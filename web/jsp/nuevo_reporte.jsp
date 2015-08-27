@@ -24,37 +24,34 @@
         </section>
         <section class="integrarCont">
    <h1 class="text-right">AREA DE REPORTES</h1>
-    <form class="formularioNuevoRepor">
+   <form class="formularioNuevoRepor form-horizontal" action="../servlets/reportes">
         <section class="reporte">
-            <section>
-                <label for="user">Usuario a reportar: </label><input type="text" size="50" placeholder="nombre de usuario o correo">
-            <label>Seleccione la gravedad de la accion del usuario xxxxxxx:</label>
-
-                    <select style="color: #141414" name="gravedad">
-                        <option>Seleccione alguno</option>
-                        <option>Baja</option>
-                        <option>Media</option>
-                        <option>Alta</option>
-                    </select>    
+            <section class="col-lg-12">
+                <section class="col-lg-6">
+                    <label for="tituloRep">Titulo del reporte: </label><input name="titulo_rep" type="text" required="" class="form-control" size="50" name="tituloRep" id="tituloRep">
+                </section>
+                <section class="col-lg-6">
+                    <label for="user">Usuario a reportar: </label><input name="correo" type="text" required="" class="form-control" size="50">
+                </section>
             </section>
-            <br><br>
+            <br><br><br><br>
             <section>
-                <label for="tituloRep">Titulo del reporte: </label><input type="text" size="50" name="tituloRep" id="tituloRep">
-                <label> Seleccione la razon por la que reportas al usuario xxxxxxx:</label>
-
-                    <select style="color: #141414" name="descripcion">
-                         <option>Seleccione alguno</option>
-                        <option>Suplantación de identidad</option>
-                        <option>Aportaciones fuera de importancia</option>
-                        <option>Información privada</option>
-                        <option>No se apega a las politicas del sitio</option>
-                    </select>      
+                <section class="col-lg-12" >
+                    <label>Seleccione la gravedad de la accion del usuario xxxxxxx:</label>
+                    <select name="gravedad" class="form-control" style="color: #141414" name="gravedad">
+                        <option>Seleccione alguno</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select>
+                </section>
+                
             </section>
             <br> <br>
             <center>
           <section>
                <label for="tituloRep">Breve descripción del reporte: </label><br>
-               <textarea maxlength="240" placeholder="Descripcion del reporte"></textarea>
+               <textarea name="cuerpo" placeholder="Descripcion del reporte"></textarea>
           </section>
                 <br><br>
             <input type="submit" value="Enviar reporte"  style="background-color: #006541;" class="btn btn-lg boton">

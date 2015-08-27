@@ -36,7 +36,7 @@ CREATE TABLE `articulos` (
   KEY `idTipoCont` (`idTipoCont`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`idTipoCont`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (4,28,1,0,'Articulo con tags','15-de-08-del-2015-07-36-17-PM','honter1997@gmail.com-Articulo_con_tags-15-de-08-del-2015-07-36-17-PM.html','fisica, quimica');
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -91,7 +90,7 @@ CREATE TABLE `avisos` (
   CONSTRAINT `avisos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`idGrupo`) REFERENCES `catgrupos` (`idGrupo`),
   CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`idIndicador`) REFERENCES `cat_indicadores` (`idIndicador`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +99,7 @@ CREATE TABLE `avisos` (
 
 LOCK TABLES `avisos` WRITE;
 /*!40000 ALTER TABLE `avisos` DISABLE KEYS */;
-INSERT INTO `avisos` VALUES (5,32,1,17,'Cuerpo del aviso de prueba con prioridad alta','2015-08-13 00:00:00','Aviso Alta'),(6,32,1,17,'Cuerpo del aviso de prueba con prioridad media','2015-08-13 00:00:00','AvisoMedia'),(7,32,1,17,'Cuerpo del aviso de prueba con prioridad baja','2015-08-13 00:00:00','Aviso Baja'),(8,32,2,17,'fdfddffddfdfd','2015-08-13 00:00:00','dfdf'),(9,32,3,17,'Prioridad baja','2015-08-13 13:48:42','Aviso con prioridad baja'),(10,32,2,17,'Prioridad baja','2015-08-13 13:50:46','Prioridad media');
+INSERT INTO `avisos` VALUES (5,32,1,17,'Cuerpo del aviso de prueba con prioridad alta','2015-08-13 00:00:00','Aviso Alta'),(6,32,1,17,'Cuerpo del aviso de prueba con prioridad media','2015-08-13 00:00:00','AvisoMedia'),(7,32,1,17,'Cuerpo del aviso de prueba con prioridad baja','2015-08-13 00:00:00','Aviso Baja'),(8,32,2,17,'fdfddffddfdfd','2015-08-13 00:00:00','dfdf'),(9,32,3,17,'Prioridad baja','2015-08-13 13:48:42','Aviso con prioridad baja'),(10,32,2,17,'Prioridad baja','2015-08-13 13:50:46','Prioridad media'),(11,28,1,17,'Aviso','2015-08-27 12:05:59','Nuevo Aviso');
 /*!40000 ALTER TABLE `avisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,6 +125,30 @@ CREATE TABLE `blacklist` (
 LOCK TABLES `blacklist` WRITE;
 /*!40000 ALTER TABLE `blacklist` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blacklist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cat_gravedad`
+--
+
+DROP TABLE IF EXISTS `cat_gravedad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cat_gravedad` (
+  `id_gravedad` int(1) NOT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_gravedad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cat_gravedad`
+--
+
+LOCK TABLES `cat_gravedad` WRITE;
+/*!40000 ALTER TABLE `cat_gravedad` DISABLE KEYS */;
+INSERT INTO `cat_gravedad` VALUES (1,'Baja'),(2,'Media'),(3,'Alta');
+/*!40000 ALTER TABLE `cat_gravedad` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -267,7 +290,7 @@ CREATE TABLE `coms` (
   PRIMARY KEY (`idCom`),
   KEY `idTipoContenido` (`idTipoContenido`),
   CONSTRAINT `coms_ibfk_1` FOREIGN KEY (`idTipoContenido`) REFERENCES `tipocontenido` (`idContenido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +355,7 @@ CREATE TABLE `datos` (
 
 LOCK TABLES `datos` WRITE;
 /*!40000 ALTER TABLE `datos` DISABLE KEYS */;
-INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a','default.jpg'),('admin@hotmail.com','admin',1,1,'admin','nemesis007','default.jpg'),('ben@msdn.com','ben',1,1,'ben1','123','default.jpg'),('emma@admin.com','Emmanuel',1,1,'emma','123','default.jpg'),('honter1997@gmail.com','ivan-hdz',1,1,'Octavio Ivan Hernandez Salinas','123','default.jpg'),('honter1997@hotmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','2014090332','default.jpg'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin','default.jpg'),('matt@gy.io','matt',1,1,'matt1','123','default.jpg'),('pat@g.com','patricioEstrella',1,1,'pat','123','default.jpg'),('snl@gg.com','Sebastian',1,1,'snl','gg','default.jpg');
+INSERT INTO `datos` VALUES ('a@a','a',1,1,'a','a','default.jpg'),('admin@hotmail.com','admin',1,1,'admin','nemesis007','default.jpg'),('ben@msdn.com','ben',1,1,'ben1','123','default.jpg'),('emma@admin.com','Emmanuel',1,1,'emma','123','default.jpg'),('honter1997@gmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','123','default.jpg'),('honter1997@hotmail.com','Octavio Ivan Hernandez Salinas',1,1,'Ivan-hdz','2014090332','default.jpg'),('leydi@admin.com','Leydi',1,1,'Buchuna69','Admin','default.jpg'),('matt@gy.io','matt',1,1,'matt1','123','default.jpg'),('pat@g.com','patricioEstrella',1,1,'pat','123','default.jpg'),('snl@gg.com','Sebastian',1,1,'snl','gg','default.jpg');
 /*!40000 ALTER TABLE `datos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +468,8 @@ SET character_set_client = utf8;
  1 AS `idTipoCont`,
  1 AS `url`,
  1 AS `nickname`,
- 1 AS `tags`*/;
+ 1 AS `tags`,
+ 1 AS `correo`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -476,6 +500,38 @@ CREATE TABLE `preguntas` (
 LOCK TABLES `preguntas` WRITE;
 /*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reportes`
+--
+
+DROP TABLE IF EXISTS `reportes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reportes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo_reporte` varchar(100) DEFAULT NULL,
+  `cuerpo` text,
+  `usuario_reportado` int(11) DEFAULT NULL,
+  `id_gravedad` int(1) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_gravedad` (`id_gravedad`),
+  KEY `usuario_reportado` (`usuario_reportado`),
+  CONSTRAINT `reportes_ibfk_1` FOREIGN KEY (`id_gravedad`) REFERENCES `cat_gravedad` (`id_gravedad`),
+  CONSTRAINT `reportes_ibfk_2` FOREIGN KEY (`usuario_reportado`) REFERENCES `usuarios` (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reportes`
+--
+
+LOCK TABLES `reportes` WRITE;
+/*!40000 ALTER TABLE `reportes` DISABLE KEYS */;
+INSERT INTO `reportes` VALUES (1,'Reporte de prueba','Me esta molestando',28,3,'2015-08-27');
+/*!40000 ALTER TABLE `reportes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -561,7 +617,7 @@ CREATE TABLE `simuladores` (
   KEY `idUsuario` (`idUsuario`),
   CONSTRAINT `simuladores_ibfk_2` FOREIGN KEY (`idUnidadA`) REFERENCES `catunidadesacademicas` (`IdUnidadAcademica`),
   CONSTRAINT `simuladores_ibfk_3` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -647,7 +703,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',3,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',2,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
+INSERT INTO `usuarios` VALUES (28,'honter1997@gmail.com',2,17),(29,'leydi@admin.com',3,17),(30,'emma@admin.com',3,17),(31,'admin@hotmail.com',3,18),(32,'a@a',1,19),(33,'honter1997@hotmail.com',3,17),(34,'snl@gg.com',3,17),(36,'pat@g.com',3,21),(37,'matt@gy.io',3,22),(38,'ben@msdn.com',3,17);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -691,7 +747,7 @@ CREATE TABLE `valoraciones` (
   KEY `valoraciones_ibfk_3_idx` (`idTipoContenido`),
   CONSTRAINT `valoraciones_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`),
   CONSTRAINT `valoraciones_ibfk_3` FOREIGN KEY (`idTipoContenido`) REFERENCES `tipocontenido` (`idContenido`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -700,6 +756,7 @@ CREATE TABLE `valoraciones` (
 
 LOCK TABLES `valoraciones` WRITE;
 /*!40000 ALTER TABLE `valoraciones` DISABLE KEYS */;
+INSERT INTO `valoraciones` VALUES (1,5,15,28,1);
 /*!40000 ALTER TABLE `valoraciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -724,6 +781,23 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `ver_reportes`
+--
+
+DROP TABLE IF EXISTS `ver_reportes`;
+/*!50001 DROP VIEW IF EXISTS `ver_reportes`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `ver_reportes` AS SELECT 
+ 1 AS `id`,
+ 1 AS `titulo_reporte`,
+ 1 AS `cuerpo`,
+ 1 AS `usuario_reportado`,
+ 1 AS `id_gravedad`,
+ 1 AS `fecha`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `ver_simulador`
@@ -774,7 +848,7 @@ CREATE TABLE `weblog` (
   PRIMARY KEY (`idLog`),
   KEY `tipoAccion` (`tipoAccion`),
   CONSTRAINT `weblog_ibfk_1` FOREIGN KEY (`tipoAccion`) REFERENCES `tipoaccion` (`idTA`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -783,7 +857,7 @@ CREATE TABLE `weblog` (
 
 LOCK TABLES `weblog` WRITE;
 /*!40000 ALTER TABLE `weblog` DISABLE KEYS */;
-INSERT INTO `weblog` VALUES (1,4,'ivan  publico nuevo articulo asasdas','2015-07-27 17:25:24'),(2,4,'ivan  publico nuevo articulo Articulos','2015-07-27 17:26:04'),(3,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-28 17:22:54'),(4,4,'ivan  publico nuevo articulo sasaas','2015-07-28 17:23:35'),(5,4,'ivan  publico nuevo articulo sdds','2015-07-28 17:24:15'),(6,4,'ivan  publico nuevo articulo sadasdas','2015-07-28 17:46:52'),(7,4,'ivan  publico nuevo articulo Prueba','2015-07-28 17:50:36'),(8,4,'ivan  publico nuevo articulo prueba en preguntas','2015-07-28 17:53:20'),(9,4,'ivan  publico nuevo articulo prueba','2015-07-29 00:25:44'),(10,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-29 01:07:32'),(11,4,'ivan  publico nuevo articulo subirExamen','2015-07-29 01:13:34'),(12,4,'ivan  publico nuevo articulo Espero que salga','2015-07-29 01:15:24'),(13,4,'ivan  publico nuevo articulo PorDondePasa','2015-07-29 01:17:03'),(14,4,'ivan  publico nuevo articulo ','2015-07-29 01:30:24'),(15,4,'ivan  publico nuevo articulo ','2015-07-29 01:32:46'),(16,4,'ivan  publico nuevo articulo Titulo','2015-07-29 01:36:46'),(17,4,'ivan  publico nuevo articulo SubirOtroArchivo','2015-07-29 01:38:21'),(18,4,'ivan  publico nuevo articulo ','2015-07-29 01:39:27'),(19,4,'ivan  publico nuevo articulo titulo','2015-07-29 01:43:57'),(20,4,'ivan  publico nuevo articulo NuevoExamen','2015-07-29 02:59:16'),(21,4,'ivan  publico nuevo articulo Este si','2015-07-29 03:01:28'),(22,4,'ivan  publico nuevo articulo PDF','2015-07-29 03:16:04'),(23,4,'ivan  publico nuevo articulo Una Prueba','2015-07-30 17:50:10'),(24,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 18:13:45'),(25,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:30:12'),(26,4,'ivan  publico nuevo articulo yjh','2015-07-30 22:34:11'),(27,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:13'),(28,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:20'),(29,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 22:37:46'),(30,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:37:56'),(31,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 23:20:46'),(32,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-31 00:43:52'),(33,4,'ivan  publico nuevo articulo Prueba','2015-08-04 02:54:00'),(34,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-08-04 04:25:46'),(35,4,'ivan  publico nuevo articulo Te amooo','2015-08-04 04:34:49'),(36,4,'ivan  publico nuevo articulo Nuevo Examen','2015-08-05 02:48:16'),(37,4,'ivan  publico nuevo articulo Articulo con imagenes','2015-08-08 03:02:36'),(38,4,'ivan  publico nuevo articulo Un nuevo articulo','2015-08-08 03:25:27'),(39,4,'ivan  publico nuevo articulo Nuevo articulo','2015-08-08 03:41:19'),(40,4,'ivan  publico nuevo articulo aksj','2015-08-08 03:54:17'),(41,4,'ivan  publico nuevo articulo Pregunta que me inquiera','2015-08-08 04:05:14'),(42,4,'ivan  publico nuevo articulo ','2015-08-08 04:16:21'),(43,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 04:57:18'),(44,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:00:18'),(45,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 05:00:59'),(46,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:01:05'),(47,4,'ivan  publico nuevo articulo gfk','2015-08-08 05:27:59'),(48,1,'ivan en articulo','2015-08-08 05:30:32'),(49,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:31:03'),(50,1,'ivan en articulo gfk','2015-08-08 05:31:35'),(51,4,'ivan  publico nuevo articulo Pregunta1','2015-08-08 23:55:14'),(52,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-09 00:02:22'),(53,1,'ivan en articulo Esto es una pregunta','2015-08-09 00:02:37'),(54,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Nuevo articulo de prueba','2015-08-14 05:42:23'),(55,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo prueab','2015-08-14 05:44:02'),(56,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo ArticuloPrueba esto quiero buscar','2015-08-16 00:13:30'),(57,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Esto es una pregunta','2015-08-16 00:14:30'),(58,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo ABCD eds','2015-08-16 00:14:42'),(59,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Articulo con tags','2015-08-16 00:36:17');
+INSERT INTO `weblog` VALUES (1,4,'ivan  publico nuevo articulo asasdas','2015-07-27 17:25:24'),(2,4,'ivan  publico nuevo articulo Articulos','2015-07-27 17:26:04'),(3,4,'ivan  publico nuevo articulo Esto es una prueba','2015-07-28 17:22:54'),(4,4,'ivan  publico nuevo articulo sasaas','2015-07-28 17:23:35'),(5,4,'ivan  publico nuevo articulo sdds','2015-07-28 17:24:15'),(6,4,'ivan  publico nuevo articulo sadasdas','2015-07-28 17:46:52'),(7,4,'ivan  publico nuevo articulo Prueba','2015-07-28 17:50:36'),(8,4,'ivan  publico nuevo articulo prueba en preguntas','2015-07-28 17:53:20'),(9,4,'ivan  publico nuevo articulo prueba','2015-07-29 00:25:44'),(10,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-29 01:07:32'),(11,4,'ivan  publico nuevo articulo subirExamen','2015-07-29 01:13:34'),(12,4,'ivan  publico nuevo articulo Espero que salga','2015-07-29 01:15:24'),(13,4,'ivan  publico nuevo articulo PorDondePasa','2015-07-29 01:17:03'),(14,4,'ivan  publico nuevo articulo ','2015-07-29 01:30:24'),(15,4,'ivan  publico nuevo articulo ','2015-07-29 01:32:46'),(16,4,'ivan  publico nuevo articulo Titulo','2015-07-29 01:36:46'),(17,4,'ivan  publico nuevo articulo SubirOtroArchivo','2015-07-29 01:38:21'),(18,4,'ivan  publico nuevo articulo ','2015-07-29 01:39:27'),(19,4,'ivan  publico nuevo articulo titulo','2015-07-29 01:43:57'),(20,4,'ivan  publico nuevo articulo NuevoExamen','2015-07-29 02:59:16'),(21,4,'ivan  publico nuevo articulo Este si','2015-07-29 03:01:28'),(22,4,'ivan  publico nuevo articulo PDF','2015-07-29 03:16:04'),(23,4,'ivan  publico nuevo articulo Una Prueba','2015-07-30 17:50:10'),(24,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 18:13:45'),(25,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:30:12'),(26,4,'ivan  publico nuevo articulo yjh','2015-07-30 22:34:11'),(27,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:13'),(28,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:36:20'),(29,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 22:37:46'),(30,4,'ivan  publico nuevo articulo Prueba2','2015-07-30 22:37:56'),(31,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-30 23:20:46'),(32,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-07-31 00:43:52'),(33,4,'ivan  publico nuevo articulo Prueba','2015-08-04 02:54:00'),(34,4,'ivan  publico nuevo articulo Prueba Con Espacios','2015-08-04 04:25:46'),(35,4,'ivan  publico nuevo articulo Te amooo','2015-08-04 04:34:49'),(36,4,'ivan  publico nuevo articulo Nuevo Examen','2015-08-05 02:48:16'),(37,4,'ivan  publico nuevo articulo Articulo con imagenes','2015-08-08 03:02:36'),(38,4,'ivan  publico nuevo articulo Un nuevo articulo','2015-08-08 03:25:27'),(39,4,'ivan  publico nuevo articulo Nuevo articulo','2015-08-08 03:41:19'),(40,4,'ivan  publico nuevo articulo aksj','2015-08-08 03:54:17'),(41,4,'ivan  publico nuevo articulo Pregunta que me inquiera','2015-08-08 04:05:14'),(42,4,'ivan  publico nuevo articulo ','2015-08-08 04:16:21'),(43,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 04:57:18'),(44,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:00:18'),(45,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-08 05:00:59'),(46,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:01:05'),(47,4,'ivan  publico nuevo articulo gfk','2015-08-08 05:27:59'),(48,1,'ivan en articulo','2015-08-08 05:30:32'),(49,1,'ivan en articulo Esto es una pregunta','2015-08-08 05:31:03'),(50,1,'ivan en articulo gfk','2015-08-08 05:31:35'),(51,4,'ivan  publico nuevo articulo Pregunta1','2015-08-08 23:55:14'),(52,4,'ivan  publico nuevo articulo Esto es una pregunta','2015-08-09 00:02:22'),(53,1,'ivan en articulo Esto es una pregunta','2015-08-09 00:02:37'),(54,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Nuevo articulo de prueba','2015-08-14 05:42:23'),(55,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo prueab','2015-08-14 05:44:02'),(56,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo ArticuloPrueba esto quiero buscar','2015-08-16 00:13:30'),(57,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Esto es una pregunta','2015-08-16 00:14:30'),(58,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo ABCD eds','2015-08-16 00:14:42'),(59,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Articulo con tags','2015-08-16 00:36:17'),(60,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Articulo con tagssss','2015-08-26 19:05:05'),(61,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Probando tags','2015-08-26 19:13:00'),(62,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Probar tags','2015-08-26 19:14:07'),(63,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Prueba','2015-08-26 19:16:40'),(64,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Articulo con tags','2015-08-26 19:37:06'),(65,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Un articulo muy bonito','2015-08-26 22:19:30'),(66,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Haver pregunta','2015-08-26 22:20:26'),(67,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Te haces mensa','2015-08-26 23:32:24'),(68,1,'Octavio Ivan Hernandez Salinas en articulo Te haces mensa','2015-08-26 23:32:32'),(69,1,'Octavio Ivan Hernandez Salinas en articulo Te haces mensa','2015-08-26 23:33:08'),(70,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Uno una pregunta','2015-08-27 00:02:54'),(71,1,'Octavio Ivan Hernandez Salinas en articulo Uno una pregunta','2015-08-27 00:03:04'),(72,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Una pregunta','2015-08-27 00:10:07'),(73,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Pregunta','2015-08-27 00:13:12'),(74,1,'Octavio Ivan Hernandez Salinas en articulo Pregunta','2015-08-27 00:16:46'),(75,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Nuevo examen','2015-08-27 00:22:41'),(76,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Examen','2015-08-27 00:25:46'),(77,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Esto es una pregunta','2015-08-27 00:27:17'),(78,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo odsnkjn','2015-08-27 00:31:04'),(79,1,'Octavio Ivan Hernandez Salinas en articulo odsnkjn','2015-08-27 00:31:43'),(80,4,'Octavio Ivan Hernandez Salinas  publico nuevo articulo Articulo','2015-08-27 00:32:10'),(81,1,'Octavio Ivan Hernandez Salinas en articulo Articulo','2015-08-27 00:32:24'),(82,4,'Ivan-hdz  publico nuevo articulo Prueba de buscador','2015-08-27 18:56:32');
 /*!40000 ALTER TABLE `weblog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -923,6 +997,25 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delComment`(in idCom int)
 begin
 	delete from coms where coms.idCom = idCom;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `eliminarReporte` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarReporte`(in id_reporte int)
+begin
+	delete from reportes where id = id_reporte;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1262,6 +1355,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertar_reporte` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_reporte`(in titulo varchar(100), in cuerpo text, idUsuario_reportado int, in id_gravedad int(1))
+begin
+	insert into reportes values (null, titulo, cuerpo, idUsuario_reportado, id_gravedad, current_date);
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `insert_simulador` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1465,6 +1577,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `verReporte` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `verReporte`(in id_reporte int)
+begin
+	select * from reportes where id = id_reporte;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `verTipo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1541,7 +1672,25 @@ DELIMITER ;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `mostrararticulos` AS select `articulos`.`idArticulo` AS `idArticulo`,`articulos`.`idUsuario` AS `idUsuario`,`articulos`.`Titulo` AS `Titulo`,`articulos`.`fecha` AS `fecha`,`articulos`.`valoracion` AS `valoracion`,`articulos`.`idTipoCont` AS `idTipoCont`,`articulos`.`url` AS `url`,`datos`.`nickname` AS `nickname`,`articulos`.`tags` AS `tags` from ((`articulos` join `usuarios` on((`usuarios`.`idUsuario` = `articulos`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) where (`articulos`.`idUsuario` = `usuarios`.`idUsuario`) */;
+/*!50001 VIEW `mostrararticulos` AS select `articulos`.`idArticulo` AS `idArticulo`,`articulos`.`idUsuario` AS `idUsuario`,`articulos`.`Titulo` AS `Titulo`,`articulos`.`fecha` AS `fecha`,`articulos`.`valoracion` AS `valoracion`,`articulos`.`idTipoCont` AS `idTipoCont`,`articulos`.`url` AS `url`,`datos`.`nickname` AS `nickname`,`articulos`.`tags` AS `tags`,`datos`.`correo` AS `correo` from ((`articulos` join `usuarios` on((`usuarios`.`idUsuario` = `articulos`.`idUsuario`))) join `datos` on((`datos`.`correo` = `usuarios`.`idDatos`))) where (`articulos`.`idUsuario` = `usuarios`.`idUsuario`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `ver_reportes`
+--
+
+/*!50001 DROP VIEW IF EXISTS `ver_reportes`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `ver_reportes` AS select `reportes`.`id` AS `id`,`reportes`.`titulo_reporte` AS `titulo_reporte`,`reportes`.`cuerpo` AS `cuerpo`,`reportes`.`usuario_reportado` AS `usuario_reportado`,`reportes`.`id_gravedad` AS `id_gravedad`,`reportes`.`fecha` AS `fecha` from `reportes` order by `reportes`.`fecha` desc limit 10 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1591,4 +1740,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-15 19:52:41
+-- Dump completed on 2015-08-27 14:34:54

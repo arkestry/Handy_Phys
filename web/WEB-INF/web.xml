@@ -72,6 +72,10 @@
         <servlet-name>getAvisos</servlet-name>
         <servlet-class>servlets.getAvisos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>reportes</servlet-name>
+        <servlet-class>servlets.reportes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>getAvisos</servlet-name>
         <url-pattern>/servlets/getAvisos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reportes</servlet-name>
+        <url-pattern>/servlets/reportes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

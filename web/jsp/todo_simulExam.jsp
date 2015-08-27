@@ -43,7 +43,11 @@
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
-        <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN <a href="nuevo_examen.jsp"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a></h1>
+        <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN 
+        <% if(session.getAttribute("tipo").equals("Profesor")){ %>
+        <a href="nuevo_examen.jsp"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
+        <%}%>
+        </h1>
         <section class="col-md-12">
             <section style="position: relative; top: -1em" class="col-md-1">
                 <label class="h3">Filtro: </label>
