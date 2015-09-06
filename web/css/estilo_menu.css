@@ -6,6 +6,7 @@
 body{
     color:rgb(236,240,241);
     background-color: #141414; //#16A085;*/
+    
 }
 /*Pagina de Perfil*/
 #cabezaP{
@@ -176,7 +177,7 @@ ul.menu section ul li a{
     height: 12px;
     
 }
-a.sublist{
+a.subbox{
     background-image: none;
     text-decoration: none;
     cursor: pointer;
@@ -630,47 +631,32 @@ footer a:hover{
     opacity: 1;
 }
 .comentario{
-    color: #F4B350;
-    border-left: #F4B350 solid 5px;
+    color: #ffd740;
+    border-left: #ffd740 solid 5px;
 }
-.problema{
-    color: #AD1A1A;
-    border-left: #AD1A1A solid 5px;
+.nuevousuario{
+    color: #448aff;
+    border-left: #448aff solid 5px;
 }
-.aporte{
-    color:  #e4ee35;
-    border-left: #e4ee35 solid 5px;
+.feedback{
+    color:  #7c4dff;
+    border-left: #7c4dff solid 5px;
 }
-.teoria{
-    color: #1E824C;
-    border-left: #1E824C solid 5px;
+.articulo{
+    color: #64ffda;
+    border-left: #64ffda solid 5px;
 }
 .pregunta{
-    color: #098ddf;
-    border-left: #098ddf solid 5px;
+    color: #ffab40;
+    border-left: #ffab40 solid 5px;
 }
 .respuesta{
-    color: thistle;
-    border-left: thistle solid 5px;
+    color: #b2ff59;
+    border-left: #b2ff59 solid 5px;
 }
-/*FIn de AdminSPS*/
-/*blacklist(estilos rapidos)*/
-.table_titles{
-    font-size: 1.3em;
-}
-.table_text{
-    font-size: 1.2em;
-}
-.body_blacklist{
-    background-color: #2E353E;
-}
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #67768A;
-}
-/*Reporte*/
-.reporte{
-    margin: 2em;
-    border-right: 10px solid #F18B06;
+.aviso{
+    color: #ff5252;
+    border-left: #ff5252 solid 5px;
 }
 /*Fin reporte*/
 
@@ -763,3 +749,32 @@ footer a:hover{
     float: left;
     display: table-cell;
 }
+.avisos{
+    width: 47%;
+    height: 100%;
+  }
+  .medio{
+    width:6%;
+  }
+  .cuerpo{
+    width: 47%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .wrap_feed{
+    width: 100%;
+    height: 80%;
+  }
+  .contenedorfeeds{
+    position: fixed;
+    width: 85%;
+    height: 100%;
+  }
+  .lista{
+    overflow-y: scroll;
+    max-height: 90%;
+  }
+  .bodyfeed{
+    background-color: yellow;
+    min-height: 90%;
+  }
