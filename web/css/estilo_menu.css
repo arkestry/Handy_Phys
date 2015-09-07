@@ -777,4 +777,8 @@ footer a:hover{
   .bodyfeed{
     background-color: yellow;
     min-height: 90%;
+    color: #141414;
+    font-weight: 400;
+    font-size: 1.5em;
+    padding: 1em;
   }

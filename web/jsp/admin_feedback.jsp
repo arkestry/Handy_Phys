@@ -63,7 +63,6 @@
                                 <div class="bodyfeed">
 
                                 </div>
-                                <button id="button-ajax"></button>
                             </td>
                         </tr>
                 </table>

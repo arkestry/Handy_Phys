@@ -7,8 +7,7 @@ $(document).ready(function(){
         data: {param1: id}
       })
       .done(function(data) {
-        console.log("success");
-        alert(data);
+        $  (".bodyfeed").html(data);
       })
       .fail(function() {
         console.log("error");

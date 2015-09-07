@@ -76,6 +76,10 @@
         <servlet-name>reportes</servlet-name>
         <servlet-class>servlets.reportes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getFeedback</servlet-name>
+        <servlet-class>servlets.getFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>reportes</servlet-name>
         <url-pattern>/servlets/reportes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getFeedback</servlet-name>
+        <url-pattern>/getFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
