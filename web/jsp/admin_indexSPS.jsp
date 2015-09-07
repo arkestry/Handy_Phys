@@ -25,7 +25,7 @@ and open the template in the editor.
                 
                 var timer = null;
                 function iniciar(){
-                    timer = setInterval(update, 1000); //tiempo por defecto
+                    timer = setInterval(update, 5000); //tiempo por defecto
                 }
                 function detener(){
                     clearInterval(timer);

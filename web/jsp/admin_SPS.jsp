@@ -37,15 +37,15 @@ SPS = Second Per Second
         
             <table class="tablaAdmin">
                 <tr>
-                    <th>Acción</th>
-                    <th>Descripción</th>
-                    <th>Fecha-Hora</th>
+                    <th><h3>Acción</h3></th>
+                    <th><h3>Descripción</h3></th>
+                    <th><h3>Fecha-Hora</h3></th>
                 </tr>
                 <%
                    
    while (rs.next()){
        out.println("<tr><td class='"+rs.getString("ta").toLowerCase()+"'>"+rs.getString("ta")+"</td>"
-               + "<td>'"+rs.getString("desc")+"'</td><td>"+rs.getString("ht")+"</td></tr>");
+               + "<td>"+rs.getString("desc")+"</td><td>"+rs.getString("ht")+"</td></tr>");
    }
    try{
       con.close();
