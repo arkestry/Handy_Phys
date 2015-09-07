@@ -1,20 +1,16 @@
-<%-- 
-    Document   : registroProfe
-    Created on : 10/07/2015, 02:05:16 PM
-    Author     : Luis Enrique
---%>
 
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>Registro Profesor</title>
+        <script src="../js/jquery-1.11.3.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
-        <script src="./js/jquery-1.11.3.min.js"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
     </head>
     <body>
         <section class="integrarMenu">

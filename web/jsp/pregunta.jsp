@@ -68,7 +68,7 @@
             </h1> 
             </center>
         <%
-            if(request.getParameter("idUsuario").equals(String.valueOf(user.getIdUsuario()))){
+            if(request.getParameter("idUsuario").equals(String.valueOf(user.getIdUsuario())) || session.getAttribute("tipo").equals("Administrador")){
         %>
         <section style="display: inline; float: left; position: absolute; top: 5em; left: 1em">
         <form class="form-group" style="float: left; display: table; padding-left: 2em; padding-top: 2em" action="editor.jsp" method="GET">

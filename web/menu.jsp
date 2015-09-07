@@ -204,7 +204,7 @@
                     <li><a class="sublist" href="../jsp/todo_preguntas.jsp" target="_top">Preguntas</a></li>
                     <li><a class="sublist" href="../jsp/examenes.jsp" target="_top">Examenes</a></li>
                     <%
-                        if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+                        if(!session.getAttribute("tipo").equals("Anonimo")){ %>
                     <li><a class="sublist" href="../jsp/todo_simulExam.jsp" target="_top">Simulador Examen</a></li>
                     <% }%>
                 </ul>

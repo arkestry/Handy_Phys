@@ -45,6 +45,10 @@ and open the template in the editor.
                 $('#parar').on('click', detener);
             });
         </script>
+        <style>
+           
+            
+        </style>
     </head>
     
     <body>

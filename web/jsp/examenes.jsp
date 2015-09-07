@@ -45,7 +45,7 @@
         </section>
         <section class="integrarCont">
             <%
-                if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+                if(!session.getAttribute("tipo").equals("Anonimo")){ %>
             <button id="btnPaSubir" class="btn btn-block btn-primary">Subir un examen</button>
             <section id="subirExamen" style="display: none">
                 <form class="subirExamen form-inline" method="POST" action="../servlets/generarHTML" enctype="multipart/form-data">
@@ -81,12 +81,13 @@
                     <td><%= rs.getString(5) %></td>
                     <td>
                         <a href="../examenes/<%=rs.getString(7)%>"><button style="position: relative; top: 0.5em" class="btn btn-info" type="button">Descargar</button></a>
-                        <% if(usuario.getIdUsuario() == rs.getInt(2)){ %>
+                        <% if(usuario.getIdUsuario() == rs.getInt(2) || session.getAttribute("tipo").equals("Administrador")){ %>
                         <form onsubmit="return really(this)" action="../servlets/borrarHTML">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="3" name="tipoCont">
                             <input type="submit" class="btn btn-danger" style="display: inline; float: right; position: relative; top: -1.85em" value="Eliminar Examen">
                         </form>
+                        <% }%>
                         <form action="../servlets/valorar" method="POST">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="3" name="tipoCont">
@@ -100,7 +101,7 @@
                                     <span name="s5" id="s5" class="glyphicon glyphicon-star-empty"></span></label>
                             </section>
                         </form>
-                        <% }%>
+                        
                         
                     </td>
                 </tr>

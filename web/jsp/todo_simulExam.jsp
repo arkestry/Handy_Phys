@@ -85,7 +85,7 @@
                     <td><%= rs.getString(7) %></td>
                     <td><%= rs.getString(8) %></td>
                     <td>
-                        <% if(((userBean)session.getAttribute("userData")).getUserName().equals(rs.getString(7))){%>
+                        <% if(((userBean)session.getAttribute("userData")).getUserName().equals(rs.getString(7)) || session.getAttribute("tipo").equals("Administrdor")){%>
                         <form onsubmit="return really(this)" action="../servlets/borrarHTML" method="POST">
                             <input type="hidden" value="<%= rs.getInt(1) %>" name="idArticulo">
                             <input type="hidden" value="4" name="tipoCont">
