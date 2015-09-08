@@ -95,9 +95,9 @@
     </head>
   
     <body>
-        <img id="muestrame" class="zigma" src="../assets/icons/zigma.png" alt="zigma">
+        <img id="muestrame" style="position: fixed" class="zigma" src="../assets/icons/zigma.png" alt="zigma">
         <div id="hmenu"  class="navbar navbar-inverse col-xs-12">
-            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em; border-radius: 10px">
+            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em; border-radius: 50px">
                     <span  
                     <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
                     class="glyphicon glyphicon-log-out"></span>
@@ -110,8 +110,8 @@
                 <ul class="keys mostrarSeccion list-group-item  list-unstyled" >
                     
                     <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a class="sublist" href="../jsp/login.jsp" >Iniciar Sesion</a></li>
-                    <li><a class="sublist" href="../jsp/registrate.jsp" >Registrarse</a></li>
+                    <li style="color: whitesmoke"><a class="sublist" href="../jsp/login.jsp" >Iniciar Sesion</a></li>
+                    <li style="color: whitesmoke"><a class="sublist" href="../jsp/registrate.jsp" >Registrarse</a></li>
                     <%}%>
                     <%
                     if(session.getAttribute("tipo").equals("Administrador") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
@@ -176,7 +176,7 @@
                </ul> <%}
                 %>     
                 <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
-            </ul> <% } %>
+            </ul> 
         
         <section class="">
             <form class="form-inline text-right" action="../jsp/busca.jsp" method="GET">
@@ -190,6 +190,7 @@
                 </section>
             </form>
         </section>
+            <% } %>
         </div>
     
             <nav>

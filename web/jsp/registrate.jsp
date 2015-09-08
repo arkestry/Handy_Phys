@@ -10,12 +10,13 @@
 <html>
     <head>
         <title>Registrando un nuevo compañero...</title>
+        <script src="../js/jquery-1.11.3.min.js"></script>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../css/estilo_menu.css">
-        <script src="../js/jquery-1.11.3.min.js"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
     </head>
     <body>
         <section class="integrarMenu">
@@ -23,7 +24,7 @@
         </section>
         <section class="integrarCont">
         <section class="bg bgregist"></section>
-        <form action="../servlets/regist" class="form-horizontal formularioLogin bordeR bBlue" role="form">
+        <form method="POST" action="../servlets/regist" class="form-horizontal formularioLogin bordeR bBlue" role="form">
             <input type="hidden" name="institucion" value="1">
             <input type="hidden" name="tipoUsuario" value="3">
             <h1 class="text-uppercase text-center">Registrar</h1>
@@ -74,7 +75,7 @@
             </section>
             <center> 
                 <input id="registrar" class="btn btn-success" type="submit" value="Registrarse"/>
-                <input id="cancelar" class="btn btn-danger" type="reset" value="Cancelar"/>
+                <input id="cancelar" class="btn btn-danger" type="reset" onclick="window.location.href = '../index.jsp'" value="Cancelar"/>
             </center>
             <br>
         </form>

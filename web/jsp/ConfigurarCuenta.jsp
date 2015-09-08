@@ -199,7 +199,7 @@ $(document).ready(function (e) {
              if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li onclick="mostrar(feedS)"><a href="#">Feedback</a></li>
             <section id="feedS" name="onMenu">
-                <form action="../jsp/enviarFeed.jsp" class="form" target="_top"  method="post">
+                <form action="enviarFeed.jsp" class="form" target="_top"  method="post">
                     <section class="text-center col-xs-12 form-group">
                         <textarea class="form-control " rows="3" name="feed" placeholder="Escribe una sugerencia"></textarea>
                     </section>
@@ -224,7 +224,7 @@ $(document).ready(function (e) {
         </section>
         <section class="integrarCont">
                 <h1 class="text-right text-uppercase" >Configuracion de cuenta</h1>
-             <section id="datosC">
+             <section id="dato  sC">
 
                  <form id="form" action="../servlets/updatePhoto" >
                      <label id="userPic"><img id="ProfileImage" style=" width: 120px; height: 120px" src="<%=urlImage %>" alt="<%= usuario.getProfilePict() %>" width="120px" height="120px"><button type="button" class="btn btn-info" style=" cursor: pointer; background: none; width: 120px; border-top: none">Subir foto <span class=" glyphicon glyphicon-upload"></span></button><input id="file"  style="opacity: .0; width: 120px; position: relative; top: -1.7em; cursor: pointer" type="file"  class="subirFoto"></label>

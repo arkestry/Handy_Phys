@@ -93,10 +93,10 @@ public class login extends HttpServlet {
                PreparedStatement ps1 = con.prepareStatement("call getGrupo(?)");
                ps1.setString(1, usuario.getEmail());
                ResultSet rs1 = ps1.executeQuery();
+               
                while(rs1.next()){
                    usuario.setGrupo(rs1.getString(1));
                }
-                
             }
         }catch(Exception e){
             e.printStackTrace();

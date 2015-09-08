@@ -125,8 +125,8 @@
                 <ul class="keys mostrarSeccion list-group-item  list-unstyled" >
                     
                     <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a class="sublist" href="jsp/login.jsp" >Iniciar Sesion</a></li>
-                    <li><a class="sublist" href="jsp/registrate.jsp" >Registrarse</a></li>
+                    <li style="color: whitesmoke"><a class="sublist" href="jsp/login.jsp" >Iniciar Sesion</a></li>
+                    <li style="color: whitesmoke"><a class="sublist" href="jsp/registrate.jsp" >Registrarse</a></li>
                     <%}%>
                     <%
                     if(session.getAttribute("tipo").equals("Administrador") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
@@ -191,7 +191,7 @@
                </ul> <%}
                 %>     
                 <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
-            </ul> <% } %>
+            </ul> 
         
         <section class="">
             <form class="form-inline text-right" action="jsp/busca.jsp" method="GET">
@@ -205,6 +205,7 @@
                 </section>
             </form>
         </section>
+            <% } %>
         </div>
     
             <nav>

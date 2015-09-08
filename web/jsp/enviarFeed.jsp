@@ -17,8 +17,10 @@
            
             ps.executeQuery();
             System.out.println("enviado");
-            out.println("<script>alert('Tu comentario ha sido enviado, tu aportación será de gran ayuda para mejorar la dinamica de esta pagina')</script>");
-
+           
 %>
 
-<jsp:forward page="../pages/home.html"></jsp:forward>
+<script>
+    alert("Tu comentario ha sido enviado con exito");
+    window.location.href = "../index.jsp";
+</script>

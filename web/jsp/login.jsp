@@ -40,9 +40,9 @@
                 </section>
                 <section class="text-center">
                     <input type="submit"  value="Iniciar Sesion" class=" btn btn-success" id="loginSubmit">
-                    <input type="submit"  value="Registrarse" class="btn btn-warning" id="regist">
+                    <input type="button"  value="Registrarse" onclick="window.location.href = 'registrate.jsp'" class="btn btn-warning" id="regist">
                     <br>
-                    <a class="link" href="#">Olvide mi contraseña</a>
+                    <br>
                 </section>
             </form>
         </section>

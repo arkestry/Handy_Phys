@@ -56,7 +56,7 @@ public class regist extends HttpServlet {
                 ps.setString(7, request.getParameter("tipoUsuario"));
                 ps.setString(8, request.getParameter("grupo"));
                 ps.executeUpdate();
-               out.println("<script> window.top.window.location.reload();alert('Registro éxitoso');</script>");
+               out.println("<script> window.location.href = '../index.jsp';alert('Registro éxitoso');</script>");
            
         }catch(Exception e){
             e.printStackTrace();
