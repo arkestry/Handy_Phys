@@ -5,12 +5,13 @@
 <%@page import="beans.userBean"%>
 
 <!DOCTYPE html>
+
 <html>
     <head>
         <title>Menu Principal</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="../js/muestra.js"></script>
+        
         <script>
            
                function send(){
@@ -53,6 +54,9 @@
         if(session.isNew()){
             session.setAttribute("tipo", "Anonimo");
             usuario = new userBean();
+            usuario.setUserName("Anonimo");
+            usuario.setFullName("Anonimo");
+            usuario.setEmail("Anonimo");
             session.setAttribute("userData", usuario);
         }else{
             usuario = (userBean)session.getAttribute("userData");
@@ -92,8 +96,8 @@
   
     <body>
         <img id="muestrame" class="zigma" src="../assets/icons/zigma.png" alt="zigma">
-        <div id="hmenu" class="navbar navbar-inverse col-xs-12">
-            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative;border-radius: 10px; top: .8em; right: -5em">
+        <div id="hmenu"  class="navbar navbar-inverse col-xs-12">
+            <button class="btn mostrarLink btn-link" style="background-color: #141414; position: relative; top: .8em; right: -5em; border-radius: 10px">
                     <span  
                     <% if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
                     class="glyphicon glyphicon-log-out"></span>
@@ -106,8 +110,8 @@
                 <ul class="keys mostrarSeccion list-group-item  list-unstyled" >
                     
                     <% if(session.isNew() || session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a class="sublist" href="../jsp/login.jsp" target="_top">Iniciar Sesion</a></li>
-                    <li><a class="sublist" href="../jsp/registrate.jsp" target="_top">Registrarse</a></li>
+                    <li><a class="sublist" href="../jsp/login.jsp" >Iniciar Sesion</a></li>
+                    <li><a class="sublist" href="../jsp/registrate.jsp" >Registrarse</a></li>
                     <%}%>
                     <%
                     if(session.getAttribute("tipo").equals("Administrador") || session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){%>
@@ -118,14 +122,14 @@
             </ul>
             <% if(!session.getAttribute("tipo").equals("Anonimo")){             
             %>
-            <ul id="menuNo" >
+            <ul id="menuNo" s>
             <li><span class="glyphicon glyphicon-alert btn-lg" style="color: #ECF0F1; top: .2em; cursor: pointer"></span>
                  <% 
                 if(session.getAttribute("tipo").equals("Alumno")){
                 %>
                 <ul class="cajaNo list-unstyled">
                     <section id="avisos" style="margin: 1em;">
-                    
+                        <!--Esto esta al proposito -->
                     </section>
                 </ul>
                 <script>
@@ -171,15 +175,17 @@
                         
                </ul> <%}
                 %>     
-                 <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
+                <label><%=((userBean)session.getAttribute("userData")).getUserName() %></label></li>   
             </ul> <% } %>
         
         <section class="">
-            <form class="form-inline text-right" action="../jsp/busca.jsp">
+            <form class="form-inline text-right" action="../jsp/busca.jsp" method="GET">
                     <section class="form-group">
                     <section>
-                        <input name="palabraClave" id="buscar" type="text" class="form-control"  placeholder="Buscar">
-                        <button id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
+                        
+                        <input id="buscar" type="text" class="form-control" name="palabraClave"  placeholder="Buscar">
+                        <button type="submit" id="btn_buscar" class="btn boton"><span class="glyphicon glyphicon-search"></span></button>
+                       
                     </section>
                 </section>
             </form>
@@ -188,24 +194,24 @@
     
             <nav>
                 <ul class="menu" id="Principal">
-            <li><a href="../index.jsp" target="_top">Página Principal</a></li>
+            <li><a href="../index.jsp" >Página Principal</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
-            <li><a href="../jsp/profile.jsp?correo=<%=usuario.getEmail() %>" target="_top">Mi Perfíl</a></li>
+            <li><a href="../jsp/profile.jsp?correo=<%=usuario.getEmail() %>" >Mi Perfíl</a></li>
             <% 
                 if(session.getAttribute("tipo").equals("Alumno")){ %>
-             <li><a href="../jsp/mis_preguntas.jsp" target="_top">Mis Preguntas</a></li>
+             <li><a href="../jsp/mis_preguntas.jsp" >Mis Preguntas</a></li>
             <%}
                 }%>
             <li onClick="mostrar(contentS)"><a href="#">Contenido</a></li>
             <section id="contentS" name="onMenu">
                 <ul class="list-unstyled text-uppercase text-right list-group-item-text">
-                    <li><a class="sublist" href="../jsp/todo_articulos.jsp" target="_top">Teoria</a></li>
-                    <li><a class="sublist" href="../jsp/todo_preguntas.jsp" target="_top">Preguntas</a></li>
-                    <li><a class="sublist" href="../jsp/examenes.jsp" target="_top">Examenes</a></li>
+                    <li><a class="sublist" href="../jsp/todo_articulos.jsp" >Teoria</a></li>
+                    <li><a class="sublist" href="../jsp/todo_preguntas.jsp" >Preguntas</a></li>
+                    <li><a class="sublist" href="../jsp/examenes.jsp" >Examenes</a></li>
                     <%
-                        if(!session.getAttribute("tipo").equals("Anonimo")){ %>
-                    <li><a class="sublist" href="../jsp/todo_simulExam.jsp" target="_top">Simulador Examen</a></li>
+                        if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
+                    <li><a class="sublist" href="../jsp/todo_simulExam.jsp" >Simulador Examen</a></li>
                     <% }%>
                 </ul>
             </section>
@@ -214,7 +220,7 @@
              if(session.getAttribute("tipo").equals("Profesor") || session.getAttribute("tipo").equals("Alumno")){ %>
             <li onclick="mostrar(feedS)"><a href="#">Feedback</a></li>
             <section id="feedS" name="onMenu">
-                <form action="../jsp/enviarFeed.jsp" class="form" target="_top"  method="post">
+                <form action="../jsp/enviarFeed.jsp" class="form"   method="post">
                     <section class="text-center col-xs-12 form-group">
                         <textarea class="form-control " rows="3" name="feed" placeholder="Escribe una sugerencia"></textarea>
                     </section>
@@ -224,13 +230,13 @@
                     </section>
                 </form>
             </section>
-              <li><a href="../jsp/ConfigurarCuenta.jsp" target="_top">Configuración de Cuenta</a></li><%} %>
+              <li><a href="../jsp/ConfigurarCuenta.jsp" >Configuración de Cuenta</a></li><%} %>
             <%if(session.getAttribute("tipo").equals("Administrador")){ %>
-            <li><a href="../jsp/admin_indexSPS.jsp" target="_top">Registro de Actividad</a></li>
-            <li><a href="../jsp/admin_feedback.jsp" target="_top">Feedback</a></li>
-            <li><a href="../jsp/admin_reporte.jsp" target="_top">Reportes</a></li>
-            <li><a href="../jsp/registroProfe.jsp" target="_top">Registrar profesor</a></li>
-            <li><a href="../jsp/admin_blacklist.jsp" target="_top">BlackList</a></li>
+            <li><a href="../jsp/admin_indexSPS.jsp" >Registro de Actividad</a></li>
+            <li><a href="../jsp/admin_feedback.jsp" >Feedback</a></li>
+            <li><a href="../jsp/admin_reporte.jsp" >Reportes</a></li>
+            <li><a href="../jsp/registroProfe.jsp" >Registrar profesor</a></li>
+            <li><a href="../jsp/admin_blacklist.jsp" >BlackList</a></li>
           
             <%}%>
         </ul>
