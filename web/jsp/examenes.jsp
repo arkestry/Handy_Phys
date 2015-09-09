@@ -13,7 +13,7 @@
 <%
     userBean usuario = (userBean)session.getAttribute("userData");
     Connection con = sql.conectar();
-    PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont = 3;");
+    PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont = 3 order by valoracion desc;");
     ResultSet rs = ps.executeQuery();
 %>
 <!DOCTYPE html>

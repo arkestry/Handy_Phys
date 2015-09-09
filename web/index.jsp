@@ -4,8 +4,26 @@
     Author     : ivan-hdz
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="classes.sql"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="beans.userBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Connection con = sql.conectar();
+    String sql;
+    sql = "select * from mostrararticulos where idTipoCont=(?) order by valoracion desc";
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setInt(1, 1);
+    ResultSet rs = ps.executeQuery();
+    PreparedStatement ps2 = con.prepareStatement(sql);
+    ps2.setInt(1, 2);
+    ResultSet rs2 = ps2.executeQuery();
+    PreparedStatement ps3 = con.prepareStatement(sql);
+    ps3.setInt(1, 3);
+    ResultSet rs3 = ps3.executeQuery();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -265,12 +283,77 @@
     </section>
     <section class="integrarCont">
     <section class="bg bghome"></section>
+    <section class="container" style=" width: 100%">
+        <section id="left" class="home_box text-center" >
+            <h1>Examenes mas valorados</h1>
+            <hr style=" border-style: none ;background-color: #141414; height: 0.5em">
+            <% while(rs3.next()) {%>
+            <article class="home_subBox bg_left">
+                <h3><%= rs3.getString(3) %></h3>
+                <a target="_blank" href="examenes/<%=rs3.getString(7)%>"><button style="position: relative; top: 0.5em" class="btn btn-info" type="button">Descargar</button>
+                </a>
+                <h3>Valoracion: <%=rs3.getInt(5) %></h3>
+                <h4 style="color: #ECF0F1">Fecha de publicacion: <%= rs3.getString(4) %></h4>
+            </article>
+            <%} %>
+        </section>
+        <section id="center" class="home_box text-center" >
+            <h1>Articulos mas valorados</h1>
+            <hr style="border-style: none;background-color: #3A539B; height: 0.5em">
+            <% while(rs.next()){%>
+            <article class="home_subBox bg_center">
+                <h3>
+                        <form action="jsp/articulo.jsp" method="GET" style="display: inline">
+                            <button type="submit" style="background: none; border: none"><%=(String)rs.getObject("Titulo") %></button>
+                            <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
+                            <input type="hidden" name="correo" value="<%= rs.getString("correo")%>">
+                            <input type="hidden" name="tipoCont" value="1">  
+                            <input type="hidden" name="tags" value="<%= rs.getString("tags") %>">
+                        </form>
+                      
+                </h3>
+                <h3>Valoracion: <%=rs.getInt(5) %></h3>
+                <h4 style="color: #ECF0F1">Fecha de publicacion: <%= rs.getString(4) %></h4>
+            </article>
+            <%}%>
+        </section>
+        <section id="right" class="home_box text-center" >
+            <h1>Preguntas mas comentadas</h1>
+            <hr style="border-style: none; background-color: #ECF0F1; height: 0.5em;">
+            <% while(rs2.next()){%>
+            <article class="home_subBox bg_right">
+                <h3 style="color: #141414">
+                        <form action="jsp/pregunta.jsp" method="GET" style="display: inline">
+                            <button type="submit" style="color: #141414 ;background: none; border: none"><%=(String)rs2.getObject("Titulo") %></button>
+                            <input type="hidden" name="idUsuario" value="<%= rs2.getObject("idUsuario")%>">
+                            <input type="hidden" name="nickname" value="<%= (String)rs2.getObject("nickname")%>">
+                            <input type="hidden" name="titulo" value="<%=(String)rs2.getObject("Titulo") %>">
+                            <input type="hidden" name="fecha" value="<%=(String)rs2.getObject("fecha")%>">
+                            <input type="hidden" name="idArticulo" value="<%= rs2.getObject("idArticulo") %>">
+                            <input type="hidden" name="nombreArchivo" value="<%= rs2.getString("url") %>">
+                            <input type="hidden" name="correo" value="<%= rs2.getString("correo")%>">
+                            <input type="hidden" name="tipoCont" value="2">  
+                            <input type="hidden" name="tags" value="<%= rs2.getString("tags") %>">
+                        </form>
+                      
+                </h3>
+                <h3 style="color: #141414">Valoracion: <%=rs2.getInt(5) %></h3>
+                <h4 style="color: #141414">Fecha de publicacion: <%= rs2.getString(4) %></h4>
+            </article>
+            <%}%>
+        </section>
+    </section>
+    </section>
     <footer>
         <hr size="5px" width="90%" align="center" color="black"/>
         <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
-    </section>
+        <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
+        <a href="#">Politicas de uso</a>
+    </footer>
 </body>
 </html>

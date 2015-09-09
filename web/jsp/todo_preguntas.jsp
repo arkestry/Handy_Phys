@@ -23,7 +23,7 @@
         <script src="../js/muestra.js" type="text/javascript"></script>
          <%
             Connection con = sql.conectar();
-            PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2");
+            PreparedStatement ps = con.prepareStatement("select * from mostrararticulos where idTipoCont=2 order by valoracion desc");
             ResultSet rs = ps.executeQuery();
             PreparedStatement ps1 = con.prepareStatement("call misComentarios(?)");
         %>
