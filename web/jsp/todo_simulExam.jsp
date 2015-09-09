@@ -43,37 +43,24 @@
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
+            <section class="bg bgsimul"></section>
         <h1 class="text-uppercase text-center">SIMULADOR DEL EXAMEN 
         <% if(session.getAttribute("tipo").equals("Profesor")){ %>
         <a href="nuevo_examen.jsp"><button class="btn boton btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span></button></a>
         <%}%>
         </h1>
-        <section class="col-md-12">
-            <section style="position: relative; top: -1em" class="col-md-1">
-                <label class="h3">Filtro: </label>
-            </section>
-            <section class="col-md-2">
-                <select style="color: #141414;" class="form-control">
-                     <option>Todos</option>
-                     <option value="fisica1">Fisica 1</option>
-                     <option value="fisica2">Fisica 2</option>
-                     <option value="fisica3">Fisica 3</option>
-                     <option value="fisica4">Fisica 4</option>
-                 </select>
-            </section>
-        </section>
+        
         
         <section style="width: 93%; height: 100%; margin: 3em">
             <table class="table table-condensed table-responsive" style="border: none">
-                <tr style="border: none ;background-color: skyblue; color: #141414; opacity: .8">
-                    <th>Titulo</th>
-                    <th>Descripcion</th>
-                    <th>Parcial</th>
-                    <th>Unidad Academica</th>
-                    <th>Fecha</th>
-                    <th>Autor</th>
-                    <th>Valoracion</th>
-                    <th>Acciones</th>
+                <tr style="border: solid 1px white ;background-color: #141414; color: whitesmoke; color: #141414; opacity: .8">
+                    <th style="color: whitesmoke">Titulo</th>
+                    <th style="color: whitesmoke">Descripcion</th>
+                    <th style="color: whitesmoke">Parcial</th>
+                    <th style="color: whitesmoke">Unidad Academica</th>
+                    <th style="color: whitesmoke">Fecha</th>
+                    <th style="color: whitesmoke">Autor</th>
+                    <th style="color: whitesmoke">Acciones</th>
                 </tr>
                 <% while(rs.next()){ %>
                 <tr>
@@ -83,7 +70,6 @@
                     <td><%= rs.getString(5) %></td>
                     <td><%= rs.getString(6) %></td>
                     <td><%= rs.getString(7) %></td>
-                    <td><%= rs.getString(8) %></td>
                     <td>
                         <% if(((userBean)session.getAttribute("userData")).getUserName().equals(rs.getString(7)) || session.getAttribute("tipo").equals("Administrdor")){%>
                         <form onsubmit="return really(this)" action="../servlets/borrarHTML" method="POST">

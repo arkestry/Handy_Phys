@@ -10,6 +10,7 @@ import classes.serializar;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -80,19 +81,46 @@ public class sigPregunta extends HttpServlet {
                     }else{
                         if(request.getParameter("tipo").equals("fin")){ //Estilo de la pagina de resultados
                             System.out.println("Pasa por aqui");
-                            out.println("<h1 style='color: #ecf0f1'>RESULTADOS</h1>");
+                            out.println("<html>");
+                            out.println("<head>");
+                            out.println("<link href='../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css' rel='stylesheet' type='text/css'/>");
+                            out.println("<script src=\"../js/jquery-1.11.3.min.js\"></script>");
+                            out.println("<link rel=\"stylesheet\" href=\"../css/estilo_menu.css\">");
+                            out.println("</head>");
+                            out.println("<body>");
+                            out.println("<section class='bg bgtest'></section>");
+                            out.println("<style>body{background-color: #141414}</style>");
+                            out.println("<center><h1 style='color: #ecf0f1'>RESULTADOS</h1></center>");
+                            out.println("<section class='container' style='margin: 4em'>");
                             String calificame[] = sim.getCorrectas();
+                            int pregC = 0, pregI = 0;
+                            ArrayList<String> pregC_array = new ArrayList(), pregI_array = new ArrayList();
                             for(int i = 0; i<calificame.length; i++){
                                 System.out.println(calificame[i]);
                                 System.out.println(request.getParameter("ansFinal"+(i+1)));
                                 if(calificame[i].equals(request.getParameter("ansFinal"+(i+1)))){
-                                    out.println("<center><h2 style='color: #3498db'>"+sim.getPreguntas()[i]+"</h2></center>");
+                                    pregC_array.add(sim.getPreguntas()[i]);
+                                    pregC += 1;
                                 }else{
-                                     out.println("<center><h2 style='color: #e74c3c'>"+sim.getPreguntas()[i]+"</h2></center>");
-                                
+                                    pregI_array.add(sim.getPreguntas()[i]);
+                                    pregI += 1;
                                 }
                             }
-                        }
+                            out.println("<h2>Numero de preguntas contestadas correctamente: "+pregC+"</h2>");
+                            out.println("<h2>Numero de preguntas contestadas incorrectamente: "+pregI+"</h2>");
+                            out.println("<h2>Preguntas contestadas correctamente:</h2>");
+                            for(int i = 0; i<pregC_array.size(); i++){
+                                out.println("<h3>"+pregC_array.get(i)+"</h3>");
+                            }
+                            out.println("<h2>Preguntas contestadas incorrectamente:</h2>");
+                            for(int i = 0; i<pregI_array.size(); i++){
+                                out.println("<h3>"+pregI_array.get(i)+"</h3>");
+                            }
+                            out.println("<button onclick=\"window.location.href = '../jsp/todo_simulExam.jsp';\" class='btn btn-success'>Terminar Simulador</button>");
+                            out.println("</section>");
+                            out.println("</body>");
+                            out.println("</html>");
+                        }   
                     }
                 }
             }   

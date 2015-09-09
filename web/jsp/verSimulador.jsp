@@ -96,6 +96,7 @@ function start(){
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
+            <section class="bg bgtest"></section>
             <h1 class="text-center text-danger"><%=titulo %> </h1>
             <section class="container">
                 <p id="preg" class="h3"></p>

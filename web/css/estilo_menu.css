@@ -599,6 +599,19 @@ div.slim_panHead{
     background-size: cover;
     background-repeat: round;
 }
+.bgtest{
+    background-image: url(../assets/backgr/bg_test.jpg);
+    background-size: cover;
+    background-repeat: round;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+.bgsimul{
+    background-image: url(../assets/backgr/bg_sim.jpg);
+    background-size: cover;
+    background-repeat: round;
+    
+}
 .bglogin{
     background-image: url(../assets/backgr/p9-min.png);
     background-size: cover;
