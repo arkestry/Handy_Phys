@@ -35,6 +35,7 @@
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
+            <section class="bg bgMisPreg"></section>
             <section id="quest_panel">
                 <div class="container-fluid">
                     <h2 class="text-center">

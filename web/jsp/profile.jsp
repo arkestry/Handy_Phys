@@ -50,6 +50,7 @@
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont text-center">
+            <section class="bg bgprofile"></section>
             <center><section id="cabezaP" >
             <center><label id="userPic"><img style="width: 120px; height: 120px" src="../images/profileImages/<%= image %>" alt="Imagen de perfil"></label></center>
             <h1 id="usuario"><%=userName%> <small>Mi Perfil</small></h1>

@@ -34,6 +34,7 @@
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
         </section>
         <section class="integrarCont">
+            <section class="bg bgpregAll"></section>
        <!--encabezado-->
         <div class="page-header">
             <h1 class="text-center todo_tit">
@@ -143,12 +144,7 @@
             <%}%>
              
         </div>
-        <footer>
-            <hr size="5px" width="90%" align="center" color="black"/>
-            <a href="http://getbootstrap.com/" target="body">Powered by Bootstrap</a>
-            <a href="#">Contenido del sitio 2015© &nbsp;&nbsp; Ibex® de México   --  Desarrollado por IBEX </a>
-           <a href="#">Politicas de uso</a>
-        </footer>
+        
         </section>
     </body>
 </html>

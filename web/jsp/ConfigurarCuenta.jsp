@@ -223,23 +223,28 @@ $(document).ready(function (e) {
            
         </section>
         <section class="integrarCont">
-                <h1 class="text-right text-uppercase" >Configuracion de cuenta</h1>
-             <section id="dato  sC">
+                <section class="bg bgconfig"></section>
+                <h1 style="color: #141414" class="text-right text-uppercase" >Configuracion de cuenta</h1>
+                <section id="dato sC" style="padding: 2.5em;padding-bottom: 0em; border-bottom: 35px solid teal; border-right: 25px solid teal">
 
                  <form id="form" action="../servlets/updatePhoto" >
-                     <label id="userPic"><img id="ProfileImage" style=" width: 120px; height: 120px" src="<%=urlImage %>" alt="<%= usuario.getProfilePict() %>" width="120px" height="120px"><button type="button" class="btn btn-info" style=" cursor: pointer; background: none; width: 120px; border-top: none">Subir foto <span class=" glyphicon glyphicon-upload"></span></button><input id="file"  style="opacity: .0; width: 120px; position: relative; top: -1.7em; cursor: pointer" type="file"  class="subirFoto"></label>
+                     <label id="userPic"><img id="ProfileImage" style=" width: 120px; height: 120px" src="<%=urlImage %>" alt="<%= usuario.getProfilePict() %>" width="120px" height="120px"><button type="button" class="btn btn-info" style=" cursor: pointer; background:  #ECF0F1; width: 120px; color: #141414 ;border-top: none">Subir foto <span class=" glyphicon glyphicon-upload"></span></button><input id="file"  style="opacity: .0; width: 120px; position: relative; top: -1.7em; cursor: pointer" type="file"  class="subirFoto"></label>
                  </form>
                  <form method="POST" onsubmit="validame(this)" action="../servlets/cambiarDatos">
-                     <section style=" margin-top: 3em;">
-                         <h3>Nombre de usuario: <small><input name="nick" type="text" class="form-control" placeholder="<%= usuario.getUserName() %>" value="<%= usuario.getUserName() %>"></small></h3>
-                         <h3>Nombre real: <small><input name="name" type="text" class=" form-control" value="<%= usuario.getFullName() %>" placeholder="<%= usuario.getFullName() %>"></small></h3>
-                         <h3>Nueva contraseña: <small><input class="form-control" name="newPass" id="newPass" type="password"  placeholder=""></small></h3>
-                         <h3>Confirmar contraseña: <small><input class="form-control" name="confNewPass" id="confNewPass" onkeyup="isSame()" type="password" ></small></h3>
-                         <h3>Contraseña actual: <small><input class="form-control" name="pass" id="pass" type="password" required placeholder="Por su seguridad para cambiar algun dato necesita introducir su contraseña actual"></small></h3>
-                         <input type="submit" id="GuardaC" class="btn btn-success btn-block" value="Guardar cambios">
-                         <input type="button" onclick="window.location.href = 'profile.jsp'" id="CancelarC" class="btn btn-success btn-block" value="Cancelar">
+                     <section style=" margin-top: 1.8em; width: 80%; position: relative; top: -13em; background-color: #141414; opacity: 0.95" class="container">
+                         <h3 class="text-left">Nombre de usuario: <small><input name="nick" type="text" class="form-control" placeholder="<%= usuario.getUserName() %>" value="<%= usuario.getUserName() %>"></small></h3>
+                         <h3 class="text-left">Nombre real: <small><input name="name" type="text" class=" form-control" value="<%= usuario.getFullName() %>" placeholder="<%= usuario.getFullName() %>"></small></h3>
+                         <h3 class="text-left">Nueva contraseña: <small><input class="form-control" name="newPass" id="newPass" type="password"  placeholder=""></small></h3>
+                         <h3 class="text-left">Confirmar contraseña: <small><input class="form-control" name="confNewPass" id="confNewPass" onkeyup="isSame()" type="password" ></small></h3>
+                         <h3 class="text-left">Contraseña actual: <small><input class="form-control" name="pass" id="pass" type="password" required placeholder="Por su seguridad para cambiar algun dato necesita introducir su contraseña actual"></small></h3>
+                         <input type="submit" id="GuardaC" class="btn btn-success" value="Guardar cambios">
+                         <input type="button" onclick="window.location.href = 'profile.jsp?correo=<%=usuario.getEmail() %>'" id="CancelarC" class="btn btn-success" value="Cancelar">
+                         <br><small>
+                             Para hacer algun cambio de informacion, por su seguridad se requiere su contraseña
+                         </small>
                      </section>
                  </form>
+                         
              </section>
                 
         </section>
