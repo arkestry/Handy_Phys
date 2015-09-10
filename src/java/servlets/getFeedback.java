@@ -51,14 +51,16 @@ public class getFeedback extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         int id=Integer.parseInt(request.getParameter("param1"));
-        String fdb="feedback";
+        String fdb="";
         Connection con=sql.conectar();
         try {
-            PreparedStatement ps=con.prepareStatement("select contenidoFB from feedback where idFeedback = ?");
+            PreparedStatement ps=con.prepareStatement("call getFeedback(?)");
             ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
             while (rs.next()) {
-                fdb=rs.getString("contenidoFB");
+                fdb=rs.getString("nickname")+",";
+                fdb+=rs.getString("contenidoFB")+",";
+                fdb+=rs.getString("fecha");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

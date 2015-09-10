@@ -7,7 +7,10 @@ $(document).ready(function(){
         data: {param1: id}
       })
       .done(function(data) {
-        $  (".bodyfeed").html(data);
+        var values=data.split(",");
+        $("#fdb-text").html(values[1]);
+        $("#usr").html(values[0]);
+        $("#fecha").html(values[2]);
       })
       .fail(function() {
         console.log("error");

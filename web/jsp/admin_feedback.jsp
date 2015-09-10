@@ -23,14 +23,9 @@
         <section class="integrarMenu">
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
             </section>
+            <div style="width: 100%;height: 50px;"></div>
             <section class="integrarCont">
-                <h1><center>Reportes de Feedback</center></h1>
-                <hr>
-                <div class="container">
                     <div class="contenedorfeeds">
-                        <table class="wrap_feed">
-                            <tr>
-                                <td class="avisos">
                                     <div class="list-group lista">  
                                     <%
                                            Connection con = sql.conectar();
@@ -56,16 +51,16 @@
                                     <%}
         }%>
                                 </div>
-                            </td>
-                            <td class="medio">
-                            </td>
-                            <td class="cuerpo">
                                 <div class="bodyfeed">
-
+                                    <div> <h1 class="text-left">Feedback</h1>
+                                        <h3 class="text-right" id="usr"></h3>
+                                    </div>
+                                    <div class="fdb-panel">
+                                        <p id="fdb-text">Seleccione un reporte a revisar</p>
+                                        <hr style="border-top: 1px solid #141414"> 
+                                        <h5 id="fecha"></h5>
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                </table>
             </div>
         </section>
     </body>
