@@ -856,4 +856,42 @@ footer a:hover{
       padding:5px;
       box-shadow: 0 1px 5px rgba(0,0,0,0.25);
       background-color: #90CAF9;
+      border: 1px solid rgba(0,0,0,.15);
   }
+  .rp-gravedad-alta{
+      background-color: #FF7043;
+  }
+  .rp-gravedad-media{
+      background-color: #FFEE58;
+  }
+  .rp-gravedad-baja{
+      background-color: #29B6F6;
+  }
+  
+a.list-group-item.rp-gravedad-alta:hover,
+a.list-group-item.rp-gravedad-alta:focus {
+  color: #555;
+  text-decoration: none;
+  background-color: #F4511E;
+}
+a.list-group-item.rp-gravedad-media:hover,
+a.list-group-item.rp-gravedad-media:focus {
+  color: #555;
+  text-decoration: none;
+  background-color: #FDD835;
+}
+a.list-group-item.rp-gravedad-baja:hover,
+a.list-group-item.rp-gravedad-baja:focus {
+  color: #555;
+  text-decoration: none;
+  background-color: #039BE5;
+}
+.repo-back{
+    background-color: #EEEEEE;
+}
+.repo-panel{
+    padding:5px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+      background-color: #FFFFFF;
+      border: 1px solid rgba(0,0,0,.15);
+}

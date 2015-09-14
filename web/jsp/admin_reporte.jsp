@@ -12,9 +12,10 @@
 <!DOCTYPE html>
 <%
     Connection con = sql.conectar();
-    PreparedStatement ps = con.prepareStatement("select * from ver_reportes");
+    PreparedStatement ps = con.prepareStatement("call getReporteTODO()");
     ResultSet rs = ps.executeQuery();
-%>
+    String[] gravedad={"","rp-gravedad-alta","rp-gravedad-media","rp-gravedad-baja"};
+    %>
 <html>
     <head>
         <title>Reporte Usuarios</title>
@@ -23,48 +24,48 @@
         <link href="../css/bootstrap/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>   
         <link href='http://fonts.googleapis.com/css?family=RobotoCondensed' rel='stylesheet' type='text/css'>
         <script src="../js/jquery-1.11.3.min.js"></script>
-         <script src="../js/muestra.js"></script>  
-         <link rel="stylesheet" href="../css/estilo_menu.css">
+        <script src="../js/muestra.js"></script>  
+        <script src="../js/ajax_call.js"></script>  
+        <link rel="stylesheet" href="../css/estilo_menu.css">
     </head>
     <body>
         <section class="integrarMenu">
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
-        </section>
-        <section class="integrarCont">
-            <h1 class="text-uppercase text-center">REPORTE DE USUARIOS</h1>
-            <h5 style="background-color: darkred">ALTA GRAVEDAD: 3</h5>
-            <h5 style="background-color: darkorange">MEDIA GRAVEDAD: 2</h5>
-            <h5 style="background-color: darkgreen">BAJA GRAVEDAD: 1</h5>
-            <br><br>
-            
-            <section>
-                <table class="tablaAdmin" style="border-left: 7px solid #22A7F0">
-                    <tr>
-                        <th>Titulo del reporte</th>
-                        <th>Gravedad</th>
-                        <th>Usuario Reportado</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
-                    </tr>
-                <%while(rs.next()){ %>
-                    <tr>
-                    
-                        <td><%=rs.getString(2) %></td>
-                        <td><%=rs.getString(5) %></td>
-                        <td><%=rs.getString(4) %></td>
-                        <td><%=rs.getString(6) %></td>
-                        <td>
-                            <form method="GET" action="reporte.jsp">
-                                <input type="hidden" name="id" value="<%= rs.getInt(1) %>">
-                                <input value="VER" type="submit" class="btn btn-success">
-                            </form>
-                            
-                        </td>
-                    </tr>
-                <% }%>
-                </table>
             </section>
-             
+            <div style="width: 100%;height: 50px;"></div>
+            <section class="integrarCont">
+                    <div class="contenedorfeeds">
+                        <div class="list-group lista repo-back">
+                        <%while(rs.next()){ 
+                            String cuerpo=rs.getString("cuerpo");
+                            String titulo=rs.getString("titulo_reporte");
+                            int idr=rs.getInt("id");
+                            int id_gr=rs.getInt("id_gravedad");
+                            
+                        
+                        
+                        %>
+                        <a class="list-group-item rep-button <%=""+gravedad[id_gr]%>" id="<%=idr%>">
+                                <h4 class="list-group-item-heading"><%=titulo%></h4>
+                                <p class="list-group-item-text"><%=cuerpo%></p>
+                                <%=gravedad[id_gr]%>
+                            </a>
+                        
+                        <% } %>
+                    </div>
+                    <div class="bodyfeed repo-back" id="bodyrepo">
+                                    <div> <h1 class="text-left">Reportes de Usuarios</h1>
+                                        
+                                        <h3 class="text-left" id="repo-title">Title</h3>     
+                                        <h4 class="text-left" id="usr"></h4>
+                                    </div>
+                                    <div class="repo-panel panel panel-default ">
+                                        <p id="repo-body">Seleccione un reporte a revisar</p>
+                                        <hr style="border-top: 1px solid #141414"> 
+                                        <h5 id="fecha"></h5>
+                                    </div>
+                                </div>
+                    </div>                  
         </section>
     </body>
 </html>

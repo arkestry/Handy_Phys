@@ -47,7 +47,7 @@
                                               while(rs2.next()){
                                               userName=rs2.getString("nickname");
                                     %>
-                                    <button type="button" class="list-group-item fdb" value="<%=idFeed%>"><%=userName%>|<%=fecha%>|</button>
+                                    <button type="button" class="list-group-item fdb " value="<%=idFeed%>"><%=userName%>|<%=fecha%>|</button>
                                     <%}
         }%>
                                 </div>
@@ -55,8 +55,10 @@
                                     <div> <h1 class="text-left">Feedback</h1>
                                         <h3 class="text-right" id="usr"></h3>
                                     </div>
-                                    <div class="fdb-panel">
-                                        <p id="fdb-text">Seleccione un reporte a revisar</p>
+                                    <div class="fdb-panel panel panel-default">
+                                        <h3 id="repo-title">Seleccione un reporte a revisar</h3>
+                                        <hr style="border-top: 1px solid #141414"> 
+                                        <p id="repo-body"></p>
                                         <hr style="border-top: 1px solid #141414"> 
                                         <h5 id="fecha"></h5>
                                     </div>

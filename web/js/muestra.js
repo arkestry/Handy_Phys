@@ -68,6 +68,9 @@ $(document).ready(function(){
             $(this).closest('form').submit();
        });
     });
+    /*$('.rp-gravedad-alta').click(function(event) {
+      $('#bodyrepo').css('background-color', 'value');
+    });*/
     });
   //fin valoraciones
 
