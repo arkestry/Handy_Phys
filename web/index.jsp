@@ -112,7 +112,7 @@
                     color: #141414;
                 }
                 section ul{
-                    background-color: #3A539B;
+                    background-color: #ECF0F1;
                 }
                 .menu li:hover{
                     box-shadow: 0 0  #AD1A1A inset;  
