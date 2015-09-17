@@ -27,14 +27,21 @@
         <script src="../js/muestra.js"></script>  
         <script src="../js/ajax_call.js"></script>  
         <link rel="stylesheet" href="../css/estilo_menu.css">
+        <style>
+            html,body{
+                height:100%;
+                background-color: #FFFFFF;
+            }
+        </style>
     </head>
     <body>
         <section class="integrarMenu">
             <jsp:include page="../menu.jsp" flush="true"></jsp:include>
             </section>
-            <div style="width: 100%;height: 50px;"></div>
-            <section class="integrarCont">
-                    <div class="contenedorfeeds">
+            <div style="width: 100%;height: 28px;"></div>
+            <section class="container container-adm">
+                    <div class="row row-adm">
+                        <div class="col-xs-3 xs-3 no-float">
                         <div class="list-group lista repo-back">
                         <%while(rs.next()){ 
                             String cuerpo=rs.getString("cuerpo");
@@ -53,19 +60,23 @@
                         
                         <% } %>
                     </div>
-                    <div class="bodyfeed repo-back" id="bodyrepo">
-                                    <div> <h1 class="text-left">Reportes de Usuarios</h1>
-                                        
-                                        <h3 class="text-left" id="repo-title">Title</h3>     
-                                        <h4 class="text-left" id="usr"></h4>
-                                    </div>
-                                    <div class="repo-panel panel panel-default ">
-                                        <p id="repo-body">Seleccione un reporte a revisar</p>
-                                        <hr style="border-top: 1px solid #141414"> 
-                                        <h5 id="fecha"></h5>
-                                    </div>
-                                </div>
-                    </div>                  
+                    </div>
+                    <div class="col-xs-9 xs-9 no-float repo-back">         
+                        <h1 class="text-center title-admn-head">Reportes de Usuarios</h1>
+                         <hr style="color:#141414">             
+                         <div class="panel panel-primary repo-panel">
+                             <div class="panel-heading fdb-head-panel" id="bodyrepo">
+                                <h3 class="text-left fdb-head-panel" id="repo-title">Seleccione un reporte a revisar</h3>   
+                                <h4 class="text-left" id="usr"></h4>
+                             </div>
+                             <div class="panel-body">
+                                <p  class="text-fdb-body" id="repo-body"></p>
+                             </div>
+                             <div class="panel-footer time-fdb-body" id="fecha">
+                                 
+                             </div>
+                                </div>  
+                    </div>
         </section>
     </body>
 </html>
