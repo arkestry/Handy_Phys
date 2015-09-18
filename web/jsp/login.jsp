@@ -35,7 +35,7 @@
                                     <input type="password" id="pass" name="pass" class="form-control form-trans login-font login-input-font" placeholder="Contraseña">
                                 </div>
                                 <p>
-                                    <button type="button" id="loginSubmit" name="button" class="btn btn-lg btn-trans form-trans">Login</button>
+                                    <button type="submit" id="loginSubmit" name="button" class="btn btn-lg btn-trans form-trans">Login</button>
                                 </p>
                             </form>
                             <p>
