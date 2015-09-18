@@ -615,7 +615,8 @@ div.slim_panHead{
 .bglogin{
     background-image: url(../assets/backgr/p9-min.png);
     background-size: cover;
-    background-repeat: round;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .bgart{
     background-image: url(../assets/backgr/p4.png);
@@ -938,3 +939,68 @@ a.list-group-item.rp-gravedad-baja:focus {
     color: #333333;
     
 }
+  @media only screen and (max-width:400px) {
+    .wrapper{
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width:400px) {
+    .wrapper{
+      width: 350px;
+    }
+  }
+.wrapper{
+        height: 65%;
+        display: table;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+      .mainrow{
+        display: table-row;
+        height: 100%;
+
+      }
+      .col{
+        display: table-cell;
+        width: 100%;
+        background: rgba(45, 45, 45, 0.5);
+        padding:0 5% 0 5%;
+        word-wrap: break-word;
+        overflow: auto;
+      }
+      .no-float{
+        float: none;
+      }
+      .image{
+        width: 60%;
+        float: top;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-bottom: 2%;
+      }
+      .form-center{
+        margin: 0 auto;
+        float: none;
+
+      }
+      .login-font{
+        font-weight: 300;
+        color: #FFFFFF;
+      }
+      .label-font{
+        font-size: 1.5em;
+      }
+      .login-input-font{
+        font-size: 1.2em;
+      }
+      .form-trans{
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .btn-trans{
+        border-color: #FFFFFF;
+        color: #FFFFFF;
+
+      }
+      .btn-trans:hover{
+        background-color:rgba(255, 255, 255, 0.9)
+      }
