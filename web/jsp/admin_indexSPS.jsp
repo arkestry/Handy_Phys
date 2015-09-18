@@ -20,6 +20,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
         <script src="../js/jquery-1.11.3.min.js"></script>
+        <script src="../js/muestra.js" type="text/javascript"></script>
         <script>
             $(document).ready(function(){
                 
@@ -30,10 +31,18 @@ and open the template in the editor.
                 function detener(){
                     clearInterval(timer);
                 }
+                
+                $('#seccion').html("<center><img src='../assets/icons/loading.gif'></center>");
+                $('img').css({
+                    opacity: "0.8",
+                    "border-radius": "25em"
+                    
+                });
                 function update(){ //el metodo que ejecuta el ajax
                     var variable = $.ajax({ //le damos todas las propiedades de ajax a una variable
                         url: "../jsp/admin_SPS.jsp", //la pagina del servidor que hara la consulta
                         method: "POST" //el metodo
+                        
                     });
                     //el metodo 'done' es como un 'ejecutar pagina'
                     variable.done(function(html2){ //el parametro html2 es el contenido de la pagina HTML que llama el ajax

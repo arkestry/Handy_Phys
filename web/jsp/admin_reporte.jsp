@@ -43,12 +43,14 @@
                     <div class="row row-adm">
                         <div class="col-xs-3 xs-3 no-float">
                         <div class="list-group lista repo-back">
-                        <%while(rs.next()){ 
+                        <%
+                        String correo = "";
+                        while(rs.next()){ 
                             String cuerpo=rs.getString("cuerpo");
                             String titulo=rs.getString("titulo_reporte");
                             int idr=rs.getInt("id");
                             int id_gr=rs.getInt("id_gravedad");
-                            
+                           correo = rs.getString("idDatos");
                         
                         
                         %>
@@ -67,7 +69,8 @@
                          <div class="panel panel-primary repo-panel">
                              <div class="panel-heading fdb-head-panel" id="bodyrepo">
                                 <h3 class="text-left fdb-head-panel" id="repo-title">Seleccione un reporte a revisar</h3>   
-                                <h4 class="text-left" id="usr"></h4>
+                                <label>Usuario Reportado: </label>
+                                <a href="profile.jsp?correo=<%= correo %>"><h4 class="text-left" id="usr"></h4></a>
                              </div>
                              <div class="panel-body">
                                 <p  class="text-fdb-body" id="repo-body"></p>

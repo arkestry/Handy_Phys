@@ -520,7 +520,7 @@ CREATE TABLE `reportes` (
   KEY `usuario_reportado` (`usuario_reportado`),
   CONSTRAINT `reportes_ibfk_1` FOREIGN KEY (`id_gravedad`) REFERENCES `cat_gravedad` (`id_gravedad`),
   CONSTRAINT `reportes_ibfk_2` FOREIGN KEY (`usuario_reportado`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -529,6 +529,7 @@ CREATE TABLE `reportes` (
 
 LOCK TABLES `reportes` WRITE;
 /*!40000 ALTER TABLE `reportes` DISABLE KEYS */;
+INSERT INTO `reportes` VALUES (1,'Reporte de prueba','Esto es un reporte de prueba',4,2,'2015-09-17');
 /*!40000 ALTER TABLE `reportes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1258,7 +1259,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getReporteTODO`()
 begin
 	select reportes.id,reportes.titulo_reporte,reportes.cuerpo,
-    datos.nickname,reportes.id_gravedad,reportes.fecha from reportes  inner join usuarios 
+    datos.nickname,reportes.id_gravedad,reportes.fecha, usuarios.idDatos from reportes  inner join usuarios 
     on usuarios.idUsuario=reportes.usuario_reportado inner join datos on usuarios.idDatos=datos.correo where reportes.id=id;
 end ;;
 DELIMITER ;
@@ -1822,4 +1823,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-17 21:19:34
+-- Dump completed on 2015-09-17 22:16:56

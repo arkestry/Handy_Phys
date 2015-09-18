@@ -84,6 +84,9 @@
                 .menu li:hover{
                     box-shadow: 0 0  #AD1A1A inset;  
                 }
+                ul.menu section ul li a {
+                    background-color: #ECF0F1
+                }
             </style>
     <%
         }

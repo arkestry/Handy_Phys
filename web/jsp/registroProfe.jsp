@@ -12,6 +12,11 @@
         <link rel="stylesheet" href="../css/estilo_menu.css">
         <script src="../js/muestra.js" type="text/javascript"></script>
         <script src="../js/jquery-1.11.3.min.js"></script>
+        <style>
+           form label{
+               color:  whitesmoke;
+           }
+        </style>
     </head>
     <body>
         <section class="integrarMenu">
