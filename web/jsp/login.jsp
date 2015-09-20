@@ -30,9 +30,9 @@
                             <form action="../servlets/login" method="POST">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" class="login-font label-font">email</label>
-                                    <input type="email" class="form-control form-trans login-font login-input-font" id="email" name="email" placeholder="Email">
+                                    <input type="email" class="form-control form-trans login-font login-input-font" id="email" name="email" placeholder="Email" required>
                                     <label for="exampleInputEmail1" class="login-font label-font">contraseña</label>
-                                    <input type="password" id="pass" name="pass" class="form-control form-trans login-font login-input-font" placeholder="Contraseña">
+                                    <input type="password" id="pass" name="pass" class="form-control form-trans login-font login-input-font" placeholder="Contraseña" required>
                                 </div>
                                 <p>
                                     <button type="submit" id="loginSubmit" name="button" class="btn btn-lg btn-trans form-trans">Login</button>
