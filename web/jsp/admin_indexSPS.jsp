@@ -32,17 +32,12 @@ and open the template in the editor.
                     clearInterval(timer);
                 }
                 
-                $('#seccion').html("<center><img src='../assets/icons/loading.gif'></center>");
-                $('img').css({
-                    opacity: "0.8",
-                    "border-radius": "25em"
-                    
-                });
+                $('#seccion').html("<center><img src='../assets/icons/cargando2.svg' width='200' height='200'></center>");
+               
                 function update(){ //el metodo que ejecuta el ajax
                     var variable = $.ajax({ //le damos todas las propiedades de ajax a una variable
                         url: "../jsp/admin_SPS.jsp", //la pagina del servidor que hara la consulta
-                        method: "POST" //el metodo
-                        
+                        method: "POST"
                     });
                     //el metodo 'done' es como un 'ejecutar pagina'
                     variable.done(function(html2){ //el parametro html2 es el contenido de la pagina HTML que llama el ajax
@@ -52,6 +47,12 @@ and open the template in the editor.
                 iniciar();
                 $('#iniciar').on('click', iniciar);
                 $('#parar').on('click', detener);
+                $('#borrar').on('click', function(){
+                   $.ajax({
+                      url: "../servlets/borrarLog",
+                      method: "POST"
+                   }); 
+                });
             });
         </script>
         <style>
@@ -69,7 +70,8 @@ and open the template in the editor.
         <section>
             <section style="width: 3%; float: left; display: table-cell; padding: 1em">
              <button id="iniciar" class="btn btn-success"><span class="glyphicon glyphicon-play"></span></button><br><br>
-             <button id="parar" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button>
+             <button id="parar" class="btn btn-danger"><span class="glyphicon glyphicon-stop"></span></button><br><br>
+             <button id="borrar" class="btn btn-info"><span class="glyphicon glyphicon-erase"></span></button>
             </section>
             <section style="width: 94%; float: left; display: table-cell" id="seccion">
             </section>

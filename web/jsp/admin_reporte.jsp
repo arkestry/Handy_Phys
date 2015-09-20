@@ -14,7 +14,7 @@
     Connection con = sql.conectar();
     PreparedStatement ps = con.prepareStatement("call getReporteTODO()");
     ResultSet rs = ps.executeQuery();
-    String[] gravedad={"","rp-gravedad-alta","rp-gravedad-media","rp-gravedad-baja"};
+    String[] gravedad={"","rp-gravedad-baja","rp-gravedad-media","rp-gravedad-alta"};
     %>
 <html>
     <head>
@@ -33,6 +33,17 @@
                 background-color: #FFFFFF;
             }
         </style>
+        <script>
+           
+             function really(f){
+                 if(confirm("En verdad desea eliminarlo?") === true){
+                     f.submit();
+                     return true;
+                 }else{
+                     return false;
+                 }
+             }
+        </script>
     </head>
     <body>
         <section class="integrarMenu">
@@ -45,13 +56,14 @@
                         <div class="list-group lista repo-back">
                         <%
                         String correo = "";
+                        int idUser = 0;
                         while(rs.next()){ 
                             String cuerpo=rs.getString("cuerpo");
                             String titulo=rs.getString("titulo_reporte");
                             int idr=rs.getInt("id");
                             int id_gr=rs.getInt("id_gravedad");
                            correo = rs.getString("idDatos");
-                        
+                            idUser = rs.getInt("usuario_reportado");
                         
                         %>
                         <a class="list-group-item rep-button <%=""+gravedad[id_gr]%>" id="<%=idr%>">
@@ -59,9 +71,15 @@
                                 <p class="list-group-item-text"><%=cuerpo%></p>
                                 <%=gravedad[id_gr]%>
                             </a>
-                        
+                                <label>ID de usuario: <%= idUser %></label>
                         <% } %>
+                        <center>
+                        <form method="POST" action="../servlets/borrarReportes" onsubmit="really(this)">
+                            <button type="submit" class="btn btn-danger">Borrar todos los reportes</button>
+                        </form>
+                        </center>
                     </div>
+                    
                     </div>
                     <div class="col-xs-9 xs-9 no-float repo-back">         
                         <h1 class="text-center title-admn-head">Reportes de Usuarios</h1>
@@ -71,6 +89,11 @@
                                 <h3 class="text-left fdb-head-panel" id="repo-title">Seleccione un reporte a revisar</h3>   
                                 <label>Usuario Reportado: </label>
                                 <a href="profile.jsp?correo=<%= correo %>"><h4 class="text-left" id="usr"></h4></a>
+                                
+                                <form style="color: #141414" id="elimina" method="POST" onsubmit="return really(this)" action="../servlets/eliminarUsuario">
+                                    <input style="width: 200px; color: #141414" name="id" type="number" placeholder="Eliminar y bloquear cuenta">
+                                <button id="borrarCuenta" class="btn btn-sm btn-danger">Eliminar cuenta</button>
+                             </form>
                              </div>
                              <div class="panel-body">
                                 <p  class="text-fdb-body" id="repo-body"></p>
@@ -78,8 +101,10 @@
                              <div class="panel-footer time-fdb-body" id="fecha">
                                  
                              </div>
+                               
                                 </div>  
                     </div>
+                                
         </section>
     </body>
 </html>

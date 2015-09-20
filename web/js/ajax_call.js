@@ -34,13 +34,13 @@ $(document).ready(function(){
         $('#fecha').html(text[4]);
         $('#usr').html(text[5]);
         switch (parseInt(text[1])) {
-          case 3:
+          case 1:
             $('#bodyrepo').css('background-color', '#00B0FF');
             break;
             case 2:
               $('#bodyrepo').css('background-color', '#FFEA00');
               break;
-              case 1:
+              case 3:
                 $('#bodyrepo').css('background-color', '#F44336');
                 break;
           default:

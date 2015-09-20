@@ -31,7 +31,7 @@
                     <label for="tituloRep">Titulo del reporte: </label><input name="titulo_rep" type="text" required="" class="form-control" size="50" name="tituloRep" id="tituloRep">
                 </section>
                 <section class="col-lg-6">
-                    <label for="user">Usuario a reportar: </label><input name="correo" type="text" required="" class="form-control" size="50">
+                    <label for="user">Correo del usuario a reportar: </label><input name="correo" type="text" required="" class="form-control" size="50">
                 </section>
             </section>
             <br><br><br><br>
@@ -49,10 +49,15 @@
             </section>
             <br> <br>
             <center>
-          <section>
-               <label for="tituloRep">Breve descripción del reporte: </label><br>
-               <textarea name="cuerpo" placeholder="Descripcion del reporte"></textarea>
-          </section>
+                <section class="col-lg-12 container">
+                    
+                    <label for="tituloRep">Breve descripción del reporte: </label><br>
+               
+                    <section class=" col-lg-5" style="padding: 15px; position: relative; right: -35em">
+                   <center> <textarea rows="7" name="cuerpo" class=" form-control" placeholder="Descripcion del reporte"></textarea>
+               
+                   </center></section>
+            </section>
                 <br><br>
             <input type="submit" value="Enviar reporte"  style="background-color: #006541;" class="btn btn-lg boton">
             </center>

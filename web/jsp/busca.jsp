@@ -45,12 +45,26 @@
             <%while(rs.next()){ 
                 ps1.setInt(1, rs.getInt(1));
                 ResultSet rs1 = ps1.executeQuery();
+                String accion = "";
+                if(rs.getInt(6) == 1){
+                accion = "articulo.jsp";
+                }else{
+                    if(rs.getInt(6) == 2){
+                        accion = "pregunta.jsp";
+                    }else{
+                        if(rs.getInt(6) == 3 ){
+                            accion = "../examenes/"+rs.getString(7);
+                        }
+                    }
+                }
+                
+                
             %>
             
                <div class="panel panel-default">
                 <div class="panel-heading slim_panHead">
                     <h3>
-                        <form action="pregunta.jsp" method="GET" style="display: inline">
+                        <form action="<%=accion%>" method="GET" style="display: inline">
                             <button type="submit" style="background: none; border: none"><%=(String)rs.getObject("Titulo") %></button>
                             <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
                             <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
@@ -58,7 +72,7 @@
                             <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
                             <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
                             <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                            <input type="hidden" name="tipoCont" value="2">  
+                            <input type="hidden" name="tipoCont" value="<%= rs.getInt(6) %>">  
                             <input type="hidden" name="correo" value="<%= rs.getString("correo") %>">  
                             <input type="hidden" name="tags" value="<%= rs.getString("tags") %>">
                         </form>
@@ -117,14 +131,14 @@
                             }%>
 
                         <%while(rs1.next()){%>
-                        <form action="pregunta.jsp" method="POST">
+                        <form action="<%=accion%>" method="POST">
                             <input type="hidden" name="idUsuario" value="<%= rs.getObject("idUsuario")%>">
                             <input type="hidden" name="nickname" value="<%= (String)rs.getObject("nickname")%>">
                             <input type="hidden" name="titulo" value="<%=(String)rs.getObject("Titulo") %>">
                             <input type="hidden" name="fecha" value="<%=(String)rs.getObject("fecha")%>">
                             <input type="hidden" name="idArticulo" value="<%= rs.getObject("idArticulo") %>">
                             <input type="hidden" name="nombreArchivo" value="<%= rs.getString("url") %>">
-                            <input type="hidden" name="tipoCont" value="2">   
+                            <input type="hidden" name="tipoCont" value="<%= rs.getInt(6) %>">   
                             <button type="submit" style="background: none; border: none; color: #141414">Respuestas</button><span class="badge"><%=rs1.getString(7) %></span>
                         </form>
                         <%}%>

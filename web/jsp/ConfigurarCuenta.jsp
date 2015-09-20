@@ -71,6 +71,14 @@ $(document).ready(function (e) {
     $("#file").on("change", function() {
         $("#form").submit();
     });
+    $('#borrarCuenta').on('click', function(){
+        if(confirm('Esta seguro de que desea borrar su cuenta permanentemente?') === true){
+            $('#elimina').submit();
+            return true;
+        }else{
+            return false;
+        }
+     });
 });
         </script>
     </head>
@@ -126,6 +134,7 @@ $(document).ready(function (e) {
                             }
                         });
                     }
+                    
                 </script>
                 <% }
                     if(session.getAttribute("tipo").equals("Profesor")){ %>
@@ -244,7 +253,12 @@ $(document).ready(function (e) {
                          </small>
                      </section>
                  </form>
-                         
+                         <footer>
+                             <form id="elimina" method="POST" action="../servlets/eliminarUsuario">
+                                 <input name="id" type="number" >
+                                <button id="borrarCuenta" class="btn btn-lg btn-danger">Eliminar cuenta</button>
+                             </form>
+                         </footer>
              </section>
                 
         </section>

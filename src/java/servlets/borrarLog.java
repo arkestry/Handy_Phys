@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ivan
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class regist extends HttpServlet {
+public class borrarLog extends HttpServlet {
 
-    private Connection con = null;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,37 +33,14 @@ public class regist extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public void init (ServletConfig config) throws ServletException{
-        super.init(config);
-        con = sql.conectar();
-    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            
-              
-                PreparedStatement ps = con.prepareStatement("call insertarDatos(?,?,?,?,?,?,?,?)");
-                ps.setString(1, request.getParameter("email"));
-                ps.setString(2, request.getParameter("nombre"));
-                ps.setInt(3, Integer.parseInt(request.getParameter("institucion")));
-                ps.setInt(4, Integer.parseInt(request.getParameter("unidadA")));
-                ps.setString(5, request.getParameter("nickname"));
-                ps.setString(6, request.getParameter("pass"));
-                ps.setString(7, request.getParameter("tipoUsuario"));
-                ps.setString(8, request.getParameter("grupo"));
-                ps.executeUpdate();
-               out.println("<script> window.location.href = '../index.jsp';alert('Registro éxitoso');</script>");
-           
-        }catch(Exception e){
-           
-            out.println("<script>alert('El usuario ya existe favor de volverlo a intenrar o iniciar sesion con el usuario ya existente');"
-                    + "window.location.href = '../jsp/registroProfe.jsp'"
-                    + "</script>");
-           
-            }
+        try (PrintWriter out = response.getWriter()) {
+            Connection con = sql.conectar();
+            PreparedStatement ps = con.prepareStatement("delete from weblog");
+            ps.executeUpdate();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,7 +58,7 @@ public class regist extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(regist.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(borrarLog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -101,7 +76,7 @@ public class regist extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(regist.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(borrarLog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

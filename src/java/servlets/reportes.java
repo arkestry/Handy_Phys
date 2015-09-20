@@ -56,6 +56,7 @@ public class reportes extends HttpServlet {
            ps2.setInt(3, idUsuarioReportado);
            ps2.setInt(4, gravedad);
            ps2.executeUpdate();
+           response.sendRedirect("../jsp/nuevo_reporte.jsp");
         }
     }
 

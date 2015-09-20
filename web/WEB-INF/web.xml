@@ -84,6 +84,14 @@
         <servlet-name>getReporte</servlet-name>
         <servlet-class>servlets.getReporte</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>borrarLog</servlet-name>
+        <servlet-class>servlets.borrarLog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>borrarReportes</servlet-name>
+        <servlet-class>servlets.borrarReportes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>generarHTML</servlet-name>
         <url-pattern>/servlets/generarHTML</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>getReporte</servlet-name>
         <url-pattern>/getReporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>borrarLog</servlet-name>
+        <url-pattern>/servlets/borrarLog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>borrarReportes</servlet-name>
+        <url-pattern>/servlets/borrarReportes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

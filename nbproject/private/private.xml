@@ -3,11 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/admin_indexSPS.jsp</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/profile.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/registroProfe.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/examenes.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/js/ajax_call.js</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/ConfigurarCuenta.jsp</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/sigPregunta.java</file>
-            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/verSimulador.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/borrarLog.java</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/todo_simulExam.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/classes/sql.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/reporte.jsp</file>
             <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/css/estilo_menu.css</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/admin_SPS.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/login.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/regist.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/borrarReportes.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/busca.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/src/java/servlets/eliminarUsuario.java</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/nuevo_reporte.jsp</file>
+            <file>file:/C:/Users/ivan-hdz/Documents/GitHub/Handy_Phys/web/jsp/admin_reporte.jsp</file>
         </group>
     </open-files>
 </project-private>
